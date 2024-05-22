@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <link rel="stylesheet" th:href="@{/dist/css/index.css}">
+        <head>
+
+        </head>
+        <body>
+        <div class="image" id="image">
+            <img class="main-img1" src="../image/sc2.png" style="display: block; margin: 0; padding: 0;">
+        </div>
+
+        </body>
+
+    </th:block>
+</th:block>
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="setFragment(content)">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot</title>
+        <link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/dist/css/footer.css}">
+        <link rel="stylesheet" th:href="@{/dist/css/layout.css}">
+        <script th:src="@{/dist/js/bootstrap.bundle.min.js}"></script>
+        <style>
+
+        </style>
+
+    </head>
+    <body>
+
+
+    <div>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand" href="#" id="navImage"><img style="width=44px" height="44px" src="../image/SC_Main.png"></a>
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-dark">
+                        <h5 class="offcanvas-title " id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body bg-dark">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <div>
+                                <li class="nav-item">
+                                    <a class="navbar-brand" href="#" ><img style="width=44px" height="44px" src="../image/SC_Main.png"></a>
+                                </li>
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">홈</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">회원가입</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">마이페이지</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">테마 소개</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">예약하기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">ㅁㅁㅁ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">ㅁㄴㅇㄹ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu bg-dark" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--                    <form class="d-flex">-->
+                        <!--                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+                        <!--                        <button class="btn btn-outline-success" type="submit">Search</button>-->
+                        <!--                    </form>-->
+                    </div>
+                </div >
+
+
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <th:block th:replace="${content}"></th:block>
+    </div>
+    <footer >
+
+        <section class="ft" >
+
+            <div class="container">
+                <div class="box">
+
+                    <div class="top">SECRECT CODE</div>
+                    <div class="top2">SECRECT CODE.CO | WE CAN ESCAPE</div>
+
+                    <div class="textbox">
+                        <h6>
+                    <span>
+
+                        <span> 주소 : 인천광역시 남동구 인주대로 593 엔타스빌딩 12층 </span> <br>
+                        <br>
+                        <span> 영업시간 : 10:00 - 22:00</span>
+                        <br>
+                        <br>
+                        <span>
+                          대표번호 : <span id="numid">1599-1074</span>  <br>
+                            이메일 : SecretCode@sc.escape.co.kr
+                        </span><br>
+                        <br>
+                        <span>대표자 : 이창규</span>
+                        <span>
+                       <br>사업자등록번호 : <span id="numid2">365-05-01731</span>
+
+                            <select id="selecttema" title="테마 선택하기">
+                        <option value="">테마</option>
+                        <option value="https://www.lotte.co.kr/main.do">공포</option>
+                        <option value="https://www.lottewellfood.com/">성인</option>
+                        <option value="https://mall.lottechilsung.co.kr/display/displayShop.lecs?displayNo=CF1A07A01&amp;stonType=P">스릴러</option>
+                        <option value="https://company.lottechilsung.co.kr/kor/main/index.do">역사</option>
+
+                    </select>
+                        </span>
+                    </span>
+                        </h6>
+                    </div> <!--text div-->
+
+
+
+                    <hr>
+                    <div class="bottom">
+            <span id="gray">
+           Copyright ⓒ Secret Chamber All right reserved
+            </span>
+
+                        <div id="icon">
+
+                            <a><img style="width: 25px" height="25px" src="../image/카카오톡.png"></a>
+                            <a><img style="width: 25px" height="25px" src="../image/facebook.png"></a>
+                            <a><img style="width: 25px" height="25px" src="../image/insta.png"></a>
+
+                        </div> <!--icon div-->
+
+                    </div> <!--bottom div-->
+
+
+
+                </div> <!--box div-->
+
+
+
+
+
+
+            </div> <!--container  div  -->
+
+
+        </section>
+
+
+
+
+    </footer>
+
+
+    </body>
+
+</th:block>
+</html>
