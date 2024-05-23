@@ -1,8 +1,31 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
 .container-fluid{
 margin: 0;
 padding: 0;
 }
 .body{
+font-family:'S-CoreDream-3Light';
+font-size: 20px;
 margin:0;
 padding:0;
+}
+.nav-item1{
+    margin-bottom: 50px;
+}
+.navbar-brand{
+    margin:auto;
+    text-align: center;
+}
+.nav-item{
+font-family:'S-CoreDream-3Light';
+font-size: 30px;
+display: block;
+
 }
