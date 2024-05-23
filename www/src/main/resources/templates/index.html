@@ -13,22 +13,32 @@
 
         <div class="image-container">
         <div class="image image1" id="image1">
-            <img class="main-img1" th:src="@{/dist/image/sc3.png}"
+            <img class="main-img1" th:src="@{/dist/image/sc6.png}"
                  style="display: block; margin: 0; padding: 0;
                   width:100%; height:100%">
             <div class="text1">
-                <h1>SECRET CODE <br>
-                EXIT<br>
-                IF YOU CAN</h1><br>
+                <p class="typing-text">SECRET CODE <br>
+                ESCAPE
+                IF YOU CAN</p><br>
             </div>
-            <div class="viewMore"><a href="">매장선택 및 예약</a></div>
+<!--            <button type="button" class="paraShowing btn-reservation show" data-dirc="s" data-delay="0.5" onclick="" style="translate: none;rotate: none;scale: none;transform: translate(0px, 0px);opacity: 1;">-->
+<!--                <span class="default">테마 선택 및 예약</span>-->
+<!--                <span class="hover">by.Secret Code</span>-->
+<!--            </button>-->
+            <div class="viewMore"><a href="" class="fade-in">예약하러 가기 ➡︎</a></div>
         </div>
 
             <div class="image image2" id="image2">
+                <img class="main-img2" th:src="@{/dist/image/sc7.png}" style="display: block; margin: 0; padding: 0; width:100%; height:100%">
+                <div class="text1">
+                </div>
+
+            </div>
+            <div class="image image3" id="image3">
                 <img class="main-img2" th:src="@{/dist/image/sc2.png}" style="display: block; margin: 0; padding: 0; width:100%; height:100%">
                 <div class="text1">
                 </div>
-                <div></div>
+
             </div>
 
         </div>
@@ -38,4 +48,5 @@
 
     </th:block>
 </th:block>
+
 
