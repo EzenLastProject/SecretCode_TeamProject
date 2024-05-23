@@ -45,8 +45,13 @@
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/register}">회원가입</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">로그인</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/login}">로그인</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/login_register}">테스트중인 로그인/회원가입</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">마이페이지</a>
                             </li>
@@ -93,9 +98,10 @@
     <div class="container-fluid">
         <th:block th:replace="${content}"></th:block>
     </div>
-    <footer >
+    <section class="ft" >
+        <footer >
 
-        <section class="ft" >
+
 
             <div class="container">
                 <div class="box">
@@ -163,13 +169,8 @@
 
             </div> <!--container  div  -->
 
-
-        </section>
-
-
-
-
-    </footer>
+        </footer>
+    </section>
 
 
     </body>

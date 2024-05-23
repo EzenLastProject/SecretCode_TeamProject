@@ -8,8 +8,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,15 +28,15 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers
-//                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register", "/upload/**", "/comment/**")
-//                        .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
+                        .requestMatchers
+                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register", "/upload/**", "/comment/**")
+                        .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
                         .usernameParameter("email")
                         .passwordParameter("pwd")
-                        //.loginPage("/member/login")
+                        .loginPage("/member/login")
                         .defaultSuccessUrl("/board/list").permitAll()
                 )
                 .logout(logout -> logout
