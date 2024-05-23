@@ -2,6 +2,8 @@ package SecretCode.ezen.www.domain;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,5 +15,7 @@ public class MemberVO {
     private String nickName;
     private String regAt;
     private String lastLogin;
+    private String phone;
+    private List<AutoVO> authList;
 
 }

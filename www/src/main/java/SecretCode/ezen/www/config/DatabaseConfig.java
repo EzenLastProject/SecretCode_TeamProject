@@ -43,23 +43,23 @@ public class DatabaseConfig {
         return dataSource;
     }
 
-//    @Bean
-//    public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception{
-//        SqlSessionFactoryBean sqlSessionFactoryBean =
-//                new SqlSessionFactoryBean();  //sqlSession 객체 생성
-//        sqlSessionFactoryBean.setDataSource(datasource); // datasource 정보 추가
-//
-//        sqlSessionFactoryBean.setConfigLocation(
-//                applicationContext.getResource("classpath:/mybatis-config.xml"));
-//        sqlSessionFactoryBean.setMapperLocations(
-//                new PathMatchingResourcePatternResolver().getResources(mapperLoacations));
-//
-//        return sqlSessionFactoryBean.getObject();
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception{
+        SqlSessionFactoryBean sqlSessionFactoryBean =
+                new SqlSessionFactoryBean();  //sqlSession 객체 생성
+        sqlSessionFactoryBean.setDataSource(datasource); // datasource 정보 추가
+
+        sqlSessionFactoryBean.setConfigLocation(
+                applicationContext.getResource("classpath:/mybatis-config.xml"));
+        sqlSessionFactoryBean.setMapperLocations(
+                new PathMatchingResourcePatternResolver().getResources(mapperLoacations));
+
+        return sqlSessionFactoryBean.getObject();
 
     }
 
-//    @Bean
-//    public SqlSessionTemplate sqlsessionTemplate(SqlSessionFactory sqlSessionFactory) {
-//        return new SqlSessionTemplate(sqlSessionFactory);
-//    }
-//}
+    @Bean
+    public SqlSessionTemplate sqlsessionTemplate(SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
+    }
+}

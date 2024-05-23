@@ -1,0 +1,79 @@
+--2024-05-23
+
+create table qnacomment(
+cno bigint auto_increment,
+bno bigint not null,
+writer varchar(200) not null,
+content text not null,
+reg_at datetime default now(),
+mod_at datetime default now(),
+primary key(cno));
+
+create table file(
+uuid varchar(256) not null,
+save_dir varchar(256) not null,
+file_name varchar(256) not  null,
+file_type int(1) default 0,
+bno bigint not null,
+file_size bigint not null,
+reg_at datetime default now(),
+primary key(uuid));
+
+create table member(
+email varchar(200) not null,
+pwd varchar(256) not null,
+nick_name varchar(100) not null,
+reg_at datetime default now(),
+last_login datetime default now(),
+phone varchar(50) not null,
+primary key(email));
+
+create table auth_member(
+email varchar(200) not null,
+auth varchar(100) not null,
+foreign key(email) references
+member(email));
+
+CREATE TABLE qna(
+bno INT AUTO_INCREMENT,
+title VARCHAR(200),
+writer VARCHAR(200),
+content TEXT,
+isDel VARCHAR(10) DEFAULT 'N',
+reg_date DATETIME DEFAULT now(),
+read_count INT,
+cmt_qty INT,
+primary key(bno));
+
+CREATE TABLE review(
+bno INT AUTO_INCREMENT,
+rno int not null,
+title VARCHAR(200),
+writer VARCHAR(200),
+content TEXT,
+isDel VARCHAR(10) DEFAULT 'N',
+reg_date DATETIME DEFAULT now(),
+read_count INT,
+cmt_qty INT,
+FOREIGN KEY (rno) REFERENCES room(rno),
+primary key(bno));
+
+create table room(
+rno int not null auto_increment,
+rname int not null,
+is_reserved varchar(10),
+price int not null,
+uuid varchar(256),
+primary key(rno),
+foreign key(uuid) references file(uuid));
+
+create table reservation(
+   reservnum int not null auto_increment,
+   rno int not null,
+   email varchar(200) not null,
+   reservationtime int,
+   date datetime default now(),
+   primary key(reservnum),
+   foreign key(rno) references room(rno),
+   foreign key(email) references member(email));
+
