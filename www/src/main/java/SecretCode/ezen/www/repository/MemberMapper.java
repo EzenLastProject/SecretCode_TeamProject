@@ -1,4 +1,30 @@
 package SecretCode.ezen.www.repository;
 
-public class MemberMapper {
+import SecretCode.ezen.www.domain.AutoVO;
+import SecretCode.ezen.www.domain.MemberVO;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+@Mapper
+public interface MemberMapper {
+
+
+    int insert(MemberVO mvo);
+
+    int insertAuth(String email);
+
+    MemberVO selectEmail(String username);
+
+    List<AutoVO> selectAuths(String username);
+
+    List<MemberVO> getList();
+
+    void memberPwdModify(MemberVO mvo);
+
+    void memberAuthDelete(String email);
+
+    void memberDelete(String email);
+
+    void memberModify(MemberVO mvo);
 }
