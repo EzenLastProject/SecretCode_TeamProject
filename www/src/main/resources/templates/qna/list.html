@@ -1,102 +1,133 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"   lang="en"  >
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<link rel="stylesheet" th:href="@{/dist/css/qnalist.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<th:block th:replace="~{layout::setFragment(~{this::content})}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/dist/css/qnalist.css}">
 
-    <th:block th:fragment="content">
+    <th:block th:replace="~{layout::setFragment(~{this::content})}">
 
-
-        <div class="qna-container">
-            <div class="qna-title">
-                <h2> Q & A</h2>
-                <div class="qna-title-img">
-
-                </div>
-                <p id="qna-ko">질문과 답변</p>
-
-            </div> <!--qna-title-->
-
-            <div class="doc_view">
-
-                <table class='list'>
-                    <tr>
-                        <th width=8% scope='col' class='dis_none'>번호</th>
-                        <th scope='col'>제목</th>
-                        <th width=15% scope='col' class='dis_none'>작성자</th>
-                        <th width=15% scope='col' class='dis_none'>작성일</th>
-                    </tr>
-
-                    <tr>
-                        <td class='dis_none'><img src='../images/board/icon_notice.gif'></td>
-                        <td class='left'>
-                            <img src='../images/board/blank.gif' id='img_0' align=absmiddle><a href='home.php?mid=&go=pds.list&pds_type=2&start=0&num=18&s_key1=&s_que='> <font color=#999>[DTH점(부평)]</font> 공지사항_DTH점</a> <img src='../images/board/icon_file.png' align=absmiddle> </td>
-                        <td class='dis_none'>관리자</td>
-                        <td class='dis_none'>2023-03-14</td>
-                    </tr>
-
-
-                </table>
-                <div class="btn_R_Area">
-                    <a href='home.php?go=pds.make&pds_type=2' class='btnStyle write'>글쓰기</a>	</div><!-- btn_R_Area -->
-
-
-                <div class='paging_Layer'>
-	<span>
- <a href='home.php?mid=&go=pds.list&start=0&pds_type=2&s_key1=&s_que=' class='on'>1</a>  <a href='home.php?mid=&go=pds.list&start=10&pds_type=2&s_key1=&s_que='>2</a>  <a href='home.php?mid=&go=pds.list&start=20&pds_type=2&s_key1=&s_que='>3</a>  <a href='home.php?mid=&go=pds.list&start=30&pds_type=2&s_key1=&s_que='>4</a>  <a href='home.php?mid=&go=pds.list&start=40&pds_type=2&s_key1=&s_que='>5</a>  <a href='home.php?mid=&go=pds.list&start=50&pds_type=2&s_key1=&s_que='>&gt;</a> 	</span>
-                </div>
+        <th:block th:fragment="content" >
 
 
 
 
-                <form action=home.php method=get name=f_search>
-                    <div class="search-Box">
-                        <div class="search-area">
-                            <p>
-                                <select name="s_key1" style='width:80px;' class="select">
-                                    <option value="A"  >전체</option>
-                                    <option value="B"  >제목</option>
-                                    <option value="C"  >내용</option>
-                                    <option value="D"  >작성자</option>
-                                </select>
-                                <input name="s_que" value="" type="text" style='width:150px;'  class=input>
-                            </p>
-                            <button type=button onclick=fun_search() class="buttonStyle search">검색</button>
-                        </div>
+            <div class="qna-container">
+    <div class="row">
+        <div class="col">
+
+                <div class="qna-title">
+                    <h2 id="qnah">Q & A</h2>
+                    <div class="qna-title-img">
+
                     </div>
-                    <input type=hidden name=go			value='pds.list'>
-                    <input type=hidden name=pds_type	value='2'>
-                </form>
+                    <p id="qna-ko">질문과 답변</p>
+                </div> <!-- qna-title -->
+
+                <div class="qna-table-box">
+                    <table class='qna-list'>
+
+                        <thead>
+                        <tr>
+                            <th width=7% scope='col' class='dis_title'>#</th>
+                            <th width=20% class="dis_title" >제목</th>
+                            <th width=10% scope='col' class='dis_title'>작성자</th>
+                            <th width=10% scope='col' class='dis_title'>작성일</th>
+                            <th width=5% scope='col' class='dis_title'>답변수</th>
+                            <th width=5% scope='col' class='dis_title'>조회수</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- 여기에 동적으로 생성되는 내용이 들어감 -->
 
 
-                <form action='pds.pass.php' method=post name=f_pds_pass target=frame_pds_pass>
-                    <input type=hidden name=id			 value=''>
-                    <input type=hidden name=num			 value=''>
-                    <input type=hidden name=tail_num	 value=''>
-                    <input type=hidden name=mode		 value=''>
-                    <input type=hidden name=b_exe		 value=''>
-
-                    <input type=hidden name=start	     value='0'>
-                    <input type=hidden name=s_key1		 value=''>
-                    <input type=hidden name=s_que		 value=''>
-                </form>
-
-                <div id=div_pds_pass  style='position:absolute; left:300; top:200px; width:202px; height=80px; z-index:1; VISIBILITY:hidden;'>
-                    <iframe name='frame_pds_pass' src='' frameborder='0' scrolling='no' width='202' height='80'></iframe>
-                </div>
-
-            </div> <!-- doc_view -->
+                        <tr>
+                            <td class='dis_none ' style="color : red;">자주 묻는 질문</td>
+                            <td class='dis_none'><a style="color: yellow;
+    text-decoration: none;" class="qna_title" href="">예약 변경하려면 어떻게 해야하나요?</a></td>
+                              <td class='dis_none'>관리자</td>
+                            <td class='dis_none'>2024-05-24</td>
+                            <td class='dis_none'>0</td>
+                            <td class='dis_none'>0</td>
+                        </tr>
 
 
 
-        </div> <!--qna-container-->
 
 
+
+
+                        <button id="qnawrite">문의글 작성</button>
+
+
+                        <!-- 이하 생략 -->
+                        </tbody>
+                    </table> <!-- qna-list -->
+
+                    <form class="qnasearch" role="search">
+                        <nav class="qna-search-nav">
+
+                            <div class="qna_search_div" style=" text-align :center;
+  margin-top : 30px; border-radious:0; ">
+
+                                <select id="qna_select" aria-label="선택">
+                                    <option>선택</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+
+                                <input class="qna_search_input" type="search" placeholder="Search" aria-label="Search">
+                                <button class="qna_search_btn" type="submit">검색</button>
+
+
+                            </div>
+
+                        </nav>
+                    </form>
+
+
+
+
+
+
+
+            <!-- qna-container -->
+            <nav  class="qna-page">
+                <ul class="pagination">
+                    <li class="qnapage">
+                        <a class="qnapage" href="#" aria-label="Previous">
+                            <span  id="qna-page-previous" aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="qnapage"><a class="qnapage" href="#">1</a></li>
+                    <li class="qnapage"><a class="qnapage" href="#">2</a></li>
+                    <li class="qnapage"><a class="qnapage" href="#">3</a></li>
+                    <li class="qnapage">
+                        <a class="qnapage" href="#" aria-label="Next">
+                            <span id="qna-page-next" aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+                </div> <!-- qna-table-box -->
+        </div> <!-- col -->
+    </div> <!-- row -->
+            </div>
+
+
+
+
+        </th:block>
 
     </th:block>
+</html>
 
-</th:block>
+
+
+
+
 
