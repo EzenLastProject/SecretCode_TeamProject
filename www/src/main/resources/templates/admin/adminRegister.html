@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/dist/css/adminRegister.css}">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <title>테마 등록 페이지</title>
+        <div class="containerRe">
+            <h1>테마 등록</h1>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="theme-name">테마 이름:</label>
+                    <input type="text" id="theme-name" name="theme-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="theme-description">테마 설명:</label>
+                    <textarea id="theme-description" name="theme-description" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="theme-category">카테고리:</label>
+                    <select id="theme-category" name="theme-category" required>
+                        <option value="교육">교육</option>
+                        <option value="엔터테인먼트">엔터테인먼트</option>
+                        <option value="기술">기술</option>
+                        <option value="라이프스타일">라이프스타일</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="theme-image">테마 이미지:</label>
+                    <input type="file" id="theme-image" name="theme-image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+
+    </th:block>
+</th:block>
