@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class QnacommentServiceImpl implements QnacommentService{
 
+
     private final QnacommentMapper qnacommentMapper;
 
 

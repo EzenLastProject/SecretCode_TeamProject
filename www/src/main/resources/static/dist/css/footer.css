@@ -5,9 +5,11 @@
      font-weight: normal;
      font-style: normal;
 }
+
 .ft{
 background-color : black;
 }
+
 
 
 footer{
@@ -48,6 +50,7 @@ color: gray;
 margin-bottom:20px;
 
 }
+
 
 #icon{
   float:right;

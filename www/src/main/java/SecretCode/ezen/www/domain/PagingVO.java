@@ -36,6 +36,7 @@ public class PagingVO {
 
     public int getPageStart() {
         return (this.pageNo-1) *this.qty;
+
     }
 
 
