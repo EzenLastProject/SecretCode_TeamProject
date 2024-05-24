@@ -5,10 +5,15 @@
      font-weight: normal;
      font-style: normal;
 }
+.body{
+    margin:0;
+    padding:0;
+}
 
 .container-fluid{
 margin: 0;
 padding: 0;
+
 }
 .body{
 font-family:'S-CoreDream-3Light';
@@ -22,6 +27,7 @@ padding:0;
 .navbar-brand{
     margin:auto;
     text-align: center;
+    margin-left:46%;
 }
 .nav-item{
 font-family:'S-CoreDream-3Light';
@@ -31,6 +37,9 @@ display: block;
 }
 .offcanvas-title{
     color: rgb(188, 189, 191);
+}
+.layoutContainer{
+    margin-bottom: 70px;
 }
 
 
