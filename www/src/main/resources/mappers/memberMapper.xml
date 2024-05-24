@@ -37,4 +37,13 @@
     <delete id="memberDelete">
         DELETE FROM member WHERE email = #{email}
     </delete>
+
+    <select id="getUser" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email = #{email}
+    </select>
+
+    <select id="checkEmail" resultType="int">
+        SELECT COUNT(*) FROM member WHERE email = #{email}
+    </select>
+
 </mapper>

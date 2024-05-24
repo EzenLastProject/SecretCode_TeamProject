@@ -27,4 +27,8 @@ public interface MemberMapper {
     void memberDelete(String email);
 
     void memberModify(MemberVO mvo);
+
+    MemberVO getUser(String email);
+
+    int checkEmail(String email);
 }

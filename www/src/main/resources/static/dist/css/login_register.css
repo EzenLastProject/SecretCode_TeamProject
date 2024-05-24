@@ -21,8 +21,8 @@ body {
   border-radius: 10px;
   box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
   position: absolute;
-  width: 768px;
-  min-height: 480px;
+  width: 1200px;
+  min-height:800px;
   overflow: hidden;
 }
 form {

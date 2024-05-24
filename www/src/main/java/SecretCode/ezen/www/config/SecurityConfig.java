@@ -29,7 +29,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers
-                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register", "/upload/**", "/comment/**")
+                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register","/member/login_register","/member/emailCheck", "/upload/**", "/comment/**")
                         .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
@@ -37,7 +37,8 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("pwd")
                         .loginPage("/member/login")
-                        .defaultSuccessUrl("/board/list").permitAll()
+                        .defaultSuccessUrl("/index")
+                        .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/member/logout").invalidateHttpSession(true)
