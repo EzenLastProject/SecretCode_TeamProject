@@ -18,7 +18,7 @@
 
 
     <div>
-        <nav class="navbar navbar-dark bg-black fixed-top">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -27,11 +27,11 @@
                 <a class="navbar-brand" href="#" id="navImage"><img style="width=44px" height="44px" src="dist/image/logoWhite1.png"></a>
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header bg-black" data-bs-theme="dark">
-                        <h5 class="offcanvas-title " id="offcanvasNavbarLabel">Secret Code</h5>
+                    <div class="offcanvas-header bg-dark">
+                        <h5 class="offcanvas-title " id="offcanvasNavbarLabel">Offcanvas</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body bg-black">
+                    <div class="offcanvas-body bg-dark">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <div>
                                 <li class="nav-item1">
@@ -42,55 +42,47 @@
                                 <a class="nav-link active" aria-current="page" href="#">홈</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/member/login_register}">테스트중인 로그인/회원가입</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/register}">회원가입</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">로그인</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">마이페이지</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">테마 보기</a>
+                                <a class="nav-link active" aria-current="page" href="#">테마 소개</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">예약하기</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    REVIEW / Q&A
-                                </a>
-                                <ul class="dropdown-menu bg-black" aria-labelledby="offcanvasNavbarDropdown">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">REVIEW</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Q&A</a>
-                                    </li>
-                                </ul>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">ADMIN</a>
-                            </li>
-                            <!-- 관리자 페이지 -->
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/admin/adminBoard}">임시 페이지(지움 x) 게시판</a>
+                                <a class="nav-link active" aria-current="page" href="#">ㅁㅁㅁ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/admin/adminUser}">임시 페이지(지움 x) 유저</a>
+                                <a class="nav-link active" aria-current="page" href="#">ㅁㄴㅇㄹ</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/admin/adminRegister}">임시 페이지(지움 x) 테마 등록</a>
-                            </li>
-                            </li>
-
-
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Link</a>
                             </li>
-
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu bg-dark" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">ㅁㅁㅁ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">ㅁㄴㅇㄹ</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
-                        <!--                                            <form class="d-flex">-->
-                        <!--                                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-                        <!--                                                <button class="btn btn-outline-success" type="submit">Search</button>-->
-                        <!--                                            </form>-->
+<!--                                            <form class="d-flex">-->
+<!--                                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                                                <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--                                            </form>-->
                     </div>
                 </div >
 
@@ -104,18 +96,15 @@
     <footer >
 
         <section class="ft" >
-            <footer >
 
+            <div class="container">
+                <div class="box">
 
+                    <div class="top">SECRECT CODE</div>
+                    <div class="top2">SECRECT CODE.CO | WE CAN ESCAPE</div>
 
-                <div class="container">
-                    <div class="box">
-
-                        <div class="top">SECRECT CODE</div>
-                        <div class="top2">SECRECT CODE.CO | WE CAN ESCAPE</div>
-
-                        <div class="textbox">
-                            <h6>
+                    <div class="textbox">
+                        <h6>
                     <span>
 
                         <span> 주소 : 인천광역시 남동구 인주대로 593 엔타스빌딩 12층 </span> <br>
@@ -142,39 +131,39 @@
                     </select>
                         </span>
                     </span>
-                            </h6>
-                        </div> <!--text div-->
+                        </h6>
+                    </div> <!--text div-->
 
 
 
-                        <hr>
-                        <div class="bottom">
+                    <hr>
+                    <div class="bottom">
             <span id="gray">
            Copyright ⓒ Secret Chamber All right reserved
             </span>
 
-                            <div id="icon">
+                        <div id="icon">
 
-                                <a><img style="width: 25px" height="25px" src="../dist/image/카카오톡.png"></a>
-                                <a><img style="width: 25px" height="25px" src="../dist/image/facebook.png"></a>
-                                <a><img style="width: 25px" height="25px" src="../dist/image/insta.png"></a>
+                            <a><img style="width: 25px" height="25px" src="../image/카카오톡.png"></a>
+                            <a><img style="width: 25px" height="25px" src="../image/facebook.png"></a>
+                            <a><img style="width: 25px" height="25px" src="../image/insta.png"></a>
 
-                            </div> <!--icon div-->
+                        </div> <!--icon div-->
 
-                        </div> <!--bottom div-->
-
-
-
-                    </div> <!--box div-->
+                    </div> <!--bottom div-->
 
 
+
+                </div> <!--box div-->
 
 
 
 
-                </div> <!--container  div  -->
 
-            </footer>
+
+            </div> <!--container  div  -->
+
+
         </section>
 
 
