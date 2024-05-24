@@ -8,20 +8,15 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class QnaVO {
+public class QnacommentVO {
 
 
-    private int bno;
-    private String title;
+    private  int bno;
+    private  int cno;
     private String writer;
-    private  String text;
-    private String isDel;
+    private String content;
     private String regDate;
-    private int readCount;
-    private int cmtQty;
-
-
-
+    private String modDate;
 
 
 }
