@@ -48,7 +48,15 @@
             </div>
 
         </div>
+            <script th:inline="javascript">
+                const msg_register = [[${msg_register}]];
+                console.log(msg_register);
+                    if(msg_register === "1"){
+                        alert("회원가입이 완료되었습니다.");
+                    }
+            </script>
         </body>
+
 
     </th:block>
 </th:block>

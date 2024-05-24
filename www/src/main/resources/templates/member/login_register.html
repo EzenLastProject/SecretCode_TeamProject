@@ -6,7 +6,7 @@
         <div class="wrapper">
             <div class="container">
                 <div class="sign-up-container">
-                    <form>
+                    <form action="/member/register" method="post">
                         <h1>계정 생성</h1>
                         <div class="social-links">
                             <div>
@@ -20,14 +20,23 @@
                             </div>
                         </div>
                         <span>또는 홈페이지 회원</span>
-                        <input type="text" placeholder="Name">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button class="form_btn">회원가입</button>
+                        <label for="email"></label><input type="email" name="email" id="email" placeholder="example@test.com...">
+                        <button type="button" id="checkBtn" class="btn btn-outline-secondary">아이디 중복체크</button>
+                        <div id="check"></div>
+
+                        <label for="pwd"></label><input type="password" name="pwd" id="pwd" placeholder="비밀번호">
+                        <label for="pwdCheck"></label><input type="password" id="pwdCheck" placeholder="비밀번호 이중확인">
+                        <div id="checkpwd"></div>
+                        <label for="nickName"></label><input type="text" name="nickName" id="nickName" placeholder="이름 or 닉네임">
+                        <label for="phone"></label><input type="text" name="phone" id="phone" placeholder="전화번호">
+
+
+                        <button type="submit" class="form_btn" disabled>회원가입</button>
+
                     </form>
                 </div>
                 <div class="sign-in-container">
-                    <form>
+                    <form action="/member/login" method="post">
                         <h1>로그인</h1>
                         <div class="social-links">
                             <div>
@@ -41,16 +50,21 @@
                             </div>
                         </div>
                         <span>또는 홈페이지 회원</span>
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button class="form_btn">Sign In</button>
+                        <label for="e"></label><input type="text" name="email" id="e" placeholder="ID...">
+                        <label for="p"></label><input type="password" name="pwd" id="p"
+                                                      placeholder="Password...">
+                        <button type="submit" class="form_btn">로그인</button>
+
+
                     </form>
                 </div>
                 <div class="overlay-container">
                     <div class="overlay-left">
-                        <h1>Welcome Back</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <button id="signIn" class="overlay_btn">Sign In</button>
+                        <h1>환영합니다!</h1>
+                        <p>회원가입을 원하시면 </p>
+                        <p>이메일, 비밀번호, 이름 or 닉네임, 전화번호를</p>
+                        <p>입력해주세요!</p>
+                        <button id="signIn" class="overlay_btn">로그인 하러가기!</button>
                     </div>
                     <div class="overlay-right">
                         <h1>환영합니다!</h1>
@@ -60,6 +74,15 @@
                 </div>
             </div>
         </div>
+
+        <script th:inline="javascript">
+            const msg_register = [[${msg_register}]];
+            console.log(msg_register);
+                if(msg_register === "2"){
+                    alert("회원가입에 실패하였습니다.");
+                }
+        </script>
+
 
         <script th:src="@{/dist/js/login_register.js}"></script>
 

@@ -17,4 +17,8 @@ public interface MemberService {
     void memberAuthDelete(String email);
 
     void memberDelete(String email);
+
+    MemberVO isUser(MemberVO mvo);
+
+    int checkEmail(String email);
 }
