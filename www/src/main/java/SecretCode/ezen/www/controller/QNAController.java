@@ -19,6 +19,7 @@ public class QNAController {
     public String notice(){
 
 
+
         return "/qna/list";
 
 

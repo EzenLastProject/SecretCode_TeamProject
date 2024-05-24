@@ -11,5 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class QnaServiceImpl implements QnaService {
+
     private final QnaMapper qnaMapper;
 }

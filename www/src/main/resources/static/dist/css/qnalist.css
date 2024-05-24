@@ -1,16 +1,150 @@
 @charset "UTF-8";
 
+html{
+
+}
 @font-face {
      font-family: 'S-CoreDream-3Light';
      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
      font-weight: normal;
      font-style: normal;
+
 }
 
-.qnalist-container{
+.qna-container{
     font-family:'S-CoreDream-3Light';
-    border: 1px solid black;
+
     margin-top : 50px;
     width: 100%;
+
+    background-image: url("/dist/image/sc7.png");
+    background-size : cover;
+    background-repeat : no-repeat;
     color : white;
+    background-position : center;
+
 }
+.qna-title{
+text-align : center;
+padding : 30px;
+
+}
+#qnah{
+margin-top : 40px;
+font-size : 37px;
+font-weight : 700;
+}
+
+table{
+margin:auto;
+width : 1200px;
+
+
+
+}
+thead{
+
+text-align :center;
+}
+
+.qna-table-box{
+
+
+margin-bottm : 200px
+height : 100%;
+margin: auto;
+padding : 30px;
+
+
+
+
+
+}
+.pagination {
+  justify-content: center;
+  display:fixed;
+
+}
+.page-link{
+background-color : gray;
+}
+
+.dis_none{
+
+text-align:center;
+height: 50px;
+font-size : 18px;
+border: 1px solid rgb(135, 133, 133);
+border-right : none;
+border-left : none;
+
+
+}
+.dis_title{
+
+text-align:center;
+height: 50px;
+font-size : 18px;
+border : 1px solid white;
+border-right : none;
+border-left : none;
+
+}
+
+
+
+th{
+border : 1px solid white;
+}
+.qnapage{
+width : 50px;
+height : 50px;
+color : white;
+font-size : 24px;
+font-weight : bold;
+ text-align : center;
+ text-decoration : none;
+ margin-top : 40px;
+
+
+ }
+
+ #qnawrite{
+    text-align: center;
+    color: white;
+    background-color: gray;
+    border: none;
+    display:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(150%, -50%);
+
+}
+#qnawrite:hover{
+   translate(
+}
+
+
+
+
+#qna-page-previous{
+ font-size : 26px;
+ text -align : center;
+}
+#qna-page-next{
+ font-size : 26px;
+
+}
+
+.dis_none>.qna_title{
+color : white;
+text-decoration :none;
+}
+
+
+
+
+
+
+
+
