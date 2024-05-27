@@ -25,4 +25,7 @@ public class AdminController {
 
     @GetMapping("/adminRegister")
     public void adminRegister(){}
+
+    @GetMapping("/adminReservation")
+    public void adminReservation(){}
 }
