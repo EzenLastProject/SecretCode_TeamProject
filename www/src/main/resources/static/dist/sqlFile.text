@@ -77,3 +77,4 @@ create table reservation(
    foreign key(rno) references room(rno),
    foreign key(email) references member(email));
 
+ALTER TABLE qna ADD COLUMN is_secret BOOLEAN DEFAULT FALSE;

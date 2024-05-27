@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setFragment(content)">
     <head>
         <meta charset="UTF-8">
@@ -8,7 +9,10 @@
         <link rel="stylesheet" th:href="@{/dist/css/footer.css}">
         <link rel="stylesheet" th:href="@{/dist/css/layout.css}">
         <script th:src="@{/dist/js/bootstrap.bundle.min.js}"></script>
+        <style>
 
+
+        </style>
 
     </head>
     <body>
@@ -46,7 +50,7 @@
                                 <a class="nav-link" th:href="@{/member/list}">회원리스트</a>
                             </li>
 
-<!--                            마이페이지-->
+                            <!--                            마이페이지-->
                             <li class="nav-item" sec:authorize="isAuthenticated()">
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/modify}"
                                    th:with="auth=${#authentication.getPrincipal()}">마이페이지</a>
@@ -55,10 +59,8 @@
                             <li class="nav-item" sec:authorize="isAuthenticated()">
                                 <a class="nav-link active" aria-current="page"  href="" id="logoutLink">로그아웃</a>
                                 <form action="/member/logout" method="post" id="logoutForm">
-
                                 </form>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" th:href="@{/theme/theme}">테마 보기</a>
                             </li>
@@ -72,11 +74,11 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" aria-current="page" href="#">Q&A</a>
                                     </li>
-
+                                <
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">ADMIN</a>
                             </li>
-
+                            </li>
 
 
                             <li class="nav-item">
