@@ -4,7 +4,6 @@ import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -14,7 +13,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
@@ -57,42 +55,6 @@ public class MemberController {
         return "/index";
 
     }
-
-
-    @PostMapping("/login_register")
-    public String login(MemberVO mvo, HttpServletRequest request, Model m, RedirectAttributes re) {
-        log.info(">>>> mvo >>{}",mvo);
-
-        //mvo 객체가 DB의 값과 일치하는 객체 가져오기
-        MemberVO loginMvo = msv.isUser(mvo);
-        log.info(">>>> loginMvo >>{}",loginMvo);
-
-        if(loginMvo != null) {
-            //로그인 성공 시.
-            HttpSession ses = request.getSession();
-            ses.setAttribute("ses", loginMvo); //세션에 로그인 객체 저장
-            ses.setMaxInactiveInterval(10*60); //로그인 유지 시간
-            return "/index";
-        }else {
-            //로그인 실패 시.
-            m.addAttribute("msg_login", 1);
-
-        }
-        return "/member/login_register";
-    }
-
-
-//    @GetMapping("/register")
-//    public void join(){}
-
-
-//    @PostMapping("/register")
-//    public String register(MemberVO mvo){
-//        mvo.setPwd(passwordEncoder.encode(mvo.getPwd()));
-//        int isOk = msv.insert(mvo);
-//
-//        return "/index";
-//    }
 
     @GetMapping("/login")
     public String login(){

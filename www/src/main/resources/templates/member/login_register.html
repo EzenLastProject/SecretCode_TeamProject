@@ -3,8 +3,8 @@
 <th:block th:replace="~{layout :: setFragment(~{this::content})}">
     <th:block th:fragment="content">
         <link rel="stylesheet" th:href="@{/dist/css/login_register.css}">
-        <div class="wrapper">
-            <div class="container">
+        <div class="wrapper" >
+            <div class="containerLR">
                 <div class="sign-up-container">
                     <form action="/member/register" method="post">
                         <h1>계정 생성</h1>
@@ -19,7 +19,7 @@
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                        <span>또는 홈페이지 회원</span>
+                        <span class="spanLR">또는 홈페이지 회원</span>
                         <label for="email"></label><input type="email" name="email" id="email" placeholder="example@test.com...">
                         <button type="button" id="checkBtn" class="btn btn-outline-secondary">아이디 중복체크</button>
                         <div id="check"></div>
@@ -49,7 +49,7 @@
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                        <span>또는 홈페이지 회원</span>
+                        <span class="spanLR">또는 홈페이지 회원</span>
                         <label for="e"></label><input type="text" name="email" id="e" placeholder="ID...">
                         <label for="p"></label><input type="password" name="pwd" id="p"
                                                       placeholder="Password...">
