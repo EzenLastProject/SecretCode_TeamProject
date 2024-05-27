@@ -50,7 +50,7 @@ text-align :center;
 .qna-table-box{
 
 
-margin-bottm : 200px
+margin-bottom : 200px
 height : 100%;
 margin: auto;
 padding : 30px;
@@ -108,21 +108,25 @@ font-weight : bold;
 
 
  }
+ .qna-table-box>.qna-writeBtn-div{
+   height : 50px;
+   text-align : right;
+   margin-right : 320px;
 
- #qnawrite{
+ }
+
+ #qna-write{
     text-align: center;
     color: white;
     background-color: gray;
     border: none;
-    display:fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(150%, -50%);
+
+
 
 }
-#qnawrite:hover{
-   translate(
-}
+
+
+
 
 
 
