@@ -23,13 +23,15 @@ public class SecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Bean
         // SecurityFilterChain 객체로 설정
+    @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers
-                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register","/member/login_register","/member/emailCheck", "/upload/**", "/comment/**")
+                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register"
+                                        ,"/member/login_register","/member/emailCheck", "/upload/**", "/comment/**"
+                                        ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**" )
                         .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
@@ -37,19 +39,19 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("pwd")
                         .loginPage("/member/login")
-                        .defaultSuccessUrl("/index")
-                        .permitAll()
+                        .defaultSuccessUrl("/").permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/member/logout").invalidateHttpSession(true)
-                        .deleteCookies(("JSESSIONID"))
+                        .logoutUrl(("/member/logout"))
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
                         .logoutSuccessUrl("/")
                 );
         return http.build();
 
-//        userDetailsService : spring에서 만든 클래스와 같은 객체
 
     }
+//        userDetailsService : spring에서 만든 클래스와 같은 객체
 
     @Bean
     UserDetailsService userDetailsService() {
@@ -57,8 +59,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    AuthenticationManager authenticationManager
-            (AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
