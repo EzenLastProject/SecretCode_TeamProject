@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/notice/*")
-public class noticeController {
+public class NoticeController {
     private final NoticeService nsv;
 
     @GetMapping("/notice")

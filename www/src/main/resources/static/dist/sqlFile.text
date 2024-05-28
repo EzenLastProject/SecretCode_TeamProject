@@ -78,3 +78,11 @@ create table reservation(
    foreign key(email) references member(email));
 
 ALTER TABLE qna ADD COLUMN is_secret BOOLEAN DEFAULT FALSE;
+
+alter table qna modify read_count int default 0;
+update qna set read_count =0 where read_count is null;
+ alter table qna modify cmt_qty int default 0;
+update qna set cmt_qty =0 where cmt_qty is null;
+--2024.05.28
+ alter table qna modify is_secret varchar(10);
+ update qna set is_secret="false";

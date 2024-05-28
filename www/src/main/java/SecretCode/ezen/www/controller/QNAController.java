@@ -32,12 +32,12 @@ public class QNAController {
     public void register() {
 
     }
-
-    @PostMapping("/register")
-    public String register(QnaVO qvo){
-
-
-    }
+//
+//    @PostMapping("/register")
+//    public String register(QnaVO qvo){
+//
+//
+//    }
 
 
 
