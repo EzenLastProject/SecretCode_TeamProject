@@ -20,15 +20,23 @@
                             </div>
                         </div>
                         <span class="spanLR">또는 홈페이지 회원</span>
-                        <label for="email"></label><input type="email" name="email" id="email" placeholder="example@test.com...">
-                        <button type="button" id="checkBtn" class="btn btn-outline-secondary">아이디 중복체크</button>
+
+                        <label for="email"></label><input type="email"  name="email" id="email" placeholder="예)example@test.com">
+                        <button type="button" id="checkBtn" class="btn btn-outline-secondary">아이디 유효성 체크</button>
                         <div id="check"></div>
+                        <button type="button" id="emailSendNumberBtn" class="btn btn-outline-secondary">인증번호 전송</button>
+
+                        <!--이메일 인증 번호 체크-->
+                        <label for="emailCheckNumber"></label><input type="number" name="emailCheckNumber" id="emailCheckNumber" placeholder="이메일 인증번호">
+                        <button type="button" id="emailCheckNumberBtn" class="btn btn-outline-secondary">인증번호 확인</button>
 
                         <label for="pwd"></label><input type="password" name="pwd" id="pwd" placeholder="비밀번호">
-                        <label for="pwdCheck"></label><input type="password" id="pwdCheck" placeholder="비밀번호 이중확인">
+                        <div id="checkpwdvalue"></div>
+                        <label for="pwdCheck"></label><input type="password" id="pwdCheck" placeholder="비밀번호 확인" disabled>
                         <div id="checkpwd"></div>
-                        <label for="nickName"></label><input type="text" name="nickName" id="nickName" placeholder="이름 or 닉네임">
-                        <label for="phone"></label><input type="text" name="phone" id="phone" placeholder="전화번호">
+                        <label for="nickName"></label><input type="text" name="nickName" id="nickName" placeholder="이름">
+                        <label for="phone"></label><input type="text" oninput="autoHyphen2(this)" maxlength="13" name="phone" id="phone" placeholder="휴대폰번호를 입력해주세요. ‘－’은 자동으로 입력됩니다. ">
+                        <div id="phoneCheck"></div>
 
 
                         <button type="submit" class="form_btn" disabled>회원가입</button>
@@ -62,7 +70,7 @@
                     <div class="overlay-left">
                         <h1>환영합니다!</h1>
                         <p>회원가입을 원하시면 </p>
-                        <p>이메일, 비밀번호, 이름 or 닉네임, 전화번호를</p>
+                        <p>이메일, 비밀번호, 이름, 휴대폰번호를</p>
                         <p>입력해주세요!</p>
                         <button id="signIn" class="overlay_btn">로그인 하러가기!</button>
                     </div>
@@ -76,11 +84,9 @@
         </div>
 
         <script th:inline="javascript">
-            const msg_register = [[${msg_register}]];
-            console.log(msg_register);
-                if(msg_register === "2"){
-                    alert("회원가입에 실패하였습니다.");
-                }
+            document.getElementById("emailCheckNumber").style.display="none";
+            document.getElementById("emailCheckNumberBtn").style.display="none";
+            document.getElementById("emailSendNumberBtn").style.display="none";
         </script>
 
 

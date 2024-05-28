@@ -3,9 +3,11 @@
 
 <th:block th:replace="~{layout :: setFragment(~{this::content})}">
     <th:block th:fragment="content">
-        <div class="container-md " >
+        <link rel="stylesheet" th:href="@{/dist/css/layout.css}">
 
-            <h1>User Member List</h1>
+        <div class="container-md modifyContainer">
+
+            <h1>마이페이지</h1>
             <form action="/member/modify" method="post">
 
 
@@ -20,7 +22,7 @@
 
                             <div class="col" th:with="auth=${#authentication.getPrincipal()}">
                                 <div class="card text-bg-dark mb-3 border-warning mb-3" style="width: 25rem;">
-                                    <img src="/img/userImg.png" class="card-img-top" alt="...">
+                                    <img th:src="@{/dist/image/hi.webp}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <input type="hidden"  name="email" th:value="${auth.mvo.email}">
                                         <h5 class="card-title">닉네임 : <input  type="text" name="nickName" th:value="${auth.mvo.nickName}"></h5>
