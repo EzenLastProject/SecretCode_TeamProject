@@ -58,7 +58,6 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login(){
-
         return "/member/login_register";
     }
 
@@ -110,30 +109,9 @@ public class MemberController {
     }
 
 
-    @GetMapping("/adminBoard")
-    public void adminBoard(){
 
 
 
-    }
-
-
-    @GetMapping("/adminUser")
-    public void adminUser(){
-
-
-    }
-
-    @GetMapping("/adminRegister")
-    public void adminRegister(){
-
-    }
-
-    @GetMapping("/adminReservation")
-    public void adminReservation(){
-
-
-    }
 
 
 

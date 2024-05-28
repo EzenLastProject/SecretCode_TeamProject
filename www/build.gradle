@@ -35,10 +35,11 @@ dependencies {
 //	implementation 'nz.net.ultraq. thymeleaf: thymeleaf-layout-dialect'
 // spring-boot-starter-security 6 / thymeleaf-extras-springsecuritty6
 
-	//로그인때매 죽여둘게여
-
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+	//구글 이메일인증 의존성
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 
 
