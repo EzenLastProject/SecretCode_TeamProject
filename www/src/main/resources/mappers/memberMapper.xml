@@ -16,7 +16,7 @@
     <select id="selectEmail" resultType="SecretCode.ezen.www.domain.MemberVO">
         SELECT * FROM member WHERE email = #{email}
     </select>
-    <select id="selectAuths" resultType="SecretCode.ezen.www.domain.AutoVO">
+    <select id="selectAuths" resultType="SecretCode.ezen.www.domain.AuthVO">
         SELECT * FROM auth_member WHERE email = #{email}
     </select>
 

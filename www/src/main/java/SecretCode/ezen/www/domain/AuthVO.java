@@ -1,5 +1,6 @@
 package SecretCode.ezen.www.domain;
 
+
 import lombok.*;
 
 @Getter
@@ -7,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class AutoVO {
-    private String email;
+public class AuthVO {
     private String auth;
+    private String email;
 }

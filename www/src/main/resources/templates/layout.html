@@ -7,7 +7,7 @@
         <title>Spring Boot</title>
         <link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
         <link rel="stylesheet" th:href="@{/dist/css/footer.css}">
-        <link rel="stylesheet" href="/dist/css/layout.css">
+        <link rel="stylesheet" th:href="@{/dist/css/layout.css}">
         <script th:src="@{/dist/js/bootstrap.bundle.min.js}"></script>
         <style>
 
@@ -65,7 +65,7 @@
                                 <a class="nav-link active" aria-current="page" th:href="@{/theme/theme}">테마 보기</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/theme/themeReserv}">예약하기</a>
+                                <a class="nav-link active" aria-current="page" href="#">예약하기</a>
                             </li>
 
                                     <li class="nav-item">
@@ -77,18 +77,6 @@
                                 <
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">ADMIN</a>
-                            </li>
-                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminBoard}">게시판(관리자)</a>
-                            </li>
-                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminUser}">유저 목록(관리자)</a>
-                            </li>
-                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminReservation}">예약 목록(관리자)</a>
-                            </li>
-                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminRegister}">테마 등록(관리자)</a>
                             </li>
                             </li>
 
