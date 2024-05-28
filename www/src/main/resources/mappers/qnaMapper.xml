@@ -2,8 +2,72 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="SecrectCode.ezen.www.repository.QnaMapper">
+<mapper namespace="SecretCode.ezen.www.repository.QnaMapper">
+
+    <select id="getList" resultType="SecretCode.ezen.www.domain.QnaVO">
+        select * from qna
+        <include refid="search"></include>
+
+        order by bno desc limit #{pageStart},#{qty}
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+
+        select count(bno) from qna
+        <include refid="search"></include>
+
+    </select>
 
 
+
+    <insert id="register" parameterType="SecretCode.ezen.www.domain.QnaVO">
+        INSERT INTO qna (title, content, writer, is_secret)
+        VALUES (#{title}, #{content}, #{writer}, #{isSecret})
+    </insert>
+
+    <select id="getDetail" parameterType="int">
+        select * from qna where bno=#{bno}
+    </select>
+
+
+    <delete id="remove">
+        delete  from qna where bno=#{bno}
+    </delete>
+
+    <update id="modify">
+        update qna set title=#{title}, content=#{content}
+        where bno=#{bno}
+    </update>
+
+
+    <update id="readCount">
+        update qna set read_count = read_count + 1
+        where bno = #{bno}
+    </update>
+
+    <sql id="search">
+        <if test="type !=null">
+            <trim prefix="where (" suffix=")" suffixOverrides="or">
+                <foreach collection="typeToArray" item="type">
+                    <trim suffix="or">
+                        <choose>
+                            <when test="type=='t'.toString()">
+                                title like concat('%',#{keyword}, '%')
+
+                            </when> <when test="type=='t'.toString()">
+                            writer like concat('%',#{keyword}, '%')
+
+                        </when> <when test="type=='t'.toString()">
+                            content like concat('%',#{keyword}, '%')
+
+                        </when>
+                        </choose>
+                    </trim>
+                </foreach>
+
+            </trim>
+
+        </if>
+    </sql>
 
 </mapper>

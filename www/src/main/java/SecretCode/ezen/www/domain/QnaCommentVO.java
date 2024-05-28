@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class QnacommentVO {
+public class QnaCommentVO {
 
 
     private  int bno;

@@ -2,7 +2,7 @@ package SecretCode.ezen.www.handler;
 
 
 import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnacommentVO;
+import SecretCode.ezen.www.domain.QnaCommentVO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,7 +22,7 @@ public class PagingHandler {
     private PagingVO pgvo;
     private int realEndPage;
 
-    private List<QnacommentVO> qcmtList;
+    private List<QnaCommentVO> qcmtList;
 
     public PagingHandler(PagingVO pgvo, int totalCount){
         this.pgvo = pgvo;
@@ -54,7 +54,7 @@ public class PagingHandler {
 
 
     //    Comment용 생성자 추가
-    public PagingHandler(PagingVO pgvo, int totalCount, List<QnacommentVO> qcmtList){
+    public PagingHandler(PagingVO pgvo, int totalCount, List<QnaCommentVO> qcmtList){
         this(pgvo, totalCount);
         this.qcmtList = qcmtList;
     }

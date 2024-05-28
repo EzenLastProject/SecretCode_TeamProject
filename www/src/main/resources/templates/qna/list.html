@@ -28,10 +28,6 @@
                 </div> <!-- qna-title -->
 
                 <div class="qna-table-box">
-                    <div class="qna-writeBtn-div" >
-
-                        <button type="button" id="qna-write">문의글 작성</button>
-                    </div>
 
 
                     <table class='qna-list'>
@@ -45,20 +41,25 @@
                             <th width=10% scope='col' class='dis_title'>작성일</th>
                             <th width=5% scope='col' class='dis_title'>답변수</th>
                             <th width=5% scope='col' class='dis_title'>조회수</th>
+                            <th width=5% scope='col' class='dis_title'>공개 여부</th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- 여기에 동적으로 생성되는 내용이 들어감 -->
 
 
-                        <tr>
-                            <td class='dis_none ' style="color : red;">자주 묻는 질문</td>
+
+                        <tr th:each="qvo:${list}">
+                            <td class='dis_none ' style="color : red;">[[${qvo.bno}]]</td>
                             <td class='dis_none'><a style="color: yellow;
-    text-decoration: none;" class="qna_title" href="">예약 변경하려면 어떻게 해야하나요?</a></td>
-                              <td class='dis_none'>관리자</td>
-                            <td class='dis_none'>2024-05-24</td>
-                            <td class='dis_none'>0</td>
-                            <td class='dis_none'>0</td>
+    text-decoration: none;" class="qna_title"<a th:href="@{/qna/detail(bno=${qvo.bno})}">[[${qvo.title}]]</a></td>
+                            <td class='dis_none'>[[${qvo.writer}]]</td>
+                            <td class='dis_none'>[[${qvo.regDate}]]</td>
+                            <td class='dis_none'>[[${qvo.cmtQty}]]</td>
+                            <td class='dis_none'>[[${qvo.readCount}]]</td>
+                            <td class='dis_none'>[[${qvo.isSecret}]]</td>
+
+
                         </tr>
 
 
@@ -75,26 +76,38 @@
                         </tbody>
                     </table> <!-- qna-list -->
 
-                    <form class="qna-search" role="search">
-                        <nav class="qna-search-nav">
 
-                            <div class="qna-search-div" style=" text-align :center;
-  margin-top : 30px; border-radious:0; ">
+                    <!-- 검색라인 -->
+                    <form action="/qna/list" >
+                        <div class=class="qna-search-div" style=" text-align :center;
+  margin-top : 30px; border-radious:0; " role="search">
+                            <select  name="type" aria-label="Small select example">
+                                <option th:selected="${ph.pgvo.type==null? true:false}">Choose...</option>
+                                <option th:value="t" th:selected="${ph.pgvo.type=='t'? true:false}">제목</option>
+                                <option th:value="w" th:selected="${ph.pgvo.type=='w'? true:false}">작성자</option>
+                                <option th:value="c" th:selected="${ph.pgvo.type=='c'? true:false}">게시글</option>
+                                <option th:value="tc" th:selected="${ph.pgvo.type=='tc'? true:false}">제목&게시글</option>
+                                <option th:value="wc" th:selected="${ph.pgvo.type=='wc'? true:false}">작성자&게시글</option>
+                                <option th:value="tw" th:selected="${ph.pgvo.type=='tw'? true:false}">제목&작성자</option>
+                                <option th:value="twc" th:selected="${ph.pgvo.type=='twc'? true: false}">all</option>
+                            </select>
+                            <input type="text" class="qna_search_input" placeholder="Search..." name="keyword" th:value="${ph.pgvo.keyword}" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="hidden" name="pageNo" th:value="1">
+                            <input type="hidden" name="qty" th:value="${ph.pgvo.qty}">
+                            <button type="submit" class="qna_search_btn">
+                                Search
+                                <span th:text="${ph.totalCount}" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+  <span class="visually-hidden">unread messages</span>
+</span>
+                            </button>
+                        </div>
+                    </form>
 
-                                <select id="qna_select" aria-label="선택">
-                                    <option>선택</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-
-                                <input class="qna_search_input" type="search" placeholder="Search" aria-label="Search">
-                                <button class="qna_search_btn" type="submit">검색</button>
 
 
-                            </div>
+                    <form action="/qna/register" >
 
-                        </nav>
+                        <button type="submit" id="qna-write">문의글 작성</button>
                     </form>
 
 
@@ -103,34 +116,39 @@
 
 
 
-            <!-- qna-container -->
-            <nav  class="qna-page">
-                <ul class="pagination">
-                    <li class="qnapage">
-                        <a class="qnapage" href="#" aria-label="Previous">
-                            <span  id="qna-page-previous" aria-hidden="true">&laquo;</span>
+            <!--페이지네이션 라인 -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li th:if="${ph.prev}"  class="page-item">
+                        <a class="page-link" th:href="@{/qna/list(pageNo=${ph.startPage-1},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li class="qnapage"><a class="qnapage" href="#">1</a></li>
-                    <li class="qnapage"><a class="qnapage" href="#">2</a></li>
-                    <li class="qnapage"><a class="qnapage" href="#">3</a></li>
-                    <li class="qnapage">
-                        <a class="qnapage" href="#" aria-label="Next">
-                            <span id="qna-page-next" aria-hidden="true">&raquo;</span>
+                    <!--th:classappend: 동적 클래스 추가-->
+
+                    <th:block th:each="i:${#numbers.sequence(ph.startPage,ph.endPage)} ">
+
+                        <li class="page-item" th:classappend="${ph.pgvo.pageNo == i ?'active':''}" aria-current="page">
+                            <a class="page-link" th:href="@{/qna/list(pageNo=${i},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}">[[${i}]]</a>
+                        </li>
+                    </th:block>
+
+                    <li th:if="${ph.next}" class="page-item">
+                        <a class="page-link" th:href="@{/qna/list(pageNo=${ph.endPage+1},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
                 </ul>
             </nav>
+                </div>
+
+
+
                 </div> <!-- qna-table-box -->
         </div> <!-- col -->
     </div> <!-- row -->
-            </div>
-
-
-
 
         </th:block>
-
     </th:block>
 </html>
 
