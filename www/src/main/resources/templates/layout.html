@@ -64,19 +64,28 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" th:href="@{/theme/theme}">테마 보기</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" >
                                 <a class="nav-link active" aria-current="page" href="#">예약하기</a>
                             </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">REVIEW</a>
+                                        <a class="nav-link active" aria-current="page" th:href="@{/qna/list}">REVIEW</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Q&A</a>
+                                        <a class="nav-link active" aria-current="page" th:href="@{/qna/detail}">Q&A</a>
                                     </li>
-                                <
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">ADMIN</a>
+
+                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminBoard}">게시판(관리자)</a>
+                            </li>
+                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminUser}">유저 목록(관리자)</a>
+                            </li>
+                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminReservation}">예약 목록(관리자)</a>
+                            </li>
+                            <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminRegister}">테마 등록(관리자)</a>
                             </li>
                             </li>
 

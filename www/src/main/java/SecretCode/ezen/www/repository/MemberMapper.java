@@ -1,6 +1,6 @@
 package SecretCode.ezen.www.repository;
 
-import SecretCode.ezen.www.domain.AutoVO;
+import SecretCode.ezen.www.domain.AuthVO;
 import SecretCode.ezen.www.domain.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,7 +16,7 @@ public interface MemberMapper {
 
     MemberVO selectEmail(String username);
 
-    List<AutoVO> selectAuths(String username);
+    List<AuthVO> selectAuths(String username);
 
     List<MemberVO> getList();
 

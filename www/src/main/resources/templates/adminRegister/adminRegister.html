@@ -12,10 +12,10 @@
 
             <div id="themeRegisterForm">
                 <div class="container">
-                    <form action="/admin/adminRegister" method="post" enctype="multipart/form-data">
+                    <form action="/adminRegister/adminRegister" method="post" enctype="multipart/form-data">
                         <div class="formGroup">
-                            <label for="themeName">테마 이름</label>
-                            <input id="themeName" type="text" name="themeName" placeholder="테마 이름을 입력해주세요." required>
+                            <label for="tname">테마 이름</label>
+                            <input id="tname" type="text" name="tname" placeholder="테마 이름을 입력해주세요." required>
                         </div>
 
                         <div class="formGroup">
@@ -24,13 +24,18 @@
                         </div>
 
                         <div class="formGroup">
-                            <label for="themeDescription">테마 설명</label>
-                            <textarea id="themeDescription" name="themeDescription" placeholder="테마 설명을 입력해주세요." required></textarea>
+                            <label for="content">테마 설명</label>
+                            <textarea id="content" name="content" placeholder="테마 설명을 입력해주세요." required></textarea>
                         </div>
 
                         <div class="formGroup">
-                            <label for="themeDifficulty">난이도</label>
-                            <select id="themeDifficulty" name="themeDifficulty" required>
+                            <label for="price">가격</label>
+                            <input id="price" name="price" placeholder="가격을 입력해주세요." required></input>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="difficulty">난이도</label>
+                            <select id="difficulty" name="difficulty" required>
                                 <option value="easy">쉬움</option>
                                 <option value="medium">보통</option>
                                 <option value="hard">어려움</option>
@@ -38,8 +43,8 @@
                         </div>
 
                         <div class="formGroup">
-                            <label for="themeDuration">소요 시간 (분)</label>
-                            <input id="themeDuration" type="number" name="themeDuration" placeholder="소요 시간을 입력해주세요." required>
+                            <label for="usingTime">소요 시간 (분)</label>
+                            <input id="usingTime" type="number" name="usingTime" placeholder="소요 시간을 입력해주세요." required>
                         </div>
 
                         <div class="formGroup">

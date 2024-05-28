@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.adminRegisterMapper">
+    <insert id="insert" >
+        insert into theme(rno, tname,content,difficulty, usingTime ,price) values (#{rno}, #{tname}, #{content}, #{difficulty}, #{usingTime},#{price})
+    </insert>
+
+    <select id="">
+        select
+    </select>
+</mapper>

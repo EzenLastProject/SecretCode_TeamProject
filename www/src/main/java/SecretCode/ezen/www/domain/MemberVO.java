@@ -16,6 +16,6 @@ public class MemberVO {
     private String regAt;
     private String lastLogin;
     private String phone;
-    private List<AutoVO> authList;
+    private List<AuthVO> authList;
 
 }
