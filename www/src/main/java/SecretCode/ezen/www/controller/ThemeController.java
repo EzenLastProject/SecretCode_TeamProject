@@ -14,9 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ThemeController {
 
     @GetMapping("/theme")
-    public String notice(){
+    public void theme(){
 
-        return "/theme";
+//        return "/theme";
+
+
+    }
+    @GetMapping("/themeReserv")
+    public void themeReserv(){
+
 
 
     }
