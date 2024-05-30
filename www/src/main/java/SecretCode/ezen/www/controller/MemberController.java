@@ -121,10 +121,6 @@ public class MemberController {
         return confirm;
     }
 
-    @GetMapping("/myPage")
-    public void myPage(){
-
-    }
 
 
 
