@@ -10,8 +10,7 @@
 
   <th:block th:fragment="content" >
 
-
-    <div class="reservationTheme-container" style="text-align: center;">
+    <div class="reservationTheme-container" id="top" style="text-align: center;">
       <div class="container-md" style="text-align: center;">
       <div class="reservAllTheme text-center">
         <span>예약하기</span>
@@ -22,8 +21,9 @@
 
       </div>
     <div class="reservTimebox">
+      <form action="">
       <p class="date">날짜 선택 > </p><input type="date" name="startDay" class="startDay">
-      <p><form action="">
+      <p>
       <label for="T">테마 선택 > </label>
       <select name="company" id="T">
         <option value="all">선택하기</option>
@@ -360,6 +360,7 @@
         </div>
       </div>
       </div>
+
       </div>
 
 
@@ -485,6 +486,7 @@
 
 
       </div>
+
 
     </div> <!--컨테이너 디브-->
 

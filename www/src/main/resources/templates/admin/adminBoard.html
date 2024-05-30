@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/dist/css/adminBoard.css}">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+
+        <section class="notice">
+            <div class="page-title">
+                <div class="container">
+                    <h3>관리자 게시판</h3>
+                </div>
+            </div>
+
+            <!-- 게시판 검색 -->
+            <div id="board-search">
+                <div class="container">
+                    <div class="search-window">
+                        <form action="">
+                            <div class="search-wrap">
+                                <label for="search" class="blind"></label>
+                                <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                                <button type="submit" class="btn btn-dark">검색</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 게시판 리스트 영역 -->
+            <div id="board-list">
+                <div class="container">
+                    <table class="board-table">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="th-num">번호</th>
+                            <th scope="col" class="th-title">제목</th>
+                            <th scope="col" class="th-date">등록일</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>3</td>
+                            <th>
+                                <a href="#">ㅋㅋ</a>
+                                <p>테스트</p>
+                            </th>
+                            <td>2023</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2022</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr><tr>
+                            <td>1</td>
+                            <th><a href="#">ㅋㅋㅋ</a></th>
+                            <td>2024</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </th:block>
+</th:block>
