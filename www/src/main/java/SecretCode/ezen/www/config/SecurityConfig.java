@@ -1,6 +1,7 @@
 package SecretCode.ezen.www.config;
 
 
+
 import SecretCode.ezen.www.security.CustomUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 //    springSecurity6 => createDeligationPasswordEncoder
+
+
+
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -41,6 +45,7 @@ public class SecurityConfig {
                         .loginPage("/member/login")
                         .defaultSuccessUrl("/").permitAll()
                 )
+
                 .logout(logout -> logout
                         .logoutUrl(("/member/logout"))
                         .invalidateHttpSession(true)

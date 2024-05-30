@@ -1,7 +1,6 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.MemberVO;
-import SecretCode.ezen.www.service.EmailService;
 import SecretCode.ezen.www.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,7 +23,6 @@ import java.security.Principal;
 public class MemberController {
     private final MemberService msv;
     private final PasswordEncoder passwordEncoder;
-    private final EmailService emailService;
 
     @GetMapping("/login_register")
     public void join() {
@@ -108,17 +106,6 @@ public class MemberController {
         msv.memberDelete(email);
         logout(request, response);
         return "redirect:/";
-    }
-
-    //구글 이메일 인증
-    @PostMapping("/emailConfirm")
-    @ResponseBody
-    public String emailConfirm(@RequestBody String email) throws Exception {
-        log.info(email);
-
-        String confirm = emailService.sendSimpleMessage(email);
-
-        return confirm;
     }
 
 
