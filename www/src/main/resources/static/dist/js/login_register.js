@@ -51,7 +51,7 @@ document.getElementById('checkBtn').addEventListener('click',(e)=>{
 
         }else{
             check.innerHTML = "";
-            check.innerHTML = `<p class="text-success ischeckid">사용 가능 아이디 입니다.</p>`;
+            check.innerHTML = `<p class="text-success">사용 가능 아이디 입니다.</p>`;
             checkBtn.style.display="none";
 
             document.getElementById("emailSendNumberBtn").style.display="";
@@ -66,16 +66,51 @@ document.getElementById('checkBtn').addEventListener('click',(e)=>{
 
 //구글 이메일 인증번호 보내기
 document.getElementById("emailSendNumberBtn").addEventListener("click",()=>{
-
+    let emailSendCheck = document.getElementById('emailSendCheck');
     document.getElementById("emailCheckNumber").style.display="";
     document.getElementById("emailCheckNumberBtn").style.display="";
+    check.innerHTML = "";
+    emailSendCheck.innerHTML = `<p class="text-light">인증메일을 전송하였습니다.</p>`;
+    let emailNumberCheckLine = document.getElementById("emailNumberCheckLine");
+    document.getElementById("emailSendNumberBtn").style.display="none";
+
+    
     postCommentToServer(document.getElementById("email").value).then(result =>{
         console.log(result);
+               //구글 이메일 인증번호 확인
+       document.getElementById("emailCheckNumberBtn").addEventListener("click",()=>{
+        document.getElementById("emailCheckNumber").focus();
+
+        console.log("인증번호 확인"+result);
+
+        if(result == (document.getElementById('emailCheckNumber').value)){
+            document.getElementById("emailNumberCheckLine").style.color = "green";
+            emailNumberCheckLine.innerHTML = "";
+            emailNumberCheckLine.innerHTML = `<p class="text-success ischeckEmailNum">인증번호 확인 완료되었습니다.</p>`;
+            document.getElementById("emailCheckNumberBtn").style.display="none";
+
+        }else{
+            document.getElementById("emailNumberCheckLine").style.color = "red";
+            emailNumberCheckLine.innerHTML = "";
+            emailNumberCheckLine.innerHTML = `<p class="text-danger">인증번호를 다시 확인해주세요.</p>`;
+        }
+
+    });
+ 
+
+        
     })
 
 
-
 });
+
+
+
+
+
+
+
+
 
 //구글 이메일 인증번호 보내기 비동기
 async function postCommentToServer(email){
@@ -99,12 +134,6 @@ async function postCommentToServer(email){
     }
 
 }
-
-
-
-
-
-
 
 
 
@@ -190,17 +219,22 @@ document.addEventListener('keyup',()=>{
 
     let nickName = document.getElementById('nickName').value;
     let phone = document.getElementById('phone').value;
-    let idcheck = document.querySelector('.ischeckid').innerText; //아이디 중복체크 성공했을 때 생김
     let pwdcheck = document.querySelector('.ischeckpwd').innerText; //비밀번호 체크 성공했을 떄 생김
+    let ischeckEmailNum = document.querySelector('.ischeckEmailNum').innerText; //이메일 인증번호 체크 성공했을 떄 생김
     console.log(nickName);
-    console.log(phone);
-    console.log(idcheck);
+    console.log(phone.length);
     console.log(pwdcheck);
+    console.log(ischeckEmailNum);
 
-    if((idcheck !== null)&&(pwdcheck !== null)&&(nickName !== "")&&(phone !== "")&&(pwdValidChk(document.getElementById('pwd').value))){
+    if((pwdcheck !== null)&&(nickName !== "")&&(phone.length == 13)&&(ischeckEmailNum !== "")){
         document.querySelector(".form_btn").disabled = false;
     }
- 
+
+    
+});
+
+document.getElementById('joinMembership').addEventListener('click',()=>{
+    alert("회원가입이 완료되었습니다. 로그인 해주세요.");
 });
 
 //전화번호 자동 하이픈 생성
@@ -209,3 +243,5 @@ const autoHyphen2 = (target) => {
       .replace(/[^0-9]/g, '')
      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
    }
+   
+   

@@ -41,6 +41,14 @@ dependencies {
 	//구글 이메일인증 의존성
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
+	//소셜로그인을 위한 json 의존성
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	//구글 소셜로그인 oauth
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	//entity를 사용하기위한 jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+
 
 
 	compileOnly 'org.projectlombok:lombok'
