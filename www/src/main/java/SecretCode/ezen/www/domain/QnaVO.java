@@ -3,6 +3,8 @@ package SecretCode.ezen.www.domain;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,12 +22,7 @@ public class QnaVO {
     private int readCount;
     private int cmtQty;
     private String isSecret; //비밀글 여부
-
-
-
-
-
-
+    private String scpwd; // 비밀글 비밀번호
 
 
 }

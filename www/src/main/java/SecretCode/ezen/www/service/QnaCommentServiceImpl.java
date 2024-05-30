@@ -46,4 +46,6 @@ public class QnaCommentServiceImpl implements QnaCommentService{
     public int delete(long cno) {
         return qnacommentMapper.delete(cno);
     }
+
+
 }

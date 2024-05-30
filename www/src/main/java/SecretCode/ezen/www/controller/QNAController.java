@@ -2,20 +2,20 @@ package SecretCode.ezen.www.controller;
 
 
 import SecretCode.ezen.www.domain.PagingVO;
+import SecretCode.ezen.www.domain.QnaCommentVO;
 import SecretCode.ezen.www.domain.QnaDTO;
 import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.QnaCommentService;
 import SecretCode.ezen.www.service.QnaService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,22 +29,27 @@ public class QNAController {
     /* private final QnaDTO qdto;*/
 
 
+
     @GetMapping("/list")
-    public void list(Model m, PagingVO pgvo)  {
-        log.info(">>>pgvo>>{}",pgvo);
-        //totalCount db에서 가져오기
-        int totalCount = qsv.getTotalCount(pgvo); //검색어 같이
+    public String list(Model model, PagingVO pgvo) {
+        log.info(">>>pgvo>>{}", pgvo);
+
+        // Q&A 목록을 가져오는 서비스 호출
+        List<QnaVO> qnaList = qsv.getList(pgvo);
 
 
-        //pagingHandler 객체 생성
-        PagingHandler ph = new PagingHandler(pgvo,totalCount);
+        // totalCount를 DB에서 가져오기
+        int totalCount = qsv.getTotalCount(pgvo); // 검색어도 함께 고려
 
+        // PagingHandler 객체 생성
+        PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
+        // 모델에 Q&A 목록과 페이징 정보를 추가하여 뷰로 전달
+        model.addAttribute("list", qnaList);
+        model.addAttribute("ph", ph);
 
-        m.addAttribute("list", qsv.getList(pgvo));
-        m.addAttribute("ph",ph);
+        return "qna/list"; // 뷰 이름 반환
     }
-
 
 
     @GetMapping("/register")
@@ -60,8 +65,8 @@ public class QNAController {
         // 비밀글 체크박스 처리
         log.info(">>>qvo>>{}",qvo);
 
-
         int isOk = qsv.register(qvo);
+
         return "redirect:/qna/list";
     }
 
@@ -91,8 +96,28 @@ public class QNAController {
         qsv.remove(bno);
         return "redirect:/qna/list";
     }
+    @PostMapping("/validatePassword")
+    @ResponseBody
+    public String validatePassword(@RequestParam("bno") long bno, @RequestParam("password") String password) {
+        // 입력된 비밀번호와 QnaVO 객체에 저장된 비밀번호를 비교합니다.
+        boolean isValid = qsv.validatePassword(bno, password);
+        return String.valueOf(isValid);
+    }
+
+
+
 
 
 
 
 }
+
+
+
+
+
+
+
+
+
+

@@ -21,4 +21,6 @@ public interface QnaCommentMapper {
     int update(QnaCommentVO cvo);
 
     int delete(long cno);
+
+    int count(int bno);
 }
