@@ -35,4 +35,6 @@ public interface MemberMapper {
     void deleteUser(String email);
 
     void deleteAuth(String email);
+
+    MemberVO checkSocialLogin(String userId);
 }
