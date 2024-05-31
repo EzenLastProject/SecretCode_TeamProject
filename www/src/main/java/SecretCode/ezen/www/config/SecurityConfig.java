@@ -3,6 +3,8 @@ package SecretCode.ezen.www.config;
 
 
 import SecretCode.ezen.www.security.CustomUserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,14 +14,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@Configurable
+@RequiredArgsConstructor
 public class SecurityConfig {
 //    springSecurity6 => createDeligationPasswordEncoder
 
-
+    private final DefaultOAuth2UserService oAuth2UserService;
 
 
     @Bean
@@ -35,17 +40,22 @@ public class SecurityConfig {
                         .requestMatchers
                                 ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register"
                                         ,"/member/login_register","/member/emailCheck", "/upload/**", "/comment/**"
-                                        ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret" )
+                                        ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret", "/oauth2/**" )
                         .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
+                .oauth2Login(oauth2 -> oauth2
+                        .redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/**"))
+                        .userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService))
+                        .defaultSuccessUrl("/").permitAll()
+                )
+
                 .formLogin(login -> login
                         .usernameParameter("email")
                         .passwordParameter("pwd")
                         .loginPage("/member/login")
                         .defaultSuccessUrl("/").permitAll()
                 )
-
                 .logout(logout -> logout
                         .logoutUrl(("/member/logout"))
                         .invalidateHttpSession(true)

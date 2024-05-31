@@ -16,6 +16,13 @@ public class MemberVO {
     private String regAt;
     private String lastLogin;
     private String phone;
+    private String type;
     private List<AuthVO> authList;
+
+    public MemberVO (String id, String type){
+        this.email = id;
+        this.pwd = "Password";
+        this.type = type;
+    }
 
 }

@@ -5,8 +5,8 @@
 <mapper namespace="SecretCode.ezen.www.repository.MemberMapper">
 
     <insert id="insert">
-        INSERT INTO member(email, pwd, nick_name, phone)
-        VALUES(#{email},#{pwd},#{nickName},#{phone})
+        INSERT INTO member(email, pwd, nick_name, phone, type)
+        VALUES(#{email},#{pwd},#{nickName},#{phone}, #{type})
     </insert>
 
     <insert id="insertAuth">
@@ -16,6 +16,13 @@
     <select id="selectEmail" resultType="SecretCode.ezen.www.domain.MemberVO">
         SELECT * FROM member WHERE email = #{email}
     </select>
+
+    <select id="checkSocialLogin" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email = #{email}
+    </select>
+
+
+
     <select id="selectAuths" resultType="SecretCode.ezen.www.domain.AuthVO">
         SELECT * FROM auth_member WHERE email = #{email}
     </select>
