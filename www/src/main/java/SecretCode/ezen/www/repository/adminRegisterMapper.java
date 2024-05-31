@@ -13,5 +13,5 @@ public interface adminRegisterMapper {
 
     List<MemberVO> getList();
 
-    int deleteUser(String email);
+    MemberVO deleteUser(String email);
 }

@@ -32,7 +32,8 @@ public class adminRegisterServiceImpl implements adminRegisterService{
     }
 
     @Override
-    public int deleteUser(String email) {
+    public MemberVO deleteUser(String email) {
+        log.info("22222222222222222222222 {}", email);
         return arMapper.deleteUser(email);
     }
 
