@@ -110,6 +110,16 @@ public class MemberController {
         return "redirect:/";
     }
 
+    //구글 이메일 인증
+    @PostMapping("/emailConfirm")
+    @ResponseBody
+    public String emailConfirm(@RequestBody String email) throws Exception {
+        log.info(email);
+
+        String confirm = emailService.sendSimpleMessage(email);
+
+        return confirm;
+    }
 
 
     //구글 이메일 인증
@@ -127,6 +137,10 @@ public class MemberController {
 
 
 
+    @GetMapping("/myPage")
+    public void myPage(){
+
+    }
 
 
 
