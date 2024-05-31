@@ -24,6 +24,15 @@ public class QnaServiceImpl implements QnaService {
 
     @Override
     public List<QnaVO> getList(PagingVO pgvo) {
+        //여기서부터..
+
+
+        //공지가 true인 리스트를 가지고오기
+       List<QnaVO> NoticeList(PagingVO pgvo)
+
+
+
+
         this.pgvo = pgvo;
         return qnaMapper.getList(pgvo);
     }

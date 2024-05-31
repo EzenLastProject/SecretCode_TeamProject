@@ -10,7 +10,13 @@
 
         order by bno desc limit #{pageStart},#{qty}
     </select>
-
+    <!--notice가 true인아이 -->
+    <select id="getNotice" resultType="SecretCode.ezen.www.domain.QnaVO">
+        select * from qna
+        <include refid="search"></include>
+        where is_notice ='true'
+        order by bno desc limit #{pageStart},#{qty}
+    </select>
 
 
     <select id="getTotalCount" resultType="int">
@@ -35,7 +41,7 @@
 
 
     <insert id="register" parameterType="SecretCode.ezen.www.domain.QnaVO">
-        INSERT INTO qna (title, content, writer, is_secret, scpwd)
+        INSERT INTO qna (title, content, writer, is_secret, scpwd , is_notice)
         VALUES (#{title}, #{content}, #{writer}, #{isSecret} , #{scpwd})
     </insert>
 
