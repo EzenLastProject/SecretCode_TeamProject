@@ -109,6 +109,7 @@ public class MemberController {
         logout(request, response);
         return "redirect:/";
     }
+
     //구글 이메일 인증
     @PostMapping("/emailConfirm")
     @ResponseBody
@@ -123,6 +124,10 @@ public class MemberController {
 
 
 
+    @GetMapping("/myPage")
+    public void myPage(){
+
+    }
 
 
 
