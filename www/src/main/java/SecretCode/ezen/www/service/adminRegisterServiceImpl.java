@@ -1,19 +1,41 @@
 package SecretCode.ezen.www.service;
 
+import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
+import SecretCode.ezen.www.repository.MemberMapper;
 import SecretCode.ezen.www.repository.adminRegisterMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class adminRegisterServiceImpl implements adminRegisterService{
     private final adminRegisterMapper arMapper;
+    private final MemberMapper memberMapper;
+
 
     @Override
     public int insert(adRegisterVO advo) {
         return arMapper.insert(advo);
     }
+
+    @Override
+    public List<MemberVO> getList() {
+        log.info("2");
+        List<MemberVO> list = memberMapper.getList();
+        log.info("list {}", list);
+        return list;
+    }
+
+    @Override
+    public MemberVO deleteUser(String email) {
+        log.info("22222222222222222222222 {}", email);
+        return arMapper.deleteUser(email);
+    }
+
+
 }

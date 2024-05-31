@@ -2,6 +2,7 @@ package SecretCode.ezen.www.service;
 
 import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.repository.MemberMapper;
+import SecretCode.ezen.www.repository.adminRegisterMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,7 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
     private final PasswordEncoder passwordEncoder;
+    private final adminRegisterMapper arMapper;
 //    private final ad
 
     @Override
@@ -94,6 +96,10 @@ public class MemberServiceImpl implements MemberService {
     public int checkEmail(String email) {
         return memberMapper.checkEmail(email);
     }
+
+
+
+
 
 
 }

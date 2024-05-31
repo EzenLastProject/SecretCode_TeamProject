@@ -46,4 +46,10 @@
         SELECT COUNT(*) FROM member WHERE email = #{email}
     </select>
 
+    <delete id="deleteUser">
+        delete from member where email = #{email}
+    </delete>
+
+
+
 </mapper>

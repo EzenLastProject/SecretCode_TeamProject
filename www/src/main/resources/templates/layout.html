@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setFragment(content)">
-    <head >
+    <head>
         <meta charset="UTF-8">
         <title>Spring Boot</title>
         <link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
@@ -15,17 +15,17 @@
         </style>
 
     </head>
-    <body >
+    <body>
 
 
-    <div class="layoutContainer" id="top" >
+    <div class="layoutContainer">
         <nav class="navbar navbar-dark bg-black fixed-top">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a class="navbar-brand" href="/" id="navImage"><img style="width=44px" height="44px" src="/dist/image/logoWhite1.png"></a>
+                <a class="navbar-brand" href="#" id="navImage"><img style="width=44px" height="44px" src="/dist/image/logoWhite1.png"></a>
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header bg-black" data-bs-theme="dark">
@@ -72,10 +72,7 @@
                                 <a class="nav-link active" aria-current="page" href="#">REVIEW</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"  th:href="@{/qna/list}">Q&A</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"  th:href="@{/member/myPage}">테스트중 마이페이지-노아</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{qna/detail}">Q&A</a>
                             </li>
                             <
                             <li class="nav-item">
@@ -85,7 +82,7 @@
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/adminBoard}">게시판(관리자)</a>
                             </li>
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminUser}">유저 목록(관리자)</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminUser}">유저 목록(관리자)</a>
                             </li>
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/adminReservation}">예약 목록(관리자)</a>
@@ -114,16 +111,11 @@
     </div>
     <div class="container-fluid">
         <th:block th:replace="${content}"></th:block>
-        <a href="#top" class="topBtn" style="display: none;" id="topBtn"><img th:src="@{/dist/image/top2.png}" style="width:70px" height="70px"></a>
     </div>
-
     <footer >
 
         <section class="ft" >
             <footer >
-
-
-
 
 
 
@@ -144,7 +136,7 @@
                         <br>
                         <span>
                           대표번호 : <span id="numid">1599-1074</span>  <br>
-                            이메일 : SecretCode@naver.com
+                            이메일 : SecretCode@sc.escape.co.kr
                         </span><br>
                         <br>
                         <span>대표자 : 이창규</span>
@@ -201,26 +193,12 @@
 
     </footer>
 
-
-<script>
-    window.addEventListener('scroll', function() {
-       var topBtn = document.getElementById('topBtn');
-       if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-           topBtn.style.display = 'block';
-       } else {
-           topBtn.style.display = 'none';
-       }
-   });
-
-</script>
-
     <script>
         document.getElementById('logoutLink').addEventListener('click',(e)=>{
         e.preventDefault();
     document.getElementById('logoutForm').submit()
 });
     </script>
-
     </body>
 
 </th:block>
