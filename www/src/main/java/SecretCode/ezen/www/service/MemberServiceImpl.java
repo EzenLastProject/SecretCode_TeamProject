@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
     private final PasswordEncoder passwordEncoder;
-
+//    private final ad
 
     @Override
     public int insert(MemberVO mvo) {
