@@ -125,7 +125,6 @@ public class MemberController {
 
 
 
-
     @GetMapping("/myPage")
     public void myPage(){
 
