@@ -72,7 +72,7 @@
                                 <a class="nav-link active" aria-current="page" href="#">REVIEW</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{qna/detail}">Q&A</a>
+                                <a class="nav-link active" aria-current="page" href="#">Q&A</a>
                             </li>
                             <
                             <li class="nav-item">
@@ -82,7 +82,7 @@
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/adminBoard}">게시판(관리자)</a>
                             </li>
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminUser}">유저 목록(관리자)</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/adminUser}">유저 목록(관리자)</a>
                             </li>
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/adminReservation}">예약 목록(관리자)</a>

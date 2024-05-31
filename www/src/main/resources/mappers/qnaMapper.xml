@@ -11,6 +11,8 @@
         order by bno desc limit #{pageStart},#{qty}
     </select>
 
+
+
     <select id="getTotalCount" resultType="int">
 
         select count(bno) from qna
@@ -19,10 +21,22 @@
     </select>
 
 
+    <select id="getSecretByBno" resultType="String" parameterType="long">
+        SELECT is_secret
+        FROM qna
+        WHERE bno = #{bno}
+    </select>
+
+    <select id="getQnaByBno" parameterType="long" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna  WHERE bno = #{bno}
+    </select>
+
+
+
 
     <insert id="register" parameterType="SecretCode.ezen.www.domain.QnaVO">
-        INSERT INTO qna (title, content, writer, is_secret)
-        VALUES (#{title}, #{content}, #{writer}, #{isSecret})
+        INSERT INTO qna (title, content, writer, is_secret, scpwd)
+        VALUES (#{title}, #{content}, #{writer}, #{isSecret} , #{scpwd})
     </insert>
 
     <select id="getDetail" parameterType="int">

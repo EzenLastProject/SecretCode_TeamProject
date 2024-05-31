@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+
+}
+
+.Qna-Register-container{
+ font-family:'S-CoreDream-3Light';
+    border : 1px solid  black;
+    height : 850px;
+     background-image: url("/dist/image/darkimg.avif");
+        background-size : cover;
+        background-repeat : no-repeat;
+        color : white;
+        background-position : center;
+}
+.Qna-Register-container>.top-title{
+
+ text-align : center;
+padding : 30px;
+ height : 100px;
+ margin-top : 30px;
+}
+
+.Qna-Register-container>.big-box{
+height : 690px;
+background-color : black;
+width : 600px;
+border : 1px solid white;
+margin : auto;
+padding : 20px;
+margin-bottom : 100px;
+
+
+}
+
+.big-box>.title-div{
+ height : 50px;
+ border: 1px solid rgb(135, 133, 133);
+ border-right : none;
+ border-left : none;
+
+
+
+}
+/*.big-box>.title-div>.tid{
+ height : 50px;
+ background-color : gray;
+
+}*/
+.big-box>.writer-div{
+ height : 50px;
+
+ border: 1px solid rgb(135, 133, 133);
+ border-right : none;
+ border-left : none;
+
+}
+.big-box>.content-div{
+
+ height: 300px;
+ border: 1px solid rgb(135, 133, 133);
+ border-right : none;
+ border-left : none;
+
+
+}
+#text{
+  height: 280px;
+  width :560px;
+
+
+}
+#title{
+ width : 560px;
+}
+#writer{
+width : 560px;
+}
+span{
+ margin-top : 20px;
+ margin-bottom : 20px;
+}
+#text-div{
+   padding : 10px;
+}
+#button-div{
+
+
+
+   margin-top : 20px;
+}
+.big-box>.secret-div{
+
+   border: 1px solid rgb(135, 133, 133);
+   border-right : none;
+   border-left : none;
+   border-bottom : none;
+   padding : 10px;
+}

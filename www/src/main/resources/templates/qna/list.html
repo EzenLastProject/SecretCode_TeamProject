@@ -6,6 +6,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" th:href="@{/dist/css/qnalist.css}">
 
 <th:block th:replace="~{layout::setFragment(~{this::content})}">
@@ -29,52 +30,65 @@
 
                     <div class="qna-table-box">
 
-
                         <table class='qna-list'>
-
                             <thead>
                             <tr>
-
                                 <th width=7% scope='col' class='dis_title'>#</th>
-                                <th width=20% class="dis_title" >제목</th>
+                                <th width=20% class="dis_title">제목</th>
                                 <th width=10% scope='col' class='dis_title'>작성자</th>
                                 <th width=10% scope='col' class='dis_title'>작성일</th>
                                 <th width=5% scope='col' class='dis_title'>답변수</th>
                                 <th width=5% scope='col' class='dis_title'>조회수</th>
-                                <th width=5% scope='col' class='dis_title'>공개 여부</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- 여기에 동적으로 생성되는 내용이 들어감 -->
-
-
-
+                            <!-- 동적으로 생성되는 내용 -->
                             <tr th:each="qvo:${list}">
-                                <td class='dis_none ' style="color : red;">[[${qvo.bno}]]</td>
-                                <td class='dis_none'><a style="color: yellow;
-    text-decoration: none;" class="qna_title"<a th:href="@{/qna/detail(bno=${qvo.bno})}">[[${qvo.title}]]</a></td>
+                                <td class='dis_none ' style="color: red;">[[${qvo.bno}]]</td>
+                                <td class='dis_none'  >
+                                    <a th:if="${qvo.isSecret == 'true'}"
+                                       style="color: yellow; text-decoration: none;"
+                                       href="#" th:attr="data-bno=${qvo.bno}" onclick="showModal(this.getAttribute('data-bno')); return false;">
+                                        [[${qvo.title}]]
+                                        <span>
+            <img th:id="'lockIcon' + ${qvo.bno}" style="width: 25px; height: 25px; cursor: pointer;"
+                 src="../dist/image/rock.png">
+        </span>
+                                    </a>
+
+                                    <!-- isSecret이 false인 경우 디테일 페이지로 바로 이동하는 링크 -->
+                                    <a th:if="${qvo.isSecret != 'true'}" th:href="@{/qna/detail(bno=${qvo.bno})}"
+                                       style="color: yellow; text-decoration: none;">
+                                        [[${qvo.title}]]
+                                    </a>
+                                </td>
                                 <td class='dis_none'>[[${qvo.writer}]]</td>
                                 <td class='dis_none'>[[${qvo.regDate}]]</td>
                                 <td class='dis_none'>[[${qvo.cmtQty}]]</td>
                                 <td class='dis_none'>[[${qvo.readCount}]]</td>
-                                <td class='dis_none'>[[${qvo.isSecret}]]</td>
-
-
                             </tr>
-
-
-
-
-
-
-
-
-
-
-
-                            <!-- 이하 생략 -->
                             </tbody>
                         </table> <!-- qna-list -->
+
+                        <!-- 모달 내부 -->
+                        <div id="passwordModal" class="modal" tabindex="-1">
+                            <!-- 모달 내용 -->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">비밀번호 입력</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="password" id="passwordInput" class="form-control" placeholder="비밀번호 입력">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                        <button type="button" class="btn btn-primary" onclick="validatePassword()">확인</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
                         <!-- 검색라인 -->
@@ -147,6 +161,56 @@
                 </div> <!-- qna-table-box -->
             </div> <!-- col -->
         </div> <!-- row -->
+
+
+
+        <!-- 스크립트 -->
+        <script>
+            // 모달 띄우기
+            function showModal(bno) {
+                var myModal = new bootstrap.Modal(document.getElementById('passwordModal'), {
+                    keyboard: false
+                });
+                document.getElementById('passwordInput').value = ''; // 모달을 띄울 때마다 비밀번호 입력 필드를 초기화합니다.
+                document.getElementById('passwordInput').setAttribute('data-bno', bno); // 모달에 bno 데이터 속성을 추가합니다.
+                myModal.show();
+            }
+
+    function validatePassword() {
+        var passwordInput = document.getElementById('passwordInput').value; // 모달에서 입력한 비밀번호 가져오기
+        var bno = document.getElementById('passwordInput').getAttribute('data-bno'); // 게시물 번호 가져오기
+
+        // 비밀번호를 서버로 전달하여 유효성 검사
+        $.ajax({
+            type: "POST",
+            url: "/qna/validatePassword",
+            data: {
+                bno: bno,
+                password: passwordInput
+            },
+            success: function (response) {
+                // 서버로부터의 응답에 따라 처리
+                if (response === "true" ) {
+
+                    alert("비밀번호가 확인되었습니다.");
+                    window.location.href = "/qna/detail?bno=" + bno;
+                } else {
+                    // 비밀번호가 유효하지 않은 경우
+                    alert("비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+                    var passwordModal = bootstrap.Modal.getInstance(document.getElementById('passwordModal'));
+                    passwordModal.hide();
+                }
+            },
+            error: function (xhr, status, error) {
+                // 에러 처리
+                console.error("Error: " + error);
+            }
+        });
+    }
+
+
+
+        </script>
 
     </th:block>
 </th:block>

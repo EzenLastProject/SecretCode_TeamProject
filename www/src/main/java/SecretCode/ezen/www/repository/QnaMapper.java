@@ -32,6 +32,14 @@ public interface QnaMapper {
 
 
 
+    String getSecretByBno(long bno);
+
+    String getPassword(long bno);
+
+    QnaVO getQnaByBno(long bno);
+
+
+
 
    /* QnaVO getDetail(int bno);
 

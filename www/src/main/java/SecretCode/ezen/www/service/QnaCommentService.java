@@ -13,4 +13,6 @@ public interface  QnaCommentService {
     int update(QnaCommentVO qcvo);
 
     int delete(long cno);
+
+
 }
