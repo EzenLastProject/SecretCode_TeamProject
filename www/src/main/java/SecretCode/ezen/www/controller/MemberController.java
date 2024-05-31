@@ -122,6 +122,19 @@ public class MemberController {
     }
 
 
+    //구글 이메일 인증
+    @PostMapping("/emailConfirm")
+    @ResponseBody
+    public String emailConfirm(@RequestBody String email) throws Exception {
+        log.info(email);
+
+        String confirm = emailService.sendSimpleMessage(email);
+
+        return confirm;
+    }
+
+
+
 
 
     @GetMapping("/myPage")
