@@ -37,7 +37,7 @@ font-weight : 700;
 
 table{
 margin:auto;
-width : 1200px;
+width : 1300px;
 
 
 
@@ -47,9 +47,15 @@ thead{
 text-align :center;
 }
 
+.qna-register-Btn-Box{
+width : 1280px;
+  padding :20px;
+
+
+}
 .qna-table-box{
 
-
+width : 1300px;
 margin-bottom : 200px
 height : 100%;
 margin: auto;
@@ -90,6 +96,9 @@ border-right : none;
 border-left : none;
 
 }
+.qna-list{
+width : 1200px;
+}
 
 
 
@@ -120,9 +129,16 @@ font-weight : bold;
     color: white;
     background-color: gray;
     border: none;
+    margin-left : 30px;
 
 
 
+
+
+}
+.qna-container>.qna-search-div{
+padding : 30px;
+margin-bottom : 30px;
 }
 
 
@@ -144,8 +160,76 @@ font-weight : bold;
 color : white;
 text-decoration :none;
 }
+/* 미디어 쿼리: 768px 이하일 때 적용되는 스타일 */
+@media screen and (max-width: 768px) {
+    .qna-container {
+        margin-top: 30px;
+    }
 
+    table {
+        width: 90%; /* 화면 폭의 90%로 테이블 크기 조정 */
+        margin: auto; /* 테이블을 가운데 정렬 */
+    }
 
+    .qna-register-Btn-Box,
+    .qna-table-box {
+        width: 90%; /* 화면 폭의 90%로 테이블 박스 크기 조정 */
+        margin: auto; /* 테이블 박스를 가운데 정렬 */
+        padding: 10px; /* 테이블 박스 내부 여백 조정 */
+    }
+
+    .pagination {
+        justify-content: center; /* 페이지네이션 가운데 정렬 */
+    }
+
+    .qna-writeBtn-div {
+        margin-right: 10px; /* 테이블 박스 내부 버튼 간격 조정 */
+    }
+
+    .qna-title {
+        padding: 20px; /* 제목 여백 조정 */
+    }
+
+    #qnah {
+        margin-top: 20px; /* 제목 여백 조정 */
+        font-size: 30px; /* 제목 폰트 크기 조정 */
+    }
+}
+
+/* 미디어 쿼리: 576px 이하일 때 적용되는 스타일 */
+@media screen and (max-width: 576px) {
+    .qna-container {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%; /* 화면 폭의 100%로 테이블 크기 조정 */
+    }
+
+    .qna-register-Btn-Box,
+    .qna-table-box {
+        width: 100%; /* 화면 폭의 100%로 테이블 박스 크기 조정 */
+        margin: auto; /* 테이블 박스를 가운데 정렬 */
+        padding: 5px; /* 테이블 박스 내부 여백 조정 */
+    }
+
+    .pagination {
+        justify-content: center; /* 페이지네이션 가운데 정렬 */
+    }
+
+    .qna-writeBtn-div {
+        margin-right: 5px; /* 테이블 박스 내부 버튼 간격 조정 */
+    }
+
+    .qna-title {
+        padding: 10px; /* 제목 여백 조정 */
+    }
+
+    #qnah {
+        margin-top: 10px; /* 제목 여백 조정 */
+        font-size: 24px; /* 제목 폰트 크기 조정 */
+    }
+}
 
 
 

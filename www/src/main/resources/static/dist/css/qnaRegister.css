@@ -12,11 +12,11 @@
  font-family:'S-CoreDream-3Light';
     border : 1px solid  black;
     height : 850px;
-     background-image: url("/dist/image/darkimg.avif");
+     background-image: url("/dist/image/regdark.jpg");
         background-size : cover;
         background-repeat : no-repeat;
-        color : white;
         background-position : center;
+           color : white;
 }
 .Qna-Register-container>.top-title{
 
@@ -28,9 +28,14 @@ padding : 30px;
 
 .Qna-Register-container>.big-box{
 height : 690px;
-background-color : black;
-width : 600px;
-border : 1px solid white;
+background-image: url("/dist/image/regdark.jpg");
+
+        background-size : cover;
+        background-repeat : no-repeat;
+        background-position : center;
+        border : none;
+width : 800px;
+
 margin : auto;
 padding : 20px;
 margin-bottom : 100px;
@@ -71,15 +76,15 @@ margin-bottom : 100px;
 }
 #text{
   height: 280px;
-  width :560px;
+  width :760px;
 
 
 }
 #title{
- width : 560px;
+ width : 760px;
 }
 #writer{
-width : 560px;
+width : 760px;
 }
 span{
  margin-top : 20px;
@@ -95,6 +100,14 @@ span{
    margin-top : 20px;
 }
 .big-box>.secret-div{
+
+   border: 1px solid rgb(135, 133, 133);
+   border-right : none;
+   border-left : none;
+   border-bottom : none;
+   padding : 10px;
+}
+.big-box>.notice-div{
 
    border: 1px solid rgb(135, 133, 133);
    border-right : none;
