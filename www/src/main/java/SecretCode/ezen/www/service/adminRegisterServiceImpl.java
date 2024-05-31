@@ -2,6 +2,7 @@ package SecretCode.ezen.www.service;
 
 import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
+import SecretCode.ezen.www.repository.MemberMapper;
 import SecretCode.ezen.www.repository.adminRegisterMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 public class adminRegisterServiceImpl implements adminRegisterService{
     private final adminRegisterMapper arMapper;
+    private final MemberMapper memberMapper;
 
     @Override
     public int insert(adRegisterVO advo) {
@@ -22,11 +24,23 @@ public class adminRegisterServiceImpl implements adminRegisterService{
 
     @Override
     public List<MemberVO> getList() {
-        return null;
+        log.info("2");
+        List<MemberVO> list = memberMapper.getList();
+        log.info("list {}", list);
+        return list;
     }
 
     @Override
-    public MemberVO deleteUser(String email) {
-        return null;
+    public int deleteAuthUser(String email) {
+        return arMapper.deleteAuthUser(email);
     }
+
+    @Override
+    public int deleteUser(String email) {
+        return arMapper.deleteUser(email);
+    }
+
+
+
+
 }

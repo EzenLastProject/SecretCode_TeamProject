@@ -164,6 +164,15 @@
     display: table-row;
     border-width: 1px;
   }
+
+
+
+
+
+
+
+
+
   .responsive-table tbody tr:nth-of-type(even) {
     background-color: rgba(94, 93, 82, 0.1);
   }

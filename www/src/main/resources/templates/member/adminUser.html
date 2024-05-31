@@ -25,17 +25,21 @@
                 <th:block th:each="mvo:${list}">
                     <tr>
                         <th scope="row"></th>
-                        <td data-title="Released" id="memberListEmail">[[${mvo.email}]]</td>
+                        <td data-title="Email">[[${mvo.email}]]</td>
                         <td data-title="Studio">[[${mvo.pwd}]]</td>
                         <td data-title="Worldwide Gross" data-type="currency">[[${mvo.nickName}]]</td>
                         <td data-title="Domestic Gross" data-type="currency">[[${mvo.regAt}]]</td>
                         <td data-title="Foreign Gross" data-type="currency">[[${mvo.lastLogin}]]</td>
                         <td data-title="Budget" data-type="currency">[[${mvo.phone}]]</td>
-                        <td><button type="button" class="delBtn" id="deleteBtn">해방</button></td>
+                        <td><button type="button" class="delBtn">해방</button></td>
                     </tr>
                 </th:block>
                 </tbody>
             </table>
+
+
+
+
         </div>
         <script th:src="@{/dist/js/adminUser.js}"></script>
     </th:block>

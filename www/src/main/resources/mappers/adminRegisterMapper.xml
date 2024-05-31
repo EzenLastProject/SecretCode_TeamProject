@@ -12,6 +12,10 @@
         select * from member
     </select>
 
+    <delete id="deleteAuthUser">
+        delete from auth_member where email = #{email}
+    </delete>
+
 
     <delete id="deleteUser">
         delete from member where email = #{email}
