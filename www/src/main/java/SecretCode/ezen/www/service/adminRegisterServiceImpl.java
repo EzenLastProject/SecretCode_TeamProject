@@ -22,7 +22,7 @@ public class adminRegisterServiceImpl implements adminRegisterService{
 
     @Override
     public List<MemberVO> getList() {
-        return List.of();
+        return null;
     }
 
     @Override
