@@ -31,7 +31,7 @@
                     <div class="qna-table-box">
 
                         <table class='qna-list'>
-                            <thead>
+                            <thead style="width : 1200px">
                             <tr>
                                 <th width=7% scope='col' class='dis_title'>#</th>
                                 <th width=20% class="dis_title">제목</th>
@@ -66,8 +66,10 @@
                                 <td class='dis_none'>[[${qvo.regDate}]]</td>
                                 <td class='dis_none'>[[${qvo.cmtQty}]]</td>
                                 <td class='dis_none'>[[${qvo.readCount}]]</td>
+
                             </tr>
                             </tbody>
+
                         </table> <!-- qna-list -->
 
                         <!-- 모달 내부 -->
@@ -90,11 +92,21 @@
                             </div>
                         </div>
 
+                       <div class="qna-register-Btn-Box">
+                        <form action="/qna/register" >
+
+                            <button type="submit" id="qna-write">문의글 작성</button>
+                        </form>
+
+                       </div>
+
+
+
 
                         <!-- 검색라인 -->
                         <form action="/qna/list" >
                             <div class=class="qna-search-div" style=" text-align :center;
-  margin-top : 30px; border-radious:0; " role="search">
+  margin-top : 30px; margin-bottom : 30px; border-radious:0; " role="search">
                                 <select  name="type" aria-label="Small select example">
                                     <option th:selected="${ph.pgvo.type==null? true:false}">Choose...</option>
                                     <option th:value="t" th:selected="${ph.pgvo.type=='t'? true:false}">제목</option>
@@ -114,15 +126,14 @@
   <span class="visually-hidden">unread messages</span>
 </span>
                                 </button>
+
                             </div>
                         </form>
 
 
 
-                        <form action="/qna/register" >
 
-                            <button type="submit" id="qna-write">문의글 작성</button>
-                        </form>
+
 
 
 
@@ -155,7 +166,6 @@
                             </ul>
                         </nav>
                     </div>
-
 
 
                 </div> <!-- qna-table-box -->

@@ -38,20 +38,7 @@ public class QnaServiceImpl implements QnaService {
         return qnaMapper.register(qvo);
     }
 
-  /*  @Override
-    public boolean checkSecret(long bno, String password) {
-        // 해당 게시물의 실제 비밀번호를 DB에서 가져옵니다.
-        String realPassword = qnaMapper.getPassword(bno);
 
-        // 사용자가 입력한 비밀번호와 DB에 저장된 실제 비밀번호를 비교합니다.
-        if (realPassword != null && realPassword.equals(password)) {
-            // 비밀번호가 일치하는 경우
-            return true;
-        } else {
-            // 비밀번호가 일치하지 않는 경우
-            return false;
-        }
-    }*/
 
     @Override
     public String getSecretByBno(long bno) {

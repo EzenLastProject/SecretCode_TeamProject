@@ -18,4 +18,17 @@ console.log("rrrr");
            }
        });
 
+      document.getElementById('noBtn').addEventListener('click',()=>{
+
+
+
+
+         location.href="/qna/list";
+
+
+
+
+      })
+
+
 
