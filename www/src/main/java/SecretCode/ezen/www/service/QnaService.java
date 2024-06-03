@@ -29,7 +29,7 @@ public interface QnaService {
 
     int register(QnaVO qvo);
 
-   /* boolean checkSecret(long bno, String password);*/
+    /* boolean checkSecret(long bno, String password);*/
 
 
     String getSecretByBno(long bno);

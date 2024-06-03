@@ -1,6 +1,7 @@
 package SecretCode.ezen.www.service;
 
 import SecretCode.ezen.www.domain.MemberVO;
+import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
 import SecretCode.ezen.www.repository.MemberMapper;
 import SecretCode.ezen.www.repository.adminRegisterMapper;
@@ -32,12 +33,25 @@ public class adminRegisterServiceImpl implements adminRegisterService{
 
     @Override
     public int deleteAuthUser(String email) {
+
         return arMapper.deleteAuthUser(email);
     }
 
+
     @Override
     public int deleteUser(String email) {
+
         return arMapper.deleteUser(email);
+    }
+
+    @Override
+    public int getTotalCount() {
+        return arMapper.getTotalCount();
+    }
+
+    @Override
+    public List<MemberVO> getListWithPaging(PagingVO pagingVO) {
+        return arMapper.getListWithPaging(pagingVO);
     }
 
 

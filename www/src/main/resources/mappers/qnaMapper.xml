@@ -4,12 +4,39 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SecretCode.ezen.www.repository.QnaMapper">
 
-    <select id="getList" resultType="SecretCode.ezen.www.domain.QnaVO">
-        select * from qna
-        <include refid="search"></include>
+    <!-- <select id="getList" resultType="SecretCode.ezen.www.domain.QnaVO">
+         select * from qna
+         <include refid="search"></include>
+         order by bno desc limit #{pageStart},#{qty}
+     </select>-->
 
-        order by bno desc limit #{pageStart},#{qty}
+    <!--   &lt;!&ndash;notice가 true인아이 &ndash;&gt;
+       <select id="getNotice" resultType="SecretCode.ezen.www.domain.QnaVO">
+           select * from qna
+           where is_notice ='true'
+
+       </select>-->
+
+
+
+
+    <!-- 일반 게시글 가져오기 -->
+    <select id="getList" parameterType="SecretCode.ezen.www.domain.PagingVO" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna
+        <include refid="search"></include>
+        WHERE is_notice = 'false'
+        ORDER BY bno DESC
+        LIMIT #{pageStart}, #{qty}
     </select>
+
+    <!-- 공지글 가져오기 -->
+    <select id="getNoticeList" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna
+        where is_notice ='true'
+        ORDER BY bno DESC
+    </select>
+
+
 
 
 
@@ -35,8 +62,10 @@
 
 
     <insert id="register" parameterType="SecretCode.ezen.www.domain.QnaVO">
-        INSERT INTO qna (title, content, writer, is_secret, scpwd)
-        VALUES (#{title}, #{content}, #{writer}, #{isSecret} , #{scpwd})
+
+
+        INSERT INTO qna (title, content, writer, is_secret, scpwd , is_notice)
+        VALUES (#{title}, #{content}, #{writer}, #{isSecret} , #{scpwd} , #{isNotice})
     </insert>
 
     <select id="getDetail" parameterType="int">

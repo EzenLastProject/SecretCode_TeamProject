@@ -44,6 +44,7 @@ public class PagingVO {
     //type의 복합 타입을 배열로 생성
     //복합 타일의 키워드 일 경우 각자 검색하게 하기 위해 배열로 생성
     public String[] getTypeToArray() {
+
         return this.type==null ? new String[] {} : this.type.split("");
     }
 

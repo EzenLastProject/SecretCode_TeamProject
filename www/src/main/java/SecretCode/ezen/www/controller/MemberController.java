@@ -44,6 +44,9 @@ public class MemberController {
 
     }
 
+    @GetMapping("/adminBoard")
+    public void adminBoard(){}
+
     @PostMapping("/register")
     public String register(MemberVO mvo, Model m){
         mvo.setPwd(passwordEncoder.encode(mvo.getPwd()));

@@ -1,7 +1,9 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.MemberVO;
+import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
+import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.adminRegisterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RequestMapping("/adminRegister/*")
 @Slf4j
@@ -19,6 +22,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class adminRegisterController {
     private final adminRegisterService arsv;
+
+    @GetMapping("/adminBoard")
+    public void adminBoard(){
+
+    }
 
     @GetMapping("/adminRegister")
     public void register() {}
@@ -31,15 +39,23 @@ public class adminRegisterController {
     }
 
     @GetMapping("/adminUser")
-    public String list(Model m) {
-        log.info("1");
-        m.addAttribute("list", arsv.getList());
+    public String list(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "qty", defaultValue = "5") int qty, Model model) {
+        log.info("page qty {}", page, qty);
+
+        PagingVO pagingVO = new PagingVO(page, qty);
+        int totalCount = arsv.getTotalCount();
+        List<MemberVO> list = arsv.getListWithPaging(pagingVO);
+
+        PagingHandler pagingHandler = new PagingHandler(pagingVO, totalCount);
+        model.addAttribute("ph", pagingHandler);
+        model.addAttribute("list", list);
+
         return "/member/adminUser";
     }
 
     @DeleteMapping(value = "/delete/{email}", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> delete(@PathVariable("email") String email){
-        log.info("11111111111 {}", email);
+        log.info("email {}", email);
         int isOk = arsv.deleteAuthUser(email);
         arsv.deleteUser(email);
 
