@@ -10,133 +10,96 @@
 <link rel="stylesheet" th:href="@{/dist/css/qnaRegister.css}">
 
 <th:block th:replace="~{layout::setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <form action="/qna/register" id="qnaRegisterForm" method="post" enctype="multipart/form-data">
+            <div class="Qna-Register-container">
+                <div class="top-title">
+                    <h3>Q & A</h3>
+                </div>
+                <!--top-title-->
+                <div class="big-box">
+                    <div id="text-div">제목</div>
+                    <div class="title-div">
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div id="text-div">작성자</div>
+                    <div class="writer-div">
+                        <input type="text" id="writer" name="writer">
+                    </div>
+                    <div id="text-div">내용</div>
+                    <div class="content-div">
+                        <textarea id="text" name="content" required></textarea>
+                    </div>
+                    <div class="secret-div">
+                        비밀글 <input type="checkbox" name="isSecret" value='true' id="isSecret" onchange="InputPwd()" />
+                        <input type="hidden" name="isSecret" value='false' id="isSecret_hidden" />
+                        <div id="passwordInput" style="display: none;">
+                            비공개 글 비밀번호:
+                            <input type="password" id="scpwd" name="scpwd">
+                        </div>
+                    </div>
+                    <div class="notice-div" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        공지글 <input type="checkbox" id="isNotice" name="isNotice" value="true">
+                        <input type="hidden" name="isNotice_hidden" value='false' id="isNotice_hidden" />
+                    </div>
+                    <div id="button-div">
+                        <button type="submit" id="regBtn">문의 등록</button>
+                        <button type="button" id="noBtn">문의 취소</button>
+                    </div>
+                </div>
+                <!--big-box-->
+            </div>
+        </form>
 
-    <th:block th:fragment="content" >
-
-
-
-
-<form action="/qna/register" id="qnaRegisterForm" method="post" enctype="multipart/form-data">
-
-
-
-       <div class="Qna-Register-container">
-           <div class="top-title">
-                        <h3>Q & A</h3>
-
-
-           </div><!--top-title-->
-           <div class="big-box">
-
-               <div id="text-div">제목</div>
-
-               <div class="title-div">
-                   <input type="text" id="title" name="title" required>
-               </div>
-               <div id="text-div">작성자</div>
-
-               <div class="writer-div">
-                   <input type="text" id="writer" name="writer" >
-               </div>
-
-               <div id="text-div">내용</div>
-
-               <div class="content-div">
-                   <textarea id="text" name="content" required></textarea>
-               </div>
-
-
-
-
-               <div class="secret-div">
-                  비밀글 <input type="checkbox" id="isSecret" name="isSecret"  onchange="InputPwd()" >
-                   <div id="passwordInput" style="display: none;">
-                       비공개 글 비밀번호:
-                       <input type="password" id="scpwd" name="scpwd">
-                   </div>
-               </div>
-
-               <div class ="notice-div" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                  공지글 <input type="checkbox" id="isNotice" name="isNotice" th:href="@{/adminRegister/adminUser}"  >
-
-               </div>
-
-               <div id="button-div">
-
-                   <button type="submit" id="regBtn"  >문의 등록</button>
-                   <button type="button" id="noBtn"  >문의 취소</button>
-
-               </div>
-
-
-
-
-
-           </div><!--big-box-->
-
-
-
-       </div>
-
-
-
-
-    <!-- 체크박스 -->
-    <!-- 비밀번호 입력란 -->
-
-
-
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <script th:src="@{/dist/js/QnaRegister.js}"></script>
         <script>
             function InputPwd() {
-                // 비밀번호 입력란 요소를 가져옵니다.
                 var scpwd = document.getElementById("scpwd");
-
                 scpwd.value = "";
-                // 가져온 요소의 값을 콘솔에 출력합니다. 값이 올바르게 출력되는지 확인합니다.
-
-
-
-                // 비밀번호 입력란의 활성/비활성 여부를 체크박스에 따라 설정합니다.
                 var RegPasswordInputForm = document.getElementById("passwordInput");
-               RegPasswordInputForm.style.display = document.getElementById("isSecret").checked ? "block" : "none";
-
-
-
-
+                RegPasswordInputForm.style.display = document.getElementById("isSecret").checked ? "block" : "none";
             }
+
+            document.getElementById("isSecret").addEventListener("change", function () {
+                document.getElementById("isSecret_hidden").disabled = this.checked;
+            });
+
+            var isNoticeElement = document.getElementById("isNotice");
+            if (isNoticeElement) {
+                isNoticeElement.addEventListener("change", function () {
+                    document.getElementById("isNotice_hidden").disabled = this.checked;
+                });
+            }
+
+            document.getElementById("qnaRegisterForm").addEventListener("submit", function () {
+                var isNoticeElement = document.getElementById("isNotice");
+                if (isNoticeElement === null || !isNoticeElement.checked) {
+                    var hiddenIsNotice = document.createElement("input");
+                    hiddenIsNotice.setAttribute("type", "hidden");
+                    hiddenIsNotice.setAttribute("name", "isNotice");
+                    hiddenIsNotice.setAttribute("value", "false");
+                    this.appendChild(hiddenIsNotice);
+                }
+
+                var isSecretElement = document.getElementById("isSecret");
+                if (!isSecretElement.checked) {
+                    document.getElementById("isSecret_hidden").disabled = false;
+                    document.getElementById("isSecret_hidden").value = "false";
+                }
+
+                // Add this condition to set isNotice to false if it's null
+                if (isNoticeElement && isNoticeElement.value === null) {
+                    isNoticeElement.value = "false";
+                }
+            });
+
+            document.getElementById('noBtn').addEventListener('click', function () {
+                location.href = "/qna/list";
+            });
         </script>
+
+        <script th:src="@{/dist/js/QnaRegister.js}"></script>
 
     </th:block>
 </th:block>
-
-
-
-<script th:src="@{/dist/js/QnaRegister.js}"></script>
 
 </html>

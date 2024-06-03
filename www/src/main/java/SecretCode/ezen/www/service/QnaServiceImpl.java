@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -22,20 +23,51 @@ public class QnaServiceImpl implements QnaService {
     private final QnaMapper qnaMapper;
     private PagingVO pgvo;
 
-    @Override
+   /* @Override
     public List<QnaVO> getList(PagingVO pgvo) {
         //여기서부터..
 
 
-        //공지가 true인 리스트를 가지고오기
-       List<QnaVO> NoticeList(PagingVO pgvo)
+
 
 
 
 
         this.pgvo = pgvo;
         return qnaMapper.getList(pgvo);
+    }*/
+
+   /* @Override
+    public List<QnaVO> getList(PagingVO pgvo) {
+        // 공지글 가져오기
+        List<QnaVO> noticeList = qnaMapper.getNoticeList();
+
+        // 일반 게시글 가져오기
+        List<QnaVO>  list = qnaMapper.getList(pgvo);
+
+        // 공지글을 상단에 고정하기 위해 두 리스트 결합
+        List<QnaVO> combinedList = new ArrayList<>(noticeList);
+        combinedList.addAll(list);
+
+        return combinedList;
+    }*/
+
+    @Override
+    public List<QnaVO> getList(PagingVO pgvo) {
+        // 공지글 가져오기
+        List<QnaVO> noticeList = qnaMapper.getNoticeList();
+
+        // 일반 게시글 가져오기
+        List<QnaVO> regularList = qnaMapper.getList(pgvo);
+
+        // 공지글을 상단에 고정하기 위해 두 리스트 결합
+        List<QnaVO> combinedList = new ArrayList<>();
+        combinedList.addAll(noticeList);
+        combinedList.addAll(regularList);
+
+        return combinedList;
     }
+
 
     @Override
     public int getTotalCount(PagingVO pgvo) {

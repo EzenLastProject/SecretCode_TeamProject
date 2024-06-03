@@ -52,6 +52,11 @@ public class QNAController {
     }
 
 
+
+
+
+
+
     @GetMapping("/register")
     public void register() {
 
@@ -69,6 +74,7 @@ public class QNAController {
 
         return "redirect:/qna/list";
     }
+
 
 
     @GetMapping("/detail")
