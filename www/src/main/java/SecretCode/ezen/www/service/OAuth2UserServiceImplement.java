@@ -41,26 +41,36 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
         if(oauthClientName.equals("kakao")){
             userId = "kakao_"+oAuth2User.getAttributes().get("id");
             mvo.setEmail(userId);
-            mvo.setPwd("password");
+            mvo.setPwd("보안처리된 소셜로그인 비밀번호");
             mvo.setNickName(userId);
-            mvo.setPhone("01012345678");
+            mvo.setPhone("010-1234-5678");
             mvo.setType("kakao");
             avo.setEmail(userId);
         }
         else if(oauthClientName.equals("naver")){
             Map<String, String> responseMap = (Map<String, String>)oAuth2User.getAttributes().get("response");
-            userId = "naver_"+responseMap.get("id").substring(0,14);
+            userId = "naver_"+responseMap.get("email");
             mvo.setEmail(userId);
             mvo.setType("naver");
-            mvo.setNickName(userId);
-            mvo.setPwd("password");
+            mvo.setNickName(responseMap.get("name"));
+            mvo.setPwd("보안처리된 소셜로그인 비밀번호");
             mvo.setPhone("01012345678");
             avo.setEmail(userId);
 
+        }else if(oauthClientName.equals("Google")){
+            userId = "google_"+oAuth2User.getAttributes().get("email");
+            mvo.setEmail(userId);
+            mvo.setType("google");
+            mvo.setNickName((oAuth2User.getAttributes().get("name")).toString());
+            mvo.setPwd("보안처리된 소셜로그인 비밀번호");
+            mvo.setPhone("010-1234-5678");
+            avo.setEmail(userId);
         }
 
+//        log.info(">>>8888888888888888888888888{}",oAuth2User.getAttributes().get("name"));
+
         MemberVO checkSocialLogin = memberMapper.checkSocialLogin(userId);
-        log.info(">>>{}",checkSocialLogin);
+//        log.info(">>>{}",checkSocialLogin);
 
         //만약 처음 등록한 회원이라면.. DB작업
         if(checkSocialLogin == null){
