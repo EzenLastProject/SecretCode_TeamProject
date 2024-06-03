@@ -1,3 +1,4 @@
+/*
 console.log("rrrr");
 
 
@@ -12,7 +13,7 @@ console.log("rrrr");
        console.log(document.getElementById("isSecret").value);
            // 체크박스 상태에 따라 값을 설정
           if(document.getElementById("isSecret").checked) {
-                    document.getElementById("isSecret_hidden").disabled = true;
+                    document.getElementById("input_check_hidden").disabled = true;
                 }
        });
 
@@ -46,3 +47,4 @@ console.log("rrrr");
 
 
 
+*/

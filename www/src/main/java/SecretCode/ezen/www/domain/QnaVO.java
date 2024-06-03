@@ -23,7 +23,7 @@ public class QnaVO {
     private int cmtQty;
     private String isSecret; //비밀글 여부
     private String scpwd; // 비밀글 비밀번호
-    private String isNotice;
+    private String isNotice; // 비밀글 비밀번호
 
 
 }

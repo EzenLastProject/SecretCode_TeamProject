@@ -4,18 +4,18 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SecretCode.ezen.www.repository.QnaMapper">
 
-    <!-- <select id="getList" resultType="SecretCode.ezen.www.domain.QnaVO">
-         select * from qna
-         <include refid="search"></include>
-         order by bno desc limit #{pageStart},#{qty}
-     </select>-->
+   <!-- <select id="getList" resultType="SecretCode.ezen.www.domain.QnaVO">
+        select * from qna
+        <include refid="search"></include>
+        order by bno desc limit #{pageStart},#{qty}
+    </select>-->
 
-    <!--   &lt;!&ndash;notice가 true인아이 &ndash;&gt;
-       <select id="getNotice" resultType="SecretCode.ezen.www.domain.QnaVO">
-           select * from qna
-           where is_notice ='true'
+ <!--   &lt;!&ndash;notice가 true인아이 &ndash;&gt;
+    <select id="getNotice" resultType="SecretCode.ezen.www.domain.QnaVO">
+        select * from qna
+        where is_notice ='true'
 
-       </select>-->
+    </select>-->
 
 
 
@@ -28,7 +28,6 @@
         ORDER BY bno DESC
         LIMIT #{pageStart}, #{qty}
     </select>
-
     <!-- 공지글 가져오기 -->
     <select id="getNoticeList" resultType="SecretCode.ezen.www.domain.QnaVO">
         SELECT * FROM qna

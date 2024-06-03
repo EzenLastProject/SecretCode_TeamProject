@@ -76,6 +76,7 @@ public class QNAController {
     }
 
 
+
     @GetMapping("/detail")
     public String detail(@RequestParam("bno") int bno, Model m) {
         log.info(">>bno>>{}",bno);

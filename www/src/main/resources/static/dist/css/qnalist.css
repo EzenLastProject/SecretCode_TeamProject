@@ -160,6 +160,59 @@ margin-bottom : 30px;
 color : white;
 text-decoration :none;
 }
+
+/* 기본 스타일은 그대로 유지하고, 반응형 스타일만 추가합니다. */
+
+/* 미디어 쿼리: 576px 이하일 때 적용되는 스타일 */
+@media screen and (max-width: 576px) {
+    .qna-container {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%; /* 화면 폭의 100%로 테이블 크기 조정 */
+    }
+
+    .qna-register-Btn-Box,
+    .qna-table-box {
+        width: 100%; /* 화면 폭의 100%로 테이블 박스 크기 조정 */
+        margin: auto; /* 테이블 박스를 가운데 정렬 */
+        padding: 5px; /* 테이블 박스 내부 여백 조정 */
+    }
+
+    .pagination {
+        justify-content: center; /* 페이지네이션 가운데 정렬 */
+    }
+
+    .qna-writeBtn-div {
+        margin-right: 5px; /* 테이블 박스 내부 버튼 간격 조정 */
+    }
+
+    .qna-title {
+        padding: 10px; /* 제목 여백 조정 */
+    }
+
+    #qnah {
+        margin-top: 10px; /* 제목 여백 조정 */
+        font-size: 24px; /* 제목 폰트 크기 조정 */
+    }
+
+    /* 새로운 반응형 스타일을 여기에 추가합니다. */
+    .qna-search-div {
+        padding: 15px; /* 검색 라인의 여백을 조정합니다. */
+        margin-top: 20px; /* 검색 라인의 상단 여백을 조정합니다. */
+    }
+
+    .qna_search_input {
+        width: 80%; /* 검색 입력 필드의 너비를 조정합니다. */
+        margin-right: 10px; /* 검색 입력 필드의 오른쪽 여백을 조정합니다. */
+    }
+
+    .qna_search_btn {
+        width: 18%; /* 검색 버튼의 너비를 조정합니다. */
+    }
+}
+
 /* 미디어 쿼리: 768px 이하일 때 적용되는 스타일 */
 @media screen and (max-width: 768px) {
     .qna-container {
@@ -194,40 +247,41 @@ text-decoration :none;
         margin-top: 20px; /* 제목 여백 조정 */
         font-size: 30px; /* 제목 폰트 크기 조정 */
     }
+
+    /* 새로운 반응형 스타일을 여기에 추가합니다. */
+    .qna-search-div {
+        padding: 20px; /* 검색 라인의 여백을 조정합니다. */
+        margin-top: 30px; /* 검색 라인의 상단 여백을 조정합니다. */
+    }
+
+    .qna_search_input {
+        width: 70%; /* 검색 입력 필드의 너비를 조정합니다. */
+        margin-right: 15px; /* 검색 입력 필드의 오른쪽 여백을 조정합니다. */
+    }
+
+    .qna_search_btn {
+        width: 25%; /* 검색 버튼의 너비를 조정합니다. */
+    }
 }
+/* 기존 CSS는 여기에 추가하고, 수정한 부분만 아래에 포함합니다. */
 
 /* 미디어 쿼리: 576px 이하일 때 적용되는 스타일 */
 @media screen and (max-width: 576px) {
-    .qna-container {
-        margin-top: 20px;
+    /* 검색 라인 요소들의 너비 조정 */
+    .qna_search_input {
+        width: 60%; /* 검색 입력 필드의 너비를 줄입니다. */
+        margin-right: 5px; /* 검색 입력 필드의 오른쪽 여백을 조정합니다. */
     }
 
-    table {
-        width: 100%; /* 화면 폭의 100%로 테이블 크기 조정 */
+    .qna_search_btn {
+        width: 35%; /* 검색 버튼의 너비를 줄입니다. */
     }
 
-    .qna-register-Btn-Box,
-    .qna-table-box {
-        width: 100%; /* 화면 폭의 100%로 테이블 박스 크기 조정 */
-        margin: auto; /* 테이블 박스를 가운데 정렬 */
-        padding: 5px; /* 테이블 박스 내부 여백 조정 */
-    }
-
-    .pagination {
-        justify-content: center; /* 페이지네이션 가운데 정렬 */
-    }
-
-    .qna-writeBtn-div {
-        margin-right: 5px; /* 테이블 박스 내부 버튼 간격 조정 */
-    }
-
-    .qna-title {
-        padding: 10px; /* 제목 여백 조정 */
-    }
-
-    #qnah {
-        margin-top: 10px; /* 제목 여백 조정 */
-        font-size: 24px; /* 제목 폰트 크기 조정 */
+    /* 테이블 셀의 최소 너비 지정 */
+    .qna-list td,
+    .qna-list th {
+        min-width: 50px; /* 셀의 최소 너비를 설정합니다. */
+        padding: 8px; /* 셀 내부 여백을 조정합니다. */
     }
 }
 
