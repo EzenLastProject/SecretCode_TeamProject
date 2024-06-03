@@ -1,6 +1,7 @@
 package SecretCode.ezen.www.repository;
 
 import SecretCode.ezen.www.domain.MemberVO;
+import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,4 +17,8 @@ public interface adminRegisterMapper {
     int deleteUser(String email);
 
     int deleteAuthUser(String email);
+
+    int getTotalCount();
+
+    List<MemberVO> getListWithPaging(PagingVO pagingVO);
 }

@@ -100,7 +100,7 @@ public class QnaServiceImpl implements QnaService {
     public QnaVO getDetail(int bno) {
 
         /*qnaMapper.updateReadCount(bno);*/
-     return   qnaMapper.getDetail(bno);
+        return   qnaMapper.getDetail(bno);
 
 
     }

@@ -1,3 +1,5 @@
+console.log('hi');
+
 document.querySelectorAll('.delBtn').forEach(button => {
     button.addEventListener('click', (e) => {
         const memberRow = e.target.closest('tr');
@@ -32,6 +34,5 @@ async function deleteUserToServer(email) {
         return await response.text();
     } catch (error) {
         console.error('Error:', error);
-        return 'Network error';
     }
 }
