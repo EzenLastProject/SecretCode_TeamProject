@@ -10,35 +10,33 @@
                     <form action="/member/register" method="post">
                         <img height="70px" src="/dist/image/logoWhite1.png" class="registerLogo">
                         <h1>계정 생성</h1>
-                        <div class="social-links">
-                            <div>
-                                <a href="/oauth2/authorization/kakao" role="button" class="btn btn-outline-danger bi bi-google">카카오 로그인</a>
-
-                            </div>
-                            <div>
-                                <a href="/oauth2/authorization/naver" role="button" class="btn btn-outline-danger bi bi-google">네이버 로그인</a>
-
-                            </div>
-                            <div>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            </div>
-                            <div>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                        <div class="social-login">
+                            <a href="/oauth2/authorization/kakao" class="button kakao-login">
+                                <img src="/dist/image/kakaotalk-seeklogo.svg" alt="Kakao Logo">
+                                카카오 로그인
+                            </a>
+                            <a href="/oauth2/authorization/naver" class="button naver-login">
+                                <img src="/dist/image/btnW_icon.png" alt="Naver Logo">
+                                네이버 로그인
+                            </a>
+                            <a href="/oauth2/authorization/google" class="button google-login">
+                                <img src="/dist/image/goglelogo.png" alt="Google Logo">
+                                구글 로그인
+                            </a>
                         </div>
 
                         <span class="spanLR">또는 홈페이지 회원</span>
 
                         <label for="email"></label><input type="email"  name="email" id="email" placeholder="예)example@test.com">
-                        <button type="button" id="checkBtn" class="btn btn-outline-secondary">아이디 유효성 체크</button>
+                        <button type="button" id="checkBtn" class="btn btn-outline-light">아이디 유효성 체크</button>
                         <div id="check"></div>
-                        <button type="button" id="emailSendNumberBtn" class="btn btn-outline-secondary">인증번호 전송</button>
+                        <button type="button" id="emailSendNumberBtn" class="btn btn-outline-light">인증번호 전송</button>
                         <div id="emailSendCheck"></div>
 
                         <!--이메일 인증 번호 체크-->
                         <label for="emailCheckNumber"></label><input type="text" name="emailCheckNumber" id="emailCheckNumber" placeholder="이메일 인증번호">
                         <div id="emailNumberCheckLine"></div>
-                        <button type="button" id="emailCheckNumberBtn" class="btn btn-outline-secondary">인증번호 확인</button>
+                        <button type="button" id="emailCheckNumberBtn" class="btn btn-outline-light">인증번호 확인</button>
 
 
                         <label for="pwd"></label><input type="password" name="pwd" id="pwd" placeholder="비밀번호">
@@ -50,7 +48,7 @@
                         <div id="phoneCheck"></div>
 
 
-                        <button type="submit" id="joinMembership" class="form_btn" disabled>회원가입</button>
+                        <button type="submit" id="joinMembership" class="form_btn regLogBtn" disabled>회원가입</button>
 
                     </form>
                 </div>
@@ -58,21 +56,20 @@
                     <form action="/member/login" method="post">
                         <img height="70px" src="/dist/image/logoWhite1.png" class="registerLogo">
                         <h1>로그인</h1>
-                        <div class="social-links">
-                            <div>
-                                <a href="/oauth2/authorization/kakao" role="button" class="btn btn-outline-danger bi bi-google">카카오 로그인</a>
 
-                            </div>
-                            <div>
-                                <a href="/oauth2/authorization/naver" role="button" class="btn btn-outline-danger bi bi-google">네이버 로그인</a>
-
-                            </div>
-                            <div>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            </div>
-                            <div>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                        <div class="social-login">
+                            <a href="/oauth2/authorization/kakao" class="button kakao-login">
+                                <img src="/dist/image/kakaotalk-seeklogo.svg" alt="Kakao Logo">
+                                카카오 로그인
+                            </a>
+                            <a href="/oauth2/authorization/naver" class="button naver-login">
+                                <img src="/dist/image/btnW_icon.png" alt="Naver Logo">
+                                네이버 로그인
+                            </a>
+                            <a href="/oauth2/authorization/google" class="button google-login">
+                                <img src="/dist/image/goglelogo.png" alt="Google Logo">
+                                구글 로그인
+                            </a>
                         </div>
 
 
@@ -80,7 +77,8 @@
                         <label for="e"></label><input type="text" name="email" id="e" placeholder="ID...">
                         <label for="p"></label><input type="password" name="pwd" id="p"
                                                       placeholder="Password...">
-                        <button type="submit" class="form_btn">로그인</button>
+                        <button type="submit" class="form_btn regLogBtn">로그인</button>
+
 
 
                     </form>
