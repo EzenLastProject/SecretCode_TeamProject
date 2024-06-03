@@ -97,3 +97,8 @@ update qna set cmt_qty =0 where cmt_qty is null;
  --2024.05.30
 
  alter table qna add scpwd varchar(100);
+ ALTER TABLE member ADD COLUMN type VARCHAR(256) DEFAULT "SecretCode";
+ ALTER TABLE qna ADD COLUMN is_notice varchar(10) DEFAULT 'false';
+
+ --2024.06.03
+ alter table qna modify is_secret varchar(50) ;
