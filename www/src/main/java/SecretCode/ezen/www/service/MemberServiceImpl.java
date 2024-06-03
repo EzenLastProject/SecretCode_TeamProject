@@ -35,6 +35,7 @@ public class MemberServiceImpl implements MemberService {
         if(mvo.getPwd() == null || mvo.getPwd().length() == 0) {
             return 0;
         }
+        mvo.setType("SecretCode");
 
         int isOk = memberMapper.insert(mvo);
         return (isOk > 0 ? memberMapper.insertAuth(mvo.getEmail()) : 0);
