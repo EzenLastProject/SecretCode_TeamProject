@@ -13,10 +13,15 @@ import java.util.Optional;
 public interface QnaMapper {
 
 
-    List<QnaVO> getList(PagingVO pgvo);
+
 
     int getTotalCount(PagingVO pgvo);
 
+    // 공지글 가져오기
+    List<QnaVO> getNoticeList();
+
+    // 일반 게시글 가져오기
+    List<QnaVO> getList(PagingVO pgvo);
 
     int register(QnaVO qvo);
 
@@ -37,6 +42,8 @@ public interface QnaMapper {
     String getPassword(long bno);
 
     QnaVO getQnaByBno(long bno);
+
+
 
 
 
