@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers
                                 ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register"
-                                        ,"/member/login_register","/member/emailCheck", "/upload/**", "/comment/**"
+                                        ,"/member/login_register","/member/emailCheck","/member/findEmailPwd","/member/phoneCheck","/member/pwdReturnCheck", "/upload/**", "/comment/**"
                                         ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret", "/oauth2/**" )
                         .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()

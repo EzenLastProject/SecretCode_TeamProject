@@ -16,6 +16,8 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     JavaMailSender emailSender;
 
+    private final MemberService msv;
+
     public static final String ePw = createKey();
 
     private MimeMessage createMessage(String to)throws Exception{
@@ -70,6 +72,9 @@ public class EmailServiceImpl implements EmailService {
         }
         return key.toString();
     }
+
+
+
     @Override
     public String sendSimpleMessage(String to)throws Exception {
         // TODO Auto-generated method stub
@@ -82,4 +87,52 @@ public class EmailServiceImpl implements EmailService {
         }
         return ePw;
     }
+
+    @Override
+    public void passwordChange(String pwdReturnCheck) throws Exception {
+        // TODO Auto-generated method stub
+        MimeMessage message = passwordChangeeMessage(pwdReturnCheck);
+        try{//예외처리
+            emailSender.send(message);
+            String email = pwdReturnCheck;
+
+
+            msv.changePwd(email, ePw);
+
+        }catch(MailException es){
+            es.printStackTrace();
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    private MimeMessage passwordChangeeMessage(String pwdReturnCheck)throws Exception{
+        System.out.println("보내는 대상 : "+ pwdReturnCheck);
+        System.out.println("인증 번호 : "+ePw);
+        MimeMessage  message = emailSender.createMimeMessage();
+
+        message.addRecipients(MimeMessage.RecipientType.TO, pwdReturnCheck);//보내는 대상
+        message.setSubject("SecretCode 비밀번호 변경 이메일입니다.");//제목
+
+        String msgg="";
+        msgg+= "<div style='margin:20px;'>";
+        msgg+= "<h1> 안녕하세요 SecretCode방탈출 입니다. </h1>";
+        msgg+= "<br>";
+        msgg+= "<p>아래 코드를 복사해 입력해주세요<p>";
+        msgg+= "<br>";
+        msgg+= "<p>감사합니다.<p>";
+        msgg+= "<br>";
+        msgg+= "<div align='center' style='border:1px solid black; font-family:verdana';>";
+        msgg+= "<h3 style='color:blue;'>변경된 임시 비밀번호입니다.</h3>";
+        msgg+= "<h3 style='color:blue;'>로그인 후 반드시 비밀번호를 변경해주시기 바랍니다.</h3>";
+        msgg+= "<div style='font-size:130%'>";
+        msgg+= "CODE : <strong>";
+        msgg+= ePw+"</strong><div><br/> ";
+        msgg+= "</div>";
+        message.setText(msgg, "utf-8", "html");//내용
+        message.setFrom(new InternetAddress("roh1118a@gmail.com","SecretCode"));//보내는 사람
+
+        return message;
+    }
+
 }
