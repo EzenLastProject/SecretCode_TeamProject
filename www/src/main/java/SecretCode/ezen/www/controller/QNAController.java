@@ -1,11 +1,9 @@
 package SecretCode.ezen.www.controller;
 
 
-import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaCommentVO;
-import SecretCode.ezen.www.domain.QnaDTO;
-import SecretCode.ezen.www.domain.QnaVO;
+import SecretCode.ezen.www.domain.*;
 import SecretCode.ezen.www.handler.PagingHandler;
+import SecretCode.ezen.www.service.MemberService;
 import SecretCode.ezen.www.service.QnaCommentService;
 import SecretCode.ezen.www.service.QnaService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,7 +24,8 @@ import java.util.List;
 public class QNAController {
     private final QnaService qsv;
     private final QnaCommentService qcsv;
-    /* private final QnaDTO qdto;*/
+    private final MemberService msv;
+
 
 
 
@@ -48,6 +47,7 @@ public class QNAController {
         model.addAttribute("list", qnaList);
         model.addAttribute("ph", ph);
 
+
         return "qna/list"; // 뷰 이름 반환
     }
 
@@ -65,6 +65,7 @@ public class QNAController {
     }
 
 
+
     @PostMapping("/register")
     public String register(QnaVO qvo) {
         // 비밀글 체크박스 처리
@@ -74,6 +75,9 @@ public class QNAController {
 
         return "redirect:/qna/list";
     }
+
+
+
 
 
 
