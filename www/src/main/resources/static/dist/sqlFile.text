@@ -102,3 +102,14 @@ update qna set cmt_qty =0 where cmt_qty is null;
 
  --2024.06.03
  alter table qna modify is_secret varchar(50) ;
+
+ --2024.06.05
+
+create table reviewcomment(
+cno bigint auto_increment,
+bno bigint not null,
+writer varchar(200) not null,
+content text not null,
+reg_date datetime default now(),
+mod_date datetime default now(),
+primary key(cno));

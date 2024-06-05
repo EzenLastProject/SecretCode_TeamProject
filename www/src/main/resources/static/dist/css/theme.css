@@ -28,9 +28,10 @@ padding:0;
     /* border: 1px solid white; */
 }
 .theme-title>span{
-    font-family: 'WavvePADO-Regular';
-    margin-top: 30px;
-    font-size:40px;
+    font-family: 'ChosunCentennial';
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size:45px;
     color: white;
 
     text-align:center;
@@ -119,13 +120,13 @@ width: 250px;
 }
 .themeTitle>p{
     color:white;
-    font-size: 15px;
+    font-size: 18px;
    font-family: 'ChosunCentennial';
 }
 .imgTitle{
 line-height:70px;
 font-family: 'ChosunCentennial';
-    font-size:25px;
+    font-size:28px;
     font-weight:700;
     color:white;
 }
@@ -196,44 +197,51 @@ background-position : center;
 
 
 
+}
 
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+}
 
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 
 }
-/* 모달 스타일 */
- .modal {
-   display: none; /* 초기에 숨김 */
-   position: fixed;
-   z-index: 999;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   overflow: auto;
-   background-color: rgba(0,0,0,0.8);
- }
 
- .modal-content {
-   margin: auto;
-   display: block;
- }
 
- /* 닫기 버튼 스타일 */
- .close {
-   color: #fff;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
-   cursor: pointer;
- }
 
- .close:hover,
- .close:focus {
-   color: #ccc;
-   text-decoration: none;
-   cursor: pointer;
- }
+
+
+
 
 /* .notice-container>.box>.noticebox:first-child{
 

@@ -69,6 +69,15 @@ width:100%;
 display:block;
 }
 
+.modifyTitle{
+
+    color:white;
+    border:1px solid white;
+}
+.modifyTitle>h3{
+margin-top: 30px;
+}
+
 
 
 
