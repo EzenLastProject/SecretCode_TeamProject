@@ -1,5 +1,8 @@
 --2024-05-20
 --mysql -usecretCodeUser -pmysql
+
+
+
 create table qnacomment(
 cno bigint auto_increment,
 bno bigint not null,

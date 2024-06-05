@@ -16,13 +16,22 @@ html{
 
     margin-top : 50px;
     width: 100%;
-
-    background-image: url("/dist/image/sc7.png");
-    background-size : cover;
-    background-repeat : no-repeat;
     color : white;
-    background-position : center;
+    background-image: url("/dist/image/sc4.png");
 
+
+
+
+}
+
+.qna-list-select{
+   height:30px;
+}
+.qna-search-input{
+height:30px;
+}
+.qna-search-btn{
+height:30px;
 }
 .qna-title{
 text-align : center;
@@ -136,9 +145,18 @@ font-weight : bold;
 
 
 }
-.qna-container>.qna-search-div{
+
+.qna-container>.>qna-table-box>.qna-search-div{
 padding : 30px;
-margin-bottom : 30px;
+margin-bottom:30px;
+
+}
+.completed {
+    color: #FF6464; /* 답변 완료일 때의 글자 색상 */
+}
+
+.uncompleted {
+    color: #bebebe; /* 답변 미완료일 때의 글자 색상 */
 }
 
 
@@ -198,18 +216,22 @@ text-decoration :none;
     }
 
     /* 새로운 반응형 스타일을 여기에 추가합니다. */
-    .qna-search-div {
-        padding: 15px; /* 검색 라인의 여백을 조정합니다. */
-        margin-top: 20px; /* 검색 라인의 상단 여백을 조정합니다. */
-    }
 
-    .qna_search_input {
+
+    .qna-- {
         width: 80%; /* 검색 입력 필드의 너비를 조정합니다. */
         margin-right: 10px; /* 검색 입력 필드의 오른쪽 여백을 조정합니다. */
     }
+     .qna-search-div {
+            padding: 15px; /* 검색 라인의 여백을 조정합니다. */
+            margin-top: 20px; /* 검색 라인의 상단 여백을 조정합니다. */
+        }
 
-    .qna_search_btn {
+    .qna-search-btn {
         width: 18%; /* 검색 버튼의 너비를 조정합니다. */
+    }
+    .qna-list-select{
+
     }
 }
 
@@ -254,12 +276,12 @@ text-decoration :none;
         margin-top: 30px; /* 검색 라인의 상단 여백을 조정합니다. */
     }
 
-    .qna_search_input {
+    .qna-search-input {
         width: 70%; /* 검색 입력 필드의 너비를 조정합니다. */
         margin-right: 15px; /* 검색 입력 필드의 오른쪽 여백을 조정합니다. */
     }
 
-    .qna_search_btn {
+    .qna-search-btn {
         width: 25%; /* 검색 버튼의 너비를 조정합니다. */
     }
 }
@@ -268,12 +290,12 @@ text-decoration :none;
 /* 미디어 쿼리: 576px 이하일 때 적용되는 스타일 */
 @media screen and (max-width: 576px) {
     /* 검색 라인 요소들의 너비 조정 */
-    .qna_search_input {
+    .qna-search-input {
         width: 60%; /* 검색 입력 필드의 너비를 줄입니다. */
         margin-right: 5px; /* 검색 입력 필드의 오른쪽 여백을 조정합니다. */
     }
 
-    .qna_search_btn {
+    .qna-search-btn {
         width: 35%; /* 검색 버튼의 너비를 줄입니다. */
     }
 
@@ -283,6 +305,15 @@ text-decoration :none;
         min-width: 50px; /* 셀의 최소 너비를 설정합니다. */
         padding: 8px; /* 셀 내부 여백을 조정합니다. */
     }
+
+
+
+
+
+
+
+
+
 }
 
 

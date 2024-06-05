@@ -18,10 +18,11 @@ document.getElementById('modBtn').addEventListener('click',()=>{
     modBtn.classList.add('btn','btn-outline-warning');
     modBtn.innerText="수정완료";
     //생성한 버튼 modForm에 추가
-    document.getElementById('modForm').appendChild(modBtn);
+    document.getElementById('modDiv').appendChild(modBtn);
 
     //modBtn , delBtn 임시삭제
     document.getElementById('modBtn').remove();
     document.getElementById('delBtn').remove();
+    document.getElementById('listBtn').remove();
 
 })

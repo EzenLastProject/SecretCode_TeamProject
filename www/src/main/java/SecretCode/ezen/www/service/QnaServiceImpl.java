@@ -23,34 +23,7 @@ public class QnaServiceImpl implements QnaService {
     private final QnaMapper qnaMapper;
     private PagingVO pgvo;
 
-   /* @Override
-    public List<QnaVO> getList(PagingVO pgvo) {
-        //여기서부터..
 
-
-
-
-
-
-
-        this.pgvo = pgvo;
-        return qnaMapper.getList(pgvo);
-    }*/
-
-   /* @Override
-    public List<QnaVO> getList(PagingVO pgvo) {
-        // 공지글 가져오기
-        List<QnaVO> noticeList = qnaMapper.getNoticeList();
-
-        // 일반 게시글 가져오기
-        List<QnaVO>  list = qnaMapper.getList(pgvo);
-
-        // 공지글을 상단에 고정하기 위해 두 리스트 결합
-        List<QnaVO> combinedList = new ArrayList<>(noticeList);
-        combinedList.addAll(list);
-
-        return combinedList;
-    }*/
 
     @Override
     public List<QnaVO> getList(PagingVO pgvo) {

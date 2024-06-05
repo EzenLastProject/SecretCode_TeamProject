@@ -5,6 +5,7 @@ document.getElementById('cmtAddBtn').addEventListener('click',()=>{
 const cmtWriter = document.getElementById('cmtWriter').innerText; //writer
 const cmtText = document.getElementById('cmtText').value; //content
 
+
 //디브나 스팬 처럼 열고닫고 사이에있는값은 innertext
 if(cmtWriter ==null || cmtText==''){
     alert('댓글을 입력해주세요.');
@@ -14,7 +15,10 @@ if(cmtWriter ==null || cmtText==''){
     let cmtData ={
         bno : bnoVal,
         writer : cmtWriter,
-        content : cmtText
+        content : cmtText,
+
+
+
     }
     console.log(cmtData);
     postCommentToServer(cmtData).then(result =>{
@@ -76,15 +80,14 @@ function spreadCommentList(bno,page=1){
                 ul.innerHTML =''; //ul에 원래있던 html 값 지우기
             }
            for(let qcvo of result.qcmtList){
-            let li = `<li class ="list-group-item" data-cno="${qcvo.cno}">`;
-            li+= `<div class="mb-3"> no. ${qcvo.cno}  `;
+            let li = `<li class ="cmzone" data-cno="${qcvo.cno}">`;
             li+= `<div class="fw-bold">${qcvo.writer}</div>`;
-            li+=`${qcvo.content}`;
+            li+=`<div class="con-div">${qcvo.content}</div>`;
             li+= `</div>`;
-            li+= `<span class="badge rounded-pill text-bg-warning">${qcvo.regDate}</span>`;
+            li+= `<span class="cmzone-re">작성일: ${qcvo.regAt}</span>`;
             //수정 삭제버튼
-            li += `<button type="button"  class="btn btn-danger btn-sm mod"  data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
-            li += `<button type="button" class="btn btn-warning btn-sm del" id="del">삭제</button>`;
+            li += `<button type="button"  class="mod-btn"  data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
+            li += `<button type="button" class="del-btn" id="del">삭제</button>`;
             li+= `</li>`;
             ul.innerHTML += li;
 
