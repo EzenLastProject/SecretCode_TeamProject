@@ -58,9 +58,9 @@
                                        href="#" th:attr="data-bno=${qvo.bno}" onclick="showModal(this.getAttribute('data-bno')); return false;">
                                         [[${qvo.title}]]
                                         <span>
-            <img th:id="'lockIcon' + ${qvo.bno}" style="width: 25px; height: 25px; cursor: pointer;"
-                 src="../dist/image/rock.png">
-        </span>
+                                            <img th:id="'lockIcon' + ${qvo.bno}" style="width: 25px; height: 25px; cursor: pointer;"
+                                                 src="../dist/image/rock.png">
+                                        </span>
                                     </a>
 
                                     <!-- isSecret이 false인 경우 디테일 페이지로 바로 이동하는 링크 -->
