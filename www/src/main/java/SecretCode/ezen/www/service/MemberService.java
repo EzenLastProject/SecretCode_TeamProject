@@ -21,4 +21,11 @@ public interface MemberService {
     MemberVO isUser(MemberVO mvo);
 
     int checkEmail(String email);
+
+
+    String phoneCheck(String phone, String nickName);
+
+    String pwdReturnCheck(String phone, String nickName, String email);
+
+    void changePwd(String email, String ePw);
 }

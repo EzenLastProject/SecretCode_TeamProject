@@ -44,6 +44,25 @@ public class MemberController {
 
     }
 
+    //아이디 찾기 휴대폰번호 체크
+    @ResponseBody
+    @GetMapping(value = "/phoneCheck/{phone}/{nickName}")
+    public String phoneCheck(@PathVariable("phone")String phone, @PathVariable("nickName")String nickName ) {
+
+        log.info(">>> phone >> {}",phone);
+        log.info(">>> nickName >> {}",nickName);
+
+        String phoneCheck = msv.phoneCheck(phone, nickName);
+
+        log.info(">>> phoneCheck >> {}",phoneCheck);
+
+
+        return phoneCheck;
+
+    }
+
+
+
     @GetMapping("/adminBoard")
     public void adminBoard(){}
 
@@ -124,6 +143,25 @@ public class MemberController {
         return confirm;
     }
 
+    //비밀번호 재발급 체크
+    @ResponseBody
+    @GetMapping(value = "/pwdReturnCheck/{phone}/{nickName}/{email}")
+    public String pwdReturnCheck(@PathVariable("phone")String phone, @PathVariable("nickName")String nickName, @PathVariable("email")String email ) throws Exception {
+
+        log.info(">>> phone >> {}",phone);
+        log.info(">>> nickName >> {}",nickName);
+        log.info(">>> email >> {}",email);
+
+        String pwdReturnCheck = msv.pwdReturnCheck(phone, nickName, email);
+        log.info(">>> pwdReturnCheck >> {}",pwdReturnCheck);
+
+        emailService.passwordChange(pwdReturnCheck);
+
+
+        return pwdReturnCheck;
+
+    }
+
 
 
 
@@ -132,6 +170,12 @@ public class MemberController {
     public void myPage(){
 
     }
+
+    @GetMapping("/findEmailPwd")
+    public void findEmail() {
+    }
+
+
 
 
 
