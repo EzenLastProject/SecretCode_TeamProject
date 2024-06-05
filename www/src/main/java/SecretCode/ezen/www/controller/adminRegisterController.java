@@ -2,6 +2,7 @@ package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.domain.PagingVO;
+import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
 import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.adminRegisterService;
@@ -24,8 +25,15 @@ public class adminRegisterController {
     private final adminRegisterService arsv;
 
     @GetMapping("/adminBoard")
-    public void adminBoard(){
+    public String adminBoard(Model m, PagingVO pgvo) {
+        List<QnaVO> qnaList = arsv.getBoardList(pgvo);
+        int totalCount = arsv.getBoardTotalCount(pgvo);
+        PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
+        m.addAttribute("list", qnaList);
+        m.addAttribute("ph", ph);
+
+        return "/adminRegister/adminBoard";
     }
 
     @GetMapping("/adminRegister")
@@ -39,16 +47,18 @@ public class adminRegisterController {
     }
 
     @GetMapping("/adminUser")
-    public String list(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "qty", defaultValue = "5") int qty, Model model) {
-        log.info("page qty {}", page, qty);
+    public String list(Model m, PagingVO pgvo) {
+        log.info(">>>pgvo>>{}", pgvo);
 
-        PagingVO pagingVO = new PagingVO(page, qty);
+        List<MemberVO> memberList = arsv.getListWithPaging(pgvo);
+
         int totalCount = arsv.getTotalCount();
-        List<MemberVO> list = arsv.getListWithPaging(pagingVO);
+        log.info(" {}", totalCount);
 
-        PagingHandler pagingHandler = new PagingHandler(pagingVO, totalCount);
-        model.addAttribute("ph", pagingHandler);
-        model.addAttribute("list", list);
+        PagingHandler ph = new PagingHandler(pgvo, totalCount);
+
+        m.addAttribute("list", memberList);
+        m.addAttribute("ph", ph);
 
         return "/member/adminUser";
     }
@@ -63,3 +73,4 @@ public class adminRegisterController {
                 new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
+
