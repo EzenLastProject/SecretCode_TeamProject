@@ -27,8 +27,8 @@ public class ThemeController {
 
     }
 
-    @GetMapping("/home")
-    public void home(){
+    @GetMapping("/mainHome")
+    public void mainHome(){
 
 
 

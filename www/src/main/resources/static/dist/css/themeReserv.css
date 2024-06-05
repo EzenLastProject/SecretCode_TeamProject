@@ -11,6 +11,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'ChosunCentennial';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 .body{
 margin:0;
 padding:0;
@@ -33,7 +39,7 @@ padding:0;
      background-position : center;
 }
 .reservAllTheme>span{
-    font-family: 'WavvePADO-Regular';
+    font-family: 'ChosunCentennial';
     margin-top: 30px;
     font-size:50px;
     color: white;
@@ -102,7 +108,7 @@ display: block;
 }
 
 .reservTitle>span{
-     font-family: 'S-CoreDream-3Light';
+    font-family: 'ChosunCentennial';
     font-size: 30px;
     color:white;
     margin-bottom:20px;
@@ -113,7 +119,7 @@ display: block;
 
 }
 .reservTitle>p{
-  font-family: 'S-CoreDream-3Light';
+  font-family: 'ChosunCentennial';
     font-size: 15px;
     color:white;
 
@@ -138,7 +144,7 @@ display: block;
   justify-content: center;
  }
 .reservTimebox{
-   font-family: 'S-CoreDream-3Light';
+   font-family: 'ChosunCentennial';
    font-size:25px;
    color:white;
    float:left;
@@ -167,7 +173,7 @@ display: block;
     text-align: center; /* 내부 요소 가운데 정렬을 위해 */
 }
 .time{
-    font-family: 'S-CoreDream-3Light';
+    font-family: 'ChosunCentennial';
 
     font-size: 20px;
     color: white;
@@ -236,6 +242,8 @@ display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가
 
 
 
+
+
 @media screen and ( max-width : 600px){
 
 .body{
@@ -256,7 +264,7 @@ padding:0;
      background-position : center;
 }
 .reservAllTheme>span{
-    font-family: 'WavvePADO-Regular';
+    font-family: 'ChosunCentennial';
     margin-top: 30px;
     font-size:40px;
     color: white;
@@ -315,12 +323,12 @@ display: block;
  justify-content: center;*/
 }
 .reservTitle>span{
-     font-family: 'S-CoreDream-3Light';
+     font-family: 'ChosunCentennial';
     font-size: 30px;
     color:white;
 }
 .reservTitle>p{
-   font-family: 'S-CoreDream-3Light';
+    font-family: 'ChosunCentennial';
       font-size: 15px;
       color:white;
 
@@ -342,7 +350,7 @@ display: block;
  }
  
 .reservTimebox{
-   font-family: 'S-CoreDream-3Light';
+    font-family: 'ChosunCentennial';
    font-size:25px;
    color:white;
    float:left;
@@ -371,7 +379,7 @@ display: block;
     margin-bottom: 100px;
 }
 .time{
-    font-family: 'S-CoreDream-3Light';
+    font-family: 'ChosunCentennial';
 
     font-size: 20px;
     color: white;

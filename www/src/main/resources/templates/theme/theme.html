@@ -42,7 +42,7 @@
 
                         <span class="imgTitle">노웨이아웃</span>
                         <p>난이도 : ⭐️⭐️⭐️⭐️⭐️</p>
-                        <p>장르 : 공포</p>
+                        <p>장르 : 스릴러</p>
                     </div>
                 </div>
                 <div class="themesmallBox" style="display: inline-block;">
@@ -64,9 +64,9 @@
                 </div>
                     <div class="themeTitle">
 
-                        <span class="imgTitle">인앤아웃</span>
-                        <p>난이도 : ⭐️⭐️⭐️️</p>
-                        <p>장르 : 판타지</p>
+                        <span class="imgTitle">SCENE</span>
+                        <p>난이도 : ⭐️⭐️⭐️️️⭐️️️️</p>
+                        <p>장르 : 공포</p>
 
                     </div>
                 </div>
@@ -106,6 +106,41 @@
 <!--                </div>-->
             </div>
 
+        <!-- Modals -->
+        <div class="modal" id="modal1">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>영화 카피하겠음 ㅋㅋ</h2>
+                <p>
+                    나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
+                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
+                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
+                    밥 먹으러 가는 힐링 여정임 어떰? 나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
+                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
+                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
+                    밥 먹으러 가는 힐링 여정임 어떰? 나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
+                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
+                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
+                    밥 먹으러 가는 힐링 여정임 어떰? 나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
+                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
+                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
+                    밥 먹으러 가는 힐링 여정임 어떰? </p>
+                <a href="">예약하러 가기</a>
+            </div>
+        </div>
+        <div class="modal" id="modal2">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>í¬ì¤í°2</h2>
+                <p>ë´ì©ì ì ì´ì£¼ì¸ì©</p>
+            </div>
+        </div>
+        <div class="modal" id="modal3">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>í¬ì¤í°3</h2>
+                <p>ì´ ê¸°ë¥ì ì¢ ë³ë¡ ê°</p>
+            </div>
         </div>
 
         <div class="notice-container">
@@ -230,7 +265,39 @@
             </div>
 
         </div> <!--컨테이너 디브-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const modalTriggers = document.querySelectorAll('.themesmallBox');
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.close');
 
+    // Modal functionality
+    modalTriggers.forEach((trigger, index) => {
+        trigger.addEventListener('click', () => {
+            const modalId = `modal${(index % 3) + 1}`;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        });
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.closest('.modal').style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', (event) => {
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+});
+
+</script>
 
     </th:block>
 

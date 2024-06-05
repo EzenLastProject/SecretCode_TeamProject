@@ -35,6 +35,7 @@ font-family: 'S-CoreDream-3Light';
     background-image: url("/dist/image/sc5.png");
          background-repeat: no-repeat;
          background-size: cover;
+         background-position: center;
 
 }
 .containerLR {
