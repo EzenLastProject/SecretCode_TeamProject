@@ -22,7 +22,6 @@
     </select>
 
 
-
     <select id="selectAuths" resultType="SecretCode.ezen.www.domain.AuthVO">
         SELECT * FROM auth_member WHERE email = #{email}
     </select>
@@ -33,11 +32,16 @@
     </select>
     <update id="memberModify">
         UPDATE member SET nick_name = #{nickName}, last_login = NOW() WHERE email = #{email}
-
     </update>
+
     <update id="memberPwdModify">
         UPDATE member SET nick_name = #{nickName}, pwd = #{pwd}, last_login = NOW() WHERE email = #{email}
     </update>
+
+    <update id="changePwd">
+        UPDATE member SET pwd = #{pwd} WHERE email = #{email}
+    </update>
+
     <delete id="memberAuthDelete">
         DELETE FROM auth_member WHERE email = #{email}
     </delete>
@@ -52,6 +56,15 @@
     <select id="checkEmail" resultType="int">
         SELECT COUNT(*) FROM member WHERE email = #{email}
     </select>
+
+    <select id="phoneCheck" resultType="String">
+        SELECT email FROM member WHERE phone = #{phone} and nick_name = #{nickName}
+    </select>
+
+    <select id="pwdReturnCheck" resultType="String">
+        SELECT email FROM member WHERE phone = #{phone} and nick_name = #{nickName} and email = #{email}
+    </select>
+
 
     <delete id="deleteUser">
         delete from member where email = #{email}

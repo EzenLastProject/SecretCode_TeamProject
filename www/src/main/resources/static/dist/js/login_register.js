@@ -106,12 +106,6 @@ document.getElementById("emailSendNumberBtn").addEventListener("click",()=>{
 
 
 
-
-
-
-
-
-
 //구글 이메일 인증번호 보내기 비동기
 async function postCommentToServer(email){
     try {
@@ -243,5 +237,4 @@ const autoHyphen2 = (target) => {
       .replace(/[^0-9]/g, '')
      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
    }
-   
    

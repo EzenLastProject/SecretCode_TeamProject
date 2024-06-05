@@ -96,6 +96,27 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.checkEmail(email);
     }
 
+    @Override
+    public String phoneCheck(String phone, String nickName) {
+        return memberMapper.phoneCheck(phone, nickName);
+    }
+
+    @Override
+    public String pwdReturnCheck(String phone, String nickName, String email) {
+        return memberMapper.pwdReturnCheck(phone, nickName, email);
+    }
+
+    @Override
+    public void changePwd(String email, String ePw) {
+
+        String pwd = passwordEncoder.encode(ePw);
+
+
+
+
+        memberMapper.changePwd(email, pwd);
+    }
+
 
 
 

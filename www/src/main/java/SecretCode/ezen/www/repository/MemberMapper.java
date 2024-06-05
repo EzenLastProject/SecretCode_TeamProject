@@ -3,6 +3,7 @@ package SecretCode.ezen.www.repository;
 import SecretCode.ezen.www.domain.AuthVO;
 import SecretCode.ezen.www.domain.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -38,5 +39,9 @@ public interface MemberMapper {
 
     MemberVO checkSocialLogin(String userId);
 
+    String phoneCheck(@Param("phone")String phone, @Param("nickName")String nickName);
 
+    String pwdReturnCheck(@Param("phone")String phone, @Param("nickName")String nickName, @Param("email")String email);
+
+    void changePwd(@Param("email")String email, @Param("pwd")String pwd);
 }
