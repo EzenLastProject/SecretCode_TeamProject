@@ -21,4 +21,6 @@ public interface MemberService {
     MemberVO isUser(MemberVO mvo);
 
     int checkEmail(String email);
+
+
 }
