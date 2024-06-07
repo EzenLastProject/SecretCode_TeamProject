@@ -27,7 +27,7 @@
 
                         <span class="spanLR">또는 홈페이지 회원</span>
 
-                        <label for="email"></label><input type="email"  name="email" id="email" placeholder="예)example@test.com">
+                        <label for="email"></label><input type="email"  name="email" id="email" placeholder="수신가능한 이메일을 입력해주세요. 예) example@test.com">
                         <button type="button" id="checkBtn" class="btn btn-outline-light">아이디 유효성 체크</button>
                         <div id="check"></div>
                         <button type="button" id="emailSendNumberBtn" class="btn btn-outline-light">인증번호 전송</button>
@@ -77,8 +77,11 @@
                         <label for="e"></label><input type="text" name="email" id="e" placeholder="ID...">
                         <label for="p"></label><input type="password" name="pwd" id="p"
                                                       placeholder="Password...">
-                        <button type="submit" class="form_btn regLogBtn">로그인</button>
+                        <button type="submit" class="form_btn regLogBtn" id="loginBtn">로그인</button>
 
+                        <div th:if="error" class="errorMsgBox">
+                            <p id="valid" style="color: red; font-size:14px;"><a th:text="${exception}"></a></p>
+                        </div>
 
 
 

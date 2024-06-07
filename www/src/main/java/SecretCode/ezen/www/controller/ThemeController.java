@@ -30,7 +30,11 @@ public class ThemeController {
     @GetMapping("/mainHome")
     public void mainHome(){
 
-
-
     }
+
+ /*   @GetMapping("/mainHome")
+    public void mainHome(@RequestParam(value = "success", required = false) String success, Model model){
+        log.info(">>>{}",success);
+        model.addAttribute("loginMsg", "success");
+    }*/
 }
