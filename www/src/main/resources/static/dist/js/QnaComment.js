@@ -81,13 +81,15 @@ function spreadCommentList(bno,page=1){
             }
            for(let qcvo of result.qcmtList){
             let li = `<li class ="cmzone" data-cno="${qcvo.cno}">`;
+          /*  li+= `<div class="mb-3"> no. ${qcvo.cno}  `;*/
             li+= `<div class="fw-bold">${qcvo.writer}</div>`;
-            li+=`<div class="con-div">${qcvo.content}</div>`;
-            li+= `</div>`;
-            li+= `<span class="cmzone-re">작성일: ${qcvo.regAt}</span>`;
+              li+= `</div>`;
+            li+=`${qcvo.content}<br>`;
+
+            li+= `<span class="cmzone-re">${qcvo.regAt}</span>`;
             //수정 삭제버튼
-            li += `<button type="button"  class="mod-btn"  data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
-            li += `<button type="button" class="del-btn" id="del">삭제</button>`;
+            li += `<button type="button"  class=" mod"  data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
+            li += `<button type="button" class="del" id="del">삭제</button>`;
             li+= `</li>`;
             ul.innerHTML += li;
 
