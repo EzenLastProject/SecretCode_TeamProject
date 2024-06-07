@@ -197,7 +197,7 @@ border-top:none;
 }
 .cmzone-re{
 float:right;
-margin: 10px 10px 10px 10px;
+margin: 50px 10px 10px 10px;
 }
 .con-div{
 margin-top: 30px;
@@ -208,7 +208,15 @@ margin-top: 30px;
      border-top:none;
 
 }
+.del{
+ border:none;
+ margin-top: 50px;
 
+}
+.mod{
+border:none;
+margin-top: 50px;
+}
 }
 
 
