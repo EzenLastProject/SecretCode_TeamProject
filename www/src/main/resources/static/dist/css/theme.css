@@ -213,7 +213,8 @@ background-position : center;
 }
 
 .modal-content {
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: url("/dist/image/themeReservBack10.jpeg");
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;

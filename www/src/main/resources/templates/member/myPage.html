@@ -20,6 +20,7 @@
             <img th:src="@{/dist/image/myIcon11.png}" style="width:150px" height="150px">
 
             <h3>김노아 님 반갑습니다!</h3>
+
           </div>
 <!--          예약내역 확인  -->
           <div class="myReservBox">
@@ -29,11 +30,54 @@
             </div>
 
           </div>
+<!--          내가 쓴 qna -->
+          <div class="myQNABox">
+            <div class="myQNATitle">
+              <h3>나의 Q & A</h3>
+              <div class="myQNA"></div>
+            </div>
+
+          </div>
+          <!--          내가 쓴 리뷰 -->
+          <div class="myReviewBox">
+            <div class="myReviewTitle">
+              <h3>나의 리뷰</h3>
+              <div class="myReview"></div>
+            </div>
+
+          </div>
 <!--          회원정보 수정  -->
           <div class="myPageModify">
             <div class="modifyTitle">
               <h3>회원 정보 수정</h3>
-              <div class="myReserv"></div>
+              <div class="myModify">
+                <form action="" method="post" >
+                  <div class="mb-3 container-sm">
+                    <label for="email" class="form-label">이메일</label>
+                    <input type="text" class="form-control" id="email" placeholder="" name="email"   readonly="readonly" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block;">
+                  </div>
+                  <div class="mb-3 container-sm">
+                    <label for="pwd" class="form-label">비밀번호</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="보안처리된 비밀번호"  name="pwd" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block;">
+                  </div>
+                  <div class="mb-3 container-sm">
+                    <label for="nickName" class="form-label">닉네임</label>
+                    <input type="text" class="form-control" id="nickName" placeholder="닉네임 입력..."  name="nickName" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block;">
+                  </div>
+                  <div class="mb-3 container-sm">
+                    <label for="phone" class="form-label">휴대폰 번호</label>
+                    <input type="text" class="form-control" id="phone" placeholder="" name="phone" maxlength="13" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block; margin-bottom:50px;" >
+                  </div>
+<!--                  <div class="mb-3 container-sm">-->
+<!--                    <label for="lastLogin" class="form-label">마지막 접속일</label>-->
+<!--                    <input type="text" class="form-control" id="lastLogin" placeholder="" name="lastLogin"  readonly="readonly" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block;">-->
+<!--                  </div>-->
+
+
+                  <button type="submit" class="btn btn-primary">수정</button>
+                  <a href=""> <button type="button" class="btn btn-danger" onclick="removePopup()">회원탈퇴</button> </a>
+                </form>
+              </div>
             </div>
           </div>
 
@@ -41,6 +85,34 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+
+      function removePopup() {
+
+         if(confirm("정말 회원탈퇴를 하시겠습니까?")){
+
+         }else{
+            event.preventDefault();
+         }
+
+      }
+
+    </script>
+    <script>
+    document.getElementById('phone').addEventListener('input', function (e) {
+    var phone = e.target.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+    var len = phone.length;
+    if (len < 4) {
+    e.target.value = phone;
+    } else if (len < 7) {
+    e.target.value = phone.substring(0, 3) + '-' + phone.substring(3);
+    } else if (len < 11) {
+    e.target.value = phone.substring(0, 3) + '-' + phone.substring(3, 6) + '-' + phone.substring(6);
+    } else {
+    e.target.value = phone.substring(0, 3) + '-' + phone.substring(3, 7) + '-' + phone.substring(7, 11);
+    }
+    });
+   </script>
   </th:block>
 
 </th:block>
