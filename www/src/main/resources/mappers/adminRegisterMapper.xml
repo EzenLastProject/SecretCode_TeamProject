@@ -27,6 +27,7 @@
     <select id="getBoardTotalCount" resultType="int">
         select count(*) from qna
         where is_notice = 'false'
+        <include refid="search"></include>
     </select>
 
     <select id="getBoardList" resultType="SecretCode.ezen.www.domain.QnaVO">
@@ -45,4 +46,30 @@
     <select id="getTotalCount" resultType="int">
         select count(email) from member
     </select>
+
+
+
+
+
+    <sql id="search">
+        <if test="type != null">
+            <trim prefix="and (" suffix=")" suffixOverrides="or">
+                <foreach collection="typeToArray" item="type">
+                    <trim suffix="or">
+                        <choose>
+                            <when test="type=='t'.toString()">
+                                title like concat('%', #{keyword}, '%')
+                            </when>
+                            <when test="type=='w'.toString()">
+                                writer like concat('%', #{keyword}, '%')
+                            </when>
+                            <when test="type=='c'.toString()">
+                                content like concat('%', #{keyword}, '%')
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </trim>
+        </if>
+    </sql>
 </mapper>

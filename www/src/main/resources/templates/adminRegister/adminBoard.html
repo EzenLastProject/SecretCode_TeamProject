@@ -10,10 +10,19 @@
             <h2 class="userList">관리자 게시판</h2>
 
             <div class="container-md">
-
                 <div class="filterContainer">
                     <form action="/adminRegister/adminBoard" method="get">
                         <input type="text" name="keyword" placeholder="검색" class="searchInput" th:value="${keyword}">
+                        <select name="type" aria-label="Small select example" class="qna-list-select">
+                            <option th:selected="${ph.pgvo.type==null? true:false}">선택</option>
+                            <option th:value="t" th:selected="${ph.pgvo.type=='t'? true:false}">제목</option>
+                            <option th:value="w" th:selected="${ph.pgvo.type=='w'? true:false}">작성자</option>
+                            <option th:value="c" th:selected="${ph.pgvo.type=='c'? true:false}">게시글</option>
+                            <option th:value="tc" th:selected="${ph.pgvo.type=='tc'? true:false}">제목&게시글</option>
+                            <option th:value="wc" th:selected="${ph.pgvo.type=='wc'? true:false}">작성자&게시글</option>
+                            <option th:value="tw" th:selected="${ph.pgvo.type=='tw'? true:false}">제목&작성자</option>
+                            <option th:value="twc" th:selected="${ph.pgvo.type=='twc'? true: false}">all</option>
+                        </select>
                         <button type="submit" class="searchButton">검색</button>
                     </form>
                 </div>
@@ -37,16 +46,15 @@
                                 <span th:unless="${qna.isNotice == 'true'}" th:text="${qna.bno}">번호</span>
                             </td>
                             <td data-title="제목">
-                                <a th:if="${qna.isSecret == 'true' }"
-                                   style="color: black; text-decoration: none;"
-                                   href="#" th:attr="data-bno=${qna.bno}" onclick="showModal(this.getAttribute('data-bno')); return false;">
+                                <a th:if="${qna.isSecret == 'true' }" style="color: black; text-decoration: none;"
+                                   th:href="@{'/admin/adminDetail?bno=' + ${qna.bno}}" th:attr="data-bno=${qna.bno}">
                                     [[${qna.title}]]
                                     <span>
                                         <img th:id="'lockIcon' + ${qna.bno}" style="width: 25px; height: 25px; cursor: pointer;"
                                              src="../dist/image/rock.png">
                                     </span>
                                 </a>
-                                <a th:if="${qna.isSecret != 'true' }"  th:href="@{'/qna/detail?bno=' + ${qna.bno}}"
+                                <a th:if="${qna.isSecret != 'true' }"  th:href="@{'/admin/adminDetail?bno=' + ${qna.bno}}"
                                    style="color: black; text-decoration: none;">
                                     [[${qna.title}]]
                                 </a>
@@ -85,10 +93,7 @@
             </div>
         </div>
 
-
-
         <script th:src="@{/dist/js/adminBoard.js}"></script>
-
     </th:block>
 </th:block>
 </body>
