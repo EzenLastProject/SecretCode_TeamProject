@@ -8,12 +8,102 @@
 
 <th:block th:replace="~{layout::setFragment(~{this::content})}">
     <th:block th:fragment="content">
+        <link rel="stylesheet" th:href="@{/dist/css/reviewRegister.css}">
 
         <form action="/review/register" id="" method="post" enctype="multipart/form-data">
 
+            <div class="review-container">
+            <div class="review-title">
+                <span >REVIEW</span>
+            </div>
+                <img height="70px" src="/dist/image/logoWhite1.png" class="registerLogo">
 
 
-sadsadsad
+                  <div class="review-notice">
+                      <span class="review-notice-text">
+           리뷰 작성 시 스포일러가 될 수 있는 발언은 삼가해주세요.<br>
+                   스포일러 포함된 리뷰는 임의로 삭제될 수 있으며,<br>
+            향후 법적 책임을 물을 수 있습니다.<br>
+
+                      </span>
+
+
+                  </div>
+
+
+
+                <div class="review-theme-box">
+
+                    <div class="select-box">
+
+
+                        <select>테마
+                            <option>테마1</option>
+                            <option>테마1</option>
+                            <option>테마1</option>
+                            <option>테마1</option>
+                            <option>테마1</option>
+                        </select>
+                        <button type="submit">선택</button>
+
+                    </div>
+
+                    <div class="review-theme-img-div">
+                        <img class="review-theme-img" th:src="@{/dist/image/theme13.gif}">
+                    </div>
+                    <div class="review-theme-text">
+                           <div class="title"><span class="review-img-title">위로</span></div>
+
+                        <p>난이도 : ⭐️⭐️⭐️️</p>
+                        <p>장르 : 감성</p>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+                <div class="review-register">
+
+                    <div id="text-div">작성자</div>
+                    <div class="writer-div" th:if="${#authorization.expression('isAuthenticated()')}">
+                        <input type="text"  id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}">
+                    </div>
+                    <div id="text-div">내용</div>
+                    <div class="content-div">
+                        <textarea id="text" name="content" required></textarea>
+                    </div>
+
+
+
+
+
+                    <div id="text-div">별점 <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span></div>
+
+                    <!-- 선택한 별점을 저장할 숨겨진 input 요소 -->
+                    <input type="hidden" id="rating" name="rating" value="0">
+
+
+
+
+
+                        <button type="submit" id="regBtn" style="margin-top:30px;  width: 100px;">작성</button>
+
+
+
+                </div>
+
+
+            </div>
+
 
 
 
@@ -28,7 +118,24 @@ sadsadsad
         </form>
 
 
-
+        <script>
+            // 모든 별 이모티콘에 클릭 이벤트 리스너 추가
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.addEventListener('click', function () {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    document.getElementById('rating').value = value; // 선택한 별점 저장
+                    // 선택된 별을 강조하기 위해 클래스를 추가 및 제거
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-value')) <= value) {
+                            s.classList.add('selected');
+                        } else {
+                            s.classList.remove('selected');
+                        }
+                    });
+                });
+            });
+        </script>
 
 
 

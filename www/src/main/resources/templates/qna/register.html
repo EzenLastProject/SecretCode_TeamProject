@@ -24,7 +24,7 @@
                     </div>
                     <div id="text-div">작성자</div>
                     <div class="writer-div" th:if="${#authorization.expression('isAuthenticated()')}">
-                        <input type="text" id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}">
+                        <input type="text"  id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}">
                     </div>
                     <div class="writer-div" th:unless="${#authorization.expression('isAuthenticated()')}">
                         <input type="text" id="writer" name="writer" value="비회원">

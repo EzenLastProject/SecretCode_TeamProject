@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'WavvePADO-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunCentennial';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 중앙 정렬을 위한 추가 */
+    width: 100%;
+    height: 100%; /* 전체 화면 높이를 채우기 위해 변경 */
+    background-image: url("/dist/image/sc1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+.review-theme-box {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+
+    margin: auto;
+    padding: 30px 30px 60px 30px;
+    margin-top: 90px;
+
+    box-sizing: border-box;
+}
+
+.review-theme-img-div {
+    width: 100%;
+    max-width: 35%;
+    height: 100%;
+    border: 1px solid white;
+    float: left;
+    box-sizing: border-box;
+}
+
+.review-theme-text {
+    width: 100%;
+    max-width: 65%;
+    height: 100%;
+    border: 1px solid white;
+    float: right;
+    text-align: center;
+    font-size: 19px;
+    color: white;
+    font-family: 'ChosunCentennial', sans-serif;
+    box-sizing: border-box;
+    line-height:95px;
+}
+
+.review-theme-img {
+   width: 100%;
+   height: 100%;
+
+}
+.select-box{
+   height:50px;
+}
+
+
+.review-notice {
+    background-color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    text-align: center;
+    margin-top: 50px;
+
+
+}
+.review-title{
+text-align:center;
+color:white;
+margin-top:30px;
+margin-bottom:30px;
+font-size:50px;
+}
+
+.review-notice-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    color: red;
+    text-align:center;
+}
+
+ .review-register {
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     margin: auto;
+     padding: 20px;
+     margin-top: 100px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     border-radius: 5px;
+     background-color: #f9f9f9;
+     font-family: 'ChosunCentennial', sans-serif;
+
+ }
+
+ .text-div {
+     font-size: 18px;
+     margin-top: 10px;
+     color: #333;
+ }
+
+ .writer-div, .content-div {
+     width: 100%;
+     margin: 10px 0;
+ }
+
+ #writer, #text {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 16px;
+     box-sizing: border-box;
+ }
+
+ .star {
+             font-size: 24px;
+             cursor: pointer;
+             color: #ccc;
+             margin: 0 5px;
+         }
+
+         .star.selected {
+             color: #ffc107; /* 선택된 별의 색상 */
+         }
+
+
+ input[type="hidden"] {
+     display: none;
+ }
+
+ @media (max-width: 600px) {
+     .review-register {
+         padding: 10px;
+     }
+
+     #writer, #text {
+         font-size: 14px;
+     }
+
+
+
+ }
