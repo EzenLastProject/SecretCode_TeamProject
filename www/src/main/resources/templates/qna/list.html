@@ -16,7 +16,7 @@
 
 
 
-        <div class="qna-container">
+        <div class="qna-container ">
             <div class="row">
                 <div class="col">
 
@@ -33,8 +33,8 @@
 
                         <!-- 검색라인 -->
                         <form action="/qna/list" >
-                            <div class=class="qna-search-div" style=" text-align :center;
-  margin-top : 30px; margin-bottom : 60px; border-radious:0; " role="search">
+                            <div class="qna-search-div container-md" style=" text-align :center;
+  margin-top : 30px;  border-radious:0; " role="search">
                                 <select  name="type" aria-label="Small select example" class="qna-list-select">
                                     <option th:selected="${ph.pgvo.type==null? true:false}">선택</option>
                                     <option th:value="t" th:selected="${ph.pgvo.type=='t'? true:false}">제목</option>
@@ -57,15 +57,22 @@
 
                             </div>
                         </form>
+                        <div class="qna-register-Btn-Box">
+                            <form action="/qna/register" >
+
+                                <button type="submit" id="qna-write">문의글 작성</button>
+                            </form>
+
+                        </div>
 
                         <table class='qna-list'>
                             <thead style="width : 1200px">
                             <tr>
                                 <th width=7% scope='col' class='dis_title'></th>
-                                <th width=20% class="dis_title">제목</th>
-                                <th width=10% scope='col' class='dis_title'>작성자</th>
-                                <th width=10% scope='col' class='dis_title'>작성일</th>
-                                <th width=5% scope='col' class='dis_title'>답변 상태</th>
+                                <th width=15% class="dis_title">제목</th>
+                                <th width=12% scope='col' class='dis_title'>작성자</th>
+                                <th width=12% scope='col' class='dis_title'>작성일</th>
+                                <th width=6% scope='col' class='dis_title'>답변 상태</th>
                                 <th width=5% scope='col' class='dis_title'>조회수</th>
                             </tr>
                             </thead>
@@ -135,13 +142,7 @@
                             </div>
                         </div>
 
-                       <div class="qna-register-Btn-Box">
-                        <form action="/qna/register" >
 
-                            <button type="submit" id="qna-write">문의글 작성</button>
-                        </form>
-
-                       </div>
 
 
 
