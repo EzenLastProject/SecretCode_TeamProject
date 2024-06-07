@@ -50,12 +50,15 @@ document.getElementById('checkBtnEmail').addEventListener('click',()=>{
 
   if(name == "" || name == null){
     alert('이름을 입력해주세요.');
-
+    emailPhoneCheckLine.innerHTML = "";
+    emailPhoneCheckLine.innerHTML = `<span style="color: red; font-size:16px; font-weight: bold; box-shadow: none;">이름을 입력해주세요.</span>`;
     return false;
   }
 
   if(phoneE == "" || phoneE == null){
     alert('휴대폰번호를 입력해주세요.');
+    emailPhoneCheckLine.innerHTML = "";
+    emailPhoneCheckLine.innerHTML = `<span style="color: red; font-size:16px; font-weight: bold; box-shadow: none;">휴대폰번호를 입력해주세요.</span>`;
     return false;
   }
 
@@ -67,14 +70,14 @@ document.getElementById('checkBtnEmail').addEventListener('click',()=>{
     if(result !== ""){
       
       emailPhoneCheckLine.innerHTML = "";
-      emailPhoneCheckLine.innerHTML = `<p class="text-primary">아이디 : ${result}</p>`;
+      emailPhoneCheckLine.innerHTML = `<span style=" font-size:16px; font-weight: bold; box-shadow: none;" >아이디 : ${result}</span>`;
       
       //return false;
       
     }else{
       emailPhoneCheckLine.innerHTML = "";
       document.getElementById("findEmail").focus();
-      emailPhoneCheckLine.innerHTML = `<p class="text-danger">존재하지 않는 사용자입니다.</p>`;
+      emailPhoneCheckLine.innerHTML = `<span style="color: red; font-size:16px; font-weight: bold; box-shadow: none;">존재하지 않는 사용자입니다.</span>`;
       //return false;
        
     }
@@ -93,6 +96,11 @@ document.getElementById('checkBtnPwd').addEventListener('click',()=>{
   let emailP = document.getElementById("emailP").value;
 
 
+  if(emailP == "" || emailP == null){
+    alert('이메일을 입력해주세요.');
+    return false;
+  }
+
   if(nickNameP == "" || nickNameP == null){
     alert('이름을 입력해주세요.');
     return false;
@@ -103,22 +111,25 @@ document.getElementById('checkBtnPwd').addEventListener('click',()=>{
     return false;
   }
 
-  if(emailP == "" || emailP == null){
-    alert('이메일을 입력해주세요.');
-    return false;
-  }
+  document.getElementById("checkBtnPwd").style.display="none";
+
+  document.getElementById("logdingCheck").style.display="";
+
 
   pwdReturnToServer(phoneP, nickNameP, emailP).then(result =>{
     console.log(result);
-    if(result !== ""){
-
+    if(result == "isOk"){
+      document.getElementById("logdingCheck").style.display="none";
+        document.getElementById("goToLogin").style.display="";
       alert("임시 비밀번호를 발급했습니다. 이메일을 확인해 주세요.");
       alert("로그인 후 비밀번호를 변경해주세요.");
       
       //return false;
       
     }else{
-      
+      document.getElementById("checkBtnPwd").style.display="";
+      document.getElementById("logdingCheck").style.display="none";
+      document.getElementById("goToLogin").style.display="none";
       alert("존재하지 않는 사용자입니다. 다시 확인해 주세요.");
       //return false;
        
@@ -145,5 +156,6 @@ document.getElementById('checkBtnPwd').addEventListener('click',()=>{
     }
   }
 
+ //버튼 테스트
  
   

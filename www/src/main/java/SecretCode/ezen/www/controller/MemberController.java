@@ -81,9 +81,27 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login(@RequestParam(value = "error", required = false) String error,
+                        @RequestParam(value = "exception", required = false) String exception,
+                        Model model) {
+
+        /* 에러와 예외를 모델에 담아 view resolve */
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
         return "/member/login_register";
     }
+
+    /* 로그인 */
+/*    @GetMapping("/auth/login")
+    public String login(@RequestParam(value = "error", required = false) String error,
+                        @RequestParam(value = "exception", required = false) String exception,
+                        Model model) {
+
+        *//* 에러와 예외를 모델에 담아 view resolve *//*
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
+
+    }*/
 
     @GetMapping("/list")
     public void list(Model m){
@@ -158,7 +176,7 @@ public class MemberController {
         emailService.passwordChange(pwdReturnCheck);
 
 
-        return pwdReturnCheck;
+        return "isOk";
 
     }
 
