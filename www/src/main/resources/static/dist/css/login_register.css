@@ -188,11 +188,18 @@ p {
   margin: 20px 0 30px;
 }
 .spanLR {
-  font-size: 12px;
+  font-size: 16px;
   color: #F9FFFF;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
 }
+
+.spanLR a:hover {
+ color: #2980b9;
+}
+
+
+
 /* 소셜 로그인 버튼 스타일 */
 .social-login {
   display: flex;
@@ -256,6 +263,14 @@ p {
     margin-top: 30px;
     margin-bottom: 20px;
 }
+
+.errorMsgBox{
+    margin-top : 40px;
+
+}
+
+
+
 
 
 

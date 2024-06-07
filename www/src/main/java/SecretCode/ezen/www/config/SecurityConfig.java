@@ -1,7 +1,7 @@
 package SecretCode.ezen.www.config;
 
 
-
+import SecretCode.ezen.www.handler.authenticationFailureHandler;
 import SecretCode.ezen.www.security.CustomUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -16,6 +16,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +26,8 @@ public class SecurityConfig {
 //    springSecurity6 => createDeligationPasswordEncoder
 
     private final DefaultOAuth2UserService oAuth2UserService;
+
+//    private AuthenticationFailureHandler authenticationFailureHandler;
 
 
     @Bean
@@ -39,7 +42,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers
                                 ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register"
-                                        ,"/member/login_register","/member/emailCheck","/member/findEmailPwd","/member/phoneCheck","/member/pwdReturnCheck", "/upload/**", "/comment/**"
+                                        ,"/member/login_register","/member/emailCheck","/member/findEmailPwd","/member/phoneCheck","/member/pwdReturnCheck","/member/**", "/upload/**", "/comment/**"
                                         ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret", "/oauth2/**" )
                         .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
@@ -54,7 +57,9 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("pwd")
                         .loginPage("/member/login")
+                        .failureHandler(authenticationFailureHandler()) /* 로그인 실패 핸들러 */
                         .defaultSuccessUrl("/").permitAll()
+//                        .defaultSuccessUrl("/theme/mainHome?success=true").permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl(("/member/logout"))
@@ -78,4 +83,9 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    //로그인 실패할 때
+    @Bean
+    AuthenticationFailureHandler authenticationFailureHandler(){
+        return new authenticationFailureHandler();
+    }
 }
