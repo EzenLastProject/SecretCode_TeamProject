@@ -35,4 +35,6 @@ public interface QnaService {
     String getSecretByBno(long bno);
 
     boolean validatePassword(long bno, String password);
+
+
 }

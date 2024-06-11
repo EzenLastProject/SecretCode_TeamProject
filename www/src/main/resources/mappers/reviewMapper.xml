@@ -7,9 +7,25 @@
     <insert id="register" parameterType="SecretCode.ezen.www.domain.ReviewVO">
 
 
-        INSERT INTO review (title, writer, content,)
-        VALUES (#{title}, #{writer}, #{content} )
+        INSERT INTO review (theme,title, writer, content,rating)
+        VALUES (#{theme},#{title},#{writer},#{content},#{rating})
     </insert>
+
+
+    <select id="getTotalCount" resultType="int">
+
+        select count(bno) from qna
+
+
+    </select>
+
+    <select id="getList" parameterType="SecretCode.ezen.www.domain.PagingVO" resultType="SecretCode.ezen.www.domain.ReviewVO">
+        SELECT * FROM review
+        ORDER BY bno DESC
+        LIMIT #{pageStart},#{qty}
+    </select>
+
+
 
 
 </mapper>

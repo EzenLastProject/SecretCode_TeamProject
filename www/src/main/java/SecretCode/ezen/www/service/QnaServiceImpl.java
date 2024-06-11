@@ -69,6 +69,8 @@ public class QnaServiceImpl implements QnaService {
     }
 
 
+
+
     @Override
     public QnaVO getDetail(int bno) {
 
