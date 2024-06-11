@@ -93,13 +93,7 @@
                         <p>곧 만나요!</p>
                     </div>
                 </div>
-            <!-- 모달 창 -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <img id="modalImage" src="">
-                </div>
-            </div>
+
         </div>
 
 
@@ -110,22 +104,24 @@
         <div class="modal" id="modal1">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2>영화 카피하겠음 ㅋㅋ</h2>
-                <p>
-                    나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
-                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
-                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
-                    밥 먹으러 가는 힐링 여정임 어떰? 나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
-                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
-                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
-                    밥 먹으러 가는 힐링 여정임 어떰? 나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
-                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
-                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
-                    밥 먹으러 가는 힐링 여정임 어떰? 나는야 잘 나가는 30대 커리어, 사회적 입지, 금전적 여유 모든 걸 이룸
-                    어느 날 잠에서 깨어 보니 어릴 적 살았던 고향 시골집으로 돌아온 것임 ㅋㅋ
-                    돌아가신 엄마가 밥 먹으라고 부르는 소리가 들리고 ㅋㅋ
-                    밥 먹으러 가는 힐링 여정임 어떰? </p>
-                <a href="">예약하러 가기</a>
+                <div class="modalImg">
+                    <img th:src="@{/dist/image/theme13.gif}" style="width:250px; height:350px; display:block; float:left;">
+                    <h2 class="modalH">위로</h2>
+                    <p class="modalP">난이도 : ⭐️⭐️⭐️️</p>
+                    <p class="modalP">장르 : 감성</p>
+                    <p class="modalP">추천 인원 : 2~4명</p>
+                    <p class="modalP">플레이 시간 : 60분</p>
+
+                </div>
+
+                <p class="modalText">
+                    당신은 모든 기억을 잃은 채 눈을 떴습니다.<br>
+                    이곳이 어딘지, 내가 누구인지도 기억나지 않습니다.<br>
+                    그저 손에 익숙한 듯한 낯선 초대장만 쥐고 어느 문 앞에 서있을 뿐이죠.<br>
+                    당신은 잃어버린 기억을 찾아야만 할 것 같은 기분이 듭니다.<br>
+                    눈앞의 문을 열면 모든 선택은 오롯이 당신의 몫입니다.<br>
+                    어떤 진실을 보게 되어도 그 선택을 후회하지 마십시오. </p>
+                <a th:href="@{/theme/themeReserv}" class="aLink">예약하러 가기</a>
             </div>
         </div>
         <div class="modal" id="modal2">

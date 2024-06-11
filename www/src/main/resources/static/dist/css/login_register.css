@@ -269,7 +269,41 @@ p {
 
 }
 
+@media screen and ( max-width : 600px){
+.containerLR{
+    width:100%;
+}
+/* 카카오 로그인 버튼 */
+.kakao-login {
+font-size:0;
+ font-size: 0;
+        text-indent: -9999px;
+  background-color: #f7e600;
+  color: #000;
+}
 
+/* 네이버 로그인 버튼 */
+.naver-login {
+   font-size:0;
+    font-size: 0;
+           text-indent: -9999px;
+  background-color: #03c75a;
+  color: #000;
+}
+
+/* 구글 로그인 버튼 */
+.google-login {
+ font-size: 0;
+ text-indent: -9999px;
+display:none;
+  background-color: #F0FFF0;
+  color: #000;
+}
+.social-login{
+ font-size: 0;
+text-indent: -9999px;
+}
+}
 
 
 
