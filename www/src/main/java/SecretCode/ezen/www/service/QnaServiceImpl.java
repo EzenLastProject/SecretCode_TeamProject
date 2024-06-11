@@ -68,6 +68,21 @@ public class QnaServiceImpl implements QnaService {
         return qnaVO != null && qnaVO.getScpwd() != null && qnaVO.getScpwd().equals(password);
     }
 
+    @Override
+    public void updateCmtQty(int bno) {
+        qnaMapper.updateCmtQty(bno);
+    }
+
+    @Override
+    public int getCommentCount(int bno) {
+        return qnaMapper.getCommentCount(bno);
+    }
+
+    @Override
+    public void updateCmtStatus(int bno) {
+        qnaMapper.updateCmtStatus(bno);
+    }
+
 
     @Override
     public QnaVO getDetail(int bno) {

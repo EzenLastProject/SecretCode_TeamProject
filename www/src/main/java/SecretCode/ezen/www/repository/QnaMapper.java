@@ -43,6 +43,12 @@ public interface QnaMapper {
 
     QnaVO getQnaByBno(long bno);
 
+    void updateCmtQty(@Param("bno") int bno);
+
+    int getCommentCount(@Param("bno") int bno);
+
+    void updateCmtStatus(@Param("bno") int bno);
+
 
 
 

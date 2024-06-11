@@ -4,6 +4,8 @@ import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
+import SecretCode.ezen.www.domain.FileVO;
+import SecretCode.ezen.www.handler.FileHandler;
 import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.adminRegisterService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,6 +26,7 @@ import java.util.List;
 @Controller
 public class adminRegisterController {
     private final adminRegisterService arsv;
+    private final FileHandler fhd;
 
     @GetMapping("/adminBoard")
     public String adminBoard(Model m, PagingVO pgvo) {
@@ -40,10 +44,23 @@ public class adminRegisterController {
     public void register() {}
 
     @PostMapping("/adminRegister")
-    public String insert(adRegisterVO arvo) {
-        int isOk = arsv.insert(arvo);
+    public String insert(adRegisterVO arvo, @RequestParam("files") MultipartFile[] files) {
         log.info("arvo {}", arvo);
-        return "/member/list";
+
+        List<FileVO> fileVOList = fhd.uploadFiles(files);
+
+
+        // 첫 번째 파일의 UUID를 arvo 객체에 설정
+        FileVO firstFile = fileVOList.get(0);
+        arvo.setUuid(firstFile.getUuid());
+
+        int isOk = arsv.insertWithFiles(arvo, fileVOList);
+
+        if (isOk > 0) {
+            return "redirect:/adminRegister/adminBoard";
+        } else {
+            return "redirect:/adminRegister/adminRegister";
+        }
     }
 
     @GetMapping("/adminUser")
@@ -73,4 +90,3 @@ public class adminRegisterController {
                 new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
-

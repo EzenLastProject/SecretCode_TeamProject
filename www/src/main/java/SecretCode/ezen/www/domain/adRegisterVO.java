@@ -8,28 +8,16 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class adRegisterVO {
-    private int rno;
-    private String tname;
-    private String content;
+    private int themeNum;
+    private String themeName;
     private String difficulty;
-    private int usingTime;
-    private int price;
+    private String genre;
+    private String recnumpeople;
+    private String description;
     private String uuid;
+    private String playtime;
 
 
 
-
-
-
-    /*create table theme(
-            rno int auto_increment,
-            tname varchar(100) not null,
-    content varchar(200) not null,
-    price int not null,
-    difficulty varchar(50) not null,
-    usingtime int not null,
-    uuid varchar(256),
-    primary key(rno),
-    foreign key(uuid) references file(uuid));*/
 
 }

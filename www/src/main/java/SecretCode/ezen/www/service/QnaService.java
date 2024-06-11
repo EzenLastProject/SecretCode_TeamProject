@@ -35,4 +35,10 @@ public interface QnaService {
     String getSecretByBno(long bno);
 
     boolean validatePassword(long bno, String password);
+
+    void updateCmtQty(int bno);
+
+    int getCommentCount(int bno);
+
+    void updateCmtStatus(int bno);
 }
