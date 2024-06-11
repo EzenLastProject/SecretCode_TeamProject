@@ -11,7 +11,7 @@
         <th:block th:replace="~{layout :: setFragment(~{this::content})}">
             <th:block th:fragment="content">
 
-        <div class="main-container">
+        <div class="main-container" id="main-container">
 
             <div class="posters-row row1" id="posters-row1">
 
@@ -79,7 +79,7 @@
                 눈앞에 새로운 세상이 펼쳐졌다.
             </div>
         </div>
-            <div class="main2-container">
+            <div class="main2-container" id="main2-container">
 
                 <div class="image-container">
                     <div class="image image1" id="image1">
@@ -118,19 +118,18 @@
 
             </script>
                 <script>
-                window.addEventListener('scroll', function() {
-                var aDiv = document.getElementById('main-container');
-                var bDiv = document.getElementById('main2-container');
+                    document.addEventListener('DOMContentLoaded', function() {
+       var main2Container = document.getElementById('main2-container');
+       var scrollThreshold = window.innerHeight / 2;
 
-                // 현재 스크롤 위치가 화면 높이의 반을 넘으면 b div가 나타나도록 함
-
-                bDiv.style.display = 'flex';
-                if (window.scrollY > window.innerHeight / 2) {
-                bDiv.style.display = 'flex';
-                } else {
-                bDiv.style.display = 'none';
-                }
-                });
+       window.addEventListener('scroll', function() {
+           if (window.scrollY > scrollThreshold) {
+               main2Container.style.display = 'flex';
+           } else {
+               main2Container.style.display = 'none';
+           }
+       });
+   });
                 </script>
 
             </th:block>

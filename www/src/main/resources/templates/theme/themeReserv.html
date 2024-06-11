@@ -10,7 +10,7 @@
 
   <th:block th:fragment="content" >
 
-    <div class="reservationTheme-container" id="top" style="text-align: center;">
+    <div class="reservationTheme-container" id="top" style="text-align: center;" >
       <div class="container-md" style="text-align: center;">
       <div class="reservAllTheme text-center">
         <span>예약하기</span>
@@ -24,15 +24,18 @@
       <form action="">
       <p class="date">날짜 선택 > </p><input type="date" name="startDay" class="startDay">
       <p>
-      <label for="T">테마 선택 > </label>
-      <select name="company" id="T">
-        <option value="all">선택하기</option>
-        <option value="theme01">위로</option>
-        <option value="theme02"> 노웨이아웃</option>
-        <option value="theme03" >Rendering</option>
-        <option value="theme04">SCENE</option>
-        <option value="theme05">Trigger</option>
-      </select></p>
+
+      <label for="themeSelect">테마 선택 > </label>
+      <select name="company" id="themeSelect">
+        <option value="">선택하기</option>
+        <option value="themeR1">위로</option>
+        <option value="themeR2"> 노웨이아웃</option>
+        <option value="themeR6" >Rendering</option>
+        <option value="themeR5">SCENE</option>
+        <option value="themeR3">Trigger</option>
+
+      </select> <button class="button" onclick="themeResButton">선택</button></p>
+
 
 
 
@@ -41,7 +44,7 @@
 
     </div>
 
-      <div class="reservationTheme themeBox1" style="text-align: center;">
+      <div class="reservationTheme themeBox1"  id="themeR1" style="text-align: center;">
         <div class="reservImg img1 "> <img th:src="@{/dist/image/theme13.gif}" style="width:250px" height="350px"></div>
         <div class="reservTextbox">
           <div class="reservTitle">
@@ -102,7 +105,7 @@
         </div>
 
       </div>
-      <div class="reservationTheme themeBox2 " style="display: inline-block;">
+      <div class="reservationTheme themeBox2 " id="themeR2"  style="display: inline-block;">
         <div class="reservImg img2 "> <img th:src="@{/dist/image/theme12.gif}" style="width:250px" height="350px"></div>
         <div class="reservTextbox" style="display: inline-block;">
           <div class="reservTitle">
@@ -162,7 +165,7 @@
           </div>
         </div>
       </div>
-      <div class="reservationTheme themeBox3" style="text-align: center;">
+      <div class="reservationTheme themeBox3" id="themeR3" style="text-align: center;">
         <div class="reservImg img3"> <img th:src="@{/dist/image/theme01.gif}" style="width:250px" height="350px"></div>
         <div class="reservTextbox">
           <div class="reservTitle">
@@ -238,7 +241,7 @@
 
 <!--        </div>-->
 
-      <div class="reservationTheme themeBox5" style="text-align: center;">
+      <div class="reservationTheme themeBox5" id="themeR5"  style="text-align: center;">
         <div class="reservImg img5"> <img th:src="@{/dist/image/theme14.gif}" style="width:250px" height="350px"></div>
         <div class="reservTextbox">
           <div class="reservTitle">
@@ -300,7 +303,7 @@
 
         </div>
 
-      <div class="reservationTheme themeBox6" style="text-align: center;">
+      <div class="reservationTheme themeBox6" id="themeR6"  style="text-align: center;">
         <div class="reservImg img6"> <img th:src="@{/dist/image/theme05.gif}" style="width:250px" height="350px"></div>
         <div class="reservTextbox">
           <div class="reservTitle">
@@ -490,6 +493,47 @@
 
 
     </div> <!--컨테이너 디브-->
+    <script>
+      
+      // select 요소 가져오기
+      var select = document.getElementById("themeSelect");
+
+      // 모든 테마 div 가져오기
+      var themes = document.querySelectorAll(".reservationTheme");
+
+      // select 요소에 change 이벤트 추가
+      select.addEventListener("change", function() {
+        // 선택된 테마의 값을 가져오기
+        var selectedTheme = select.value;
+ 
+
+        // 모든 테마 보이기
+    themes.forEach(function(theme) {
+      theme.style.display = "block";
+    });
+
+   // 선택된 테마가 있을 때만 선택된 테마만 보이기
+    if (selectedTheme) {
+      themes.forEach(function(theme) {
+        if (theme.id === selectedTheme) {
+          theme.style.display = "block";
+        } else {
+          theme.style.display = "none";
+        }
+      });
+
+      // 선택된 테마에 따라 배경 이미지 변경
+      document.body.style.backgroundImage = "url('" + selectedTheme + "_배경이미지.jpg')";
+    } else {
+      // 선택된 테마가 없을 때는 기본 배경 이미지로 변경
+      document.body.style.backgroundImage = "url('/dist/image/themeReservBack10.jpeg')";
+      document.body.style.backgroundSize = "auto"; // 기본 크기로 변경
+    }
+  });
+
+
+          
+    </script>
 
 
   </th:block>
