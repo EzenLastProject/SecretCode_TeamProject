@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -20,5 +22,15 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public int register(ReviewVO rvo) {
         return reviewMapper.register(rvo);
+    }
+
+    @Override
+    public int getTotalCount(PagingVO pgvo) {
+        return reviewMapper.getTotalCount(pgvo);
+    }
+
+    @Override
+    public List<ReviewVO> getList(PagingVO pgvo) {
+        return reviewMapper.getList(pgvo);
     }
 }

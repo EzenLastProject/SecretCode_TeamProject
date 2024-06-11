@@ -23,6 +23,7 @@ public class QnaCommentServiceImpl implements QnaCommentService{
 
     @Override
     public int post(QnaCommentVO qcvo) {
+
         return qnacommentMapper.post(qcvo);
     }
 
@@ -46,6 +47,8 @@ public class QnaCommentServiceImpl implements QnaCommentService{
     public int delete(long cno) {
         return qnacommentMapper.delete(cno);
     }
+
+
 
 
 }

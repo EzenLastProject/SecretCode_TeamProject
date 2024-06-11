@@ -57,6 +57,8 @@ public class QNAController {
 
 
 
+
+
     @GetMapping("/register")
     public void register() {
 

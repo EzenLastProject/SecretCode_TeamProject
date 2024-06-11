@@ -10,6 +10,8 @@
 
 
 
+
+
     <select id="bnoToTotalCount" resultType="int">
         select count(cno) from QnaComment where bno=#{bno}
     </select>
