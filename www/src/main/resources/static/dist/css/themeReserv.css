@@ -28,6 +28,7 @@ padding:0;
 .reservationTheme-container{
  background-image: url("/dist/image/themeReservBack10.jpeg");
  /* 06 */
+min-height:1000px;
 
 
      margin: 0;
@@ -143,6 +144,10 @@ display: block;
   align-items: center;
   justify-content: center;
  }
+
+ .reservTimeTable:last-child{
+ margin-bottom:100px;
+ }
 .reservTimebox{
    font-family: 'ChosunCentennial';
    font-size:25px;
@@ -240,6 +245,9 @@ display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가
   transition-delay: 0.2s !important;
 }
 
+.reservationTheme:last-child{
+margin-bottom:100px;
+}
 
 
 
@@ -258,7 +266,7 @@ padding:0;
      margin: 0;
      padding: 0;
      /* border: 1px solid black; */
-
+min-height:1500px;
      background-repeat: no-repeat;
      background-size: cover;
      background-position : center;
@@ -348,6 +356,9 @@ display: block;
   align-items: center;
   justify-content: center;
  }
+  .reservationTheme:last-child{
+  margin-bottom:100px;
+  }
  
 .reservTimebox{
     font-family: 'ChosunCentennial';
@@ -403,6 +414,8 @@ display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가
     font-size:15px;
 }
 
-
+.reservationTheme:last-child{
+margin-bottom:100px;
+}
 
 }
