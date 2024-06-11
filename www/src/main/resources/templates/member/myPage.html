@@ -5,6 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <link rel="stylesheet" th:href="@{/dist/css/theme.css}">
 <link rel="stylesheet" th:href="@{/dist/css/myPage.css}">
+<link rel="stylesheet" th:href="@{/dist/js/memberModify.js}">
 
 <th:block th:replace="~{layout::setFragment(~{this::content})}">
 
@@ -18,8 +19,10 @@
           <div class="myName">
 
             <img th:src="@{/dist/image/myIcon11.png}" style="width:150px" height="150px">
+            <th:block th:if="${#authorization.expression('isAuthenticated()')}">
+              <h3 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}"> </h3>
+            </th:block>
 
-            <h3>김노아 님 반갑습니다!</h3>
 
           </div>
 <!--          예약내역 확인  -->
@@ -51,10 +54,10 @@
             <div class="modifyTitle">
               <h3>회원 정보 수정</h3>
               <div class="myModify">
-                <form action="" method="post" >
+                <form action="/member/modify" method="post" >
                   <div class="mb-3 container-sm">
                     <label for="email" class="form-label">이메일</label>
-                    <input type="text" class="form-control" id="email" placeholder="" name="email"   readonly="readonly" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block;">
+                    <input type="text" class="form-control"  id="email" placeholder="" name="email"   readonly="readonly" style="width: 50%; height : 40px; text-align: center; margin: 0 auto; display: block;">
                   </div>
                   <div class="mb-3 container-sm">
                     <label for="pwd" class="form-label">비밀번호</label>
@@ -75,7 +78,7 @@
 
 
                   <button type="submit" class="btn btn-primary">수정</button>
-                  <a href=""> <button type="button" class="btn btn-danger" onclick="removePopup()">회원탈퇴</button> </a>
+                  <a href="/member/deleteMember"> <button type="button" class="btn btn-danger" onclick="removePopup()">회원탈퇴</button> </a>
                 </form>
               </div>
             </div>
@@ -85,19 +88,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript">
 
-      function removePopup() {
-
-         if(confirm("정말 회원탈퇴를 하시겠습니까?")){
-
-         }else{
-            event.preventDefault();
-         }
-
-      }
-
-    </script>
     <script>
     document.getElementById('phone').addEventListener('input', function (e) {
     var phone = e.target.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거

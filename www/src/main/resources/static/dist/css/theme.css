@@ -167,7 +167,7 @@ background-position : center;
    font-weight: bold;
    text-decoration : none;
    padding-bottom : 30px;
-   margin-top:100px;
+   margin-top:200px;
 
 
 
@@ -214,7 +214,7 @@ background-position : center;
 
 .modal-content {
     /* background-color: #fff; */
-    background-image: url("/dist/image/themeReservBack10.jpeg");
+    background-image: url("/dist/image/modalBack04.jpeg");
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -235,6 +235,50 @@ background-position : center;
     color: black;
     text-decoration: none;
     cursor: pointer;
+
+}
+.modalImg{
+    width:100%;
+    margin-left:100px;
+}
+.modalH{
+
+    margin-left:50px;
+    float: left;
+    width:50%;
+    font-weight:700;
+    font-family: 'S-CoreDream-3Light';
+
+}
+.modalP{
+    margin-top:25px;
+margin-left:50px;
+font-size:20px;
+ float: left;
+ width:50%;
+    font-family: 'S-CoreDream-3Light';
+}
+.modalP>first-child{
+margin-top:50px;
+}
+.modalText{
+font-family: 'S-CoreDream-3Light';
+margin-top:20px;
+font-size:20px;
+text-align:center;
+}
+.aLink{
+font-family: 'S-CoreDream-3Light';
+width:50%;
+height:50px;
+background-color:black;
+color:white;
+text-decoration:none;
+text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+margin-left:200px;
 
 }
 
@@ -285,7 +329,7 @@ margin : 15px 0 15px 0;
 }
 .notice-container>.box>.noticebox>.noticetext{
 
- margin-top : 70px;
+ margin-top : 150px;
  padding : 20px;
  text-align: center;
 
