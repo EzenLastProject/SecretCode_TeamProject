@@ -43,3 +43,5 @@ out/
 
 ###application-oauth.properties 등록 ###
 application-oauth.properties
+email.properties
+iamport.properties
