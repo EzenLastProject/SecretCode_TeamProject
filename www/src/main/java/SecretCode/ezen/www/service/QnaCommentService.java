@@ -15,4 +15,5 @@ public interface  QnaCommentService {
     int delete(long cno);
 
 
+
 }

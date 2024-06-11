@@ -54,6 +54,7 @@ public interface QnaMapper {
 
 
 
+
    /* QnaVO getDetail(int bno);
 
     void readCount(int bno);*/

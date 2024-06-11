@@ -19,4 +19,6 @@ public class ReviewVO {
     private String regDate;
     private int readCount;
     private int cmtQty;
+    private String theme; //선택한 테마명
+    private int  rating;
 }
