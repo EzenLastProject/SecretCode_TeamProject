@@ -4,6 +4,7 @@ import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
+import SecretCode.ezen.www.domain.FileVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface adminRegisterMapper {
     List<QnaVO> getBoardList(PagingVO pgvo);
 
     int getBoardTotalCount(PagingVO pgvo);
+
+    int insertFile(FileVO fileVO);
 }

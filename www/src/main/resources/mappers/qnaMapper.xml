@@ -35,6 +35,12 @@
         ORDER BY bno DESC
     </select>
 
+    <update id="updateCmtQty">
+        UPDATE qna
+        SET cmtQty = (SELECT COUNT(*) FROM qnacomment WHERE bno = #{bno})
+        WHERE bno = #{bno}
+    </update>
+
 
 
 
@@ -86,6 +92,14 @@
     <update id="readCount">
         update qna set read_count = read_count + 1
         where bno = #{bno}
+    </update>
+
+    <select id="getCommentCount" resultType="int">
+        select count(*) from qnacomment where bno = #{bno}
+    </select>
+
+    <update id="updateCmtStatus">
+        update qna set cmtQty = 0 where bno = #{bno}
     </update>
 
     <sql id="search">

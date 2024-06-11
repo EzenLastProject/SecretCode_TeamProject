@@ -10,14 +10,12 @@ import lombok.*;
 @ToString
 public class QnaCommentVO {
 
-
-    private  int bno;
-    private  int cno;
+    private int bno;
+    private int cno;
     private String writer;
     private String content;
     private String regAt;
     private String modAt;
     private int cmtQty;
-
-
 }
+

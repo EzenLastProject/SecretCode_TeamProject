@@ -40,6 +40,7 @@ public class QNAController {
         // totalCount를 DB에서 가져오기
         int totalCount = qsv.getTotalCount(pgvo); // 검색어도 함께 고려
 
+
         // PagingHandler 객체 생성
         PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
@@ -50,23 +51,12 @@ public class QNAController {
 
         return "qna/list"; // 뷰 이름 반환
     }
-
-
-
-
-
-
-
-
-
     @GetMapping("/register")
     public void register() {
 
 
 
     }
-
-
 
     @PostMapping("/register")
     public String register(QnaVO qvo) {
@@ -77,8 +67,6 @@ public class QNAController {
 
         return "redirect:/qna/list";
     }
-
-
 
 
 

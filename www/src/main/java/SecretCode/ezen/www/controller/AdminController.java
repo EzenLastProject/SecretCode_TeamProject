@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
-
 @Controller
 @Slf4j
 @RequiredArgsConstructor
@@ -28,13 +26,11 @@ public class AdminController {
     }
 
     @DeleteMapping(value="/admin/{bno}", produces = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity<String> delete(@PathVariable("bno")int bno){
+    public ResponseEntity<String> delete(@PathVariable("bno") int bno) {
         log.info("bno {}", bno);
         int isOk = asv.deleteQna(bno);
 
         return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK) :
                 new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-
 }

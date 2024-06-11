@@ -4,15 +4,16 @@ import SecretCode.ezen.www.domain.MemberVO;
 import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.adRegisterVO;
+import SecretCode.ezen.www.domain.FileVO;
 import SecretCode.ezen.www.repository.MemberMapper;
 import SecretCode.ezen.www.repository.adminRegisterMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Slf4j
 @RequiredArgsConstructor
@@ -70,8 +71,20 @@ public class adminRegisterServiceImpl implements adminRegisterService {
     public int getBoardTotalCount(PagingVO pgvo) {
         return arMapper.getBoardTotalCount(pgvo);
     }
+
+    @Override
+    public int insertFile(FileVO fileVO) {
+        return arMapper.insertFile(fileVO);
+    }
+
+    @Override
+    @Transactional
+    public int insertWithFiles(adRegisterVO advo, List<FileVO> fileVOList) {
+        // 파일 정보 삽입
+        for (FileVO fileVO : fileVOList) {
+            arMapper.insertFile(fileVO);
+        }
+
+        return arMapper.insert(advo);
+    }
 }
-
-
-
-

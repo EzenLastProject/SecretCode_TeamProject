@@ -1,6 +1,5 @@
 package SecretCode.ezen.www.service;
 
-
 import SecretCode.ezen.www.domain.QnaVO;
 
 public interface AdminService {

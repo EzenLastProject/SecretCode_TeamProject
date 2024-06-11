@@ -14,37 +14,62 @@
                 <div class="container">
                     <form action="/adminRegister/adminRegister" method="post" enctype="multipart/form-data">
                         <div class="formGroup">
-                            <label for="tname">테마 이름</label>
-                            <input id="tname" type="text" name="tname" placeholder="테마 이름을 입력해주세요." required>
+                            <label for="themeNum">테마 번호</label>
+                            <input id="themeNum" type="text" name="themeNum" required>
                         </div>
 
                         <div class="formGroup">
-                            <label for="themeImage">테마 이미지</label>
-                            <input id="themeImage" type="file" name="themeImage" accept="image/*" required>
-                        </div>
-
-                        <div class="formGroup">
-                            <label for="content">테마 설명</label>
-                            <textarea id="content" name="content" placeholder="테마 설명을 입력해주세요." required></textarea>
-                        </div>
-
-                        <div class="formGroup">
-                            <label for="price">가격</label>
-                            <input id="price" name="price" placeholder="가격을 입력해주세요." required></input>
-                        </div>
-
-                        <div class="formGroup">
-                            <label for="difficulty">난이도</label>
-                            <select id="difficulty" name="difficulty" required>
-                                <option value="easy">쉬움</option>
-                                <option value="medium">보통</option>
-                                <option value="hard">어려움</option>
+                            <label for="themeName">테마 이름</label>
+                            <select id="themeName" name="themeName" required>
+                                <option value="thriller">스릴러</option>
+                                <option value="emotion">감성</option>
+                                <option value="escape">탈출</option>
+                                <option value="mystery, fantasy">추리,판타지</option>
+                                <option value="fear">공포</option>
                             </select>
                         </div>
 
                         <div class="formGroup">
-                            <label for="usingTime">소요 시간 (분)</label>
-                            <input id="usingTime" type="number" name="usingTime" placeholder="소요 시간을 입력해주세요." required>
+                            <label for="genre">테마 장르</label>
+                            <select id="genre" name="genre" required>
+                                <option value="up">위로</option>
+                                <option value="nowayout">노웨이아웃</option>
+                                <option value="trigger">Trigger</option>
+                                <option value="scene">SCENE</option>
+                                <option value="rendering">Rendering</option>
+                            </select>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="files">테마 이미지</label>
+                            <input id="files" type="file" name="files" accept="image/*" multiple required>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="description">테마 설명</label>
+                            <textarea id="description" name="description" placeholder="테마 설명을 입력해주세요." required></textarea>
+                        </div>
+
+
+                        <div class="formGroup">
+                            <label for="difficulty">난이도</label>
+                            <select id="difficulty" name="difficulty" required>
+                                <option value="veryEasy">★</option>
+                                <option value="easy">★★</option>
+                                <option value="medieum">★★★</option>
+                                <option value="hard">★★★★</option>
+                                <option value="veryHard">★★★★★</option>
+                            </select>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="recnumpeople">인원 수 (명)</label>
+                            <input id="recnumpeople"  name="recnumpeople" required>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="playtime">소요 시간 (분)</label>
+                            <input id="playtime" type="number" name="playtime" placeholder="소요 시간을 입력해주세요." required>
                         </div>
 
                         <div class="formGroup">
@@ -56,3 +81,4 @@
         </section>
     </th:block>
 </th:block>
+</html>
