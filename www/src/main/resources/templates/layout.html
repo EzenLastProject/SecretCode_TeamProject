@@ -46,6 +46,10 @@
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/login_register}" sec:authorize="isAnonymous()">로그인/회원가입</a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/portOnePay}" sec:authorize="isAnonymous()">결제 테스트</a>
+                            </li>
+
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                 <a class="nav-link" th:href="@{/member/list}">회원리스트</a>
                             </li>

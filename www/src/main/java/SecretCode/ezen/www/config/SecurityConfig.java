@@ -43,7 +43,7 @@ public class SecurityConfig {
                         .requestMatchers
                                 ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register"
                                         ,"/member/login_register","/member/emailCheck","/member/findEmailPwd","/member/phoneCheck","/member/pwdReturnCheck","/member/**", "/upload/**", "/comment/**"
-                                        ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret", "/oauth2/**" )
+                                        ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret", "/oauth2/**","/portOnePay/**" )
                         .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
