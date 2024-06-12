@@ -32,10 +32,10 @@
                 <div th:each="rvo : ${list}" class="card mt-3" style="border-bottom-right-radius: 72px; border: 2px solid white; ">
                     <div class="card-body d-flex">
 
-                        <!-- 이미지 영역 -->
+                      <!--  &lt;!&ndash; 이미지 영역 &ndash;&gt;
                         <div class="theme-img" style="width: 25%;">
-                            <img th:src="@{/dist/image/poster40.jpeg}" alt="이미지 x" class="img-fluid">
-                        </div>
+                            <img th:src="'/upload/' + ${rvo.saveDir} + '/' + ${rvo.uuid} + '_' + ${rvo.fileName}" class="img-fluid" alt="Review Image">
+                        </div>-->
 
 
                         <!-- 내용 영역 -->

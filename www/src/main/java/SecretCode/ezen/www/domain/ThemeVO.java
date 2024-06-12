@@ -17,6 +17,10 @@ public class ThemeVO {
     private String recNumPeople; // 추천인원
     private String playTime;    // 플레이 시간
     private String description; // 설명
-    private String uuid;        // 사진
+    private String uuid; //이미지
+    private String saveDir;
+    private String fileName;
+
+
 
 }

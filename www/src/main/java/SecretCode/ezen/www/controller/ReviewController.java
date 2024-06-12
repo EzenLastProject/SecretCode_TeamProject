@@ -16,6 +16,7 @@ import org.springframework.ui.context.Theme;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @Slf4j
@@ -55,34 +56,39 @@ public class ReviewController {
 
     @GetMapping("/register")
     public String registerForm(Model model) {
-        // 테마 목록을 가져와서 모델에 추가
         List<ThemeVO> themeList = themeService.getAllThemes();
         model.addAttribute("themeList", themeList);
+        model.addAttribute("theme", "");
+        model.addAttribute("themeText", "");
 
-        // 선택된 테마와 테마 텍스트를 기본값으로 설정
-        model.addAttribute("theme", ""); // 선택된 테마가 없는 경우 기본값은 빈 문자열로 설정
-        model.addAttribute("themeText", ""); // 테마 텍스트도 마찬가지로 기본값 설정
-
-        return "review/register"; // Review 등록 페이지로 이동
+        return "review/register";
     }
-    @GetMapping("/getThemeDetails")
-    public ResponseEntity<?> getThemeDetails(@RequestParam("themeNum") Long themeNum) {
-        ThemeVO theme = themeService.getThemeDetails(themeNum);
-        if (theme != null) {
-            return ResponseEntity.ok(theme); // 테마 정보가 있다면 200 OK 응답으로 테마 정보 반환
-        } else {
-            return ResponseEntity.notFound().build(); // 테마 정보가 없다면 404 Not Found 응답 반환
-        }
-    }
-
     @PostMapping("/register")
-    public String register(ReviewVO reviewVO) {
-        log.info(">>>reviewVO>>{}", reviewVO);
+    public String register(ReviewVO rvo) {
+        log.info(">>>reviewVO>>{}", rvo);
 
-        rsv.register(reviewVO);
+        // UUID 설정
+        UUID uuid = UUID.randomUUID(); // 랜덤 UUID 생성
+        rvo.setUuid(uuid.toString()); // UUID 문자열로 설정
+
+        // ReviewService를 사용하여 ReviewVO를 저장
+        rsv.register(rvo);
 
         return "redirect:/review/list"; // 등록 후 Review 목록 페이지로 리다이렉트
     }
 
+    @GetMapping("/getThemeDetails")
+    public ResponseEntity<?> getThemeDetails(@RequestParam("themeNum") Long themeNum) {
+        ThemeVO theme = themeService.getThemeDetails(themeNum);
+        if (theme != null) {
+            return ResponseEntity.ok(theme);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
+
+
+
+

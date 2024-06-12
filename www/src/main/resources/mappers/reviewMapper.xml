@@ -3,12 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SecretCode.ezen.www.repository.ReviewMapper">
-
     <insert id="register" parameterType="SecretCode.ezen.www.domain.ReviewVO">
-
-
-        INSERT INTO review (theme,title, writer, content,rating)
-        VALUES (#{theme},#{title},#{writer},#{content},#{rating})
+        INSERT INTO review (theme, title, writer, content, rating, uuid)
+        VALUES (#{theme}, #{title}, #{writer}, #{content}, #{rating}, #{uuid})
     </insert>
 
 

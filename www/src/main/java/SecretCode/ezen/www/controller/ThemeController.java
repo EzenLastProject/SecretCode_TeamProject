@@ -49,6 +49,8 @@ public class ThemeController {
         return "theme/list"; // 테마 목록을 보여주는 뷰
     }
 
+
+
  /*   @GetMapping("/mainHome")
     public void mainHome(@RequestParam(value = "success", required = false) String success, Model model){
         log.info(">>>{}",success);
