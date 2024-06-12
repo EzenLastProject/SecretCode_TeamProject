@@ -31,4 +31,6 @@ public interface adminRegisterMapper {
     int getBoardTotalCount(PagingVO pgvo);
 
     int insertFile(FileVO fileVO);
+
+    List<adRegisterVO> getreservationList();
 }

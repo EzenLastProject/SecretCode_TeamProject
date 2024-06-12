@@ -37,6 +37,9 @@ function calculatePrice() {
         case "6":
             price = 90000;
             break;
+        case "7":
+            price = 100;
+            break;
         default:
             price = 25000;
     }
@@ -50,18 +53,18 @@ document.getElementById("participants").addEventListener('change',()=>{
 calculatePrice();
 });
 
-//  //결제 후 예약 DB 작업 비동기 메서드
-//  async function phoneToServer(date, time, theme, name, phone, email, participants, price){
-//     try {
-//         const url = "/portOnePay/reservation/"+date+"/"+time+"/"+theme+"/"+name+"/"+phone+"/"+email+"/"+participants+"/"+price;
-//         const resp = await fetch(url);
-//         const result = await resp.text();
+ //결제 후 예약 DB 작업 비동기 메서드
+ async function reservationToServer(date, time, theme, name, phone, email, participants, price){
+    try {
+        const url = "/portOnePay/reservation/"+date+"/"+time+"/"+theme+"/"+name+"/"+phone+"/"+email+"/"+participants+"/"+price;
+        const resp = await fetch(url);
+        const result = await resp.text();
 
-//         return result;
-//     } catch (error) {
-//         console.log(error);
-//     }
-//   }
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+  }
 
 
 
@@ -89,6 +92,28 @@ function requestPay() {
               buyer_tel: phone,
         },
         function (rsp) {
+
+                    // 가맹점 서버 결제 API 성공시 로직
+                    console.log("결제했다!!!");
+
+                    reservationToServer(date, time, theme, name, phone, email, participants, price).then(result =>{
+                        console.log(result);
+
+                        if(result == "1"){
+                            
+                        }
+
+
+
+
+
+
+
+
+
+                    })
+
+
               //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
             if (rsp.success) {
                 //서버 검증 요청 부분
@@ -101,19 +126,8 @@ function requestPay() {
                         merchant_uid: rsp.merchant_uid,   // 주문번호
                         amount: rsp.paid_amount
                     }),
+
                 }).done(function (data) {
-                    // 가맹점 서버 결제 API 성공시 로직
-
-
-
-
-
-
-
-
-
-
-
 
                 })
 
