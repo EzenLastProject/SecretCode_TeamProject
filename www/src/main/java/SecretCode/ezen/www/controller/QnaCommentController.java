@@ -23,8 +23,6 @@ public class QnaCommentController {
     @ResponseBody
     public  String post(@RequestBody QnaCommentVO qcvo){
         int isOk = qcsv.post(qcvo);
-        log.info("isOk{}",isOk);
-
         return  isOk > 0 ? "1" : "0";
 
     }

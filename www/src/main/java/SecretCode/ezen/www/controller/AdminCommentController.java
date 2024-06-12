@@ -26,7 +26,7 @@ public class AdminCommentController {
         log.info(">>>> cvo >> {} ", cvo);
         int isOk = acsv.post(cvo);
         if(isOk > 0) {
-            // 댓글 등록에 성공하면 게시글의 cmtQty를 업데이트
+            // 댓글 등록에 성공하면 게시글의 cmt_qty를 업데이트
             qnaService.updateCmtQty(cvo.getBno());
             return new ResponseEntity<>("1", HttpStatus.OK);
         } else {
@@ -62,5 +62,10 @@ public class AdminCommentController {
         } else {
             return new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/comePage")
+    public void come(){
+
     }
 }

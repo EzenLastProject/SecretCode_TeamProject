@@ -104,20 +104,4 @@ public class QNAController {
         return String.valueOf(isValid);
     }
 
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
