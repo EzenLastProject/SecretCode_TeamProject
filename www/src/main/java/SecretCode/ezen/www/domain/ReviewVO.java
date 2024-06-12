@@ -20,5 +20,7 @@ public class ReviewVO {
     private int readCount;
     private int cmtQty;
     private String theme; //선택한 테마명
+    private String uuid; //선택한 테마명
+
     private int  rating;
 }
