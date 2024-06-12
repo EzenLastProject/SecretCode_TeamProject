@@ -63,6 +63,19 @@ public class adminRegisterController {
         }
     }
 
+    @GetMapping("/admainReservationList")
+    public void list(Model m){
+        m.addAttribute("reservationList", arsv.getreservationList());
+    }
+
+
+
+
+
+
+
+
+
     @GetMapping("/adminUser")
     public String list(Model m, PagingVO pgvo) {
         log.info(">>>pgvo>>{}", pgvo);
