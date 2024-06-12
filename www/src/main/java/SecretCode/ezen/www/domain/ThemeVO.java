@@ -17,5 +17,6 @@ public class ThemeVO {
     private String recNumPeople; // 추천인원
     private String playTime;    // 플레이 시간
     private String description; // 설명
+    private String uuid;        // 사진
 
 }

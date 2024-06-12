@@ -29,4 +29,6 @@ public interface adminRegisterService {
 
     // 추가된 메서드
     int insertWithFiles(adRegisterVO advo, List<FileVO> fileVOList);
+
+    List<adRegisterVO> getreservationList();
 }
