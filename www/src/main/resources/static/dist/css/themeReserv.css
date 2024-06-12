@@ -27,8 +27,8 @@ padding:0;
 
 .reservationTheme-container{
  background-image: url("/dist/image/themeReservBack10.jpeg");
- /* 06 */
-min-height:1000px;
+ min-height:1000px;
+ height:100%;
 
 
      margin: 0;
@@ -57,7 +57,7 @@ height:250px;
 }
 .reservationTheme{
 width:100%;
-/* height:600px; */
+ /* height:600px; */
 /* border: 1px solid white; */
 display: inline-block;
 
@@ -77,35 +77,33 @@ display: inline-block;
 .reservImg>image{
  width: 250px;
     height: 350px;
+    display: block;
+    position:absolute;
 }
 
 .reservTextbox{
-margin-top:50px;
- /* border: 1px solid pink; */
- width: 700px;
- height:300px;
- display: flex;
- text-align: center;
- align-items: center;
- justify-content: center;
-float: left;
-display: block;
+    margin-top:50px;
+     /* border: 1px solid pink; */
+     width: 700px;
+     height:300px;
+     display: inline-block;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+     float: left;
+     display: block;
  
 }
 .reservTitle{
     /* border: 1px solid seagreen; */
- text-align: center;
- align-items: center;
- justify-content: center;
-
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100px;
+    flex-direction: column;
 
 
-        flex-direction: column;
-
- /*align-items: center;
- justify-content: center;*/
 }
 
 .reservTitle>span{
@@ -116,17 +114,17 @@ display: block;
 
     width:100%;
     /* span 요소는 가로로 정렬 */
-        display: inline-block;
+    display: inline-block;
 
 }
 .reservTitle>p{
-  font-family: 'ChosunCentennial';
+    font-family: 'ChosunCentennial';
     font-size: 15px;
     color:white;
 
     text-align: center;
-     align-items: center;
-     justify-content: center;
+    align-items: center;
+    justify-content: center;
 
 
 
@@ -138,16 +136,17 @@ display: block;
      float: left;
      width: 700px;
      height: 200px;
-      display: flex;
-        flex-wrap: wrap;
+     display: inline-block;
+     flex-wrap: wrap;
      text-align: center;
-  align-items: center;
-  justify-content: center;
+     align-items: center;
+     justify-content: center;
  }
 
  .reservTimeTable:last-child{
- margin-bottom:100px;
+    margin-bottom:100px;
  }
+
 .reservTimebox{
    font-family: 'ChosunCentennial';
    font-size:25px;
@@ -167,11 +166,7 @@ display: block;
     width:21%; /* 4개씩 정렬하려면 총 너비의 25%를 각 항목에 할당 */
     margin:10px;
     height:60px;
-
-
-      background-color:black;
-
-
+    background-color:black;
     position: relative; /* 상대 위치 지정 */
     display: inline-block; /* 인라인 블록으로 표시하여 한 줄에 정렬 */
     width: 25%; /* 4개씩 정렬하려면 총 너비의 25%를 각 항목에 할당 */
@@ -185,25 +180,23 @@ display: block;
     display: block; /* a 요소를 블록 레벨로 설정하여 li 요소의 크기에 맞게 확장 */
     text-align:center;
     position: absolute; /* 절대 위치 설정 */
-        top: 0;
-        left: 0;
-        width: 100%; /* 전체 영역에 걸쳐야 함 */
-        height: 100%; /* 전체 영역에 걸쳐야 함 */
-        text-decoration: none; /* 링크에 밑줄 제거 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 전체 영역에 걸쳐야 함 */
+    height: 100%; /* 전체 영역에 걸쳐야 함 */
+    text-decoration: none; /* 링크에 밑줄 제거 */
 
 }
 .time>span{
 display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가운데 정렬 */
     width: 100%;
     text-align:center;
-
     }
+
 .time>span:last-child{
     font-size:15px;
 }
 
-
-  
 .time {
   
   -webkit-transition: all 0.3s;
@@ -266,7 +259,7 @@ padding:0;
      margin: 0;
      padding: 0;
      /* border: 1px solid black; */
-min-height:1500px;
+     min-height:1500px;
      background-repeat: no-repeat;
      background-size: cover;
      background-position : center;
@@ -281,15 +274,15 @@ min-height:1500px;
     line-height:180px;
 }
 .reservTimebox{
-width:100%;
-height:300px;
-/* border: 1px solid yellow; */
+    width:100%;
+    height:300px;
+    /* border: 1px solid yellow; */
 }
 .reservationTheme{
-width:100%;
-/* height:600px; */
-/* border: 1px solid white; */
-display: inline-block;
+    width:100%;
+    /* height:600px; */
+    /* border: 1px solid white; */
+    display: inline-block;
 
 
 }
@@ -300,22 +293,22 @@ display: inline-block;
      margin:130px 10px 100px 130px;
      float: left;
      align-items: center;
-      justify-content: center;
+     justify-content: center;
      display: block;
 
 }
 
 .reservTextbox{
-margin-top:10px;
- /* border: 1px solid pink; */
- width: 100%;
- height:300px;
- display: flex;
- text-align: center;
- align-items: center;
- justify-content: center;
-float: left;
-display: block;
+    margin-top:10px;
+     /* border: 1px solid pink; */
+     width: 100%;
+     height:300px;
+     display: flex;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+     float: left;
+     display: block;
 
 }
 .reservTitle{
@@ -324,14 +317,12 @@ display: block;
   align-items: center;
   justify-content: center;
 
-     width: 100%;
-     height: 100px;
-
- /*align-items: center;
- justify-content: center;*/
+  width: 100%;
+  height: 100px;
 }
+
 .reservTitle>span{
-     font-family: 'ChosunCentennial';
+    font-family: 'ChosunCentennial';
     font-size: 30px;
     color:white;
 }
@@ -339,29 +330,29 @@ display: block;
     font-family: 'ChosunCentennial';
       font-size: 15px;
       color:white;
-
       text-align: center;
-       align-items: center;
-       justify-content: center;
+      align-items: center;
+      justify-content: center;
 }
+
 .reservTimeTable{
  /* border: 1px solid red; */
 
      float: left;
      width: 100%;
      height: 200px;
-      display: flex;
-        flex-wrap: wrap;
+     display: flex;
+     flex-wrap: wrap;
      text-align: center;
-  align-items: center;
-  justify-content: center;
+     align-items: center;
+     justify-content: center;
  }
   .reservationTheme:last-child{
-  margin-bottom:100px;
+    margin-bottom:100px;
   }
  
 .reservTimebox{
-    font-family: 'ChosunCentennial';
+   font-family: 'ChosunCentennial';
    font-size:25px;
    color:white;
    float:left;
@@ -397,19 +388,19 @@ display: block;
     display: block; /* a 요소를 블록 레벨로 설정하여 li 요소의 크기에 맞게 확장 */
     text-align:center;
     position: absolute; /* 절대 위치 설정 */
-        top: 0;
-        left: 0;
-        width: 100%; /* 전체 영역에 걸쳐야 함 */
-        height: 100%; /* 전체 영역에 걸쳐야 함 */
-        text-decoration: none; /* 링크에 밑줄 제거 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 전체 영역에 걸쳐야 함 */
+    height: 100%; /* 전체 영역에 걸쳐야 함 */
+    text-decoration: none; /* 링크에 밑줄 제거 */
 
 }
 .time>span{
 display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가운데 정렬 */
     width: 100%;
     text-align:center;
-
     }
+
 .time>span:last-child{
     font-size:15px;
 }

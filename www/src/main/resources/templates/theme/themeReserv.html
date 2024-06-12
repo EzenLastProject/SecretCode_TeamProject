@@ -26,15 +26,15 @@
       <p>
 
       <label for="themeSelect">테마 선택 > </label>
-      <select name="company" id="themeSelect">
-        <option value="">선택하기</option>
+      <select name="company" id="themeSelect" onclick="themeResButton">
+
         <option value="themeR1">위로</option>
         <option value="themeR2"> 노웨이아웃</option>
         <option value="themeR6" >Rendering</option>
         <option value="themeR5">SCENE</option>
         <option value="themeR3">Trigger</option>
 
-      </select> <button class="button" onclick="themeResButton">선택</button></p>
+      </select> </p>
 
 
 
@@ -61,43 +61,43 @@
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">11:30</span><br>
+                <span class="time2">11:30</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">13:00</span><br>
+                <span class="time3">13:00</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">14:30</span><br>
+                <span class="time4">14:30</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">16:00</span><br>
+                <span class="time5">16:00</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">17:30</span><br>
+                <span class="time6">17:30</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">19:00</span><br>
+                <span class="time7">19:00</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
             <li>
               <a href="" class="time">
-                <span class="time1">20:30</span><br>
+                <span class="time8">20:30</span><br>
                 <span class="possible">예약 가능</span>
               </a>
             </li>
@@ -501,11 +501,15 @@
       // 모든 테마 div 가져오기
       var themes = document.querySelectorAll(".reservationTheme");
 
+      // 기본 배경 이미지 크기 저장
+      //var defaultBackgroundSize = document.body.style.backgroundSize;
+
       // select 요소에 change 이벤트 추가
       select.addEventListener("change", function() {
         // 선택된 테마의 값을 가져오기
         var selectedTheme = select.value;
- 
+
+
 
         // 모든 테마 보이기
     themes.forEach(function(theme) {
@@ -523,14 +527,14 @@
       });
 
       // 선택된 테마에 따라 배경 이미지 변경
-      document.body.style.backgroundImage = "url('" + selectedTheme + "_배경이미지.jpg')";
-    } else {
-      // 선택된 테마가 없을 때는 기본 배경 이미지로 변경
-      document.body.style.backgroundImage = "url('/dist/image/themeReservBack10.jpeg')";
-      document.body.style.backgroundSize = "auto"; // 기본 크기로 변경
-    }
-  });
-
+   // document.body.style.backgroundImage = "url('" + selectedTheme + "_배경이미지.jpg')";
+  } else {
+    // 선택된 테마가 없을 때는 기본 배경 이미지로 변경
+    //document.body.style.backgroundImage = "none";
+    // 기본 배경 이미지 크기를 원래대로 설정
+    //document.body.style.backgroundSize = defaultBackgroundSize;
+  }
+});
 
           
     </script>
