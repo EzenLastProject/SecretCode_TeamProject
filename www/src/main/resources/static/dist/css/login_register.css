@@ -24,7 +24,7 @@ body {
 }
 
 .checkBtnEmail{
-margin-bottom : 20px;
+    margin-bottom : 20px;
 }
 
 .wrapper {
@@ -36,11 +36,11 @@ font-family: 'S-CoreDream-3Light';
   align-items: center;
   background: #ebecf0;
   overflow: hidden;
-    background-image: url("/dist/image/sc5.png");
-         background-repeat: no-repeat;
-         background-position: center;
-         background-size: cover;
-         background-position: center;
+  background-image: url("/dist/image/sc5.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-position: center;
 
 }
 .containerLR {
@@ -60,6 +60,7 @@ form {
   justify-content: center;
   align-items: center;
 }
+
 form input {
   background: #eee;
   padding: 16px;
@@ -70,6 +71,7 @@ form input {
   border-radius: 20px;
   box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
 }
+
 button {
   border-radius: 20px;
   border: none;
@@ -83,28 +85,30 @@ button {
   cursor: pointer;
   transition: transform 80ms ease-in;
 }
+
 .form_btn {
   box-shadow: -2px -2px 10px #fff, 5px 5px 8px #babebc;
 
 }
+
 .form_btn:active {
   box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
 }
+
 .overlay_btn {
   background-color: #dcdcdc;
   color: #000000;
   box-shadow: -5px -5px 10px #b4b4b4, 5px 5px 8px #282828;
 }
+
 .sign-in-container {
   position: absolute;
   left: 0;
   width: 50%;
   height: 100%;
   transition: all 0.5s;
-/*        background-image: url("/dist/image/halloween-7604.gif");
-             background-repeat: no-repeat;
-             background-size: cover;*/
 }
+
 .sign-up-container {
   position: absolute;
   left: 0;
@@ -112,10 +116,9 @@ button {
   height: 100%;
   opacity: 0;
   transition: all 0.5s;
-/*          background-image: url("/dist/image/halloween-7604.gif");
-               background-repeat: no-repeat;
-               background-size: cover;*/
+
 }
+
 .overlay-left {
   display: flex;
   flex-direction: column;
@@ -127,13 +130,11 @@ button {
   width: 50%;
   height: 100%;
   opacity: 0;
-/*  background-color: #282828;*/
   color: #fff;
   transition: all 0.5s;
-/*      background-image: url("/dist/image/halloween-7604.gif");
-           background-repeat: no-repeat;
-           background-size: cover;*/
+
 }
+
 .overlay-right {
 
   display: flex;
@@ -145,12 +146,10 @@ button {
   right: 0;
   width: 50%;
   height: 100%;
-/*  background-color: #282828;*/
+
   color: #fff;
   transition: all 0.5s;
- /*     background-image: url("/dist/image/halloween-7604.gif");
-           background-repeat: no-repeat;
-           background-size: cover;*/
+
 }
 .containerLR.right-panel-active .sign-in-container {
   transform: translateX(100%);
@@ -177,8 +176,8 @@ form h1 {
   font-weight: bold;
   margin: 0;
   color: #F9FFFF;
-    margin-top: 30px;
-    margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 p {
@@ -275,9 +274,8 @@ p {
 }
 /* 카카오 로그인 버튼 */
 .kakao-login {
-font-size:0;
- font-size: 0;
-        text-indent: -9999px;
+  font-size: 0;
+  text-indent: -9999px;
   background-color: #f7e600;
   color: #000;
 }
@@ -285,23 +283,22 @@ font-size:0;
 /* 네이버 로그인 버튼 */
 .naver-login {
    font-size:0;
-    font-size: 0;
-           text-indent: -9999px;
-  background-color: #03c75a;
-  color: #000;
+   text-indent: -9999px;
+   background-color: #03c75a;
+   color: #000;
 }
 
 /* 구글 로그인 버튼 */
 .google-login {
- font-size: 0;
- text-indent: -9999px;
-display:none;
+  font-size: 0;
+  text-indent: -9999px;
+  display:none;
   background-color: #F0FFF0;
   color: #000;
 }
 .social-login{
  font-size: 0;
-text-indent: -9999px;
+ text-indent: -9999px;
 }
 }
 

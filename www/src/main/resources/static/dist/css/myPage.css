@@ -43,20 +43,20 @@ font-family: 'S-CoreDream-3Light';
 }
 
 .myName{
-font-family: 'S-CoreDream-3Light';
-display:block;
-border:1px solid white;
-width:100%;
-height:200px;
- color: white;
+    font-family: 'S-CoreDream-3Light';
+    display:block;
+    border:1px solid white;
+    width:100%;
+    height:200px;
+    color: white;
 }
 
 .myReservBox{
-display:block;
-border:1px solid white;
-width:100%;
-height:300px;
- color: white;
+    display:block;
+    border:1px solid white;
+    width:100%;
+    height:500px;
+    color: white;
 }
 .myReservTitle>h3{
     margin-top:50px;
@@ -64,10 +64,10 @@ height:300px;
 }
 
 .myReserv{
-border:1px solid white;
-height:150px;
-width:100%;
-display:block;
+    border:1px solid white;
+    height:450px;
+    width:100%;
+    display:block;
 }
 
 .modifyTitle{
@@ -76,60 +76,59 @@ display:block;
     border:1px solid white;
 }
 .modifyTitle>h3{
-margin-top: 30px;
-margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .myQNABox{
-display:block;
-border:1px solid white;
-width:100%;
-height:300px;
- color: white;
+    display:block;
+    border:1px solid white;
+    width:100%;
+    height:300px;
+    color: white;
 }
 .myQNATitle{
-
     color:white;
     border:1px solid white;
 }
+
 .myQNATitle>h3{
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.myReviewBox{
-display:block;
-border:1px solid white;
-width:100%;
-height:300px;
- color: white;
-}
-.myReviewTitle{
 
+.myReviewBox{
+    display:block;
+    border:1px solid white;
+    width:100%;
+    height:300px;
+    color: white;
+}
+
+.myReviewTitle{
     color:white;
     border:1px solid white;
 }
-.myReviewTitle>h3{
 
-margin-bottom: 30px;
-margin-top: 30px;
+.myReviewTitle>h3{
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
+
 .myPageModify{
-margin-top:100px;
-display:block;
-border:1px solid white;
-width:100%;
-height:600px;
- color: white;
+    margin-top:100px;
+    display:block;
+    border:1px solid white;
+    width:100%;
+    height:600px;
+    color: white;
 }
 
 .myPageModify>h3{
-margin-bottom: 30px;
-margin-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
-.form-control{
 
+.form-control{
 width:50%;
 }
-
-
-@media screen and ( max-width : 600px){
