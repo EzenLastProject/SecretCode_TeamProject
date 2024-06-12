@@ -57,8 +57,8 @@ body {
     margin-top:10px;
 }
 .animated-text {
- font-family: 'Shilla_CultureB-Bold';
-    color:white;
+     font-family: 'Shilla_CultureB-Bold';
+     color:white;
      font-size:120px;
      font-weight: 700;
      margin: auto 20px;
@@ -72,9 +72,9 @@ body {
      width:90%;
 }
 .viewMore{
-  width: 190px;
-  height: 60px;
-   border:1px solid rgb(153, 151, 151);
+    width: 190px;
+    height: 60px;
+    border:1px solid rgb(153, 151, 151);
 
     transform: translate(-50%,-50%);
     top: 70%; /* 부모 요소의 중앙에 위치하도록 */
@@ -135,11 +135,11 @@ font-family: 'Shilla_CultureB-Bold';
     margin-left:50px;
     opacity: 0;
     transition: opacity 1s;
-      position: absolute;
-         transform: translate(-50%,-50%);
-         top: 59%; /* 부모 요소의 중앙에 위치하도록 */
-         left: 50%;
-         width:90%;
-         text-shadow: 5px 5px 5px #000;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 59%; /* 부모 요소의 중앙에 위치하도록 */
+    left: 50%;
+    width:90%;
+    text-shadow: 5px 5px 5px #000;
 
 }

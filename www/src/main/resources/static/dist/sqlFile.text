@@ -153,3 +153,12 @@ reservation_people INTEGER not null,
 reservation_price int not null,
 reservation_paydate DATETIME DEFAULT NOW(),
 PRIMARY KEY(reservation_num));
+
+ ALTER TABLE reservation
+ MODIFY COLUMN reservation_date  VARCHAR(100);
+
+ ALTER TABLE reservation
+MODIFY COLUMN reservation_time VARCHAR(100);
+
+--2024.06.12
+ alter table review add column uuid varchar(256);

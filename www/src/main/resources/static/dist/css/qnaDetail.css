@@ -1,13 +1,13 @@
 .qna-detail-container {
        background-image: url("/dist/image/sc7.png");
-          background-size : cover;
-          background-repeat : no-repeat;
+       background-size : cover;
+       background-repeat : no-repeat;
 
-          background-position : center;
-          z-index:1;
+       background-position : center;
+       z-index:1;
 }
 .qna-detail-box{
- background-image: url("/dist/image/sc1.png");
+    background-image: url("/dist/image/sc1.png");
     background-size : cover;
     background-repeat : no-repeat;
 
@@ -114,8 +114,8 @@
     padding: 10px 20px;
     cursor: pointer;
     height:35px;
-      line-height:20px;
-      font-size:16px;
+    line-height:20px;
+    font-size:16px;
 }
 
 
@@ -132,16 +132,16 @@
 }
 .qna-detail-ModBtn,
 .qna-detail-DelBtn{
-background-color: #8c8c8c;
+    background-color: #8c8c8c;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     height : 35px;
-     font-size:16px;
-     line-height:20px;
-     float:left;
+    font-size:16px;
+    line-height:20px;
+    float:left;
 }
 
 /* Modal */
@@ -175,29 +175,29 @@ background-color: #8c8c8c;
     margin-right: 10px;
 }
 .cmzone{
-background-color: black;
-color:white;
-padding:15px;
-margin-top:20px;
-border:1px solid white;
+    background-color: black;
+    color:white;
+    padding:15px;
+    margin-top:20px;
+    border:1px solid white;
 
 }
 .fw-bold{
-background-color: black;
-color:white;
-padding-left:10px;
-height:30px;
-border:1px solid white;
-border-left:none;
-border-right: none;
-border-top:none;
+    background-color: black;
+    color:white;
+    padding-left:10px;
+    height:30px;
+    border:1px solid white;
+    border-left:none;
+    border-right: none;
+    border-top:none;
 
 
 
 }
 .cmzone-re{
-float:right;
-margin: 50px 10px 10px 10px;
+    float:right;
+    margin: 50px 10px 10px 10px;
 }
 .con-div{
 margin-top: 30px;
@@ -209,13 +209,13 @@ margin-top: 30px;
 
 }
 .del{
- border:none;
- margin-top: 50px;
+     border:none;
+     margin-top: 50px;
 
 }
 .mod{
-border:none;
-margin-top: 50px;
+    border:none;
+    margin-top: 50px;
 }
 }
 
