@@ -99,7 +99,7 @@
     </select>
 
     <update id="updateCmtStatus">
-        update qna set cmtQty = 0 where bno = #{bno}
+        update qna set cmt_qty = cmt_qty+1 where bno = #{bno}
     </update>
 
     <sql id="search">

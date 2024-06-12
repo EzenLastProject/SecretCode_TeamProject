@@ -87,4 +87,12 @@ public class adminRegisterServiceImpl implements adminRegisterService {
 
         return arMapper.insert(advo);
     }
+
+    @Override
+    public List<adRegisterVO> getreservationList() {
+
+        List<adRegisterVO> reservationList = arMapper.getreservationList();
+
+        return reservationList;
+    }
 }
