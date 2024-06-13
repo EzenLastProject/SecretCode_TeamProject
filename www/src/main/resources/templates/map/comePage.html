@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/dist/css/comePage.css}">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+
+    <!-- services 라이브러리 불러오기 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+    <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a4f6f7d6b53d1c1700f3d75c22cd297"></script>
+</head>
+<body>
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="pageHeader">
+            <h1>Location</h1>
+        </div>
+        <div class="mapContainer">
+            <div id="map"></div>
+        </div>
+        <div class="infoSection">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="address">주소</td>
+                    <td>인천광역시 남동구 인주대로 593 엔타스빌딩 (12층)</td>
+                </tr>
+                <tr>
+                    <td class="address">전화</td>
+                    <td>010-8948-9443</td>
+                </tr>
+                <tr>
+                    <td class="address">메일</td>
+                    <td>yondam84@gmail.com</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <footer>
+            <p>저희 카페에 방문해 주셔서 감사합니다.</p>
+        </footer>
+        <script>
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(37.45032890524249, 126.70288019661811),
+                level: 3
+            };
+
+            var map = new kakao.maps.Map(container, options);
+
+             var marker = new kakao.maps.Marker({
+            // 지도 중심좌표에 마커를 생성합니다
+            position: map.getCenter()
+        });
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+
+        // 지도에 클릭 이벤트를 등록합니다
+        // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+
+            // 클릭한 위도, 경도 정보를 가져옵니다
+            var latlng = mouseEvent.latLng;
+
+            // 마커 위치를 클릭한 위치로 옮깁니다
+            marker.setPosition(latlng);
+
+            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+            message += '경도는 ' + latlng.getLng() + ' 입니다';
+
+            var resultDiv = document.getElementById('clickLatlng');
+            resultDiv.innerHTML = message;
+
+        });
+
+        </script>
+    </th:block>
+</th:block>
+</body>
+</html>

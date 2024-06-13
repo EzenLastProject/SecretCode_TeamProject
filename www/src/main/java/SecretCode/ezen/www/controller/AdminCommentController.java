@@ -64,8 +64,5 @@ public class AdminCommentController {
         }
     }
 
-    @GetMapping("/comePage")
-    public void come(){
 
-    }
 }
