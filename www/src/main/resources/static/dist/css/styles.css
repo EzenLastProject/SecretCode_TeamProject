@@ -50,7 +50,7 @@ body {
 
 .row1 {
     animation: moveLeftRight 50s ease-in-out infinite;
-    
+
 }
 
 .row2 {
@@ -121,7 +121,7 @@ body {
 }
 
 .text-overlay {
- 
+
    font-family: 'Shilla_CultureB-Bold';
     position: absolute;
     top: 50%;

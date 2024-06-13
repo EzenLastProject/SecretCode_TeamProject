@@ -162,3 +162,11 @@ MODIFY COLUMN reservation_time VARCHAR(100);
 
 --2024.06.12
  alter table review add column uuid varchar(256);
+
+ ALTER TABLE review
+ MODIFY COLUMN read_count INT DEFAULT 0;
+
+ ALTER TABLE reservation ADD COLUMN merchant_uid varchar(200) NOT NULL AFTER reservation_num;
+
+ ALTER TABLE review
+ ADD COLUMN is_liked BOOLEAN DEFAULT FALSE;

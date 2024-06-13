@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.context.Theme;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,18 +24,25 @@ public class ThemeController {
    private final  ThemeService tsv;
 
     @GetMapping("/theme")
-    public void theme(){
+        public String theme(Model m){
+            List<ThemeVO> theme = tsv.getThemes();
 
-//        return "/theme";
+            m.addAttribute("theme",theme);
+            return "theme/theme"; // 테마 목록을 보여주는 뷰
 
 
     }
+
     @GetMapping("/themeReserv")
-    public void themeReserv(){
+        public String themeReserv(Model m){
+        List<ThemeVO> themeReservList = tsv.getThemeList();
+
+        m.addAttribute("themeReservList", themeReservList);
+        return "theme/themeReserv"; // 테마 목록을 보여주는 뷰
+        }
 
 
 
-    }
 
     @GetMapping("/mainHome")
     public void mainHome(){

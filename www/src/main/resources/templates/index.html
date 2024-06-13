@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--        <link rel="stylesheet" th:href="@{/dist/css/mainHome.css}">-->
-        <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" th:href="@{/dist/css/styles.css}">
-            <link rel="stylesheet" th:href="@{/dist/css/mainHome.css}">
-        </head>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/dist/css/styles.css}">
+</head>
 
 
-        <th:block th:replace="~{layout :: setFragment(~{this::content})}">
-            <th:block th:fragment="content">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
 
-        <div class="main-container" id="main-container">
+        <div class="main-container">
 
             <div class="posters-row row1" id="posters-row1">
 
@@ -54,7 +53,7 @@
                 <div class="poster"><a th:href="@{/theme/mainHome}"><img th:src="@{/dist/image/poster36.jpeg}" alt="Poster 36" style="width:200px" height="300px"></a></div>
                 <div class="poster"><a th:href="@{/theme/mainHome}"><img th:src="@{/dist/image/poster37.jpeg}" alt="Poster 37" style="width:200px" height="300px"></a></div>
                 <div class="poster"><a th:href="@{/theme/mainHome}"><img th:src="@{/dist/image/poster30.jpeg}" alt="Poster 30" style="width:200px" height="300px"></a></div>
-<!--                <div class="poster"><img th:src="@{/dist/image/poster39.jpeg}" alt="Poster 1" style="width:200px" height="300px"></div>-->
+                <!--                <div class="poster"><img th:src="@{/dist/image/poster39.jpeg}" alt="Poster 1" style="width:200px" height="300px"></div>-->
             </div>
             <div class="posters-row row3" id="posters-row3">
                 <div class="poster"><a th:href="@{/theme/mainHome}"><img th:src="@{/dist/image/poster40.jpeg}" alt="Poster 40" style="width:200px" height="300px"></a></div>
@@ -78,62 +77,24 @@
                 어두운 곳에서 눈을 떠보니<br>
                 눈앞에 새로운 세상이 펼쳐졌다.
             </div>
+
+
+
         </div>
-            <div class="main2-container" id="main2-container">
-
-                <div class="image-container">
-                    <div class="image image1" id="image1">
-                        <img class="main-img1"
-                             th:src="@{/dist/image/home19.jpeg}"
-                             style="display:block; margin: 0; padding: 0;
-                              width:100%; height:850px "
-                        >
-
-                        <div class="animated-text">
-                            <div class="line">SECRET CODE</div>
-                            <div class="line">ESCAPE </div>
-                            <div class="line">IF YOU CAN</div>
-                        </div>
-                        <p class="subtext" id="subtext">주어진 시간 내에, 방을 탈출하라</p>
-
-                        <!--            <button type="button" class="paraShowing btn-reservation show" data-dirc="s" data-delay="0.5" onclick="" style="translate: none;rotate: none;scale: none;transform: translate(0px, 0px);opacity: 1;">-->
-                        <!--                <span class="default">테마 선택 및 예약</span>-->
-                        <!--                <span class="hover">by.Secret Code</span>-->
-                        <!--            </button>-->
-                        <div class="viewMore" id="viewMore"><a th:href="@{/theme/themeReserv}" class="fade-in">테마 선택 및 예약</a></div>
-                    </div>
 
 
-                </div>
 
-            </div>
+        <script th:inline="javascript">
+            const msg_register = [[${msg_register}]];
+            console.log(msg_register);
+                if(msg_register === "1"){
+                    alert("회원가입이 완료되었습니다.");
+                }
+        </script>
 
 
-            <script th:inline="javascript">
-                const msg_register = [[${msg_register}]];
-                console.log(msg_register);
-                    if(msg_register === "1"){
-                        alert("회원가입이 완료되었습니다.");
-                    }
-
-            </script>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-       var main2Container = document.getElementById('main2-container');
-       var scrollThreshold = window.innerHeight / 2;
-
-       window.addEventListener('scroll', function() {
-           if (window.scrollY > scrollThreshold) {
-               main2Container.style.display = 'flex';
-           } else {
-               main2Container.style.display = 'none';
-           }
-       });
-   });
-                </script>
-
-            </th:block>
-        </th:block>
+    </th:block>
+</th:block>
 
 
 
