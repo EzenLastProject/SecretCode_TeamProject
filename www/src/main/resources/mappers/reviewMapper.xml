@@ -11,15 +11,14 @@
 
     <select id="getTotalCount" resultType="int">
 
-        select count(bno) from qna
+        select count(bno) from review
 
 
     </select>
 
     <select id="getList" parameterType="SecretCode.ezen.www.domain.PagingVO" resultType="SecretCode.ezen.www.domain.ReviewVO">
-        SELECT * FROM review
-        ORDER BY bno DESC
-        LIMIT #{pageStart},#{qty}
+        SELECT * FROM review r JOIN file f ON r.uuid = f.uuid
+        ORDER BY r.bno DESC LIMIT #{pageStart},#{qty}
     </select>
 
     <select id="myreview" resultType="SecretCode.ezen.www.domain.ReviewVO">
@@ -27,7 +26,29 @@
         WHERE writer = #{email}
     </select>
 
+    <!-- 좋아요 수 증가 -->
+    <update id="incrementLikeCount" parameterType="int">
+        UPDATE review
+        SET read_count = read_count + 1
+        WHERE bno = #{bno}
+    </update>
 
+    <!-- 좋아요 수 조회 -->
+    <select id="getReadCount" resultType="int" parameterType="int">
+        SELECT read_count
+        FROM review
+        WHERE bno = #{bno}
+    </select>
 
+    <!-- 좋아요 수 감소 -->
+    <update id="decrementLikeCount" parameterType="int">
+        UPDATE review
+        SET read_count = read_count - 1
+        WHERE bno = #{bno}
+    </update>
+    <update id="modify">
+        update review set title=#{title}, content=#{content}
+        where bno=#{bno}
+    </update>
 
 </mapper>

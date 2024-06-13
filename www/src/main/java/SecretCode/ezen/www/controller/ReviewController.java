@@ -9,6 +9,7 @@ import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.ui.context.Theme;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -64,14 +66,11 @@ public class ReviewController {
         return "review/register";
     }
     @PostMapping("/register")
-    public String register(ReviewVO rvo) {
+    public String register(ReviewVO rvo, @RequestParam("themeUuid") String themeUuid) {
         log.info(">>>reviewVO>>{}", rvo);
 
-        // UUID 설정
-        UUID uuid = UUID.randomUUID(); // 랜덤 UUID 생성
-        rvo.setUuid(uuid.toString()); // UUID 문자열로 설정
-
         // ReviewService를 사용하여 ReviewVO를 저장
+        rvo.setUuid(themeUuid); // 선택된 테마의 UUID를 리뷰 객체에 설정
         rsv.register(rvo);
 
         return "redirect:/review/list"; // 등록 후 Review 목록 페이지로 리다이렉트
@@ -87,7 +86,41 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/like/{bno}")
+    public ResponseEntity<?> likeReview(@PathVariable("bno") int bno) {
+        try {
+            rsv.incrementLikeCount(bno); // 좋아요를 증가시킴
+            int readCount = rsv.getReadCount(bno); // 업데이트된 좋아요 수 조회
+            return ResponseEntity.ok(Map.of("likes", readCount));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to like review");
+        }
+    }
+
+    @PostMapping("/dislike/{bno}")
+    public ResponseEntity<?> dislikeReview(@PathVariable("bno") int bno) {
+        try {
+            rsv.decrementLikeCount(bno); // 좋아요를 감소시킴
+            int readCount = rsv.getReadCount(bno); // 업데이트된 좋아요 수 조회
+            return ResponseEntity.ok(Map.of("likes", readCount));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to dislike review");
+        }
+    }
+
+    @PostMapping("/modify")
+    public String modify(@RequestParam("bno") int bno, ReviewVO rvo){
+        rvo.setBno(bno); // 리뷰의 bno 설정
+        rsv.modify(rvo); // 리뷰 수정
+        return "redirect:/review/list"; // 수정 후 리뷰 목록 페이지로 리다이렉트
+    }
 }
+
+
+
+
+
+
 
 
 

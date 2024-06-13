@@ -10,6 +10,82 @@
 
 <link rel="stylesheet" th:href="@{/dist/css/reviewlist.css}">
 
+<style>
+    /* 감싸고 있는 div 요소에 대한 스타일 */
+.like-box {
+    /* 필요한 스타일을 여기에 추가합니다 */
+    float: right; /* 우측 정렬 */
+}
+
+.like-button, .dislike-button {
+    width: 50px;
+    height: 50px;
+    font-size:26px;
+    text-align:center;
+
+    border-radius: 10px; /* 보더의 둥근 정도 설정 */
+    transition: border-color 0.3s ease-in-out; /* 보더 색상 전환 효과 추가 */
+    cursor: pointer;
+    background-size: cover;
+    transition: background-color 0.3s ease-in-out; /* 배경색 전환 효과 추가 */
+    background-color: transparent; /* 기본 배경색 투명으로 설정 */
+}
+
+/* 좋아요 버튼의 호버 효과 */
+.like-button:hover {
+    background-color: lightgreen; /* 호버 시 배경색 변경 (예: 옅은 초록색) */
+    border-color: rgba(0, 0, 0, 0.2); /* 호버 시 연한 보더 색상으로 변경 */
+}
+
+/* 싫어요 버튼의 호버 효과 */
+.dislike-button:hover {
+    background-color: lightcoral; /* 호버 시 배경색 변경 (예: 옅은 빨강색) */
+    border-color: rgba(0, 0, 0, 0.2); /* 호버 시 연한 보더 색상으로 변경 */
+}
+    .card-title input,
+.card-text textarea {
+   border-left: 1px solid rgba(0, 0, 0, 0.1); /* 왼쪽 테두리 설정 */
+    border-top: none; /* 위 테두리 제거 */
+    border-right: none; /* 오른쪽 테두리 제거 */
+    border-left: none; /* 오른쪽 테두리 제거 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 왼쪽 테두리 설정 */
+    outline: none; /* 포커스 효과 제거 */ /* 외곽선 제거 */
+    outline: none; /* 포커스 효과 제거 */
+    width:100%;
+}.review-text{
+height:120px;
+}
+
+.card-title input{
+
+    white-space: nowrap; /* 줄 바꿈 방지 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분 생략 부호로 표시 */
+}
+
+
+
+ .ModBtn,
+.DelBtn {
+    color: black; /* 기본 버튼 색상 */
+    border:none;
+    border-radius: 5px; /* 둥근 테두리 */
+
+
+    cursor: pointer; /* 커서 모양 변경 */
+    transition: color 0.3s, background-color 0.3s; /* 배경색과 글자색 변화 애니메이션 */
+}
+
+.ModBtn:hover,
+.DelBtn:hover {
+    color: #fff; /* 호버 시 글자색 변경 */
+    background-color: #007bff; /* 호버 시 배경색 변경 */
+}
+
+
+
+</style>
+
 <th:block th:replace="~{layout::setFragment(~{this::content})}">
 
     <th:block th:fragment="content" >
@@ -30,12 +106,12 @@
 
                 <!-- 리뷰 목록 -->
                 <div th:each="rvo : ${list}" class="card mt-3" style="border-bottom-right-radius: 72px; border: 2px solid white; ">
-                    <div class="card-body d-flex">
+                    <div class="card-body d-flex" style="height:330px;">
 
-                      <!--  &lt;!&ndash; 이미지 영역 &ndash;&gt;
-                        <div class="theme-img" style="width: 25%;">
-                            <img th:src="'/upload/' + ${rvo.saveDir} + '/' + ${rvo.uuid} + '_' + ${rvo.fileName}" class="img-fluid" alt="Review Image">
-                        </div>-->
+                        <!-- 이미지 영역 -->
+                        <div class="theme-img" style="width: 25%; ">
+                            <img style="height:100%; width:200px;" th:src="'/upload/' + ${rvo.saveDir} + '/' + ${rvo.uuid} + '_' + ${rvo.fileName}" class="img-fluid" alt="Review Image">
+                        </div>
 
 
                         <!-- 내용 영역 -->
@@ -50,28 +126,53 @@
             </span>
                                 </div>
                                 <div class="theme-name">
-                                    <h5 class=""> [[${rvo.theme}]]</h5>
+                                    <h5 class="">
+        <span th:switch="${rvo.theme}">
+            <span th:case="1">위로</span>
+            <span th:case="2">노웨아이웃</span>
+            <span th:case="3">Rendering</span>
+            <span th:case="4">SCENE</span>
+            <span th:case="5">Trigger</span>
+        </span>
+                                    </h5>
                                 </div>
+
                                 <div class="card-title">
-                                    <h5 >제목 : [[${rvo.title}]]</h5>
+                                 <h5><span><input type="text"  id="titleInput" th:value="${rvo.title}"></span></h5>
                                 </div>
                                 <div class="card-subtitle mb-2 text-muted">
                                     <span>[[${rvo.writer}]]</span> | <span>[[${rvo.regDate}]] </span>
                                 </div>
                                 <div class="card-text">
-                                    <p class="review-text">[[${rvo.content}]]</p>
-                                </div>
-                                <div class="likes-button" style="margin-top: 100px; float:right;">
-                                    <button class="btn btn-outline-success btn-sm mt-2" style="width:70px; height:50px;" th:text="'👍 ' + ${rvo.readCount}">👍 0</button>
+                                    <textarea class="review-text" id="contentInput" rows="3">[[${rvo.content}]]</textarea>
                                 </div>
 
                             </div>
+
                         </div>
 
+
+                        <div class="like-box">
+                            <button class="like-button" th:data-bno="${rvo.bno}" onclick="likeReview(this)">👍</button>
+                            <button class="dislike-button" th:data-bno="${rvo.bno}" onclick="dislikeReview(this)">👎</button>
+                            <br><br>
+                            <span th:id="'likeCountSpan_' + ${rvo.bno}">공감수: <span th:id="'likeCount_' + ${rvo.bno}" th:text="${rvo.readCount}"></span></span>
+                        </div>
 
 
                     </div>
 
+                    <div class="btn-box">
+                        <form action="/review/modify" method="post">
+                            <input type="hidden" name="bno" th:value="${rvo.bno}">
+                            <button type="submit" class="ModBtn" id="modBtn" style="width:50px; float:right; height:30px;">수정</button>
+                        </form>
+
+                        <form action="/review/delete" method="post">
+                            <input type="hidden" name="bno" th:value="${rvo.bno}">
+                            <button type="submit" class="DelBtn" id="deltBtn" style="width:50px; float:right; height:30px;">삭제</button>
+                        </form>
+                    </div>
                 </div>
 
             </div>
@@ -107,6 +208,8 @@
 
 
 
+
+        <script th:src="@{/dist/js/ReviewList.js}"></script>
 
 
 

@@ -19,6 +19,13 @@ public class ReviewServiceImpl implements ReviewService {
     private PagingVO pgvo;
 
 
+    public class ReviewNotFoundException extends RuntimeException {
+
+        public ReviewNotFoundException(String message) {
+            super(message);
+        }
+    }
+
     @Override
     public int register(ReviewVO rvo) {
         return reviewMapper.register(rvo);
@@ -32,10 +39,34 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewVO> getList(PagingVO pgvo) {
         return reviewMapper.getList(pgvo);
+
+
+    }
+
+    @Override
+    public void incrementLikeCount(int bno) {
+        reviewMapper.incrementLikeCount(bno);
+    }
+
+    @Override
+    public int getReadCount(int bno) {
+        return reviewMapper.getReadCount(bno);
+    }
+
+    @Override
+    public void decrementLikeCount(int bno) {
+        reviewMapper.decrementLikeCount(bno);
     }
 
     @Override
     public List<ReviewVO> myreview(String email) {
         return reviewMapper.myreview(email);
     }
+
+    @Override
+    public void modify(ReviewVO rvo) {
+        reviewMapper.modify(rvo);
+    }
+
+
 }
