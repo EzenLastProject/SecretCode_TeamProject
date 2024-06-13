@@ -50,6 +50,7 @@
 
                 <div class="review-register">
                     <!-- 선택된 테마명을 출력하는 부분 -->
+                    <input type="hidden" id="themeUuid" name="themeUuid">
                     <div id="text-div">선택하신 테마명</div>
                     <div class="theme-div">
                         <!-- 선택된 테마를 input의 value로 설정 -->
@@ -106,7 +107,8 @@
                         // 받아온 데이터를 이용하여 테마의 정보를 동적으로 생성
                         var themeDetailsDiv = document.getElementById("themeDetails");
                         themeDetailsDiv.style.display = 'block'; // 선택된 테마 정보를 보이도록 설정
-
+                        selectedThemeUuid = data.uuid;
+                        document.getElementById("themeUuid").value = selectedThemeUuid;
                         // 이미지를 비동기로 받아와서 설정
                         var imageUrl = data.saveDir &&  data.uuid && data.fileName ? "/upload/" + data.saveDir + "/" + data.uuid  + "_" + data.fileName : "";
                         var imgElement = document.createElement("img");

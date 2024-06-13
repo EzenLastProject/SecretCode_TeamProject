@@ -13,4 +13,14 @@ public interface ReviewService {
     int getTotalCount(PagingVO pgvo);
 
     List<ReviewVO> getList(PagingVO pgvo);
+
+
+    void incrementLikeCount(int bno);
+
+    int getReadCount(int bno);
+
+    void decrementLikeCount(int bno);
+
+
+    void modify(ReviewVO rvo);
 }
