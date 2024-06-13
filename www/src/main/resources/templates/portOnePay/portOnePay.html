@@ -64,11 +64,32 @@
                     </div>
 
 
-                    <button type="button" th:onclick="requestPay()" class="payButton">결제하기</button>
+                    <button type="button" th:onclick="requestPay()" class="payButton" id="payButton">결제하기</button>
+
+                    <h4 id="logdingCheck" class="logdingCheck">
+
+                        <span>E</span>
+                        <span>-</span>
+                        <span>M</span>
+                        <span>A</span>
+                        <span>I</span>
+                        <span>L</span>
+                        <span>발</span>
+                        <span>송</span>
+                        <span>중</span>
+                        <span>입</span>
+                        <span>니</span>
+                        <span>다</span>
+                        <span>.</span>
+                    </h4>
                 </form>
             </div>
 
 
+        <script th:inline="javascript">
+            document.getElementById("payButton").style.display="";
+            document.getElementById("logdingCheck").style.display="none";
+        </script>
 
 
 

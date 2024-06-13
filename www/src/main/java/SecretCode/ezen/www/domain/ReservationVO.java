@@ -10,6 +10,7 @@ import lombok.*;
 public class ReservationVO {
 
     public int reservationNum;
+    public String merchantUid;
     public String reservationDate;
     public String reservationTime;
     public String themeName;
