@@ -22,6 +22,11 @@
         LIMIT #{pageStart},#{qty}
     </select>
 
+    <select id="myreview" resultType="SecretCode.ezen.www.domain.ReviewVO">
+        SELECT * FROM review
+        WHERE writer = #{email}
+    </select>
+
 
 
 

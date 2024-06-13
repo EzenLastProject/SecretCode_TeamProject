@@ -1,6 +1,7 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.ReservationVO;
+import SecretCode.ezen.www.service.EmailService;
 import SecretCode.ezen.www.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PaymentController {
 
     private final PaymentService psv;
-
+    private final EmailService emailService;
 
     @GetMapping("/portOnePay")
     public void pay() {
@@ -25,11 +26,12 @@ public class PaymentController {
 
     //결제 후 예약 DB 작업
     @ResponseBody
-    @GetMapping(value = "/reservation/{date}/{time}/{theme}/{name}/{phone}/{email}/{participants}/{price}")
-    public String reservation(ReservationVO rvo, @PathVariable("date")String date, @PathVariable("time")String time, @PathVariable("theme")String theme
+    @GetMapping(value = "/reservation/{merchantUid}/{date}/{time}/{theme}/{name}/{phone}/{email}/{participants}/{price}")
+    public String reservation(ReservationVO rvo, @PathVariable("merchantUid")String merchantUid, @PathVariable("date")String date, @PathVariable("time")String time, @PathVariable("theme")String theme
             , @PathVariable("name")String name, @PathVariable("phone")String phone, @PathVariable("email")String email
             , @PathVariable("participants")int participants, @PathVariable("price")int price) {
 
+        log.info(">>> merchant_uid >> {}",merchantUid);
         log.info(">>> date >> {}",date);
         log.info(">>> time >> {}",time);
         log.info(">>> theme >> {}",theme);
@@ -39,6 +41,7 @@ public class PaymentController {
         log.info(">>> participants >> {}",participants);
         log.info(">>> price >> {}",price);
 
+        rvo.setMerchantUid(merchantUid);
         rvo.setReservationDate(date);
         rvo.setReservationTime(time);
         rvo.setThemeName(theme);
@@ -57,20 +60,20 @@ public class PaymentController {
 
     }
 
-
-/*
-    //결제 후 예약 DB 작업
+    //예약후 이메일 전송
     @ResponseBody
-    @GetMapping(value = "/validate/{rsp.imp_uid}")
-    public String reservation(@PathVariable("date")String date) {
+    @GetMapping(value = "/reservationEmail/{email}/{merchantUid}")
+    public String pwdReturnCheck(@PathVariable("email")String email, @PathVariable("merchantUid")String merchantUid ) throws Exception {
+
+        log.info(">>> reservationEmail >> {}",email);
+        log.info(">>> merchantUid >> {}",merchantUid);
+
+        emailService.reservationEmail(email, merchantUid);
 
 
-
-
-        return ;
+        return "isOk";
 
     }
-*/
 
 
 

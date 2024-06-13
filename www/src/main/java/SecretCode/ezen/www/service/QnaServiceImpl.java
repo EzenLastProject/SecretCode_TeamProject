@@ -2,14 +2,10 @@ package SecretCode.ezen.www.service;
 
 
 import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaCommentVO;
-import SecretCode.ezen.www.domain.QnaDTO;
 import SecretCode.ezen.www.domain.QnaVO;
-import SecretCode.ezen.www.repository.NoticeMapper;
 import SecretCode.ezen.www.repository.QnaMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -83,7 +79,10 @@ public class QnaServiceImpl implements QnaService {
         qnaMapper.updateCmtStatus(bno);
     }
 
-
+    @Override
+    public List<QnaVO> myqna(String email) {
+        return qnaMapper.myqna(email);
+    }
 
 
     @Override

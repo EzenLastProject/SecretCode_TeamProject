@@ -1,7 +1,6 @@
 package SecretCode.ezen.www.service;
 
 import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaDTO;
 import SecretCode.ezen.www.domain.QnaVO;
 
 import java.util.List;
@@ -41,4 +40,6 @@ public interface QnaService {
     int getCommentCount(int bno);
 
     void updateCmtStatus(int bno);
+
+    List<QnaVO> myqna(String email);
 }

@@ -33,4 +33,9 @@ public class ReviewServiceImpl implements ReviewService {
     public List<ReviewVO> getList(PagingVO pgvo) {
         return reviewMapper.getList(pgvo);
     }
+
+    @Override
+    public List<ReviewVO> myreview(String email) {
+        return reviewMapper.myreview(email);
+    }
 }
