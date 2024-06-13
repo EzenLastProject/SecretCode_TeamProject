@@ -3,12 +3,10 @@ package SecretCode.ezen.www.service;
 
 import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.ThemeVO;
-import SecretCode.ezen.www.repository.ReviewMapper;
 import SecretCode.ezen.www.repository.ThemeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.context.Theme;
 
 import java.util.List;
 
@@ -29,6 +27,16 @@ public class ThemeServiceImpl implements ThemeService {
     @Override
     public ThemeVO getThemeDetails(Long themeNum) {
         return themeMapper.getThemeDetails(themeNum);
+    }
+
+    @Override
+    public List<ThemeVO> getThemeList() {
+        return themeMapper.getReservThemes();
+    }
+
+    @Override
+    public List<ThemeVO> getThemes() {
+        return themeMapper.getThemes();
     }
 
 

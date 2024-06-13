@@ -14,4 +14,8 @@ public interface ThemeMapper {
 
 
     ThemeVO getThemeDetails(Long themeNum);
+
+    List<ThemeVO> getReservThemes();
+
+    List<ThemeVO> getThemes();
 }

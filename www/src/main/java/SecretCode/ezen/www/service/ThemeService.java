@@ -7,8 +7,13 @@ import java.util.List;
 
 public interface ThemeService {
 
+
+
     List<ThemeVO> getAllThemes();
 
-
     ThemeVO getThemeDetails(Long themeNum);
+
+    List<ThemeVO> getThemeList();
+
+    List<ThemeVO> getThemes();
 }

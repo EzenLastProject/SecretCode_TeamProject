@@ -19,7 +19,8 @@ import net.coobird.thumbnailator.Thumbnails;
 @Component
 public class FileHandler {
 
-    private final String UP_DIR="C:\\_secretFileUpload";
+     private final String UP_DIR="C:\\_secretFileUpload";
+//    private final String UP_DIR = "/Users/kimnoa/Desktop/noa/_myProject/_java/_fileupload/";
 
     public List<FileVO> uploadFiles(MultipartFile[] files) {
         List<FileVO> flist = new ArrayList<FileVO>();
