@@ -13,4 +13,6 @@ public interface ReviewService {
     int getTotalCount(PagingVO pgvo);
 
     List<ReviewVO> getList(PagingVO pgvo);
+
+    List<ReviewVO> myreview(String email);
 }

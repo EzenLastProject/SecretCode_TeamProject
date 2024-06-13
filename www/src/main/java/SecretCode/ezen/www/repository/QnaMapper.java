@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 @Mapper
 public interface QnaMapper {
@@ -48,6 +47,8 @@ public interface QnaMapper {
     int getCommentCount(@Param("bno") int bno);
 
     void updateCmtStatus(@Param("bno") int bno);
+
+    List<QnaVO> myqna(String email);
 
 
 
