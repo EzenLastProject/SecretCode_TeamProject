@@ -65,7 +65,7 @@ font-family: 'S-CoreDream-3Light';
 
 .myReserv{
     border:1px solid white;
-    height:450px;
+    height:100%;
     width:100%;
     display:block;
 }
@@ -132,3 +132,14 @@ font-family: 'S-CoreDream-3Light';
 .form-control{
 width:50%;
 }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }

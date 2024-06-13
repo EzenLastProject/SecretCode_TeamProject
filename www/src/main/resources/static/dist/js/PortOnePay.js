@@ -54,9 +54,9 @@ calculatePrice();
 });
 
  //결제 후 예약 DB 작업 비동기 메서드
- async function reservationToServer(date, time, theme, name, phone, email, participants, price){
+ async function reservationToServer(merchantUid, date, time, theme, name, phone, email, participants, price){
     try {
-        const url = "/portOnePay/reservation/"+date+"/"+time+"/"+theme+"/"+name+"/"+phone+"/"+email+"/"+participants+"/"+price;
+        const url = "/portOnePay/reservation/"+merchantUid+"/"+date+"/"+time+"/"+theme+"/"+name+"/"+phone+"/"+email+"/"+participants+"/"+price;
         const resp = await fetch(url);
         const result = await resp.text();
 
@@ -65,6 +65,25 @@ calculatePrice();
         console.log(error);
     }
   }
+
+
+  //결제/예약 후 메일보내기 메서드
+  async function reservationEmailToServer(email, merchantUid){
+    try {
+        const url = "/portOnePay/reservationEmail/"+email+"/"+merchantUid;
+        const resp = await fetch(url);
+        const result = await resp.text();
+
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+
+
+
+
 
 
 
@@ -84,7 +103,7 @@ function requestPay() {
         {
             pg: "html5_inicis",		//KG이니시스 pg파라미터 값
             pay_method: "card",		//결제 방법
-            merchant_uid: date+time+participants,//주문번호
+            merchant_uid: date+time+email,//주문번호
             name: theme,		//상품 명
             amount: price,			//금액
               buyer_email: email,
@@ -92,44 +111,54 @@ function requestPay() {
               buyer_tel: phone,
         },
         function (rsp) {
+              //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+            if (rsp.success) {
 
                     // 가맹점 서버 결제 API 성공시 로직
-                    console.log("결제했다!!!");
+                    let merchantUid = date+time+email;
 
-                    reservationToServer(date, time, theme, name, phone, email, participants, price).then(result =>{
+                    console.log("결제했다!!!");
+                    alert("결제가 완료되었습니다!");
+
+                    document.getElementById("payButton").style.display="none";
+
+                    document.getElementById("logdingCheck").style.display="";
+
+
+                    alert("잠시만 기다려주세요! 예약확인 메일을 보내는 중 입니다!");
+
+                    
+               
+                    reservationToServer(merchantUid, date, time, theme, name, phone, email, participants, price).then(result =>{
                         console.log(result);
 
                         if(result == "1"){
+
+                            reservationEmailToServer(email, merchantUid).then(result =>{
+
+                                console.log(result);
+
+                                if(result == "isOk"){
+    
+                                  alert("결제가 완료 되었습니다. 이메일을 확인해 주세요.");
+                                  window.location.replace("/member/myPage");
+
+                                }
+
+                            })
+
+
+
+
                             
+
                         }
-
-
-
-
-
-
-
-
 
                     })
 
 
-              //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
-            if (rsp.success) {
-                //서버 검증 요청 부분
-                $.ajax({
-                    url: "/payment/validate/" + rsp.imp_uid,
-                    method: "GET",
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                        imp_uid: rsp.imp_uid,            // 결제 고유번호
-                        merchant_uid: rsp.merchant_uid,   // 주문번호
-                        amount: rsp.paid_amount
-                    }),
 
-                }).done(function (data) {
 
-                })
 
             } else {
                 alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);

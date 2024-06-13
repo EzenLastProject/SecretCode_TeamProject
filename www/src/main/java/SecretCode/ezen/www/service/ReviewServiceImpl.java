@@ -59,6 +59,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public List<ReviewVO> myreview(String email) {
+        return reviewMapper.myreview(email);
+    }
+
+    @Override
     public void modify(ReviewVO rvo) {
         reviewMapper.modify(rvo);
     }

@@ -1,8 +1,10 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.MemberVO;
-import SecretCode.ezen.www.service.EmailService;
-import SecretCode.ezen.www.service.MemberService;
+import SecretCode.ezen.www.domain.QnaVO;
+import SecretCode.ezen.www.domain.ReservationVO;
+import SecretCode.ezen.www.domain.ReviewVO;
+import SecretCode.ezen.www.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RequestMapping("/member/*")
 @Slf4j
@@ -25,6 +28,9 @@ public class MemberController {
     private final MemberService msv;
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
+    private final PaymentService psv;
+    private final QnaService qsv;
+    private final ReviewService rsv;
 
     @GetMapping("/login_register")
     public void join() {
@@ -150,6 +156,31 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/myPage")
+    public void myReservation(Principal principal, Model m){
+
+        String email = principal.getName(); //id
+
+        List<ReservationVO> myReservation = psv.getmyReservation(email);
+
+        m.addAttribute("myreservaation", myReservation);
+
+
+        List<QnaVO> myqna = qsv.myqna(email);
+
+        m.addAttribute("myqna", myqna);
+
+        List<ReviewVO> myreview = rsv.myreview(email);
+        m.addAttribute("myreview", myreview);
+
+
+
+
+    }
+
+
+
+
     //구글 이메일 인증
     @PostMapping("/emailConfirm")
     @ResponseBody
@@ -184,10 +215,10 @@ public class MemberController {
 
 
 
-    @GetMapping("/myPage")
-    public void myPage(){
-
-    }
+//    @GetMapping("/myPage")
+//    public void myPage(){
+//
+//    }
 
     @GetMapping("/findEmailPwd")
     public void findEmail() {
