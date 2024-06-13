@@ -19,125 +19,47 @@
             </div> <!--title 디브 -->
 
 
-            <div class="themeBox themeBox1" style="text-align: center;">
+            <div class="themeBox themeBox1 container-md" style="text-align: center;">
 <!--                <div class="row row-cols-3">-->
 
-                <div class="themesmallBox" id="sb" style="display: inline-block;">
+                <div class="themesmallBox" id="sb" style="display: inline-block;" th:each="tvo :${theme}">
                 <div class="themeimgBox" >
-                    <img class="themeimg" th:src="@{/dist/image/theme13.gif}">
+                    <img class="themeimg" th:src="'/upload/' + ${tvo.saveDir} + '/' + ${tvo.uuid} + '_' + ${tvo.fileName}">
                 </div>
                     <div class="themeTitle">
 
-                        <span class="imgTitle">위로</span>
-                        <p>난이도 : ⭐️⭐️⭐️️</p>
+                        <span class="imgTitle">[[${tvo.themeName}]]</span>
+                        <p>난이도 : [[${tvo.difficulty}]]</p>
 
-                        <p>장르 : 감성</p>
+                        <p>장르 : [[${tvo.genre}]]</p>
+                        <a href="#" class="modal-trigger" data-modal-id="'modal' + ${iter.count}"></a>
                     </div>
                 </div>
-                <div class="themesmallBox" style="display: inline-block;">
-                <div class="themeimgBox">
-                    <img class="themeimg" th:src="@{/dist/image/theme12.gif}">
-                </div>
-                    <div class="themeTitle">
 
-                        <span class="imgTitle">노웨이아웃</span>
-                        <p>난이도 : ⭐️⭐️⭐️⭐️⭐️</p>
-                        <p>장르 : 스릴러</p>
-                    </div>
-                </div>
-                <div class="themesmallBox" style="display: inline-block;">
-                <div class="themeimgBox">
-                    <img class="themeimg" th:src="@{/dist/image/theme05.gif}">
-                </div>
-                    <div class="themeTitle">
-
-                        <span class="imgTitle">Rendering</span>
-                        <p>난이도 : ⭐️⭐️⭐️⭐️️️</p>
-                        <p>장르 : 추리,판타지</p>
-                    </div>
-                </div>
-            </div>
-        <div class="themeBox themeBox2" style="text-align: center;">
-                <div class="themesmallBox" style="display: inline-block;">
-                <div class="themeimgBox">
-                    <img class="themeimg" th:src="@{/dist/image/theme14.gif}">
-                </div>
-                    <div class="themeTitle">
-
-                        <span class="imgTitle">SCENE</span>
-                        <p>난이도 : ⭐️⭐️⭐️️️⭐️️️️</p>
-                        <p>장르 : 공포</p>
-
-                    </div>
-                </div>
-                <div class="themesmallBox" style="display: inline-block;">
-                <div class="themeimgBox">
-                    <img class="themeimg" th:src="@{/dist/image/theme01.gif}">
-                </div>
-                    <div class="themeTitle">
-
-                        <span class="imgTitle">Trigger</span>
-                        <p>난이도 : ⭐️⭐️⭐️️</p>
-                        <p>장르 : 탈출</p>
-                    </div>
-                </div>
-                <div class="themesmallBox" style="display: inline-block;">
-                <div class="themeimgBox">
-                    <img class="themeimg" th:src="@{/dist/image/CommingSoonImg.jpeg}">
-
-                </div>
-                    <div class="themeTitle">
-
-                        <span class="imgTitle">Comming Soon</span>
-                        <p>준비중인 테마입니다.</p>
-                        <p>곧 만나요!</p>
-                    </div>
-                </div>
 
         </div>
 
 
-<!--                </div>-->
-            </div>
-
         <!-- Modals -->
-        <div class="modal" id="modal1">
+            <div th:each="tvo, iter :${theme}" class="modal" th:id="'modal' + ${iter.count}">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="modalImg">
-                    <img th:src="@{/dist/image/theme13.gif}" style="width:250px; height:350px; display:block; float:left;">
-                    <h2 class="modalH">위로</h2>
-                    <p class="modalP">난이도 : ⭐️⭐️⭐️️</p>
-                    <p class="modalP">장르 : 감성</p>
-                    <p class="modalP">추천 인원 : 2~4명</p>
-                    <p class="modalP">플레이 시간 : 60분</p>
+                    <img th:src="'/upload/' + ${tvo.saveDir} + '/' + ${tvo.uuid} + '_' + ${tvo.fileName}" style="width:250px; height:350px; display:block; float:left;">
+                    <h2 class="modalH">[[${tvo.themeName}]]</h2>
+                    <p class="modalP">난이도 : <span class="yellowText">[[${tvo.difficulty}]]</span></p>
+                    <p class="modalP">장르 : [[${tvo.genre}]]</p>
+                    <p class="modalP">추천 인원 : [[${tvo.recNumPeople}]]</p>
+                    <p class="modalP">플레이 시간 : [[${tvo.playTime}]]</p>
 
                 </div>
 
                 <p class="modalText">
-                    당신은 모든 기억을 잃은 채 눈을 떴습니다.<br>
-                    이곳이 어딘지, 내가 누구인지도 기억나지 않습니다.<br>
-                    그저 손에 익숙한 듯한 낯선 초대장만 쥐고 어느 문 앞에 서있을 뿐이죠.<br>
-                    당신은 잃어버린 기억을 찾아야만 할 것 같은 기분이 듭니다.<br>
-                    눈앞의 문을 열면 모든 선택은 오롯이 당신의 몫입니다.<br>
-                    어떤 진실을 보게 되어도 그 선택을 후회하지 마십시오. </p>
+                    [[${tvo.description}]] </p>
                 <a th:href="@{/theme/themeReserv}" class="aLink">예약하러 가기</a>
             </div>
         </div>
-        <div class="modal" id="modal2">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>í¬ì¤í°2</h2>
-                <p>ë´ì©ì ì ì´ì£¼ì¸ì©</p>
-            </div>
-        </div>
-        <div class="modal" id="modal3">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>í¬ì¤í°3</h2>
-                <p>ì´ ê¸°ë¥ì ì¢ ë³ë¡ ê°</p>
-            </div>
-        </div>
+
 
         <div class="notice-container">
 
@@ -260,13 +182,23 @@
     // Modal functionality
     modalTriggers.forEach((trigger, index) => {
         trigger.addEventListener('click', () => {
-            const modalId = `modal${(index % 3) + 1}`;
+            const modalId = `modal${(index % 10) + 1}`;
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'block';
             }
         });
     });
+       // Modal functionality
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.getAttribute('data-modal-id');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            });
+        });
 
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {

@@ -12,360 +12,362 @@
 
     <div class="reservationTheme-container" id="top" style="text-align: center;" >
       <div class="container-md" style="text-align: center;">
-      <div class="reservAllTheme text-center">
-        <span>예약하기</span>
-        <p></p>
+        <div class="reservAllTheme text-center">
+          <span>예약하기</span>
+          <p></p>
 
+        </div>
+        <div class="reservHeader">
+
+        </div>
+        <div class="reservTimebox">
+          <form action="">
+            <p class="date">날짜 선택 > </p><input type="date" name="startDay" class="startDay">
+            <p>
+
+<!--              <label for="themeSelect">테마 선택 > </label>-->
+<!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
+
+<!--                <option value="themeR1">위로</option>-->
+<!--                <option value="themeR2"> 노웨이아웃</option>-->
+<!--                <option value="themeR6" >Rendering</option>-->
+<!--                <option value="themeR5">SCENE</option>-->
+<!--                <option value="themeR3">Trigger</option>-->
+
+<!--              </select> </p>-->
+
+
+
+
+            <!--      <button type ="submit">submit</button>-->
+          </form>
+
+        </div>
+
+        <div class="reservationTheme themeBox1"  id="themeR1" style="text-align: center;" th:each="tvo :${themeReservList} ">
+          <div class="reservImg img1 "> <img th:src="'/upload/' + ${tvo.saveDir} + '/' + ${tvo.uuid} + '_' + ${tvo.fileName}" style="width:250px" height="350px"></div>
+          <div class="reservTextbox">
+            <div class="reservTitle">
+              <span>[[${tvo.themeName}]]</span><br>
+              <p class="preserve-whitespace">✓ 난이도 : [[${tvo.difficulty}]]  ✓ 장르 : [[${tvo.genre}]]   ✓ 추천 인원 : [[${tvo.recNumPeople}]]</p>
+
+            </div>
+            <div class="reservTimeTable">
+              <li>
+                <a href="" class="time">
+                  <span class="time1">10:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time2">11:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time3">13:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time4">14:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time5">16:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time6">17:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time7">19:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="time">
+                  <span class="time8">20:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="reservHeader">
-
-      </div>
-    <div class="reservTimebox">
-      <form action="">
-      <p class="date">날짜 선택 > </p><input type="date" name="startDay" class="startDay">
-      <p>
-
-      <label for="themeSelect">테마 선택 > </label>
-      <select name="company" id="themeSelect" onclick="themeResButton">
-
-        <option value="themeR1">위로</option>
-        <option value="themeR2"> 노웨이아웃</option>
-        <option value="themeR6" >Rendering</option>
-        <option value="themeR5">SCENE</option>
-        <option value="themeR3">Trigger</option>
-
-      </select> </p>
-
-
-
-
-<!--      <button type ="submit">submit</button>-->
-    </form>
-
     </div>
+<!--        <div class="reservationTheme themeBox2 " id="themeR2"  style="display: inline-block;">-->
+<!--          <div class="reservImg img2 "> <img th:src="@{/dist/image/theme12.gif}" style="width:250px" height="350px"></div>-->
+<!--          <div class="reservTextbox" style="display: inline-block;">-->
+<!--            <div class="reservTitle">-->
+<!--              <span> 노웨이아웃</span><br>-->
+<!--              <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️️️⭐️⭐️  ✓ 장르 : 스릴러   ✓ 추천 인원 : 2~3명</p>-->
 
-      <div class="reservationTheme themeBox1"  id="themeR1" style="text-align: center;">
-        <div class="reservImg img1 "> <img th:src="@{/dist/image/theme13.gif}" style="width:250px" height="350px"></div>
-        <div class="reservTextbox">
-          <div class="reservTitle">
-            <span> 위로</span><br>
-            <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️️  ✓ 장르 : 감성   ✓ 추천 인원 : 1~4명</p>
-
-          </div>
-          <div class="reservTimeTable">
-            <li>
-              <a href="" class="time">
-                <span class="time1">10:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time2">11:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time3">13:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time4">14:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time5">16:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time6">17:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time7">19:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time8">20:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-          </div>
-        </div>
-
-      </div>
-      <div class="reservationTheme themeBox2 " id="themeR2"  style="display: inline-block;">
-        <div class="reservImg img2 "> <img th:src="@{/dist/image/theme12.gif}" style="width:250px" height="350px"></div>
-        <div class="reservTextbox" style="display: inline-block;">
-          <div class="reservTitle">
-            <span> 노웨이아웃</span><br>
-            <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️️⭐️⭐️  ✓ 장르 : 스릴러   ✓ 추천 인원 : 2~3명</p>
-
-          </div>
-          <div class="reservTimeTable">
-            <li>
-            <a href="" class="time">
-              <span class="time1">10:00</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">11:30</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">13:00</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">14:30</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">16:00</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">17:30</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">19:00</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-            <li>
-            <a href="" class="time">
-              <span class="time1">20:30</span><br>
-              <span class="possible">예약 가능</span>
-            </a>
-            </li>
-          </div>
-        </div>
-      </div>
-      <div class="reservationTheme themeBox3" id="themeR3" style="text-align: center;">
-        <div class="reservImg img3"> <img th:src="@{/dist/image/theme01.gif}" style="width:250px" height="350px"></div>
-        <div class="reservTextbox">
-          <div class="reservTitle">
-            <span> Trigger</span><br>
-            <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️⭐️️️  ✓ 장르 : 탈출   ✓ 추천 인원 : 2~4명  </p>
-
-          </div>
-          <div class="reservTimeTable">
-            <li>
-              <a href="" class="time">
-                <span class="time1">10:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">11:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">13:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">14:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">16:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">17:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">19:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">20:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-          </div>
-        </div>
-
-        </div>
-
-<!--      <div class="reservationTheme themeBox4" style="text-align: center;">-->
-<!--        <div class="reservImg img4"> <img src=""></div>-->
-<!--        <div class="reservTextbox">-->
-<!--          <div class="reservTitle">-->
-<!--            <span>디스토피아</span>-->
-<!--            <p></p>-->
-<!--          </div>-->
-<!--          <div class="reservTimeTable">-->
-
+<!--            </div>-->
+<!--            <div class="reservTimeTable">-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">10:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">11:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">13:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">14:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">16:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">17:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">19:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">20:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </div>-->
 <!--          </div>-->
 <!--        </div>-->
+<!--        <div class="reservationTheme themeBox3" id="themeR3" style="text-align: center;">-->
+<!--          <div class="reservImg img3"> <img th:src="@{/dist/image/theme01.gif}" style="width:250px" height="350px"></div>-->
+<!--          <div class="reservTextbox">-->
+<!--            <div class="reservTitle">-->
+<!--              <span> Trigger</span><br>-->
+<!--              <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️️️  ✓ 장르 : 탈출   ✓ 추천 인원 : 2~4명  </p>-->
+
+<!--            </div>-->
+<!--            <div class="reservTimeTable">-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">10:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">11:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">13:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">14:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">16:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">17:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">19:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">20:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </div>-->
+<!--          </div>-->
 
 <!--        </div>-->
 
-      <div class="reservationTheme themeBox5" id="themeR5"  style="text-align: center;">
-        <div class="reservImg img5"> <img th:src="@{/dist/image/theme14.gif}" style="width:250px" height="350px"></div>
-        <div class="reservTextbox">
-          <div class="reservTitle">
-            <span> SCENE</span><br>
-            <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️⭐️️  ✓ 장르 : 공포   ✓ 추천 인원 : 2~3명  </p>
+<!--        &lt;!&ndash;      <div class="reservationTheme themeBox4" style="text-align: center;">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="reservImg img4"> <img src=""></div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="reservTextbox">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <div class="reservTitle">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <span>디스토피아</span>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <div class="reservTimeTable">&ndash;&gt;-->
 
-          </div>
-          <div class="reservTimeTable">
-            <li>
-              <a href="" class="time">
-                <span class="time1">10:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">11:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">13:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">14:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">16:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">17:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">19:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">20:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-          </div>
-        </div>
+<!--        &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
 
-        </div>
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
 
-      <div class="reservationTheme themeBox6" id="themeR6"  style="text-align: center;">
-        <div class="reservImg img6"> <img th:src="@{/dist/image/theme05.gif}" style="width:250px" height="350px"></div>
-        <div class="reservTextbox">
-          <div class="reservTitle">
-            <span> Rendering</span><br>
-            <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️️⭐️️⭐️️  ✓ 장르 : 추리,판타지   ✓ 추천 인원 : 2~4명 </p>
+<!--        <div class="reservationTheme themeBox5" id="themeR5"  style="text-align: center;">-->
+<!--          <div class="reservImg img5"> <img th:src="@{/dist/image/theme14.gif}" style="width:250px" height="350px"></div>-->
+<!--          <div class="reservTextbox">-->
+<!--            <div class="reservTitle">-->
+<!--              <span> SCENE</span><br>-->
+<!--              <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️⭐️️️  ✓ 장르 : 공포   ✓ 추천 인원 : 2~3명  </p>-->
 
-          </div>
-          <div class="reservTimeTable">
-            <li>
-              <a href="" class="time">
-                <span class="time1">10:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">11:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">13:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">14:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">16:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">17:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">19:00</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="time">
-                <span class="time1">20:30</span><br>
-                <span class="possible">예약 가능</span>
-              </a>
-            </li>
-          </div>
-        </div>
-      </div>
-      </div>
+<!--            </div>-->
+<!--            <div class="reservTimeTable">-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">10:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">11:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">13:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">14:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">16:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">17:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">19:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">20:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </div>-->
+<!--          </div>-->
 
-      </div>
+<!--        </div>-->
+
+<!--        <div class="reservationTheme themeBox6" id="themeR6"  style="text-align: center;">-->
+<!--          <div class="reservImg img6"> <img th:src="@{/dist/image/theme05.gif}" style="width:250px" height="350px"></div>-->
+<!--          <div class="reservTextbox">-->
+<!--            <div class="reservTitle">-->
+<!--              <span> Rendering</span><br>-->
+<!--              <p class="preserve-whitespace">✓ 난이도 : ⭐️⭐️️️️️️️  ✓ 장르 : 추리,판타지   ✓ 추천 인원 : 2~4명 </p>-->
+
+<!--            </div>-->
+<!--            <div class="reservTimeTable">-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">10:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">11:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">13:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">14:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">16:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">17:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">19:00</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="" class="time">-->
+<!--                  <span class="time1">20:30</span><br>-->
+<!--                  <span class="possible">예약 가능</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
 
 
 
@@ -494,7 +496,7 @@
 
     </div> <!--컨테이너 디브-->
     <script>
-      
+
       // select 요소 가져오기
       var select = document.getElementById("themeSelect");
 
@@ -536,7 +538,7 @@
   }
 });
 
-          
+
     </script>
 
 

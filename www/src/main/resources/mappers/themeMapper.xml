@@ -13,7 +13,12 @@
         SELECT * FROM theme t join  file f  on  t.uuid = f.uuid WHERE theme_num= #{themeNum}
     </select>
 
-
+<select id="getReservThemes" resultType="SecretCode.ezen.www.domain.ThemeVO">
+    select * from theme t join  file f  on  t.uuid = f.uuid
+</select>
+    <select id="getThemes" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        select * from theme t join  file f  on  t.uuid = f.uuid
+    </select>
 
 
 </mapper>
