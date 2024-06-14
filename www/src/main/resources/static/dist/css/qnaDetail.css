@@ -1,8 +1,16 @@
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+
+}
+
 .qna-detail-container {
        background-image: url("/dist/image/sc7.png");
        background-size : cover;
        background-repeat : no-repeat;
-
+        font-family:'S-CoreDream-3Light';
        background-position : center;
        z-index:1;
 }
@@ -49,8 +57,6 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-
 
 /* Input fields */
 .qna-detail-sec {
@@ -179,7 +185,7 @@
     color:white;
     padding:15px;
     margin-top:20px;
-    border:1px solid white;
+
 
 }
 .fw-bold{

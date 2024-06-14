@@ -170,3 +170,7 @@ MODIFY COLUMN reservation_time VARCHAR(100);
 
  ALTER TABLE review
  ADD COLUMN is_liked BOOLEAN DEFAULT FALSE;
+
+ --2024.06.14
+
+  alter table review add column theme_name varchar(256);

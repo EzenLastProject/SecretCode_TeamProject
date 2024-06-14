@@ -100,6 +100,7 @@ width:100%;
 }
 .yellowText{
     color:#FFCC00;
+    text-shadow: 1px 1px 1px  #000;
 }
 
 
@@ -149,6 +150,7 @@ width:100%;
     width: 80%;
     max-width: 800px;
     position: relative;
+    bottom:20%;
 }
 
 .close {
@@ -173,7 +175,7 @@ width:100%;
 }
 .modalH{
     margin-top:30px;
-    margin-left:50px;
+    margin-left:30px;
     float: left;
     width:50%;
     font-weight:700;
@@ -182,7 +184,7 @@ width:100%;
 }
 .modalP{
     margin-top:25px;
-    margin-left:50px;
+    margin-left:30px;
     font-size:20px;
     float: left;
     width:50%;
@@ -196,7 +198,7 @@ width:100%;
     margin-top:20px;
     font-size:20px;
     text-align:center;
-     white-space:pre-line;
+    white-space:pre-line; /* 자동 줄바꿈기능!! */
       width: 100%;
 
 }
@@ -212,6 +214,12 @@ width:100%;
     align-items: center;
     justify-content: center;
     margin-left:200px;
+    transition: background-color 0.3s ease;
+}
+.aLink:hover{
+    background-color:#FFCC00;
+    color:black;
+    transition: background-color 0.3s ease;
 
 }
 
@@ -319,3 +327,62 @@ width:100%;
 }
 
 
+
+@media screen and ( max-width : 600px){
+.modal-content {
+    /* background-color: #fff; */
+    background-image: url("/dist/image/modalBack04.jpeg");
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+
+}
+.modalImg{
+    margin-top:150px;
+    width:100%;
+    margin-left:120px;
+}
+.modalH{
+    margin-top:25px;
+    margin-left:10px;
+    float: left;
+    width:50%;
+    font-weight:700;
+    font-family: 'S-CoreDream-3Light';
+
+}
+.modalP{
+    margin-top:10px;
+    margin-left:10px;
+    font-size:20px;
+    float: left;
+    width:50%;
+    font-family: 'S-CoreDream-3Light';
+}
+.close {
+    color: #aaa;
+    margin-left:90%;
+    margin-top:20%;
+    position:absolute;
+    font-size: 28px;
+    font-weight: bold;
+}
+.aLink{
+    font-family: 'S-CoreDream-3Light';
+    width:50%;
+    height:50px;
+    background-color:black;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:130px;
+    transition: background-color 0.3s ease;
+}
+
+}
