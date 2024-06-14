@@ -25,6 +25,6 @@ public class ReviewVO {
     private String fileName;
     private String themeName;
     private int  rating;
-    private  boolean isLiked;
+    private boolean isLiked;
 
 }
