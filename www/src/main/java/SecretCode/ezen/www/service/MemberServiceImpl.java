@@ -117,7 +117,20 @@ public class MemberServiceImpl implements MemberService {
         memberMapper.changePwd(email, pwd);
     }
 
+    @Override
+    public List<MemberVO> getNickName(String name) {
+        return memberMapper.getNickName(name);
+    }
 
+    @Override
+    public String getType(String name) {
+        return memberMapper.getType(name);
+    }
+
+    @Override
+    public String myNickName(String email) {
+        return memberMapper.myNickName(email);
+    }
 
 
 }

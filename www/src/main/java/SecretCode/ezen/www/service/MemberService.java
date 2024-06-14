@@ -28,4 +28,10 @@ public interface MemberService {
     String pwdReturnCheck(String phone, String nickName, String email);
 
     void changePwd(String email, String ePw);
+
+    List<MemberVO> getNickName(String name);
+
+    String getType(String name);
+
+    String myNickName(String email);
 }

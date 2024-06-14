@@ -37,45 +37,54 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
         AuthVO avo = new AuthVO();
 
         String userId = "";
+        String principal = "";
 
         if(oauthClientName.equals("kakao")){
-            userId = "kakao_"+oAuth2User.getAttributes().get("id");
-            mvo.setEmail(userId);
+            userId = "kakao_"+oAuth2User.getAttributes().get("id"); //이미 principal 아이디
+            principal = oAuth2User.getName();
+            mvo.setEmail(principal);
             mvo.setPwd("보안처리된 소셜로그인 비밀번호");
             mvo.setNickName(userId);
             mvo.setPhone("010-1234-5678");
-            mvo.setType("kakao");
-            avo.setEmail(userId);
+            mvo.setType(userId);
+            avo.setEmail(oAuth2User.getName());
         }
         else if(oauthClientName.equals("naver")){
             Map<String, String> responseMap = (Map<String, String>)oAuth2User.getAttributes().get("response");
+
             userId = "naver_"+responseMap.get("email");
-            mvo.setEmail(userId);
-            mvo.setType("naver");
+            principal = oAuth2User.getName();
+//          "naver_"+responseMap.get("email"); 진짜 네이버 이메일 뽑아온 것
+
+            mvo.setEmail(principal);
+            mvo.setType(userId);
             mvo.setNickName(responseMap.get("name"));
             mvo.setPwd("보안처리된 소셜로그인 비밀번호");
-            mvo.setPhone("01012345678");
-            avo.setEmail(userId);
+            mvo.setPhone("010-1234-5678");
+            avo.setEmail(principal);
 
         }else if(oauthClientName.equals("Google")){
             userId = "google_"+oAuth2User.getAttributes().get("email");
-            mvo.setEmail(userId);
-            mvo.setType("google");
+            principal = oAuth2User.getName();
+            //oAuth2User.getAttributes().get("sub"); // principal 아이디 뽑은것
+            mvo.setEmail(principal);
+            mvo.setType(userId); // principal 아이디를 type으로
             mvo.setNickName((oAuth2User.getAttributes().get("name")).toString());
             mvo.setPwd("보안처리된 소셜로그인 비밀번호");
             mvo.setPhone("010-1234-5678");
-            avo.setEmail(userId);
+            avo.setEmail(principal);
         }
 
 //        log.info(">>>8888888888888888888888888{}",oAuth2User.getAttributes().get("name"));
 
-        MemberVO checkSocialLogin = memberMapper.checkSocialLogin(userId);
+        MemberVO checkSocialLogin = memberMapper.checkSocialLogin(principal);
 //        log.info(">>>{}",checkSocialLogin);
 
         //만약 처음 등록한 회원이라면.. DB작업
         if(checkSocialLogin == null){
             memberMapper.insert(mvo);
-            memberMapper.insertAuth(userId);
+            memberMapper.insertAuth(principal);
+            memberMapper.insertSocialAuth(principal);
         }
 
         return oAuth2User;
