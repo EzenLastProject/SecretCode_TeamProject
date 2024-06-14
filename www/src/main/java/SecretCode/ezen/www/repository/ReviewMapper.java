@@ -27,4 +27,11 @@ public interface ReviewMapper {
 
 
     void modify(ReviewVO rvo);
+
+    ReviewVO findById(int bno);
+
+    void delete(int bno);
+
+
+
 }

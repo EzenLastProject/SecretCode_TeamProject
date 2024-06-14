@@ -95,6 +95,18 @@ height:120px;
                 <h1 class="mt-5">리뷰</h1>
 
 
+                <form action="/review/search" method="get">
+                    <div class="input-group mb-3">
+                        <select name="theme" id="themeSelect" class="form-select">
+                            <option value="">테마를 선택하세요</option>
+                            <!-- 테마 목록을 Thymeleaf를 이용해 렌더링 -->
+                            <option th:each="theme : ${themeList}" th:value="${theme.themeName}" th:text="${theme.themeName}"></option>
+                        </select>
+                        <button class="btn btn-outline-secondary" type="submit">검색</button>
+                    </div>
+                </form>
+
+
                 <div class="regBtn-box">
                     <form action="/review/register" >
 
@@ -118,6 +130,7 @@ height:120px;
                         <div class="card-details" style="width: 65%;">
                             <div class="content">
                                 <div class="star-rating">
+
             <span th:switch="${rvo.rating}">
                 <span th:case="1">★</span>
                 <span th:case="2">★★</span>
@@ -137,14 +150,17 @@ height:120px;
                                     </h5>
                                 </div>
 
+
+                                <form action="/review/modify" method="post">
+
                                 <div class="card-title">
-                                 <h5><span><input type="text"  id="titleInput" th:value="${rvo.title}"></span></h5>
+                                 <h5><span><input type="text"  name="title" id="titleInput" th:value="${rvo.title}"></span></h5>
                                 </div>
                                 <div class="card-subtitle mb-2 text-muted">
                                     <span>[[${rvo.writer}]]</span> | <span>[[${rvo.regDate}]] </span>
                                 </div>
                                 <div class="card-text">
-                                    <textarea class="review-text" id="contentInput" rows="3">[[${rvo.content}]]</textarea>
+                                    <textarea class="review-text" name="content" id="contentInput" rows="3">[[${rvo.content}]]</textarea>
                                 </div>
 
                             </div>
@@ -163,7 +179,7 @@ height:120px;
                     </div>
 
                     <div class="btn-box">
-                        <form action="/review/modify" method="post">
+
                             <input type="hidden" name="bno" th:value="${rvo.bno}">
                             <button type="submit" class="ModBtn" id="modBtn" style="width:50px; float:right; height:30px;">수정</button>
                         </form>
