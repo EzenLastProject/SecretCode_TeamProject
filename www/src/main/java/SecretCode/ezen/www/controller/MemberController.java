@@ -161,6 +161,8 @@ public class MemberController {
 
         String email = principal.getName(); //id
 
+        log.info(">>>>>>>!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@ email {}", email);
+
         List<ReservationVO> myReservation = psv.getmyReservation(email);
 
         m.addAttribute("myreservaation", myReservation);
@@ -172,6 +174,52 @@ public class MemberController {
 
         List<ReviewVO> myreview = rsv.myreview(email);
         m.addAttribute("myreview", myreview);
+
+
+        String myNickName = msv.myNickName(email);
+        m.addAttribute("myNickName", myNickName);
+
+        //role이 안 먹을 떄
+        String type = msv.getType(email);
+        m.addAttribute("type", type);
+
+        log.info(">>>>>>>!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@ type {}", type);
+
+
+
+
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        log.info(">>>>>>> authentication {}",authentication);
+//        // OAuth2AuthenticationToken에서 OAuth2User 객체 추출
+//        OAuth2User oauth2User = (OAuth2User) authentication.getPrincipal();
+//
+//        log.info(">>>>>>> authentication22222 {}", oauth2User);
+//// 사용자 속성 추출
+//        String email11 = (String) oauth2User.getAttribute("email");
+//
+//        //String nickName = msv.getNickName(authentication.getName());
+//        log.info(">>>>>>> email11 {}",email11);
+//        List<MemberVO> memberList = msv.getNickName(email11);
+//        String nickName = null;
+//        String type = null;
+//        log.info(">>>>>>> memberList {}",memberList);
+//        for(MemberVO mvo : memberList){
+//            if(mvo.getEmail().equals(email11)){
+//                nickName = mvo.getNickName();
+//                type = mvo.getType();
+//            }
+//        }
+////        String email222 = memberList.get(0).getEmail();
+////        String nickName = memberList.get(0).getNickName();
+////         String nickName = email222.substring(0,email222.indexOf("_"));
+////        log.info(">>>>>>> email333 {}",type);
+//
+//        m.addAttribute("nickName", nickName);
+//
+//        /*String type = msv.getType(authentication.);*/
+//        m.addAttribute("type", type);
+
+
 
 
 

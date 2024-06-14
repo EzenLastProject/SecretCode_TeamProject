@@ -13,6 +13,10 @@
         INSERT INTO auth_member VALUES (#{email}, 'ROLE_USER')
     </insert>
 
+    <insert id="insertSocialAuth">
+        INSERT INTO auth_member VALUES (#{email}, 'ROLE_SOCIAL')
+    </insert>
+
     <select id="selectEmail" resultType="SecretCode.ezen.www.domain.MemberVO">
         SELECT * FROM member WHERE email = #{email}
     </select>
@@ -69,6 +73,19 @@
     <delete id="deleteUser">
         delete from member where email = #{email}
     </delete>
+
+    <select id="getNickName" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email like concat('%', #{email}, '%')
+
+    </select>
+
+    <select id="getType" resultType="String">
+        SELECT type FROM member WHERE email = #{name}
+    </select>
+
+    <select id="myNickName" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
 
 
 
