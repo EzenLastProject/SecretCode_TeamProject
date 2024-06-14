@@ -239,7 +239,10 @@ display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가
 }
 
 .reservationTheme:last-child{
-margin-bottom:100px;
+    margin-bottom:100px;
+}
+.yellowText{
+   color:#FFCC00;
 }
 
 
@@ -407,6 +410,9 @@ display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가
 
 .reservationTheme:last-child{
 margin-bottom:100px;
+}
+.yellowText{
+    color:#FFCC00;
 }
 
 }

@@ -16,7 +16,7 @@ document.getElementById('modBtn').addEventListener('click',()=>{
     // <button></button>
     modBtn.setAttribute('type','submit');
     modBtn.classList.add('btn','btn-outline-warning');
-    modBtn.innerText="수정완료";
+    modBtn.innerText="수정 완료";
     //생성한 버튼 modForm에 추가
     document.getElementById('modDiv').appendChild(modBtn);
 
