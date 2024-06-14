@@ -31,7 +31,7 @@
                                 id="themeSelect" onchange="changeTheme()">
                             <option value="">테마를 선택하세요</option>
                             <!-- themeList가 존재하는 경우에만 반복하여 option 태그를 생성합니다 -->
-                            <option th:if="${themeList != null}" th:each="theme : ${themeList}" th:value="${theme.themeNum}" th:text="${theme.genre}"></option>
+                            <option th:if="${themeList != null}" th:each="theme : ${themeList}" th:value="${theme.themeNum}" th:text="${theme.themeName}"></option>
                         </select>
                     </div>
 
@@ -117,8 +117,8 @@
                         themeImgDiv.appendChild(imgElement);
 
                         // 테마의 정보 표시
-                        var themeText = `<div class="title"><span class="review-img-title">${data.genre}</span></div>`;
-                        themeText += `<p>장르 : ${data.themeName}</p>`;
+                        var themeText = `<div class="title"><span class="review-img-title">${data.themeName}</span></div>`;
+                        themeText += `<p>장르 : ${data.genre}</p>`;
                         themeText += `<p>난이도: ${data.difficulty}</p>`;
                         themeDetailsDiv.querySelector(".review-theme-text").innerHTML = themeText;
                     })

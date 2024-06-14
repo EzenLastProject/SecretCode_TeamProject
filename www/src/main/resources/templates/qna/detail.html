@@ -99,20 +99,22 @@
                           </div>
 
 
+
+
                         <!--comment line-->
 
                         <div class="input-group mb-3">
                             <!-- 작성자 이름 -->
 
                             <span class="input-group-text" id="cmtWriter">
-    <!-- 작성자 이름 -->
-    <th:block th:if="${#authorization.expression('isAuthenticated()')}">
-        <span th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}"></span>
-    </th:block>
-    <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
-        <span>비회원</span>
-    </th:block>
-</span>
+        <!-- 작성자 이름 -->
+        <th:block th:if="${#authorization.expression('isAuthenticated()')}">
+            <span th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}"></span>
+        </th:block>
+        <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
+            <span>비회원</span>
+        </th:block>
+    </span>
 
                             <input
                                     type="text" id="cmtText" class="form-control"

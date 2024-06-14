@@ -65,8 +65,19 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public void modify(ReviewVO rvo) {
-        reviewMapper.modify(rvo);
+        reviewMapper.modify(rvo); // ReviewMapper의 modify 메소드를 호출하여 데이터베이스에서 해당 리뷰 정보를 수정합니다.
     }
+
+    @Override
+    public ReviewVO findById(int bno) {
+        return reviewMapper.findById(bno); // ReviewMapper의 findById 메소드를 호출하여 데이터베이스에서 해당 bno에 해당하는 리뷰 정보를 조회합니다.
+    }
+
+    @Override
+    public void delete(int bno) {
+        reviewMapper.delete(bno); // ReviewMapper의 delete 메소드를 호출하여 데이터베이스에서 해당 bno에 해당하는 리뷰 정보를 삭제합니다.
+    }
+
 
 
 }

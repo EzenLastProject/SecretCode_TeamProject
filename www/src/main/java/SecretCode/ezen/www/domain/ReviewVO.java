@@ -23,6 +23,7 @@ public class ReviewVO {
     private String uuid; //선택한 테마명
     private String saveDir;
     private String fileName;
+    private String themeName;
     private int  rating;
     private  boolean isLiked;
 
