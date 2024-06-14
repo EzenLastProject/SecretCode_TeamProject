@@ -24,7 +24,7 @@ if(cmtWriter ==null || cmtText==''){
     postCommentToServer(cmtData).then(result =>{
         console.log(result);
         if(result ==1){
-            alert('댓글입력완료');
+            alert('댓글 등록 완료');
             document.getElementById('cmtText').value="";
             //화면에 뿌리기
             spreadCommentList(bnoVal);
