@@ -63,8 +63,4 @@
         .catch(error => console.error('Error:', error));
     }
 
-   /* //수정버튼
-
-    document.getElementById("modBtn").addEventListener("click", function() {
-
-    });*/
+   

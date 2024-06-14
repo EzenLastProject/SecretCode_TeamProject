@@ -27,7 +27,7 @@ import java.util.UUID;
 public class ReviewController {
 
     private final ReviewService rsv;
-    private final ReviewCommentService rcsv;
+
     private final ThemeService themeService; // ThemeService 주입
 
 
@@ -107,13 +107,40 @@ public class ReviewController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to dislike review");
         }
     }
-
-    @PostMapping("/modify")
-    public String modify(@RequestParam("bno") int bno, ReviewVO rvo){
-        rvo.setBno(bno); // 리뷰의 bno 설정
-        rsv.modify(rvo); // 리뷰 수정
-        return "redirect:/review/list"; // 수정 후 리뷰 목록 페이지로 리다이렉트
+    // 리뷰 수정 화면
+    @GetMapping("/modify/{bno}")
+    public String modifyForm(@PathVariable int bno, Model model) {
+        // bno를 이용해 수정할 리뷰 정보를 조회하여 모델에 담습니다.
+        ReviewVO rvo = rsv.findById(bno); // 예시 메서드, 실제로는 데이터베이스 조회 등으로 대체해야 합니다.
+        model.addAttribute("rvo", rvo);
+        return "modifyForm"; // 수정 폼의 Thymeleaf 템플릿 이름
     }
+
+    // 리뷰 수정 처리
+    @PostMapping("/modify")
+    public String modify(@ModelAttribute ReviewVO rvo) {
+        rsv.modify(rvo);
+        return "redirect:/review/list";
+    }
+
+    // 리뷰 삭제 처리
+    @PostMapping("/delete")
+    public String delete(@RequestParam("bno") int bno) {
+        rsv.delete(bno);
+        return "redirect:/review/list";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
