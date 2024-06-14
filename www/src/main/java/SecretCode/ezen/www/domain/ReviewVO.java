@@ -24,6 +24,6 @@ public class ReviewVO {
     private String saveDir;
     private String fileName;
     private int  rating;
-    private  boolean isLiked;
+    private boolean isLiked;
 
 }

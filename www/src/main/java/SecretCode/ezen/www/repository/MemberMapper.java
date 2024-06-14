@@ -44,4 +44,12 @@ public interface MemberMapper {
     String pwdReturnCheck(@Param("phone")String phone, @Param("nickName")String nickName, @Param("email")String email);
 
     void changePwd(@Param("email")String email, @Param("pwd")String pwd);
+
+    List<MemberVO> getNickName(String name);
+
+    String getType(String name);
+
+    void insertSocialAuth(String userId);
+
+    String myNickName(String email);
 }
