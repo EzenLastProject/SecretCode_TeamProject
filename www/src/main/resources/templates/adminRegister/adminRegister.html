@@ -6,8 +6,32 @@
         <section class="themeRegister">
             <div class="pageTitle">
                 <div class="container">
-                    <h3>테마 등록</h3>
+                    <h1>테마 등록</h1>
                 </div>
+            </div>
+
+                <h3 class="themeTableTitle">테마 등록현황</h3>
+            <div class="listTheme">
+                <a th:href="@{/adminRegister/adminThemeList}">테마 상세리스트 보러가기</a>
+            </div>
+            <div class="themeTable">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>테마 번호</th>
+                        <th>테마 이름</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="theme : ${getThemeNum}">
+                        <tr>
+                            <td class="themeNumExist" th:text="${theme.themeNum}"></td>
+                            <td th:text="${theme.themeName}"></td>
+                        </tr>
+
+                    </th:block>
+                    </tbody>
+                </table>
             </div>
 
             <div id="themeRegisterForm">
@@ -16,6 +40,7 @@
                         <div class="formGroup">
                             <label for="themeNum">테마 번호</label>
                             <input id="themeNum" type="text" name="themeNum" required>
+                            <div id="themeNumCheck"></div>
                         </div>
 
                         <div class="formGroup">
@@ -74,12 +99,17 @@
 
 
                         <div class="formGroup">
-                            <button type="submit" class="btn btnDark">등록</button>
+                            <button type="submit" class="register-button" id="themeBtn" disabled>등록하기</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
+
+        <script th:inline="javascript">
+
+        </script>
+        <script th:src="@{/dist/js/adminRegister.js}"></script>
     </th:block>
 </th:block>
 </html>

@@ -1,10 +1,6 @@
 package SecretCode.ezen.www.controller;
 
-import SecretCode.ezen.www.domain.MemberVO;
-import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
-import SecretCode.ezen.www.domain.adRegisterVO;
-import SecretCode.ezen.www.domain.FileVO;
+import SecretCode.ezen.www.domain.*;
 import SecretCode.ezen.www.handler.FileHandler;
 import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.adminRegisterService;
@@ -41,7 +37,17 @@ public class adminRegisterController {
     }
 
     @GetMapping("/adminRegister")
-    public void register() {}
+    public void register(Model m) {
+        List<ThemeVO> getThemeNum = arsv.getThemeNum();
+
+        m.addAttribute("getThemeNum",getThemeNum);
+    }
+
+    @GetMapping("/adminThemeList")
+    public void adminThemeList(Model m) {
+        m.addAttribute("reservationList", arsv.getreservationList());
+
+    }
 
     @PostMapping("/adminRegister")
     public String insert(adRegisterVO arvo, @RequestParam("files") MultipartFile[] files) {
@@ -57,12 +63,14 @@ public class adminRegisterController {
         int isOk = arsv.insertWithFiles(arvo, fileVOList);
 
         if (isOk > 0) {
-            return "redirect:/adminRegister/adminBoard";
+            return "redirect:/adminRegister/adminThemeList";
         } else {
             return "redirect:/adminRegister/adminRegister";
         }
     }
 
+
+    //삭제할 테마
     @GetMapping("/admainReservationList")
     public void list(Model m){
         m.addAttribute("reservationList", arsv.getreservationList());
@@ -101,5 +109,19 @@ public class adminRegisterController {
 
         return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK) :
                 new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
+    @DeleteMapping(value = "/deleteTheme/{themeNum}")
+    @ResponseBody
+    public String deleteTheme(@PathVariable("themeNum") int themeNum){
+        log.info("themeNum >>>> {}", themeNum);
+
+        int isOk = arsv.deleteTheme(themeNum);
+
+        log.info("isOk >>>> {}", isOk);
+
+
+        return isOk>0? "1":"0";
     }
 }

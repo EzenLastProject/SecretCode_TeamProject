@@ -1,10 +1,6 @@
 package SecretCode.ezen.www.repository;
 
-import SecretCode.ezen.www.domain.MemberVO;
-import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
-import SecretCode.ezen.www.domain.adRegisterVO;
-import SecretCode.ezen.www.domain.FileVO;
+import SecretCode.ezen.www.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -33,4 +29,8 @@ public interface adminRegisterMapper {
     int insertFile(FileVO fileVO);
 
     List<adRegisterVO> getreservationList();
+
+    List<ThemeVO> getThemeNum();
+
+    int deleteTheme(int themeNum);
 }
