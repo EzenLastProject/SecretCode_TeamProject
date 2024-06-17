@@ -1,5 +1,6 @@
 package SecretCode.ezen.www.service;
 
+import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.repository.PaymentMapper;
 import com.siot.IamportRestClient.IamportClient;
@@ -30,6 +31,11 @@ public class PaymentServiceImpl implements PaymentService{
     public List<ReservationVO> getmyReservation(String email) {
 
         return paymentMapper.getmyReservation(email);
+    }
+
+    @Override
+    public List<ReservationVO> getPayList(PagingVO pgvo) {
+        return paymentMapper.getPayList(pgvo);
     }
 
 

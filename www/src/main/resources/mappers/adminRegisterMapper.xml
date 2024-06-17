@@ -31,8 +31,15 @@
     </delete>
 
     <select id="getListWithPaging" resultType="SecretCode.ezen.www.domain.MemberVO">
-        select * from member limit #{pageStart}, #{qty}
+        select m.*
+        from member m
+        join auth_member a on m.email = a.email
+        <if test="auth != null">
+            where a.auth = #{auth}
+        </if>
+        limit #{pageStart}, #{qty}
     </select>
+
 
     <select id="getBoardTotalCount" resultType="int">
         select count(*) from qna
@@ -57,6 +64,8 @@
         select count(email) from member
     </select>
 
+
+
     <sql id="search">
         <if test="type != null">
             <trim prefix="and (" suffix=")" suffixOverrides="or">
@@ -78,4 +87,14 @@
             </trim>
         </if>
     </sql>
+
+    <!-- 새로운 authSearch 추가 -->
+    <sql id="authSearch">
+        <if test="auth != null">
+            and auth = #{auth}
+        </if>
+    </sql>
+
+
+
 </mapper>

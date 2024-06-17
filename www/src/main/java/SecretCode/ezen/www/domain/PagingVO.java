@@ -18,6 +18,7 @@ public class PagingVO {
 
     private String type;
     private String keyword;
+    private String auth;
 
 
     public PagingVO() {
@@ -46,6 +47,14 @@ public class PagingVO {
     public String[] getTypeToArray() {
 
         return this.type==null ? new String[] {} : this.type.split("");
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
     }
 
 

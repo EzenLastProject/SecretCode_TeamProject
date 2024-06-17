@@ -20,5 +20,9 @@
 
     </select>
 
+    <select id="getPayList" resultType="SecretCode.ezen.www.domain.ReservationVO">
+        select * from reservation
+    </select>
+
 
 </mapper>

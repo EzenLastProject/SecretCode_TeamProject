@@ -14,10 +14,11 @@
                 <div class="filterContainer">
                     <form action="/adminRegister/adminUser" method="get">
                         <input type="text" name="keyword" placeholder="검색" class="searchInput" th:value="${ph.pgvo.keyword}">
-                        <select name="type" class="searchSelect">
-                            <option th:selected="${ph.pgvo.type == null}">Choose...</option>
-                            <option th:value="admin" th:selected="${ph.pgvo.type == 'admin'}">관리자</option>
-                            <option th:value="user" th:selected="${ph.pgvo.type == 'user'}">일반 사용자</option>
+                        <select name="auth" class="searchSelect">
+                            <option th:selected="${pgvo != null and pgvo.auth == null}">선택</option>
+                            <option th:value="ROLE_ADMIN" th:selected="${pgvo != null and pgvo.auth == 'ROLE_ADMIN'}">관리자</option>
+                            <option th:value="ROLE_USER" th:selected="${pgvo != null and pgvo.auth == 'ROLE_USER'}">일반 사용자</option>
+                            <option th:value="ROLE_SOCIAL" th:selected="${pgvo != null and pgvo.auth == 'ROLE_SOCIAL'}">소셜 계정</option>
                         </select>
                         <button type="submit" class="searchButton">검색</button>
                     </form>
