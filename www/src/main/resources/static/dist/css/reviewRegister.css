@@ -1,20 +1,8 @@
 @font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'WavvePADO-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'ChosunCentennial';
-    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
 }
 
 .review-container {
@@ -62,7 +50,7 @@
     text-align: center;
     font-size: 19px;
     color: white;
-    font-family: 'ChosunCentennial', sans-serif;
+     font-family: 'S-CoreDream-3Light';
     box-sizing: border-box;
     line-height:95px;
 }
@@ -88,7 +76,7 @@
     border-radius: 4px; /* 테두리의 둥근 정도 설정 */
     background-color: #fff; /* 배경색 설정 */
     font-size: 16px; /* 폰트 크기 설정 */
-    font-family: 'ChosunCentennial', sans-serif; /* 폰트 설정 */
+    font-family: 'S-CoreDream-3Light';
     -webkit-appearance: none; /* 웹킷 브라우저에 기본 스타일 적용 방지 */
     -moz-appearance: none; /* 모질라 브라우저에 기본 스타일 적용 방지 */
     appearance: none; /* 기본 스타일 적용 방지 */
@@ -140,7 +128,7 @@ font-size:50px;
 }
 
 .review-notice-text {
-    font-family: 'Arial', sans-serif;
+    font-family: 'S-CoreDream-3Light';
     font-size: 20px;
     color: red;
     text-align:center;
@@ -156,7 +144,7 @@ font-size:50px;
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
      border-radius: 5px;
      background-color: #f9f9f9;
-     font-family: 'ChosunCentennial', sans-serif;
+    font-family: 'S-CoreDream-3Light';
 
  }
 
