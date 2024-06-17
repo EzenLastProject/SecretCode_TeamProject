@@ -18,12 +18,20 @@
         select * from member
     </select>
 
-   <select id="getreservationList" resultType="SecretCode.ezen.www.domain.adRegisterVO">
-        select * from theme
+   <select id="getreservationList" resultType="SecretCode.ezen.www.domain.ThemeVO">
+       select * from theme t join  file f  on  t.uuid = f.uuid
+    </select>
+
+    <select id="getThemeNum" resultType="SecretCode.ezen.www.domain.adRegisterVO">
+        select theme_num, theme_name from theme
     </select>
 
     <delete id="deleteAuthUser">
         delete from auth_member where email = #{email}
+    </delete>
+
+    <delete id="deleteTheme">
+        DELETE FROM theme WHERE theme_num = #{themeNum}
     </delete>
 
     <delete id="deleteUser">
