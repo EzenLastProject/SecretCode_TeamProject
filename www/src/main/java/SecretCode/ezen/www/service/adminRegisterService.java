@@ -1,10 +1,6 @@
 package SecretCode.ezen.www.service;
 
-import SecretCode.ezen.www.domain.MemberVO;
-import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
-import SecretCode.ezen.www.domain.adRegisterVO;
-import SecretCode.ezen.www.domain.FileVO;
+import SecretCode.ezen.www.domain.*;
 
 import java.util.List;
 
@@ -31,4 +27,8 @@ public interface adminRegisterService {
     int insertWithFiles(adRegisterVO advo, List<FileVO> fileVOList);
 
     List<adRegisterVO> getreservationList();
+
+    List<ThemeVO> getThemeNum();
+
+    int deleteTheme(int themeNum);
 }

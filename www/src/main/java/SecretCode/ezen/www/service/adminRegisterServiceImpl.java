@@ -1,10 +1,6 @@
 package SecretCode.ezen.www.service;
 
-import SecretCode.ezen.www.domain.MemberVO;
-import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
-import SecretCode.ezen.www.domain.adRegisterVO;
-import SecretCode.ezen.www.domain.FileVO;
+import SecretCode.ezen.www.domain.*;
 import SecretCode.ezen.www.repository.MemberMapper;
 import SecretCode.ezen.www.repository.adminRegisterMapper;
 import lombok.RequiredArgsConstructor;
@@ -94,5 +90,15 @@ public class adminRegisterServiceImpl implements adminRegisterService {
         List<adRegisterVO> reservationList = arMapper.getreservationList();
 
         return reservationList;
+    }
+
+    @Override
+    public List<ThemeVO> getThemeNum() {
+        return arMapper.getThemeNum();
+    }
+
+    @Override
+    public int deleteTheme(int themeNum) {
+        return arMapper.deleteTheme(themeNum);
     }
 }
