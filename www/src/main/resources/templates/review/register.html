@@ -9,7 +9,7 @@
     <th:block th:fragment="content">
         <link rel="stylesheet" th:href="@{/dist/css/reviewRegister.css}">
 
-        <form action="/review/register" id="" method="post" enctype="multipart/form-data">
+        <form action="/review/register" method="post" enctype="multipart/form-data">
 
             <div class="review-container">
                 <div class="review-title">
@@ -27,8 +27,7 @@
 
                 <div class="review-theme-box">
                     <div class="select-box">
-                        <select style="width: 100%;"
-                                id="themeSelect" onchange="changeTheme()">
+                        <select style="width: 100%;" id="themeSelect" onchange="changeTheme()">
                             <option value="">테마를 선택하세요</option>
                             <!-- themeList가 존재하는 경우에만 반복하여 option 태그를 생성합니다 -->
                             <option th:if="${themeList != null}" th:each="theme : ${themeList}" th:value="${theme.themeNum}" th:text="${theme.themeName}"></option>
@@ -38,7 +37,7 @@
                     <!-- 선택된 테마의 정보를 표시할 부분 -->
                     <div id="themeDetails" class="review-theme" style="display: none;">
                         <div class="review-theme-img-div">
-                          <!--  <img th:src="@{|/upload/${theme.saveDir}/${theme.uuid}_th_${theme.fileName}|}">-->
+                            <!-- 이미지가 로드될 부분 -->
                         </div>
                         <div class="review-theme-text">
                             <div class="title"><span class="review-img-title">테마명</span></div>
@@ -51,6 +50,7 @@
                 <div class="review-register">
                     <!-- 선택된 테마명을 출력하는 부분 -->
                     <input type="hidden" id="themeUuid" name="themeUuid">
+                    <input type="hidden" id="themeName" name="themeName"> <!-- 추가된 필드 -->
                     <div id="text-div">선택하신 테마명</div>
                     <div class="theme-div">
                         <!-- 선택된 테마를 input의 value로 설정 -->
@@ -82,72 +82,83 @@
                     </div>
 
                     <button type="submit" id="regBtn" style="margin-top:30px; width: 100px;">작성</button>
+                    <button type="button" id="listBtn" style="margin-top:30px; width: 100px;" onclick="goToList()">취소</button>
                 </div>
+
             </div>
         </form>
 
         <script>
-            function changeTheme() {
-                var selectBox = document.getElementById("themeSelect");
-                var selectedValue = selectBox.value;
 
-                // 이미지를 표시하는 부분 비우기
-                var themeImgDiv = document.querySelector(".review-theme-img-div");
-                themeImgDiv.innerHTML = '';
+            // 취소 버튼 클릭 시 /review/list로 이동
+           function goToList() {
+               window.location.href = '/review/list';
+           }
+           function changeTheme() {
+               var selectBox = document.getElementById("themeSelect");
+               var selectedValue = selectBox.value;
 
-                // 서버로부터 테마의 정보를 받아오는 비동기 요청
-                fetch('/review/getThemeDetails?themeNum=' + selectedValue)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // 받아온 데이터를 이용하여 테마의 정보를 동적으로 생성
-                        var themeDetailsDiv = document.getElementById("themeDetails");
-                        themeDetailsDiv.style.display = 'block'; // 선택된 테마 정보를 보이도록 설정
-                        selectedThemeUuid = data.uuid;
-                        document.getElementById("themeUuid").value = selectedThemeUuid;
-                        // 이미지를 비동기로 받아와서 설정
-                        var imageUrl = data.saveDir &&  data.uuid && data.fileName ? "/upload/" + data.saveDir + "/" + data.uuid  + "_" + data.fileName : "";
-                        var imgElement = document.createElement("img");
-                        imgElement.setAttribute("class", "review-theme-img");
-                        imgElement.setAttribute("src", imageUrl);
-                        themeImgDiv.appendChild(imgElement);
+               // 이미지를 표시하는 부분 비우기
+               var themeImgDiv = document.querySelector(".review-theme-img-div");
+               themeImgDiv.innerHTML = '';
 
-                        // 테마의 정보 표시
-                        var themeText = `<div class="title"><span class="review-img-title">${data.themeName}</span></div>`;
-                        themeText += `<p>장르 : ${data.genre}</p>`;
-                        themeText += `<p>난이도: ${data.difficulty}</p>`;
-                        themeDetailsDiv.querySelector(".review-theme-text").innerHTML = themeText;
-                    })
-                    .catch(error => console.error('Error:', error));
+               // 서버로부터 테마의 정보를 받아오는 비동기 요청
+               fetch('/review/getThemeDetails?themeNum=' + selectedValue)
+                   .then(response => {
+                       if (!response.ok) {
+                           throw new Error('Network response was not ok');
+                       }
+                       return response.json();
+                   })
+                   .then(data => {
+                       // 받아온 데이터를 이용하여 테마의 정보를 동적으로 생성
+                       var themeDetailsDiv = document.getElementById("themeDetails");
+                       themeDetailsDiv.style.display = 'block'; // 선택된 테마 정보를 보이도록 설정
+                       selectedThemeUuid = data.uuid;
 
-                // 선택된 테마 값을 hidden input의 value로 설정
-                document.getElementById("theme").value = selectedValue;
+                       document.getElementById("themeUuid").value = selectedThemeUuid;
+                       document.getElementById("themeName").value = data.themeName; // 추가된 필드 설정
+                       // 이미지를 비동기로 받아와서 설정
+                       var imageUrl = data.saveDir && data.uuid && data.fileName ? "/upload/" + data.saveDir + "/" + data.uuid + "_" + data.fileName : "";
+                       var imgElement = document.createElement("img");
+                       imgElement.setAttribute("class", "review-theme-img");
+                       imgElement.setAttribute("src", imageUrl);
+                       themeImgDiv.appendChild(imgElement);
 
-                // 선택된 테마의 텍스트를 가져와서 span에 표시
-                var selectedIndex = selectBox.selectedIndex;
-                var themeText = selectBox.options[selectedIndex].text;
-                document.getElementById("themeText").innerText = themeText;
-            }
-                  // 별점 선택 기능
-                  const stars = document.querySelectorAll('.star');
-                  stars.forEach(star => {
-                      star.addEventListener('click', function () {
-                          const value = parseInt(this.getAttribute('data-value'));
-                          document.getElementById('rating').value = value; // 선택한 별점 저장
-                          // 선택된 별을 강조하기 위해 클래스를 추가 및 제거
-                          stars.forEach(s => {
-                              if (parseInt(s.getAttribute('data-value')) <= value) {
-                                  s.classList.add('selected');
-                              } else {
-                                  s.classList.remove('selected');
-                              }
-                          });
-                      });
-                  });
+                       // 테마의 정보 표시
+                       var themeText = `<div class="title"><span class="review-img-title">${data.themeName}</span></div>`;
+                       themeText += `<p>장르 : ${data.genre}</p>`;
+                       themeText += `<p>난이도: ${data.difficulty}</p>`;
+                       themeDetailsDiv.querySelector(".review-theme-text").innerHTML = themeText;
+                   })
+                   .catch(error => console.error('Error:', error));
+
+               // 선택된 테마 값을 hidden input의 value로 설정
+               document.getElementById("theme").value = selectedValue;
+
+               // 선택된 테마의 텍스트를 가져와서 span에 표시
+               var selectedIndex = selectBox.selectedIndex;
+               var themeText = selectBox.options[selectedIndex].text;
+               document.getElementById("themeText").innerText = themeText;
+               document.getElementById("themeName").value = themeText;
+           }
+
+           // 별점 선택 기능
+           const stars = document.querySelectorAll('.star');
+           stars.forEach(star => {
+               star.addEventListener('click', function () {
+                   const value = parseInt(this.getAttribute('data-value'));
+                   document.getElementById('rating').value = value; // 선택한 별점 저장
+                   // 선택된 별을 강조하기 위해 클래스를 추가 및 제거
+                   stars.forEach(s => {
+                       if (parseInt(s.getAttribute('data-value')) <= value) {
+                           s.classList.add('selected');
+                       } else {
+                           s.classList.remove('selected');
+                       }
+                   });
+               });
+           });
         </script>
     </th:block>
 </th:block>
