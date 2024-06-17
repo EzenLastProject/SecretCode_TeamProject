@@ -18,4 +18,5 @@ public interface ThemeService {
     List<ThemeVO> getThemes();
 
 
+    ThemeVO getThemeDetailsByUuid(String themeUuid);
 }

@@ -93,19 +93,19 @@ height:120px;
         <div class="full">
             <div class="container">
                 <h1 class="mt-5">리뷰</h1>
+                <!-- review/register.html -->
 
 
-                <form action="/review/search" method="get">
+                <form id="themeForm" action="/review/list" method="get">
                     <div class="input-group mb-3">
-                        <select name="theme" id="themeSelect" class="form-select">
+                        <select name="themeName" id="themeSelect" class="form-select" onchange="submitForm()">
                             <option value="">테마를 선택하세요</option>
-                            <!-- 테마 목록을 Thymeleaf를 이용해 렌더링 -->
-                            <option th:each="theme : ${themeList}" th:value="${theme.themeName}" th:text="${theme.themeName}"></option>
+                            <!-- 테마 목록 추가 -->
+                            <option th:each="theme : ${themeList}" th:value="${theme}" th:text="${theme}" th:selected="${theme == selectedTheme}"></option>
                         </select>
                         <button class="btn btn-outline-secondary" type="submit">검색</button>
                     </div>
                 </form>
-
 
                 <div class="regBtn-box">
                     <form action="/review/register" >
@@ -181,12 +181,12 @@ height:120px;
                     <div class="btn-box">
 
                             <input type="hidden" name="bno" th:value="${rvo.bno}">
-                            <button type="submit" class="ModBtn" id="modBtn" style="width:50px; float:right; height:30px;">수정</button>
+                            <button type="submit" class="ModBtn" id="modBtn" style="width:50px; float:right; height:30px;" onclick="confirmUpdate()">수정</button>
                         </form>
 
                         <form action="/review/delete" method="post">
                             <input type="hidden" name="bno" th:value="${rvo.bno}">
-                            <button type="submit" class="DelBtn" id="deltBtn" style="width:50px; float:right; height:30px;">삭제</button>
+                            <button type="submit" class="DelBtn" id="deltBtn" style="width:50px; float:right; height:30px;" onclick="confirmDelete()">삭제</button>
                         </form>
                     </div>
                 </div>

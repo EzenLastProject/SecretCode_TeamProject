@@ -78,6 +78,15 @@ public class ReviewServiceImpl implements ReviewService {
         reviewMapper.delete(bno); // ReviewMapper의 delete 메소드를 호출하여 데이터베이스에서 해당 bno에 해당하는 리뷰 정보를 삭제합니다.
     }
 
+    @Override
+    public List<ReviewVO> getListByTheme(String themeName, PagingVO pgvo) {
+        return reviewMapper.getListByTheme(themeName, pgvo);
+    }
+
+    @Override
+    public int getTotalCountByTheme(String themeName, PagingVO pgvo) {
+        return reviewMapper.getTotalCountByTheme(themeName, pgvo);
+    }
 
 
 }

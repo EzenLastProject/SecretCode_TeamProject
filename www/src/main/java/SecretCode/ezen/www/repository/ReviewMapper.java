@@ -33,5 +33,7 @@ public interface ReviewMapper {
     void delete(int bno);
 
 
+    List<ReviewVO> getListByTheme(String themeName, PagingVO pgvo);
 
+    int getTotalCountByTheme(String themeName, PagingVO pgvo);
 }

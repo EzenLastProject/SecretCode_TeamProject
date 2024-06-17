@@ -20,6 +20,15 @@
         select * from theme t join  file f  on  t.uuid = f.uuid
     </select>
 
+    <!-- UUID로 테마 정보 조회 -->
+    <select id="findByUuid" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        SELECT *
+        FROM theme
+        WHERE uuid = #{uuid}
+    </select>
+
+
+
 
 
 

@@ -20,5 +20,5 @@ public interface ThemeMapper {
     List<ThemeVO> getThemes();
 
 
-
+    ThemeVO findByUuid(String themeUuid);
 }

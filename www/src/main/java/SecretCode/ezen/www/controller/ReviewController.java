@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -31,28 +32,43 @@ public class ReviewController {
     private final ThemeService themeService; // ThemeService 주입
 
 
-
+    // 리뷰 목록과 테마 목록을 함께 반환하는 메서드
     @GetMapping("/list")
-    public String list(Model model, PagingVO pgvo) {
+    public String list(@RequestParam(value = "themeName", required = false) String themeName, Model model, PagingVO pgvo) {
         log.info(">>>pgvo>>{}", pgvo);
 
-        // Q&A 목록을 가져오는 서비스 호출
-        List<ReviewVO> reviewList = rsv.getList(pgvo);
+        List<ReviewVO> reviewList;
+        int totalCount;
 
-
-        // totalCount를 DB에서 가져오기
-        int totalCount = rsv.getTotalCount(pgvo); // 검색어도 함께 고려
+        if (themeName != null && !themeName.isEmpty()) {
+            // 선택된 테마의 리뷰 목록 가져오기
+            reviewList = rsv.getListByTheme(themeName, pgvo);
+            totalCount = rsv.getTotalCountByTheme(themeName, pgvo);
+        } else {
+            // 전체 리뷰 목록 가져오기
+            reviewList = rsv.getList(pgvo);
+            totalCount = rsv.getTotalCount(pgvo);
+        }
 
         // PagingHandler 객체 생성
         PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
-        // 모델에 Q&A 목록과 페이징 정보를 추가하여 뷰로 전달
+        // 모델에 리뷰 목록, 페이징 정보, 선택된 테마 이름 추가하여 뷰로 전달
         model.addAttribute("list", reviewList);
         model.addAttribute("ph", ph);
-
+        model.addAttribute("selectedTheme", themeName); // 선택된 테마 이름 추가
 
         return "review/list"; // 뷰 이름 반환
     }
+
+    // 테마 이름 목록을 모델에 추가하는 메서드
+    @ModelAttribute("themeList")
+    public List<String> themeList() {
+        List<ThemeVO> themes = themeService.getAllThemes();
+        return themes.stream().map(ThemeVO::getThemeName).collect(Collectors.toList());
+    }
+
+
 
 
 
@@ -69,15 +85,23 @@ public class ReviewController {
     public String register(ReviewVO rvo, @RequestParam("themeUuid") String themeUuid) {
         log.info(">>>reviewVO>>{}", rvo);
 
+        // 선택된 테마의 UUID로 테마 정보를 조회
+        ThemeVO theme = themeService.getThemeDetailsByUuid(themeUuid);
+
+        rvo.setThemeName(theme.getThemeName());
+
         // ReviewService를 사용하여 ReviewVO를 저장
         rvo.setUuid(themeUuid); // 선택된 테마의 UUID를 리뷰 객체에 설정
+
         rsv.register(rvo);
 
         return "redirect:/review/list"; // 등록 후 Review 목록 페이지로 리다이렉트
     }
 
+
+
     @GetMapping("/getThemeDetails")
-    public ResponseEntity<?> getThemeDetails(@RequestParam("themeNum") Long themeNum) {
+    public ResponseEntity<ThemeVO> getThemeDetails(@RequestParam("themeNum") Long themeNum) {
         ThemeVO theme = themeService.getThemeDetails(themeNum);
         if (theme != null) {
             return ResponseEntity.ok(theme);
@@ -129,6 +153,10 @@ public class ReviewController {
         rsv.delete(bno);
         return "redirect:/review/list";
     }
+
+
+
+
 
 
 

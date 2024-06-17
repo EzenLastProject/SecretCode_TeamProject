@@ -39,7 +39,10 @@ public class ThemeServiceImpl implements ThemeService {
         return themeMapper.getThemes();
     }
 
-
+    @Override
+    public ThemeVO getThemeDetailsByUuid(String themeUuid) {
+        return themeMapper.findByUuid(themeUuid);
+    }
 
 
 }
