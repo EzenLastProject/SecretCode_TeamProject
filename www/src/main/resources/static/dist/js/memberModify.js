@@ -16,11 +16,13 @@ document.getElementById('pwdCheck').addEventListener('keyup',()=>{
     let pwdCheck = document.getElementById("pwdCheck").value; // 비밀번호 더블체크 
     let checkpwd = document.getElementById('checkpwd'); // 비밀번호 더블체크 알림창
 
+    document.getElementById('updateBtn').disabled = true;
     if(pwd == pwdCheck){
         document.getElementById("pwd").style.color = "green";
         pwdCheck = document.getElementById("pwdCheck").style.color = "green";
         checkpwd.innerHTML = "";
         checkpwd.innerHTML = `<p class="text-success ischeckpwd">비밀번호 확인 완료되었습니다.</p>`;
+        document.getElementById('updateBtn').disabled = false;
     }else{
         document.getElementById("pwd").style.color = "red";
         pwdCheck = document.getElementById("pwdCheck").style.color = "red";
@@ -33,15 +35,18 @@ document.getElementById('pwdCheck').addEventListener('keyup',()=>{
 //비밀번호 유효성 체크
 document.getElementById('pwd').addEventListener('keyup',()=>{
     document.getElementById('pwdCheck').disabled = true;
+    document.getElementById('updateBtn').disabled = true;
     document.getElementById("pwdCheck").value = "";
     checkpwd.innerHTML = "";
     checkpwd.innerHTML = `<p class="text-danger">비밀번호를 다시 확인해주세요.</p>`;
     let checkpwdvalue = document.getElementById("checkpwdvalue"); //비밀번호 유효성 검사 알림창
 
-    //wkrdj
-    if(pwd = ""){
+    console.log(pwd);
+    //공백이면 innertext 다 지우고 수정버튼 활성화
+    if(pwd.value == ""){
         checkpwdvalue.innerHTML = "";
         checkpwd.innerHTML = "";
+        document.getElementById('updateBtn').disabled = false;
         return false;
     }
 
