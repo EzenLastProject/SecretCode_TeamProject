@@ -1,5 +1,6 @@
 package SecretCode.ezen.www.repository;
 
+import SecretCode.ezen.www.domain.PagingVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,4 +14,6 @@ public interface PaymentMapper {
     ReservationVO getImRes(String email, String merchantUid);
 
     List<ReservationVO> getmyReservation(String email);
+
+    List<ReservationVO> getPayList(PagingVO pgvo);
 }

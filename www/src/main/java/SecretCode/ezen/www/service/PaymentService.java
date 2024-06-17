@@ -1,5 +1,7 @@
 package SecretCode.ezen.www.service;
 
+import SecretCode.ezen.www.domain.PagingVO;
+import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 
 import java.util.List;
@@ -11,4 +13,6 @@ public interface PaymentService {
     ReservationVO getImRes(String email, String merchantUid);
 
     List<ReservationVO> getmyReservation(String email);
+
+    List<ReservationVO> getPayList(PagingVO pgvo);
 }

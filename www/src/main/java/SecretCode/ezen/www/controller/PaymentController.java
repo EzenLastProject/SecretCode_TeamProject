@@ -1,5 +1,7 @@
 package SecretCode.ezen.www.controller;
 
+import SecretCode.ezen.www.domain.PagingVO;
+import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.service.EmailService;
 import SecretCode.ezen.www.service.PaymentService;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 @RequestMapping("/portOnePay/*")
 @Slf4j
@@ -73,6 +78,13 @@ public class PaymentController {
 
         return "isOk";
 
+    }
+
+    @GetMapping("adminPayList")
+    public String list(Model m, PagingVO pgvo){
+        List<ReservationVO> payList = psv.getPayList(pgvo);
+        m.addAttribute("payList", payList);
+        return "/adminRegister/adminPayList";
     }
 
 

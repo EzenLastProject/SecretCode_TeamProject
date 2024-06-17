@@ -33,4 +33,10 @@ public class AdminController {
         return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK) :
                 new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @GetMapping("/adminReservation")
+    public String adminReservation(){
+        return "/member/adminReservation";
+    }
+
 }
