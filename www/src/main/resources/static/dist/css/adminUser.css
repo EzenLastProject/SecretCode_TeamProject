@@ -6,6 +6,7 @@
      font-style: normal;
 }
 .userContainer{
+    font-family: 'S-CoreDream-3Light';
     margin-top : 100px;
     margin-bottom : 100px;
 }
@@ -24,6 +25,7 @@
     align-items: center;*/
 }
 .responsive-table thead {
+text-align : center;
   position: absolute;
   clip: rect(1px 1px 1px 1px);
   /* IE6, IE7 */
@@ -94,7 +96,7 @@
 .responsive-table td {
   display: block;
   padding: 0;
-  text-align: left;
+  text-align: center;
   white-space: normal;
 }
 .responsive-table th,
