@@ -25,12 +25,12 @@
             </th:block>
 
             <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                <a class="nav-link" th:href="@{/adminRegister/adminUser}">회원리스트 보러가기</a>
+                <a class="Mynav-link" th:href="@{/adminRegister/adminUser}">회원리스트 보러가기</a>
             </th:block>
 
          <!--   &lt;!&ndash; type을 받아와서 SecretCode인 사람만 보이게-->
             <th:block th:if="${type eq 'SecretCode'}">
-              <a class="nav-link" th:href="@{/member/modify}">내 정보 수정하기</a>
+              <a class="Mynav-link" th:href="@{/member/modify}">내 정보 수정하기</a>
             </th:block>
 
 
@@ -148,7 +148,7 @@
                     <th scope="col" >내용</th>
                     <th scope="col" >작성일</th>
                     <th scope="col" >테마</th>
-                    <th scope="col" >조회수</th>
+                    <th scope="col" >공감수</th>
 
                   </tr>
                   </thead>
@@ -159,7 +159,7 @@
                       <td><a th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
 <!--                      <td th:text="${myreview.title}"></td>-->
                       <td th:text="${myreview.writer}"></td>
-                      <td th:text="${myreview.content}"></td>
+                      <td th:text="${myreview.content}" style="width:50%"></td>
                       <td th:text="${myreview.regDate}"></td>
                       <td th:text="${myreview.theme}"></td>
                       <td th:text="${myreview.readCount}"></td>
