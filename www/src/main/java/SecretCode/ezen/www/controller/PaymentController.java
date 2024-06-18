@@ -1,18 +1,14 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.service.EmailService;
 import SecretCode.ezen.www.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -86,6 +82,53 @@ public class PaymentController {
         m.addAttribute("payList", payList);
         return "/adminRegister/adminPayList";
     }
+
+
+
+//    @ResponseBody
+//    @GetMapping("/reservationCheck/{merchantUid}")
+//    public void getReservation(@PathVariable("merchantUid")String merchantUid, Model m) {
+//
+//        log.info(">>> merchantUid >> {}",merchantUid);
+//
+//        ReservationVO reservation = psv.getReservation(merchantUid);
+//        log.info(">>> reservation >> {}",reservation);
+//        m.addAttribute("reservation",reservation);
+//
+//    }
+
+
+    @GetMapping("/reservationCheck")
+    public void reservationCheck() {
+
+    }
+
+    @PostMapping("/reservationCheck")
+    public void getReservation(@RequestParam String merchantUid, Model m) {
+
+        ReservationVO reservation = psv.getReservation(merchantUid);
+        log.info(">>> reservation >> {}", reservation);
+        m.addAttribute("reservation", reservation);
+
+    }
+
+
+//    @GetMapping("/portOnePay")
+//    public void showReservationPage(@RequestParam("startDay") String startDay,
+//                                    @RequestParam("themeName") String themeName,
+//                                    @RequestParam("selectedTime") String selectedTime,
+//                                    Model model) {
+//
+//        log.info(startDay);
+//        log.info(themeName);
+//        log.info(selectedTime);
+//        // 예약 페이지에서 할 일
+//        model.addAttribute("startDay", startDay);
+//        model.addAttribute("themeName", themeName);
+//        model.addAttribute("selectedTime", selectedTime);
+//
+//
+//    }
 
 
 

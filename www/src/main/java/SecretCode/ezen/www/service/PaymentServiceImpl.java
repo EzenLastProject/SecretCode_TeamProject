@@ -38,6 +38,11 @@ public class PaymentServiceImpl implements PaymentService{
         return paymentMapper.getPayList(pgvo);
     }
 
+    @Override
+    public ReservationVO getReservation(String merchantUid) {
+       return paymentMapper.getReservation(merchantUid);
+    }
+
 
 }
 
