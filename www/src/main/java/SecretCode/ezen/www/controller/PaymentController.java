@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -93,6 +94,53 @@ public class PaymentController {
         return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK)
                 : new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+
+
+//    @ResponseBody
+//    @GetMapping("/reservationCheck/{merchantUid}")
+//    public void getReservation(@PathVariable("merchantUid")String merchantUid, Model m) {
+//
+//        log.info(">>> merchantUid >> {}",merchantUid);
+//
+//        ReservationVO reservation = psv.getReservation(merchantUid);
+//        log.info(">>> reservation >> {}",reservation);
+//        m.addAttribute("reservation",reservation);
+//
+//    }
+
+
+    @GetMapping("/reservationCheck")
+    public void reservationCheck() {
+
+    }
+
+    @PostMapping("/reservationCheck")
+    public void getReservation(@RequestParam String merchantUid, Model m) {
+
+        ReservationVO reservation = psv.getReservation(merchantUid);
+        log.info(">>> reservation >> {}", reservation);
+        m.addAttribute("reservation", reservation);
+
+    }
+
+
+//    @GetMapping("/portOnePay")
+//    public void showReservationPage(@RequestParam("startDay") String startDay,
+//                                    @RequestParam("themeName") String themeName,
+//                                    @RequestParam("selectedTime") String selectedTime,
+//                                    Model model) {
+//
+//        log.info(startDay);
+//        log.info(themeName);
+//        log.info(selectedTime);
+//        // 예약 페이지에서 할 일
+//        model.addAttribute("startDay", startDay);
+//        model.addAttribute("themeName", themeName);
+//        model.addAttribute("selectedTime", selectedTime);
+//
+//
+//    }
 
 
 

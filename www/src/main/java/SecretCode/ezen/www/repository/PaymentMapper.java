@@ -18,4 +18,6 @@ public interface PaymentMapper {
     List<ReservationVO> getPayList(PagingVO pgvo);
 
     int deleteReservation(int reservationNum);
+
+    ReservationVO getReservation(String merchantUid);
 }

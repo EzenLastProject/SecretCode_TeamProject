@@ -24,6 +24,10 @@
         select * from reservation
     </select>
 
+    <select id="getReservation" resultType="SecretCode.ezen.www.domain.ReservationVO">
+        select * from reservation WHERE merchant_uid = #{merchantUid}
+    </select>
+
 
     <delete id="deleteReservation">
         delete from reservation where reservation_num = #{reservationNum}
