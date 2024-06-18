@@ -64,7 +64,7 @@
                     </div>
                     <div id="text-div">작성자</div>
                     <div class="writer-div" th:if="${#authorization.expression('isAuthenticated()')}">
-                        <input type="text" id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}">
+                        <input type="text" readonly id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}">
                     </div>
                     <div id="text-div">내용</div>
                     <div class="content-div">
@@ -84,7 +84,6 @@
                     <button type="submit" id="regBtn" style="margin-top:30px; width: 100px;">작성</button>
                     <button type="button" id="listBtn" style="margin-top:30px; width: 100px;" onclick="goToList()">취소</button>
                 </div>
-
             </div>
         </form>
 

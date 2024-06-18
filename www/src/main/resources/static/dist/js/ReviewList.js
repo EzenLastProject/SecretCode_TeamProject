@@ -90,4 +90,5 @@ function confirmUpdate() {
         document.getElementById('themeForm').submit();
     }
 
-   
+
+
