@@ -16,4 +16,6 @@ public interface PaymentMapper {
     List<ReservationVO> getmyReservation(String email);
 
     List<ReservationVO> getPayList(PagingVO pgvo);
+
+    ReservationVO getReservation(String merchantUid);
 }

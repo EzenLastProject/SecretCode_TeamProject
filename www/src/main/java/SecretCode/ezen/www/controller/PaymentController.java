@@ -1,15 +1,14 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.service.EmailService;
 import SecretCode.ezen.www.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +21,9 @@ public class PaymentController {
     private final PaymentService psv;
     private final EmailService emailService;
 
-//    @GetMapping("/portOnePay")
-//    public void pay() {
-//    }
+    @GetMapping("/portOnePay")
+    public void pay() {
+    }
 
     //결제 후 예약 DB 작업
     @ResponseBody
@@ -84,25 +83,52 @@ public class PaymentController {
         return "/adminRegister/adminPayList";
     }
 
-    @GetMapping("/portOnePay")
-    public void showReservationPage(@RequestParam("startDay") String startDay,
-                                      @RequestParam("themeName") String themeName,
-                                      @RequestParam("selectedTime") String selectedTime,
-                                      Model model) {
 
-        log.info(startDay);
-        log.info(themeName);
-        log.info(selectedTime);
-        // 예약 페이지에서 할 일
-        model.addAttribute("startDay", startDay);
-        model.addAttribute("themeName", themeName);
-        model.addAttribute("selectedTime", selectedTime);
 
+//    @ResponseBody
+//    @GetMapping("/reservationCheck/{merchantUid}")
+//    public void getReservation(@PathVariable("merchantUid")String merchantUid, Model m) {
+//
+//        log.info(">>> merchantUid >> {}",merchantUid);
+//
+//        ReservationVO reservation = psv.getReservation(merchantUid);
+//        log.info(">>> reservation >> {}",reservation);
+//        m.addAttribute("reservation",reservation);
+//
+//    }
+
+
+    @GetMapping("/reservationCheck")
+    public void reservationCheck() {
+
+    }
+
+    @PostMapping("/reservationCheck")
+    public void getReservation(@RequestParam String merchantUid, Model m) {
+
+        ReservationVO reservation = psv.getReservation(merchantUid);
+        log.info(">>> reservation >> {}", reservation);
+        m.addAttribute("reservation", reservation);
 
     }
 
 
-
+//    @GetMapping("/portOnePay")
+//    public void showReservationPage(@RequestParam("startDay") String startDay,
+//                                    @RequestParam("themeName") String themeName,
+//                                    @RequestParam("selectedTime") String selectedTime,
+//                                    Model model) {
+//
+//        log.info(startDay);
+//        log.info(themeName);
+//        log.info(selectedTime);
+//        // 예약 페이지에서 할 일
+//        model.addAttribute("startDay", startDay);
+//        model.addAttribute("themeName", themeName);
+//        model.addAttribute("selectedTime", selectedTime);
+//
+//
+//    }
 
 
 
