@@ -141,7 +141,7 @@ function requestPay() {
                                 if(result == "isOk"){
     
                                   alert("결제가 완료 되었습니다. 이메일을 확인해 주세요.");
-                                  window.location.replace("/member/myPage");
+                                  window.location.replace("/portOnePay/reservationCheck");
 
                                 }
 
