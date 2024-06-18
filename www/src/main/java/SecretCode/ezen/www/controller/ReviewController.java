@@ -46,6 +46,7 @@ public class ReviewController {
             totalCount = rsv.getTotalCountByTheme(themeName, pgvo);
         } else {
             // 전체 리뷰 목록 가져오기
+
             reviewList = rsv.getList(pgvo);
             totalCount = rsv.getTotalCount(pgvo);
         }
