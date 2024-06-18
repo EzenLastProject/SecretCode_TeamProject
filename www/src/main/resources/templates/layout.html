@@ -47,9 +47,11 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/portOnePay}" sec:authorize="isAnonymous()">결제 테스트</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/portOnePay}">결제 테스트</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/reservationCheck}">결제 및 예약 확인</a>
+                            </li>
                             <li class="nav-item" sec:authorize="isAuthenticated()">
                                 <a class="nav-link active" aria-current="page"  href="" id="logoutLink">로그아웃</a>
                                 <form action="/member/logout" method="post" id="logoutForm">

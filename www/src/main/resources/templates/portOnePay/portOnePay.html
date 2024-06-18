@@ -15,16 +15,17 @@
 
                     <div class="input-group">
                         <label for="date">예약일:</label>
-                        <input type="date" id="date" name="date" class="PayGray" required>
+                        <input type="date" th:value="${startDay}" id="date" name="date" class="PayGray" required>
                     </div>
                     <div class="input-group">
                         <label for="time">시간:</label>
-                        <input type="time" id="time" name="time" class="PayGray" required>
+                        <input type="time" th:value="${selectedTime}" id="time" name="time" class="PayGray" required>
                     </div>
 
                     <div class="input-group">
                         <label for="theme">테마명:</label>
-                        <input type="text" id="theme" name="theme" class="PayGray" required>
+                        <input type="text" th:value="${themeName}" id="theme" name="theme" class="PayGray" required>
+
                     </div>
 
 
