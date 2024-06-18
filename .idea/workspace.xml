@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 2024/06/17">
+    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/controller/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/repository/PaymentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/repository/PaymentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/mappers/paymentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/mappers/paymentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/PortOnePay.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/PortOnePay.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718613703653</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18">
+      <option name="closed" value="true" />
+      <created>1718699773259</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1718699773259</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -308,6 +311,7 @@
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중 마이페이지_정보 수정 예약_qna 현황_작업중 2024/06/14" />
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중, 2024/06/17" />
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 2024/06/17" />
-    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 2024/06/17" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18" />
+    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18" />
   </component>
 </project>
