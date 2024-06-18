@@ -15,7 +15,6 @@ html {
 }
 
 .containerPay {
-    width: 90%;
     flex: 1;
     background-color: #fff;
     padding: 20px;

@@ -39,8 +39,7 @@
     </delete>
 
     <select id="getListWithPaging" resultType="SecretCode.ezen.www.domain.MemberVO">
-        select m.*
-        from member m
+        select m.* from member m
         join auth_member a on m.email = a.email
         <if test="auth != null">
             where a.auth = #{auth}
@@ -50,16 +49,13 @@
 
 
     <select id="getBoardTotalCount" resultType="int">
-        select count(*) from qna
-        where is_notice = 'false'
+        select count(*) from qna where is_notice = 'false'
         <include refid="search"></include>
     </select>
 
     <select id="getBoardList" resultType="SecretCode.ezen.www.domain.QnaVO">
-        select * from qna
-        where is_notice = 'false'
-        order by bno desc
-        limit #{pageStart}, #{qty}
+        select * from qna where is_notice = 'false'
+        order by bno desc limit #{pageStart}, #{qty}
     </select>
 
     <select id="getNoticeList" resultType="SecretCode.ezen.www.domain.QnaVO">
@@ -70,6 +66,12 @@
 
     <select id="getTotalCount" resultType="int">
         select count(email) from member
+    </select>
+
+    <select id="getTotalCountWithAuth" resultType="int">
+        select count(m.email) from member m
+        join auth_member a on m.email = a.email
+        where a.auth = #{auth}
     </select>
 
 

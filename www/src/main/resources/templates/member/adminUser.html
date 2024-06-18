@@ -28,7 +28,6 @@
                     <thead>
                     <tr>
                         <th scope="col">이메일</th>
-                        <th scope="col">비밀번호</th>
                         <th scope="col">닉네임</th>
                         <th scope="col">가입 날짜</th>
                         <th scope="col">최근 로그인 기록</th>
@@ -40,7 +39,6 @@
                     <th:block th:each="member : ${list}">
                         <tr>
                             <td data-title="Email">[[${member.email}]]</td>
-                            <td data-title="Pwd">[[${member.pwd}]]</td>
                             <td data-title="NickName">[[${member.nickName}]]</td>
                             <td data-title="RegAt">[[${member.regAt}]]</td>
                             <td data-title="LastLogin">[[${member.lastLogin}]]</td>

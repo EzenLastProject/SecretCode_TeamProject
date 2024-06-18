@@ -101,4 +101,9 @@ public class adminRegisterServiceImpl implements adminRegisterService {
     public int deleteTheme(int themeNum) {
         return arMapper.deleteTheme(themeNum);
     }
+
+    @Override
+    public int getTotalCountWithAuth(String auth) {
+        return arMapper.getTotalCountWithAuth(auth);
+    }
 }

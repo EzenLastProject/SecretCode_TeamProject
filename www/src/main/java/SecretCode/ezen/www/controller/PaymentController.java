@@ -1,12 +1,17 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.PagingVO;
+import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.service.EmailService;
 import SecretCode.ezen.www.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,6 +86,13 @@ public class PaymentController {
         List<ReservationVO> payList = psv.getPayList(pgvo);
         m.addAttribute("payList", payList);
         return "/adminRegister/adminPayList";
+    }
+
+    @DeleteMapping(value = "/{reservationNum}", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> remove(@PathVariable("reservationNum") int reservationNum) {
+        int isOk = psv.deleteReservation(reservationNum);
+        return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK)
+                : new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
