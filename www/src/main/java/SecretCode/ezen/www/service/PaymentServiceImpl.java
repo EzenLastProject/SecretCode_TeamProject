@@ -38,6 +38,11 @@ public class PaymentServiceImpl implements PaymentService{
         return paymentMapper.getPayList(pgvo);
     }
 
+    @Override
+    public int deleteReservation(int reservationNum) {
+        return paymentMapper.deleteReservation(reservationNum);
+    }
+
 
 }
 
