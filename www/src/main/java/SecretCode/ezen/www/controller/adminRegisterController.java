@@ -88,16 +88,22 @@ public class adminRegisterController {
     public String list(Model m, PagingVO pgvo, @RequestParam(required = false) String auth) {
         log.info(">>>pgvo>>{}", pgvo);
 
-        // auth 파라미터 설정
         if (auth != null && !auth.isEmpty()) {
             pgvo.setAuth(auth);
+        } else {
+            pgvo.setAuth(null);
         }
 
         List<MemberVO> memberList = arsv.getListWithPaging(pgvo);
+        int totalCount;
 
-        int totalCount = arsv.getTotalCount();
+        if (auth != null && !auth.isEmpty()) {
+            totalCount = arsv.getTotalCountWithAuth(auth);
+        } else {
+            totalCount = arsv.getTotalCount();
+        }
+
         log.info("totalCount: {}", totalCount);
-
         PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
         m.addAttribute("list", memberList);

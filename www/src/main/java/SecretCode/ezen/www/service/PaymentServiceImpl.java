@@ -39,6 +39,11 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
+    public int deleteReservation(int reservationNum) {
+        return paymentMapper.deleteReservation(reservationNum);
+    }
+
+    @Override
     public ReservationVO getReservation(String merchantUid) {
        return paymentMapper.getReservation(merchantUid);
     }

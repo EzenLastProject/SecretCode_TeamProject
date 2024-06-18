@@ -33,4 +33,6 @@ public interface adminRegisterMapper {
     List<ThemeVO> getThemeNum();
 
     int deleteTheme(int themeNum);
+
+    int getTotalCountWithAuth(String auth);
 }

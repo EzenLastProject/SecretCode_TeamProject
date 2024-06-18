@@ -29,4 +29,10 @@
     </select>
 
 
+    <delete id="deleteReservation">
+        delete from reservation where reservation_num = #{reservationNum}
+    </delete>
+
+
+
 </mapper>

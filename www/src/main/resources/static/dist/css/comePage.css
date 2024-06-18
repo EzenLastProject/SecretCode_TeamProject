@@ -70,13 +70,6 @@ html {
     border-bottom: 1px solid #969696;
 }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #222;
-    color: white;
-    font-size: 14px;
-}
 
 .modal {
     display: none;
