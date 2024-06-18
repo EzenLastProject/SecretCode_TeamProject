@@ -26,9 +26,9 @@ public class PaymentController {
     private final PaymentService psv;
     private final EmailService emailService;
 
-    @GetMapping("/portOnePay")
-    public void pay() {
-    }
+//    @GetMapping("/portOnePay")
+//    public void pay() {
+//    }
 
     //결제 후 예약 DB 작업
     @ResponseBody
@@ -97,18 +97,6 @@ public class PaymentController {
 
 
 
-//    @ResponseBody
-//    @GetMapping("/reservationCheck/{merchantUid}")
-//    public void getReservation(@PathVariable("merchantUid")String merchantUid, Model m) {
-//
-//        log.info(">>> merchantUid >> {}",merchantUid);
-//
-//        ReservationVO reservation = psv.getReservation(merchantUid);
-//        log.info(">>> reservation >> {}",reservation);
-//        m.addAttribute("reservation",reservation);
-//
-//    }
-
 
     @GetMapping("/reservationCheck")
     public void reservationCheck() {
@@ -124,23 +112,24 @@ public class PaymentController {
 
     }
 
+    @GetMapping("/portOnePay")
+    public void showReservationPage(@RequestParam("startDay") String startDay,
+                                    @RequestParam("themeName") String themeName,
+                                    @RequestParam("selectedTime") String selectedTime,
+                                    Model model) {
 
-//    @GetMapping("/portOnePay")
-//    public void showReservationPage(@RequestParam("startDay") String startDay,
-//                                    @RequestParam("themeName") String themeName,
-//                                    @RequestParam("selectedTime") String selectedTime,
-//                                    Model model) {
-//
-//        log.info(startDay);
-//        log.info(themeName);
-//        log.info(selectedTime);
-//        // 예약 페이지에서 할 일
-//        model.addAttribute("startDay", startDay);
-//        model.addAttribute("themeName", themeName);
-//        model.addAttribute("selectedTime", selectedTime);
-//
-//
-//    }
+        log.info(startDay);
+        log.info(themeName);
+        log.info(selectedTime);
+        // 예약 페이지에서 할 일
+        model.addAttribute("startDay", startDay);
+        model.addAttribute("themeName", themeName);
+        model.addAttribute("selectedTime", selectedTime);
+
+
+    }
+
+
 
 
 
