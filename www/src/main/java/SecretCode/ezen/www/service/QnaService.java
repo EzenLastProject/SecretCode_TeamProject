@@ -43,5 +43,6 @@ public interface QnaService {
 
     List<QnaVO> myqna(String email);
 
+
     List<QnaVO> memberQna();
 }

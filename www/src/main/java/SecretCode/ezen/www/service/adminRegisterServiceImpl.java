@@ -103,7 +103,7 @@ public class adminRegisterServiceImpl implements adminRegisterService {
     }
 
     @Override
-    public int getTotalCountWithAuth(String auth) {
-        return arMapper.getTotalCountWithAuth(auth);
+    public int getTotalCountWithAuth(PagingVO pgvo) {
+        return arMapper.getTotalCountWithAuth(pgvo);
     }
 }
