@@ -1,10 +1,7 @@
 package SecretCode.ezen.www.controller;
 
 
-import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
-import SecretCode.ezen.www.domain.ReviewVO;
-import SecretCode.ezen.www.domain.ThemeVO;
+import SecretCode.ezen.www.domain.*;
 import SecretCode.ezen.www.handler.PagingHandler;
 import SecretCode.ezen.www.service.*;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.context.Theme;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -70,9 +68,6 @@ public class ReviewController {
     }
 
 
-
-
-
     @GetMapping("/register")
     public String registerForm(Model model) {
         List<ThemeVO> themeList = themeService.getAllThemes();
@@ -82,6 +77,7 @@ public class ReviewController {
 
         return "review/register";
     }
+
     @PostMapping("/register")
     public String register(ReviewVO rvo, @RequestParam("themeUuid") String themeUuid) {
         log.info(">>>reviewVO>>{}", rvo);
@@ -100,7 +96,6 @@ public class ReviewController {
     }
 
 
-
     @GetMapping("/getThemeDetails")
     public ResponseEntity<ThemeVO> getThemeDetails(@RequestParam("themeNum") Long themeNum) {
         ThemeVO theme = themeService.getThemeDetails(themeNum);
@@ -110,6 +105,8 @@ public class ReviewController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 
     @PostMapping("/like/{bno}")
     public ResponseEntity<?> likeReview(@PathVariable("bno") int bno) {
@@ -132,6 +129,14 @@ public class ReviewController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to dislike review");
         }
     }
+
+
+
+
+
+
+
+
     // 리뷰 수정 화면
     @GetMapping("/modify/{bno}")
     public String modifyForm(@PathVariable int bno, Model model) {
