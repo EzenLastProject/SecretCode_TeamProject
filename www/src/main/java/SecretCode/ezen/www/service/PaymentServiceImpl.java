@@ -75,6 +75,11 @@ public class PaymentServiceImpl implements PaymentService{
         return reservationVOs;
     }
 
+    @Override
+    public List<ReservationVO> getMemberReservation() {
+        return paymentMapper.getMemberReservation();
+    }
+
 
 }
 

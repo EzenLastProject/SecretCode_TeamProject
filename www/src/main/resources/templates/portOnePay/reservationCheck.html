@@ -55,8 +55,11 @@
                         <td th:text="${reservation.reservationPrice}"></td>
                         <td th:text="${reservation.reservationPaydate}"></td>
 
-                    </tr>
+                        <div class="refundBtn">
+                            <button class="refund-button">환불</button>
+                        </div>
 
+                    </tr>
                     <tr th:if="${reservation == null}">
                         <h2 class="reservationSpan">해당 주문번호로 조회된 예약 정보가 없습니다.</h2>
                     </tr>
