@@ -1,7 +1,6 @@
 package SecretCode.ezen.www.service;
 
 import SecretCode.ezen.www.domain.PagingVO;
-import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.domain.ReservationVO;
 
 import java.util.List;
@@ -19,4 +18,6 @@ public interface PaymentService {
     int deleteReservation(int reservationNum);
 
     ReservationVO getReservation(String merchantUid);
+
+    List<ReservationVO> getMemberReservation();
 }

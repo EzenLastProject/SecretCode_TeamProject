@@ -42,4 +42,6 @@ public interface QnaService {
     void updateCmtStatus(int bno);
 
     List<QnaVO> myqna(String email);
+
+    List<QnaVO> memberQna();
 }

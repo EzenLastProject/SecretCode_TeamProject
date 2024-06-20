@@ -201,3 +201,14 @@ width:50%;
             text-align: left;
             padding: 8px;
         }
+
+ .nothingValue{
+ text-align : center;
+  margin-top: 100px; /* Space below heading */
+  margin-bottom: 100px; /* Space below heading */
+ color : #A7813A;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 50%; /* 화면 높이에 맞추기 위해 필요한 설정 */
+ }

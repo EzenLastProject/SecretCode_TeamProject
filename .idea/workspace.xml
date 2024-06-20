@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18">
+    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 수정중 2024/06/18">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/PortOnePay.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/PortOnePay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/www/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/repository/PaymentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/repository/PaymentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/repository/QnaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/repository/QnaMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/PaymentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/mappers/paymentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/mappers/paymentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/mappers/qnaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/mappers/qnaMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/myPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/myPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/reservationCheck.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/reservationCheck.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/adminPayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/adminPayList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/adminRegister/adminPayList.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/adminRegister/adminPayList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/member/myPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/member/myPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/portOnePay/reservationCheck.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/portOnePay/reservationCheck.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +62,8 @@
         <option value="Enum" />
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,7 +104,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/leechanggyu/_boot_workspace2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -288,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718699773259</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 수정중 2024/06/18">
+      <option name="closed" value="true" />
+      <created>1718701322368</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1718701322368</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -312,6 +335,7 @@
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중, 2024/06/17" />
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 2024/06/17" />
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18" />
-    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 수정중 2024/06/18" />
+    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 수정중 2024/06/18" />
   </component>
 </project>
