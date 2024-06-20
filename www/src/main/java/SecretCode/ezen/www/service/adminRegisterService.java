@@ -32,5 +32,6 @@ public interface adminRegisterService {
 
     int deleteTheme(int themeNum);
 
-    int getTotalCountWithAuth(String auth);
+    int getTotalCountWithAuth(PagingVO pgvo);
+
 }

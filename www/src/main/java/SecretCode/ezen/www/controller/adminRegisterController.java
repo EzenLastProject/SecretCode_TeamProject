@@ -25,13 +25,18 @@ public class adminRegisterController {
     private final FileHandler fhd;
 
     @GetMapping("/adminBoard")
-    public String adminBoard(Model m, PagingVO pgvo) {
+    public String adminBoard(Model m, PagingVO pgvo, @RequestParam(required = false) String type, @RequestParam(required = false) String keyword) {
+        pgvo.setType(type);
+        pgvo.setKeyword(keyword);
+
         List<QnaVO> qnaList = arsv.getBoardList(pgvo);
         int totalCount = arsv.getBoardTotalCount(pgvo);
         PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
         m.addAttribute("list", qnaList);
         m.addAttribute("ph", ph);
+        m.addAttribute("type", type);
+        m.addAttribute("keyword", keyword);
 
         return "/adminRegister/adminBoard";
     }
@@ -85,7 +90,7 @@ public class adminRegisterController {
 
 
     @GetMapping("/adminUser")
-    public String list(Model m, PagingVO pgvo, @RequestParam(required = false) String auth) {
+    public String list(Model m, PagingVO pgvo, @RequestParam(required = false) String auth, @RequestParam(required = false) String keyword) {
         log.info(">>>pgvo>>{}", pgvo);
 
         if (auth != null && !auth.isEmpty()) {
@@ -94,23 +99,29 @@ public class adminRegisterController {
             pgvo.setAuth(null);
         }
 
-        List<MemberVO> memberList = arsv.getListWithPaging(pgvo);
-        int totalCount;
+        pgvo.setKeyword(keyword);
 
-        if (auth != null && !auth.isEmpty()) {
-            totalCount = arsv.getTotalCountWithAuth(auth);
-        } else {
-            totalCount = arsv.getTotalCount();
+        if (pgvo.getPageNo() < 1) {
+            pgvo.setPageNo(1);
         }
+
+        List<MemberVO> memberList = arsv.getListWithPaging(pgvo);
+        int totalCount = arsv.getTotalCountWithAuth(pgvo);
 
         log.info("totalCount: {}", totalCount);
         PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
         m.addAttribute("list", memberList);
         m.addAttribute("ph", ph);
+        m.addAttribute("auth", auth);
+        m.addAttribute("keyword", keyword);
 
         return "/member/adminUser";
     }
+
+
+
+
 
     @DeleteMapping(value = "/delete/{email}", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> delete(@PathVariable("email") String email){

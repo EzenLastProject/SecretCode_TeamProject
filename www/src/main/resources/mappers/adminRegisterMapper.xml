@@ -18,8 +18,8 @@
         select * from member
     </select>
 
-   <select id="getreservationList" resultType="SecretCode.ezen.www.domain.ThemeVO">
-       select * from theme t join  file f  on  t.uuid = f.uuid
+    <select id="getreservationList" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        select * from theme t join  file f  on  t.uuid = f.uuid
     </select>
 
     <select id="getThemeNum" resultType="SecretCode.ezen.www.domain.adRegisterVO">
@@ -41,12 +41,16 @@
     <select id="getListWithPaging" resultType="SecretCode.ezen.www.domain.MemberVO">
         select m.* from member m
         join auth_member a on m.email = a.email
-        <if test="auth != null">
-            where a.auth = #{auth}
-        </if>
+        <where>
+            <if test="auth != null and auth != ''">
+                and a.auth = #{auth}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                and m.email like concat('%', #{keyword}, '%')
+            </if>
+        </where>
         limit #{pageStart}, #{qty}
     </select>
-
 
     <select id="getBoardTotalCount" resultType="int">
         select count(*) from qna where is_notice = 'false'
@@ -55,6 +59,7 @@
 
     <select id="getBoardList" resultType="SecretCode.ezen.www.domain.QnaVO">
         select * from qna where is_notice = 'false'
+        <include refid="search"></include>
         order by bno desc limit #{pageStart}, #{qty}
     </select>
 
@@ -66,45 +71,48 @@
 
     <select id="getTotalCount" resultType="int">
         select count(email) from member
+        <where>
+            <if test="keyword != null and keyword != ''">
+                email like concat('%', #{keyword}, '%')
+            </if>
+        </where>
     </select>
 
     <select id="getTotalCountWithAuth" resultType="int">
         select count(m.email) from member m
         join auth_member a on m.email = a.email
-        where a.auth = #{auth}
+        <where>
+            <if test="auth != null and auth != ''">
+                and a.auth = #{auth}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                and m.email like concat('%', #{keyword}, '%')
+            </if>
+        </where>
     </select>
 
-
-
     <sql id="search">
-        <if test="type != null">
-            <trim prefix="and (" suffix=")" suffixOverrides="or">
-                <foreach collection="typeToArray" item="type">
-                    <trim suffix="or">
-                        <choose>
-                            <when test="type=='t'.toString()">
-                                title like concat('%', #{keyword}, '%')
-                            </when>
-                            <when test="type=='w'.toString()">
-                                writer like concat('%', #{keyword}, '%')
-                            </when>
-                            <when test="type=='c'.toString()">
-                                content like concat('%', #{keyword}, '%')
-                            </when>
-                        </choose>
-                    </trim>
-                </foreach>
-            </trim>
+        <if test="keyword != null and keyword != ''">
+            <if test="type != null and type != ''">
+                <choose>
+                    <when test="type == 't'.toString()">
+                        and title like concat('%', #{keyword}, '%')
+                    </when>
+                    <when test="type == 'w'.toString()">
+                        and writer like concat('%', #{keyword}, '%')
+                    </when>
+                    <when test="type == 'c'.toString()">
+                        and content like concat('%', #{keyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </if>
+        <if test="type == 'completed'">
+            and cmt_qty > 0
+        </if>
+        <if test="type == 'uncompleted'">
+            and cmt_qty = 0
         </if>
     </sql>
-
-    <!-- 새로운 authSearch 추가 -->
-    <sql id="authSearch">
-        <if test="auth != null">
-            and auth = #{auth}
-        </if>
-    </sql>
-
-
 
 </mapper>
