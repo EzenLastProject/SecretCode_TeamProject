@@ -91,5 +91,40 @@ function confirmUpdate() {
         document.getElementById('themeForm').submit();
     }
 
+    document.addEventListener("DOMContentLoaded", function() {
+        var editButtons = document.querySelectorAll('.ModBtn'); // 수정 버튼
+        var titleInputs = document.querySelectorAll('.card-title input'); // 제목 입력 필드
+        var contentInputs = document.querySelectorAll('.card-text textarea'); // 내용 입력 필드
+
+        editButtons.forEach(function(button, index) {
+            button.addEventListener('click', function(event) {
+                // 해당 리뷰의 제목 입력 필드와 내용 입력 필드를 수정 가능하도록 설정
+                titleInputs[index].readOnly = false;
+                contentInputs[index].readOnly = false;
+            });
+        });
+    });
+
+    document.getElementById('review-write').addEventListener('click', function() {
+            var isAuthenticated = this.getAttribute('data-authenticated');
+
+            if (isAuthenticated === 'true') {
+                // 인증된 경우 원하는 작업 수행
+                 window.location.href = '/review/register';
+                // 여기에 실제 리뷰 작성 폼을 열거나 다른 동작을 수행하는 코드를 추가할 수 있습니다.
+            } else {
+                // 미인증 사용자에게 로그인 요구
+                var confirmLogin = confirm('리뷰를 작성하려면 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?');
+
+                if (confirmLogin) {
+                    window.location.href = '/member/login_register'; // 로그인 페이지로 이동
+                } else {
+                  window.location.href = '/review/list';
+                }
+            }
+        });
+
+
+
 
 

@@ -47,10 +47,12 @@
         WHERE writer = #{email}
     </select>
 
-    <!-- 좋아요 수 증가 -->
+    <!-- 좋아요 수 증가 및 isLiked 업데이트 -->
     <update id="incrementLikeCount" parameterType="int">
+        <!-- 좋아요 수 증가 -->
         UPDATE review
-        SET read_count = read_count + 1
+        SET read_count = read_count + 1,
+        is_liked = 1
         WHERE bno = #{bno}
     </update>
 
@@ -63,10 +65,12 @@
 
 
 
-    <!-- 좋아요 수 감소 -->
+    <!-- 좋아요 수 감소 및 isLiked 업데이트 -->
     <update id="decrementLikeCount" parameterType="int">
+        <!-- 좋아요 수 감소 -->
         UPDATE review
-        SET read_count = read_count - 1
+        SET read_count = read_count - 1,
+        is_liked = 2
         WHERE bno = #{bno}
     </update>
     <!-- 수정 쿼리 -->
@@ -89,6 +93,10 @@
         DELETE FROM review
         WHERE bno = #{bno}
     </delete>
+
+
+
+
 
 
 
