@@ -69,6 +69,12 @@ public class QnaServiceImpl implements QnaService {
     }
 
     @Override
+    public List<QnaVO> memberQna() {
+        return qnaMapper.memberQna();
+    }
+
+
+    @Override
     public QnaVO getDetail(int bno) {
         return qnaMapper.getDetail(bno);
     }

@@ -40,7 +40,7 @@
                     <td th:text="${reservation.reservationPeople}"></td>
                     <td th:text="${reservation.reservationPrice}"></td>
                     <td th:text="${reservation.reservationPaydate}"></td>
-                    <td><button type="button" class="hwanboolBtn">환불</button></td>
+                    <td><button type="button" class="hwanboolBtn" onclick="cancelPayment('[[${reservation.merchantUid}]]')" th:data-merchantUid="${reservation.merchantUid }" th:data-reservationPrice="${reservation.reservationPrice }">환불</button></td>
                 </tr>
                 </tbody>
             </table>

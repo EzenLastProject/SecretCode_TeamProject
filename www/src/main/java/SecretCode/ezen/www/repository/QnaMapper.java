@@ -50,6 +50,8 @@ public interface QnaMapper {
 
     List<QnaVO> myqna(String email);
 
+    List<QnaVO> memberQna();
+
 
 
 
