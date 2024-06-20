@@ -21,5 +21,7 @@ public interface PaymentMapper {
 
     ReservationVO getReservation(String merchantUid);
 
+    List<ReservationVO> findAll();
+
     List<ReservationVO> getMemberReservation();
 }

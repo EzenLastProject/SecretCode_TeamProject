@@ -19,5 +19,8 @@ public interface PaymentService {
 
     ReservationVO getReservation(String merchantUid);
 
+    List<ReservationVO> getAllReservations();
+
+
     List<ReservationVO> getMemberReservation();
 }

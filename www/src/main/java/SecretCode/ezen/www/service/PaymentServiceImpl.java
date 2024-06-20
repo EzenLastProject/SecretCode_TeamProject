@@ -6,8 +6,10 @@ import SecretCode.ezen.www.repository.PaymentMapper;
 import com.siot.IamportRestClient.IamportClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -15,6 +17,7 @@ import java.util.List;
 @Service
 public class PaymentServiceImpl implements PaymentService{
     private final PaymentMapper paymentMapper;
+
     private IamportClient api;
 
     @Override
@@ -46,6 +49,30 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public ReservationVO getReservation(String merchantUid) {
        return paymentMapper.getReservation(merchantUid);
+    }
+
+    @Override
+    public List<ReservationVO> getAllReservations() {
+        // 예약 정보를 가져오는 비즈니스 로직을 구현
+        List<ReservationVO> reservations = paymentMapper.findAll();
+        // Entity를 VO로 변환하는 등의 추가 로직이 있을 수 있음
+        List<ReservationVO> reservationVOs = convertToReservationVOList(reservations);
+        return reservationVOs;
+    }
+
+    private List<ReservationVO> convertToReservationVOList(List<ReservationVO> reservations) {
+        // 예약 Entity를 VO로 변환하는 메서드 구현
+        List<ReservationVO> reservationVOs = new ArrayList<>();
+        for (ReservationVO reservation : reservations) {
+            ReservationVO reservationVO = new ReservationVO();
+            // 예약 정보 Entity에서 필요한 정보를 VO에 복사하는 로직 추가
+            reservationVO.setReservationDate(reservation.getReservationDate());
+            reservationVO.setThemeName(reservation.getThemeName());
+            reservationVO.setReservationTime(reservation.getReservationTime());
+            // 필요한 경우 더 많은 정보 설정
+            reservationVOs.add(reservationVO);
+        }
+        return reservationVOs;
     }
 
     @Override
