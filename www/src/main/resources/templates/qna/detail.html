@@ -49,7 +49,8 @@
                         <div class="qna-detail-cmtQty" style="font-size:22px; font-weight:700;">
 
                             <span class="qna-detail-cm" style="color:white; font-size:22px;"
-                                  id="cmtQty" name="cmtQty" th:text="${qvo.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></span>
+                                  th:unless="${qvo.isNotice}"
+                                  th:text="${qvo.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></span>
                         </div>
 
 
