@@ -110,7 +110,7 @@ height:120px;
                 <div class="regBtn-box">
                     <form action="/review/register" >
 
-                        <button type="submit" id="review-write">리뷰 작성</button>
+                        <button type="button" id="review-write" th:attr="data-authenticated=${#authentication.name != 'anonymousUser'}">리뷰 등록</button>
 
                     </form>
 
@@ -141,12 +141,8 @@ height:120px;
                                 </div>
                                 <div class="theme-name">
                                     <h5 class="">
-        <span th:switch="${rvo.theme}">
-            <span th:case="1">위로</span>
-            <span th:case="2">노웨아이웃</span>
-            <span th:case="3">Rendering</span>
-            <span th:case="4">SCENE</span>
-            <span th:case="5">Trigger</span>
+       <span th:text="${rvo.themeName}">
+
         </span>
                                     </h5>
                                 </div>
@@ -156,39 +152,42 @@ height:120px;
 
                                 <div class="card-title">
 
-                                 <h5><span><input type="text"  name="title" id="titleInput" th:value="${rvo.title}"></span></h5>
+                                 <h5><span> <input type="text" name="title" id="titleInput"
+                                                   th:value="${rvo.title}"
+                                                   th:readonly="${#authentication.name != rvo.writer}"></span></h5>
                                 </div>
-                                <div class="card-subtitle mb-2 text-muted">
-                                    <span>[[${rvo.writer}]]</span> | <span>[[${rvo.regDate}]] </span>
-                                </div>
-                                <div class="card-text">
-                                    <textarea class="review-text" name="content" id="contentInput" rows="3">[[${rvo.content}]]</textarea>
-                                </div>
+
+                                    <div class="card-text">
+                                    <textarea class="review-text" name="content" id="contentInput" rows="3"
+                                              th:readonly="${#authentication.name != rvo.writer}"
+                                              th:text="${rvo.content}"></textarea>
+                                    </div>
 
                             </div>
 
                         </div>
 
-
-                        <div class="like-box">
-                            <button class="like-button" th:data-bno="${rvo.bno}" onclick="likeReview(this)">👍</button>
-                            <button class="dislike-button" th:data-bno="${rvo.bno}" onclick="dislikeReview(this)">👎</button>
-                            <br><br>
-                            <span th:id="'likeCountSpan_' + ${rvo.bno}">공감수: <span th:id="'likeCount_' + ${rvo.bno}" th:text="${rvo.readCount}"></span></span>
+                       <div class="like-box">
+                           <div class="card-subtitle mb-2 text-muted">
+                               <span style="font-size:18px; font-weight:700;"> [[${rvo.writer}]]</span>
+                              <br><br><span>[[${rvo.regDate}]] </span>
+                           </div>
                         </div>
 
 
                     </div>
 
                     <div class="btn-box">
-
+                        <form action="/review/modify" method="post" th:if="${#authentication.name == rvo.writer}">
                             <input type="hidden" name="bno" th:value="${rvo.bno}">
-                            <button type="submit" class="ModBtn" id="modBtn" style="width:50px; float:right; height:30px;" onclick="confirmUpdate()">수정</button>
+                            <button type="submit" class="ModBtn" style="width:50px; float:right; height:30px;"
+                                    onclick="confirmUpdate()">수정
+                            </button>
                         </form>
 
-                        <form action="/review/delete" method="post">
+                        <form action="/review/delete" method="post" th:if="${#authentication.name == rvo.writer or #authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                             <input type="hidden" name="bno" th:value="${rvo.bno}">
-                            <button type="submit" class="DelBtn" id="deltBtn" style="width:50px; float:right; height:30px;" onclick="confirmDelete()">삭제</button>
+                            <button type="submit" class="DelBtn" style="width:50px; float:right; height:30px;" onclick="confirmDelete()">삭제</button>
                         </form>
                     </div>
                 </div>
