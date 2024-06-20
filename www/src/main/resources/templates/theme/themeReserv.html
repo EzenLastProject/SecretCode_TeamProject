@@ -26,16 +26,16 @@
             <input type="date" id="startDay" name="startDay" class="startDay">
 
 
-            <!--              <label for="themeSelect">테마 선택 > </label>-->
-            <!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
+<!--              <label for="themeSelect">테마 선택 > </label>-->
+<!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
 
-            <!--                <option value="themeR1">위로</option>-->
-            <!--                <option value="themeR2"> 노웨이아웃</option>-->
-            <!--                <option value="themeR6" >Rendering</option>-->
-            <!--                <option value="themeR5">SCENE</option>-->
-            <!--                <option value="themeR3">Trigger</option>-->
+<!--                <option value="themeR1">위로</option>-->
+<!--                <option value="themeR2"> 노웨이아웃</option>-->
+<!--                <option value="themeR6" >Rendering</option>-->
+<!--                <option value="themeR5">SCENE</option>-->
+<!--                <option value="themeR3">Trigger</option>-->
 
-            <!--              </select> </p>-->
+<!--              </select> </p>-->
 
 
           </form>
@@ -275,24 +275,24 @@
 
     </script>
     <script>
-      <!--      function reserve() {-->
-      <!--        // 선택된 날짜 가져오기-->
-      <!--        var startDay = document.querySelector('.startDay').value;-->
+<!--      function reserve() {-->
+<!--        // 선택된 날짜 가져오기-->
+<!--        var startDay = document.querySelector('.startDay').value;-->
 
-      <!--        // 선택된 테마 가져오기-->
-      <!--        var themeName = document.querySelector('.reservTitle span').textContent.trim();-->
+<!--        // 선택된 테마 가져오기-->
+<!--        var themeName = document.querySelector('.reservTitle span').textContent.trim();-->
 
-      <!--        // 선택된 시간 가져오기 (예시에서는 첫 번째 시간으로 설정)-->
-      <!--        var selectedTime = document.querySelector('.time1').textContent.trim();-->
+<!--        // 선택된 시간 가져오기 (예시에서는 첫 번째 시간으로 설정)-->
+<!--        var selectedTime = document.querySelector('.time1').textContent.trim();-->
 
-      <!--        // 예약 페이지 URL 생성-->
-      <!--        var reservationUrl = '/reservationPage?startDay=' + encodeURIComponent(startDay) +-->
-      <!--                             '&themeName=' + encodeURIComponent(themeName) +-->
-      <!--                             '&selectedTime=' + encodeURIComponent(selectedTime);-->
+<!--        // 예약 페이지 URL 생성-->
+<!--        var reservationUrl = '/reservationPage?startDay=' + encodeURIComponent(startDay) +-->
+<!--                             '&themeName=' + encodeURIComponent(themeName) +-->
+<!--                             '&selectedTime=' + encodeURIComponent(selectedTime);-->
 
-      <!--        // 예약 페이지로 이동-->
-      <!--        window.location.href = reservationUrl;-->
-      <!--      }-->
+<!--        // 예약 페이지로 이동-->
+<!--        window.location.href = reservationUrl;-->
+<!--      }-->
     </script>
     <script>
       // 현재 날짜를 가져오는 함수
@@ -338,10 +338,7 @@
 
 
     </script>
-    <script >
-
-
-
+    <script th:inline="javascript">
       // 서버에서 받아온 예약 정보 (예시)
       var reservations = /*[[${reservations}]]*/ [];
 
@@ -372,13 +369,6 @@
       document.addEventListener('DOMContentLoaded', function() {
           processReservationData(reservations);
       });
-
-
-
-
-
-
-
     </script>
 
 
