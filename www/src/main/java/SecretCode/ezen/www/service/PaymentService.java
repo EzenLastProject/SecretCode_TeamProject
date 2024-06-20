@@ -19,4 +19,7 @@ public interface PaymentService {
     int deleteReservation(int reservationNum);
 
     ReservationVO getReservation(String merchantUid);
+
+    List<ReservationVO> getAllReservations();
+
 }

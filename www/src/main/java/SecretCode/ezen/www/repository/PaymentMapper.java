@@ -20,4 +20,6 @@ public interface PaymentMapper {
     int deleteReservation(int reservationNum);
 
     ReservationVO getReservation(String merchantUid);
+
+    List<ReservationVO> findAll();
 }

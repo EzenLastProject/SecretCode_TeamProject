@@ -174,3 +174,15 @@ MODIFY COLUMN reservation_time VARCHAR(100);
  --2024.06.14
 
   alter table review add column theme_name varchar(256);
+
+  --2024.06.18
+  CREATE TABLE liked (
+      writer VARCHAR(200) NOT NULL,
+      bno INT NOT NULL,
+      is_liked TINYINT(1) DEFAULT 0,
+      PRIMARY KEY (writer, bno),
+      FOREIGN KEY (bno) REFERENCES review(bno)
+  );
+
+  drop table liked;
+   ALTER TABLE review ADD COLUMN likestatus TINYINT(1) DEFAULT 0;

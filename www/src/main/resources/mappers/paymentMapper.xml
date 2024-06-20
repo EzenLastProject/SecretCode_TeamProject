@@ -32,7 +32,9 @@
     <delete id="deleteReservation">
         delete from reservation where reservation_num = #{reservationNum}
     </delete>
-
+    <select id="findAll" resultType="SecretCode.ezen.www.domain.ReservationVO">
+        select * from reservation;
+    </select>
 
 
 </mapper>
