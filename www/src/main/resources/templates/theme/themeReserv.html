@@ -338,6 +338,38 @@
 
 
     </script>
+    <script th:inline="javascript">
+      // 서버에서 받아온 예약 정보 (예시)
+      var reservations = /*[[${reservations}]]*/ [];
+
+      // 현재 선택된 날짜와 테마 정보
+      var selectedDate = document.getElementById('startDay').value; // 선택된 날짜
+      var selectedTheme = document.querySelector('.reservTitle span').textContent.trim(); // 선택된 테마
+
+      // 예약 정보를 처리하는 함수
+      function processReservationData(reservations) {
+          reservations.forEach(function(reservation) {
+              // 예약된 시간대 정보를 반복하여 처리
+              reservation.reservedTimes.forEach(function(reservedTime) {
+                  // 예약 정보와 현재 선택된 날짜, 테마가 일치하는지 확인
+                 if (reservation.date === selectedDate && reservation.theme === selectedTheme && reservedTime.reserved) {
+                  // 예약 불가능한 상태일 경우 해당 시간대의 링크를 비활성화
+                  var anchorId = reservation.id + '-' + reservedTime.time; // 링크 ID 예시
+                  var anchor = document.getElementById(anchorId); // 링크 요소를 ID로 가져옴
+                  anchor.removeAttribute('href'); // 링크 속성 제거
+                  anchor.classList.add('reserved'); // 클래스 추가
+                  anchor.innerHTML = '<span class="reserved">예약 불가</span>'; // 텍스트 변경
+}
+
+              });
+          });
+      }
+
+      // 페이지 로드 시 예약 정보 처리 함수 호출
+      document.addEventListener('DOMContentLoaded', function() {
+          processReservationData(reservations);
+      });
+    </script>
 
 
 
