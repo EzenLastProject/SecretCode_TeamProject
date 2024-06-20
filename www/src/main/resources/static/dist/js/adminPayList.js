@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(merchantUid);
             console.log(reservationPrice);
 
-            if (confirm('정말fh 환불처리를 하시겠습니까?')) {
+            if (confirm('정말로 환불처리를 하시겠습니까?')) {
 
 
             fetch(`/api/payments/${merchantUid}?refundAmount=${reservationPrice}`, { method: 'DELETE' })
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (response.ok) {
                                 alert('환불 처리가 성공적으로 완료되었습니다.');
             
-             
+        
                             } else {
                                 alert('환불 처리 중 오류가 발생했습니다.');
                                 return false;
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         })
                         .catch(error => {
                             console.error('환불 처리 중 에러 발생:', error);
+                            console.log(error);
                             alert('환불 처리 중 에러가 발생했습니다.');
                             return false;
                         });
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }else{
                 alert('예약을 취소에 실패하였습니다.');
             }
+
 
         }
     });
