@@ -1,8 +1,9 @@
 package SecretCode.ezen.www.controller;
 
 import SecretCode.ezen.www.domain.QnaCommentVO;
+import SecretCode.ezen.www.domain.QnaVO;
 import SecretCode.ezen.www.service.AdminCommentService;
-import SecretCode.ezen.www.service.QnaService; // QnaService를 가져옵니다
+import SecretCode.ezen.www.service.QnaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,14 +20,13 @@ import java.util.List;
 public class AdminCommentController {
 
     private final AdminCommentService acsv;
-    private final QnaService qnaService; // QnaService 주입
+    private final QnaService qnaService;
 
     @PostMapping(value="/post", consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> post(@RequestBody QnaCommentVO cvo){
         log.info(">>>> cvo >> {} ", cvo);
         int isOk = acsv.post(cvo);
         if(isOk > 0) {
-            // 댓글 등록에 성공하면 게시글의 cmt_qty를 업데이트
             qnaService.updateCmtQty(cvo.getBno());
             return new ResponseEntity<>("1", HttpStatus.OK);
         } else {
@@ -63,6 +63,9 @@ public class AdminCommentController {
             return new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+
 
 
 }

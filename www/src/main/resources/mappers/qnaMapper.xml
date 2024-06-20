@@ -4,27 +4,11 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SecretCode.ezen.www.repository.QnaMapper">
 
-    <!-- <select id="getList" resultType="SecretCode.ezen.www.domain.QnaVO">
-         select * from qna
-         <include refid="search"></include>
-         order by bno desc limit #{pageStart},#{qty}
-     </select>-->
-
-    <!--   &lt;!&ndash;notice가 true인아이 &ndash;&gt;
-       <select id="getNotice" resultType="SecretCode.ezen.www.domain.QnaVO">
-           select * from qna
-           where is_notice ='true'
-
-       </select>-->
-
-
-
-
     <!-- 일반 게시글 가져오기 -->
     <select id="getList" parameterType="SecretCode.ezen.www.domain.PagingVO" resultType="SecretCode.ezen.www.domain.QnaVO">
         SELECT * FROM qna
-        <include refid="search"></include>
         WHERE is_notice = 'false'
+        <include refid="search"></include>
         ORDER BY bno DESC
         LIMIT #{pageStart}, #{qty}
     </select>
@@ -33,10 +17,11 @@
         SELECT * FROM qna
         WHERE writer = #{email}
     </select>
+
     <!-- 공지글 가져오기 -->
     <select id="getNoticeList" resultType="SecretCode.ezen.www.domain.QnaVO">
         SELECT * FROM qna
-        where is_notice ='true'
+        WHERE is_notice = 'true'
         ORDER BY bno DESC
     </select>
 
@@ -46,18 +31,11 @@
         WHERE bno = #{bno}
     </update>
 
-
-
-
-
     <select id="getTotalCount" resultType="int">
-
         select count(bno) from qna
         WHERE is_notice = 'false'
         <include refid="search"></include>
-
     </select>
-
 
     <select id="getSecretByBno" resultType="String" parameterType="long">
         SELECT is_secret
@@ -66,33 +44,26 @@
     </select>
 
     <select id="getQnaByBno" parameterType="long" resultType="SecretCode.ezen.www.domain.QnaVO">
-        SELECT * FROM qna  WHERE bno = #{bno}
+        SELECT * FROM qna WHERE bno = #{bno}
     </select>
 
-
-
-
     <insert id="register" parameterType="SecretCode.ezen.www.domain.QnaVO">
-
-
-        INSERT INTO qna (title, content, writer, is_secret, scpwd , is_notice)
-        VALUES (#{title}, #{content}, #{writer}, #{isSecret} , #{scpwd} , #{isNotice})
+        INSERT INTO qna (title, content, writer, is_secret, scpwd, is_notice)
+        VALUES (#{title}, #{content}, #{writer}, #{isSecret}, #{scpwd}, #{isNotice})
     </insert>
 
     <select id="getDetail" parameterType="int">
         select * from qna where bno=#{bno}
     </select>
 
-
     <delete id="remove">
-        delete  from qna where bno=#{bno}
+        delete from qna where bno=#{bno}
     </delete>
 
     <update id="modify">
         update qna set title=#{title}, content=#{content}
         where bno=#{bno}
     </update>
-
 
     <update id="readCount">
         update qna set read_count = read_count + 1
@@ -107,29 +78,22 @@
         update qna set cmt_qty = 0 where bno = #{bno}
     </update>
 
+
+
+
     <sql id="search">
         <if test="type !=null">
-            <trim prefix="where (" suffix=")" suffixOverrides="or">
+            <trim prefix="AND (" suffix=")" suffixOverrides="OR">
                 <foreach collection="typeToArray" item="type">
-                    <trim suffix="or">
+                    <trim suffix="OR">
                         <choose>
-                            <when test="type=='t'.toString()">
-                                title like concat('%',#{keyword}, '%')
-
-                            </when> <when test="type=='t'.toString()">
-                            writer like concat('%',#{keyword}, '%')
-
-                        </when> <when test="type=='t'.toString()">
-                            content like concat('%',#{keyword}, '%')
-
-                        </when>
+                            <when test="type=='t'">title like concat('%',#{keyword}, '%')</when>
+                            <when test="type=='w'">writer like concat('%',#{keyword}, '%')</when>
+                            <when test="type=='c'">content like concat('%',#{keyword}, '%')</when>
                         </choose>
                     </trim>
                 </foreach>
-
             </trim>
-
         </if>
     </sql>
-
 </mapper>

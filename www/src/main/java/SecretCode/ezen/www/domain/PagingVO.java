@@ -19,6 +19,7 @@ public class PagingVO {
     private String type;
     private String keyword;
     private String auth;
+    private String email;
 
 
     public PagingVO() {
