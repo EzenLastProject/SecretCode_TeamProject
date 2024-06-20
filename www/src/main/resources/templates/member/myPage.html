@@ -40,9 +40,12 @@
           <div class="myReservBox">
               <div class="myReservTitle">
 
+                <!--관리자일때-->
                 <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                   <h3>회원 예약 현황</h3>
                 </th:block>
+
+                <!--회원일때-->
                 <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                   <h3>나의 예약 현황</h3>
                 </th:block>
@@ -51,6 +54,9 @@
 
                   <table class="responsive-table board-table">
                     <thead>
+
+                    <!--회원일때-->
+                    <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                     <tr>
                       <th scope="col" >주문번호</th>
                       <th scope="col" >예약일</th>
@@ -61,42 +67,110 @@
                       <th scope="col" >가격</th>
                       <th scope="col" >결제일</th>
                     </tr>
+                    </th:block>
+
+                    <!--관리자일때-->
+                    <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
+                      <tr>
+                        <th scope="col" >주문번호</th>
+                        <th scope="col" >예약일</th>
+                        <th scope="col" >예약시간</th>
+                        <th scope="col" >테마</th>
+                        <th scope="col" >예약자명</th>
+                        <th scope="col">예약인원</th>
+                        <th scope="col" >가격</th>
+                        <th scope="col" >결제일</th>
+
+                      </tr>
+
+                    </th:block>
+
+
+
                     </thead>
                     <tbody>
-                    <th:block th:each="myReservation : ${myreservaation}">
-                      <tr>
-                        <td th:text="${myReservation.merchantUid}"></td>
-                        <td th:text="${myReservation.reservationDate}"></td>
-                        <td th:text="${myReservation.reservationTime}"></td>
-                        <td th:text="${myReservation.themeName}"></td>
-                        <td th:text="${myReservation.name}"></td>
-                        <td th:text="${myReservation.reservationPeople}"></td>
-                        <td th:text="${myReservation.reservationPrice}"></td>
-                        <td th:text="${myReservation.reservationPaydate}"></td>
+
+                    <!--회원일때-->
+                    <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                      <th:block th:each="myReservation : ${myReservation}">
+                        <tr>
+                          <td th:text="${myReservation.merchantUid}"></td>
+                          <td th:text="${myReservation.reservationDate}"></td>
+                          <td th:text="${myReservation.reservationTime}"></td>
+                          <td th:text="${myReservation.themeName}"></td>
+                          <td th:text="${myReservation.name}"></td>
+                          <td th:text="${myReservation.reservationPeople}"></td>
+                          <td th:text="${myReservation.reservationPrice}"></td>
+                          <td th:text="${myReservation.reservationPaydate}"></td>
+                        </tr>
+                      </th:block>
+
+                      <tr th:if="${#lists.isEmpty(myReservation)}">
+                        <td colspan="8">
+                          <h2 class="nothingValue">결제/예약한 테마가 없습니다.</h2>
+                        </td>
                       </tr>
+
+                    </th:block>
+
+                    <!--관리자일때-->
+                    <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                      <!--수정필요-->
+                      <th:block th:each="memberReservation : ${memberReservation}">
+                        <tr>
+                          <td th:text="${memberReservation.merchantUid}"></td>
+                          <td th:text="${memberReservation.reservationDate}"></td>
+                          <td th:text="${memberReservation.reservationTime}"></td>
+                          <td th:text="${memberReservation.themeName}"></td>
+                          <td th:text="${memberReservation.name}"></td>
+                          <td th:text="${memberReservation.reservationPeople}"></td>
+                          <td th:text="${memberReservation.reservationPrice}"></td>
+                          <td th:text="${memberReservation.reservationPaydate}"></td>
+                        </tr>
+                      </th:block>
+
+                      <tr th:if="${#lists.isEmpty(memberReservation)}">
+                        <td colspan="8">
+                          <h2 class="nothingValue">결제/예약된 테마가 없습니다.</h2>
+                        </td>
+                      </tr>
+
                     </th:block>
                     </tbody>
                   </table>
 
                 </div>
+
+
+
               </div>
 
           </div>
 
-          <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
 
 
 <!--          내가 쓴 qna -->
           <div class="myQNABox">
             <div class="myQNATitle">
+
+              <!--회원일때-->
+              <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
               <h3>나의 Q & A</h3>
+              </th:block>
+
+              <!--관리자일때-->
+              <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+              <h3>회신요망 회원 Q & A</h3>
+              </th:block>
+
+
               <div class="myQNA">
-
-
-
-
                 <table class="responsive-table board-table">
                   <thead>
+
+                  <!--회원일때-->
+                  <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                   <tr>
                     <th scope="col" >제목</th>
                     <th scope="col" >작성자</th>
@@ -104,85 +178,125 @@
                     <th scope="col" >작성일</th>
                     <th scope="col" >조회수</th>
                     <th scope="col" >답변 상태</th>
-
                   </tr>
+                  </th:block>
+
+                  <!--관리자일때-->
+                  <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <tr>
+                      <th scope="col" >제목</th>
+                      <th scope="col" >작성자</th>
+                      <th scope="col" >내용</th>
+                      <th scope="col" >작성일</th>
+                      <th scope="col" >조회수</th>
+                      <th scope="col" >답변 상태</th>
+                    </tr>
+                  </th:block>
+
+
                   </thead>
                   <tbody>
 
-                  <th:block th:each="myqna : ${myqna}">
-                    <tr>
-                      <td><a th:href="@{/qna/list}" th:text="${myqna.title}"></a></td>
-<!--                      <td th:text="${myqna.title}"></td>-->
-                      <td th:text="${myqna.writer}"></td>
-                      <td th:text="${myqna.content}"></td>
-                      <td th:text="${myqna.regDate}"></td>
-                      <td th:text="${myqna.readCount}"></td>
-                      <td th:text="${myqna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>
+                  <!--회원일때-->
+                  <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                    <th:block th:each="myqna : ${myqna}">
+                      <tr>
+                        <td><a th:href="@{|/qna/detail?bno=${myqna.bno}|}" th:text="${myqna.title}"></a></td>
+                        <td th:text="${myqna.writer}"></td>
+                        <td th:text="${myqna.content}"></td>
+                        <td th:text="${myqna.regDate}"></td>
+                        <td th:text="${myqna.readCount}"></td>
+                        <td th:text="${myqna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>
+                      </tr>
+                    </th:block>
 
+                    <tr th:if="${#lists.isEmpty(myqna)}">
+                      <td colspan="6">
+                        <h2 class="nothingValue">작성한 Q & A 가 없습니다.</h2>
+                      </td>
                     </tr>
+
                   </th:block>
+
+                  <!--관리자일때-->
+                  <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
+                    <th:block th:each="memberQna : ${memberQna}">
+                      <tr>
+                        <td><a th:href="@{/adminRegister/adminBoard}" th:text="${memberQna.title}"></a></td>
+                        <td th:text="${memberQna.writer}"></td>
+                        <td th:text="${memberQna.content}"></td>
+                        <td th:text="${memberQna.regDate}"></td>
+                        <td th:text="${memberQna.readCount}"></td>
+                        <td th:text="${memberQna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>
+                      </tr>
+                    </th:block>
+
+                    <tr th:if="${#lists.isEmpty(memberQna)}">
+                      <td colspan="6">
+                        <h2 class="nothingValue">답변이 필요한 Q & A 가 없습니다.</h2>
+                      </td>
+                    </tr>
+
+
+                  </th:block>
+
+
                   </tbody>
 
+
                 </table>
-
-
-
-
-
               </div>
             </div>
 
           </div>
+
+
+          <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
           <!--          내가 쓴 리뷰 -->
-          <div class="myReviewBox">
-            <div class="myReviewTitle">
-              <h3>나의 리뷰</h3>
-              <div class="myReview">
+              <div class="myReviewBox">
+                <div class="myReviewTitle">
+                  <h3>나의 리뷰</h3>
+                  <div class="myReview">
+                    <table class="responsive-table board-table">
+                      <thead>
+                      <tr>
+                        <th scope="col" >제목</th>
+                        <th scope="col" >작성자</th>
+                        <th scope="col" >내용</th>
+                        <th scope="col" >작성일</th>
+                        <th scope="col" >테마</th>
+                        <th scope="col" >공감수</th>
 
+                      </tr>
+                      </thead>
+                      <tbody>
 
-                <table class="responsive-table board-table">
-                  <thead>
-                  <tr>
-                    <th scope="col" >제목</th>
-                    <th scope="col" >작성자</th>
-                    <th scope="col" >내용</th>
-                    <th scope="col" >작성일</th>
-                    <th scope="col" >테마</th>
-                    <th scope="col" >공감수</th>
+                      <th:block th:each="myreview : ${myreview}">
+                        <tr>
+                          <td><a th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
+                          <td th:text="${myreview.writer}"></td>
+                          <td th:text="${myreview.content}" style="width:50%"></td>
+                          <td th:text="${myreview.regDate}"></td>
+                          <td th:text="${myreview.theme}"></td>
+                          <td th:text="${myreview.readCount}"></td>
+                        </tr>
+                      </th:block>
 
-                  </tr>
-                  </thead>
-                  <tbody>
+                      <tr th:if="${#lists.isEmpty(myreview)}">
+                        <td colspan="6">
+                          <h2 class="nothingValue">작성한 리뷰가 없습니다.</h2>
+                        </td>
+                      </tr>
 
-                  <th:block th:each="myreview : ${myreview}">
-                    <tr>
-                      <td><a th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
-<!--                      <td th:text="${myreview.title}"></td>-->
-                      <td th:text="${myreview.writer}"></td>
-                      <td th:text="${myreview.content}" style="width:50%"></td>
-                      <td th:text="${myreview.regDate}"></td>
-                      <td th:text="${myreview.theme}"></td>
-                      <td th:text="${myreview.readCount}"></td>
-
-                    </tr>
-                  </th:block>
-                  </tbody>
-
-                </table>
-
-
-
-
-
-
-
-
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
-            </div>
-
-          </div>
-
           </th:block>
+
+
 
         </div>
       </div>
