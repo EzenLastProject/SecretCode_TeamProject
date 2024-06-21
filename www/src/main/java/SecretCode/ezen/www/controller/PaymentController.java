@@ -26,6 +26,7 @@ public class PaymentController {
     private final PaymentService psv;
     private final EmailService emailService;
 
+
 //    @GetMapping("/portOnePay")
 //    public void pay() {
 //    }
@@ -127,13 +128,18 @@ public class PaymentController {
         model.addAttribute("selectedTime", selectedTime);
 
 
+
+
     }
     @GetMapping("/themeReserv")
     public String getAllReservations(Model model) {
         List<ReservationVO> reservations = psv.getAllReservations(); // 모든 예약 정보를 가져옴
+        log.info(">>>>>>>>>>>>>{}",reservations);
         model.addAttribute("reservations", reservations); // 모델에 예약 정보를 추가하여 뷰로 전달
-        return "themeReserv"; // 뷰 이름 반환 (예: themeReserv.html)
+        return "/theme/themeReserv"; // 뷰 이름 반환 (예: themeReserv.html)
     }
+
+
 
 
 

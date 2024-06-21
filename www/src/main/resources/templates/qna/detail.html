@@ -72,6 +72,7 @@
                 <div class="qna-detail-title">
                    제목  <input type="text" class="qna-detail-input"
                            id="title" name="title"
+                              th:readonly="${#authentication.name != qvo.writer}"
                            th:value="${qvo.title}" >
                 </div>
 
@@ -79,24 +80,25 @@
                     <div class="qna-detail-writer">
                        작성자 <input type="text" class="qna-detail-input"
                                id="writer" name="writer"
+                                  th:readonly="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
                                th:value="${qvo.writer}" disabled>
                     </div>
 
                     <div class="qna-detail-content">
                   내용
                         <textarea type="text" class="qna-detail-inc"
-                               name="content" id="content"
-                               th:text="${qvo.content}"  >
-                        </textarea>
+                                  name="content" id="content"
+                                  th:readonly="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+                                  th:text="${qvo.content}">
+</textarea>
 
                     </div>
                         <div id="modDiv"></div>
                           <div class="qna-detail-Btn-Div">
                         <button type="button" id="listBtn" class="qna-detail-listBtn">리스트</button>
-                        <button type="button" id="modBtn"  class="qna-detail-ModBtn">수정하기</button>
+                              <button type="button" id="modBtn" class="qna-detail-ModBtn" th:hidden="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}">수정하기</button>
 
-
-                        <button type="button" id="delBtn" class="qna-detail-DelBtn">삭제하기</button>
+                              <button type="button" id="delBtn" class="qna-detail-DelBtn" th:hidden="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}">삭제하기</button>
                           </div>
 
 
@@ -128,6 +130,7 @@
                                 <div class="input-group mb-3">
                                     <div class="fw-bold">Writer</div>
                                     content
+
                                 </div> <span class="badge rounded-pill text-bg-info">regdate</span>
                             </li>
                         </ul>
