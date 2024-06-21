@@ -97,7 +97,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public String phoneCheck(String phone, String nickName) {
+    public List<MemberVO> phoneCheck(String phone, String nickName) {
         return memberMapper.phoneCheck(phone, nickName);
     }
 

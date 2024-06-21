@@ -19,7 +19,7 @@ configurations {
 
 repositories {
 	mavenCentral()
-	// 아임포트 관련
+	// 포트원 관련
 	maven {url 'https://jitpack.io'}
 
 }
@@ -55,11 +55,8 @@ dependencies {
 	//멤버 로그인 닉네임 가져오기위한 의존성
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE' // 사용하는 Thymeleaf 및 Spring Security 버전에 맞게 버전을 지정해야 합니다.
 
-	// 아임포트 관련 //
+	// 포트원 의존성
 	implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
-
-	//환불하기 위해 필요함
-	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
 
 
 
