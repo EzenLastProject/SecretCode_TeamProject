@@ -2,7 +2,9 @@ package SecretCode.ezen.www.service;
 
 
 import SecretCode.ezen.www.domain.PagingVO;
+import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.domain.ThemeVO;
+import SecretCode.ezen.www.repository.PaymentMapper;
 import SecretCode.ezen.www.repository.ThemeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ThemeServiceImpl implements ThemeService {
 
     private final ThemeMapper themeMapper;
+    private final PaymentMapper paymentMapper;
     private PagingVO pgvo;
 
 
@@ -42,6 +45,11 @@ public class ThemeServiceImpl implements ThemeService {
     @Override
     public ThemeVO getThemeDetailsByUuid(String themeUuid) {
         return themeMapper.findByUuid(themeUuid);
+    }
+
+    @Override
+    public List<ReservationVO> getAllReservations() {
+        return paymentMapper.getMemberReservation();
     }
 
 

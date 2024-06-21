@@ -1,5 +1,6 @@
 package SecretCode.ezen.www.service;
 
+import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.domain.ThemeVO;
 import org.springframework.ui.context.Theme;
 
@@ -19,4 +20,6 @@ public interface ThemeService {
 
 
     ThemeVO getThemeDetailsByUuid(String themeUuid);
+
+    List<ReservationVO> getAllReservations();
 }
