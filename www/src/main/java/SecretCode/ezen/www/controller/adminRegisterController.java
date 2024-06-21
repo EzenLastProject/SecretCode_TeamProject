@@ -25,7 +25,8 @@ public class adminRegisterController {
     private final FileHandler fhd;
 
     @GetMapping("/adminBoard")
-    public String adminBoard(Model m, PagingVO pgvo, @RequestParam(required = false) String type, @RequestParam(required = false) String keyword) {
+    public String adminBoard(Model m, PagingVO pgvo, @RequestParam(required = false) String type, @RequestParam(required = false) String keyword, @RequestParam(defaultValue = "1") int page) {
+        pgvo.setPageNo(page);
         pgvo.setType(type);
         pgvo.setKeyword(keyword);
 
@@ -40,6 +41,8 @@ public class adminRegisterController {
 
         return "/adminRegister/adminBoard";
     }
+
+
 
     @GetMapping("/adminRegister")
     public void register(Model m) {
@@ -84,19 +87,14 @@ public class adminRegisterController {
 
 
 
-
-
-
-
-
     @GetMapping("/adminUser")
     public String list(Model m, PagingVO pgvo, @RequestParam(required = false) String auth, @RequestParam(required = false) String keyword) {
         log.info(">>>pgvo>>{}", pgvo);
 
-        if (auth != null && !auth.isEmpty()) {
-            pgvo.setAuth(auth);
-        } else {
+        if ("선택".equals(auth)) {
             pgvo.setAuth(null);
+        } else {
+            pgvo.setAuth(auth);
         }
 
         pgvo.setKeyword(keyword);
@@ -118,6 +116,7 @@ public class adminRegisterController {
 
         return "/member/adminUser";
     }
+
 
 
 
@@ -146,4 +145,29 @@ public class adminRegisterController {
 
         return isOk>0? "1":"0";
     }
+
+
+    @PostMapping(value="/auth/grant/{email}", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> grantAdmin(@PathVariable("email") String email) {
+        log.info("grant: {}", email);
+        if (arsv.hasAdminRole(email) > 0) {
+            return new ResponseEntity<>("YES_ROLE", HttpStatus.OK);
+        }
+        int isOk = arsv.grantAdmin(email);
+        return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK)
+                : new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @DeleteMapping(value="/auth/revoke/{email}", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> revokeAdmin(@PathVariable("email") String email) {
+        log.info("reboke: {}", email);
+        if (arsv.hasAdminRole(email) == 0) {
+            return new ResponseEntity<>("NO_ROLE", HttpStatus.OK);
+        }
+        int isOk = arsv.revokeAdmin(email);
+        return isOk > 0 ? new ResponseEntity<>("1", HttpStatus.OK)
+                : new ResponseEntity<>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
 }

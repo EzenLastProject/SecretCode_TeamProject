@@ -34,4 +34,9 @@ public interface adminRegisterService {
 
     int getTotalCountWithAuth(PagingVO pgvo);
 
+    int grantAdmin(String email);
+
+    int revokeAdmin(String email);
+
+    int hasAdminRole(String email);
 }
