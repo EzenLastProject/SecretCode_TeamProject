@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let checkCancelRev = document.getElementById('checkCancelRev');
 
-
             // 현재 시간 구하기
             const now = new Date();
             const nowTime = now.getTime(); // 현재 시간을 밀리초로 변환
