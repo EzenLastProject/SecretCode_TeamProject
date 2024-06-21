@@ -41,32 +41,35 @@
                 </tr>
                 </thead>
                 <tbody>
-
                     <tr th:if="${reservation != null}">
-                        <td th:text="${reservation.reservationNum}"></td>
-                        <td th:text="${reservation.merchantUid}"></td>
-                        <td th:text="${reservation.reservationDate}"></td>
-                        <td th:text="${reservation.reservationTime}"></td>
+                        <td id="num" th:text="${reservation.reservationNum}"></td>
+                        <td id="uid" th:text="${reservation.merchantUid}"></td>
+                        <td id="date" th:text="${reservation.reservationDate}"></td>
+                        <td id="time" th:text="${reservation.reservationTime}"></td>
                         <td th:text="${reservation.themeName}"></td>
                         <td th:text="${reservation.email}"></td>
                         <td th:text="${reservation.name}"></td>
                         <td th:text="${reservation.phone}"></td>
                         <td th:text="${reservation.reservationPeople}"></td>
-                        <td th:text="${reservation.reservationPrice}"></td>
+                        <td id="price" th:text="${reservation.reservationPrice}"></td>
                         <td th:text="${reservation.reservationPaydate}"></td>
-
-                        <div class="refundBtn">
-                            <button class="refund-button">환불</button>
-                        </div>
-
                     </tr>
                     <tr th:if="${reservation == null}">
                         <h2 class="reservationSpan">해당 주문번호로 조회된 예약 정보가 없습니다.</h2>
                     </tr>
-
-
                 </tbody>
             </table>
+
+            <tr th:if="${reservation != null}">
+                <div class="refundBtn">
+                    <button class="refund-button" id="refund-button">예약취소</button>
+                <p class="text-danger">예약 취소는 예약일 24시간 전까지만 가능합니다.</p>
+                <div id="checkCancelRev"></div>
+                </div>
+
+
+
+            </tr>
 
         </div>
 

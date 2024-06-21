@@ -43,11 +43,13 @@
                 <!--관리자일때-->
                 <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                   <h3>회원 예약 현황</h3>
+                  <a class="reservationAtag" th:href="@{/portOnePay/adminPayList}" >회원 예약 취소하러 가기</a>
                 </th:block>
 
                 <!--회원일때-->
                 <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                   <h3>나의 예약 현황</h3>
+                  <a class="reservationAtag" th:href="@{/portOnePay/reservationCheck}" >다른 이메일로 예약수신을 받았다면 클릭해주세요!</a>
                 </th:block>
 
                 <div class="myReserv">

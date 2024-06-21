@@ -19,7 +19,4 @@ public class MyPaymentController {
         return "환불 처리가 요청되었습니다.";
     }
 
-
-
-
 }

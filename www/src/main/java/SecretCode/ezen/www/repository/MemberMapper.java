@@ -39,7 +39,7 @@ public interface MemberMapper {
 
     MemberVO checkSocialLogin(String userId);
 
-    String phoneCheck(@Param("phone")String phone, @Param("nickName")String nickName);
+    List<MemberVO> phoneCheck(@Param("phone")String phone, @Param("nickName")String nickName);
 
     String pwdReturnCheck(@Param("phone")String phone, @Param("nickName")String nickName, @Param("email")String email);
 
