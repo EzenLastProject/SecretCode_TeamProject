@@ -275,24 +275,7 @@
 
     </script>
     <script>
-<!--      function reserve() {-->
-<!--        // 선택된 날짜 가져오기-->
-<!--        var startDay = document.querySelector('.startDay').value;-->
 
-<!--        // 선택된 테마 가져오기-->
-<!--        var themeName = document.querySelector('.reservTitle span').textContent.trim();-->
-
-<!--        // 선택된 시간 가져오기 (예시에서는 첫 번째 시간으로 설정)-->
-<!--        var selectedTime = document.querySelector('.time1').textContent.trim();-->
-
-<!--        // 예약 페이지 URL 생성-->
-<!--        var reservationUrl = '/reservationPage?startDay=' + encodeURIComponent(startDay) +-->
-<!--                             '&themeName=' + encodeURIComponent(themeName) +-->
-<!--                             '&selectedTime=' + encodeURIComponent(selectedTime);-->
-
-<!--        // 예약 페이지로 이동-->
-<!--        window.location.href = reservationUrl;-->
-<!--      }-->
     </script>
     <script>
       // 현재 날짜를 가져오는 함수
@@ -312,12 +295,16 @@
       // 오늘 날짜 이전의 날짜를 선택하지 못하게 함
       startDateInput.setAttribute('min', getCurrentDate());
       });
+
+
     </script>
+
+
     <script>
       function reserveTime(t ,selectedTime) {
           var startDay = document.querySelector('.startDay').value;
           var themeName = document.querySelector('.reservTitle span').textContent.trim();
-          console.log(themeName);
+
           console.log(t.dataset.themename);
           console.log(selectedTime);
 
@@ -338,40 +325,77 @@
 
 
     </script>
+
+
+
     <script th:inline="javascript">
-      // 서버에서 받아온 예약 정보 (예시)
-      var reservations = /*[[${reservations}]]*/ [];
+      const reservations = /*[[${reservations}]]*/ null; // Thymeleaf를 통해 예약 정보를 가져옴
+      console.log('모든 예약 정보:', reservations);
 
-      // 현재 선택된 날짜와 테마 정보
-      var selectedDate = document.getElementById('startDay').value; // 선택된 날짜
-      var selectedTheme = document.querySelector('.reservTitle span').textContent.trim(); // 선택된 테마
-
-      // 예약 정보를 처리하는 함수
-      function processReservationData(reservations) {
-          reservations.forEach(function(reservation) {
-              // 예약된 시간대 정보를 반복하여 처리
-              reservation.reservedTimes.forEach(function(reservedTime) {
-                  // 예약 정보와 현재 선택된 날짜, 테마가 일치하는지 확인
-                 if (reservation.date === selectedDate && reservation.theme === selectedTheme && reservedTime.reserved) {
-                  // 예약 불가능한 상태일 경우 해당 시간대의 링크를 비활성화
-                  var anchorId = reservation.id + '-' + reservedTime.time; // 링크 ID 예시
-                  var anchor = document.getElementById(anchorId); // 링크 요소를 ID로 가져옴
-                  anchor.removeAttribute('href'); // 링크 속성 제거
-                  anchor.classList.add('reserved'); // 클래스 추가
-                  anchor.innerHTML = '<span class="reserved">예약 불가</span>'; // 텍스트 변경
-}
-
-              });
-          });
-      }
-
-      // 페이지 로드 시 예약 정보 처리 함수 호출
       document.addEventListener('DOMContentLoaded', function() {
-          processReservationData(reservations);
+          const startDateInput = document.getElementById('startDay');
+
+          // 값이 변경되었을 때 이벤트 처리
+          startDateInput.addEventListener('change', function() {
+              const selectedDate = startDateInput.value;
+              console.log('선택된 날짜:', selectedDate);
+
+              // 선택된 날짜와 일치하는 예약 정보 찾기
+              for (let i = 0; i < reservations.length; i++) {
+                  if (reservations[i].reservationDate === selectedDate) {
+                      console.log("날짜 일치");
+
+                      // 시간 일치 확인
+                      const reservationTime = reservations[i].reservationTime;
+                      const timeElements = document.querySelectorAll('.time');
+                      timeElements.forEach(function(element) {
+                      const r= element.querySelector("span"); //시간
+                      const n = element.querySelectorAll("span");//예약가능
+
+                      console.log(n[1].innerText);
+
+
+
+
+
+
+                      // 추가로 테마 이름 일치 여부 확인 가능
+                      const themeName = reservations[i].themeName;
+                      if (element.dataset.themename === themeName && r.innerText===reservationTime) {
+                          console.log('테마 이름 일치:', themeName);
+                          console.log('날짜, 시간, 테마 모두 일치');
+
+
+
+
+                             // 예약 불가능으로 설정
+                            element.classList.add('disabled'); // CSS 클래스 추가
+                            element.removeAttribute('href'); // 링크 제거
+                            element.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
+                            n[1].innerText = '예약 불가능'; // 텍스트 변경
+                            n[1].style.color="gray";
+                            r.style.color="gray";
+                            element.style.backgroundColor = '#505050';
+
+
+
+                             // 배경 이미지 설정
+
+                         <!--  element.style.backgroundImage = "url('/dist/image/blcoko.png')";
+                           element.style.backgroundSize = "cover"; // 배경 이미지 크기 조정
+                           element.style.backgroundRepeat = "no-repeat"; // 배경 이미지 반복 설정
+                           element.style.backgroundPosition = "center"; // 배경 이미지 위치 설정
+                           element.style.width = "100%"; // 너비 설정
+                           element.style.height = "60px"; // 높이 설정-->
+
+                      }
+
+                      });
+                  }
+              }
+          });
       });
     </script>
-
-
 
 
 
