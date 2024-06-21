@@ -106,4 +106,19 @@ public class adminRegisterServiceImpl implements adminRegisterService {
     public int getTotalCountWithAuth(PagingVO pgvo) {
         return arMapper.getTotalCountWithAuth(pgvo);
     }
+
+    @Override
+    public int grantAdmin(String email) {
+        return arMapper.grantAdmin(email);
+    }
+
+    @Override
+    public int revokeAdmin(String email) {
+        return arMapper.revokeAdmin(email);
+    }
+
+    @Override
+    public int hasAdminRole(String email) {
+        return arMapper.hasAdminRole(email);
+    }
 }
