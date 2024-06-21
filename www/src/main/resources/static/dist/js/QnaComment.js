@@ -84,7 +84,7 @@ function spreadCommentList(bno,page=1){
           /*  li+= `<div class="mb-3"> no. ${qcvo.cno}  `;*/
             li+= `<div class="fw-bold">${qcvo.writer}</div>`;
               li+= `</div>`;
-            li+=`${qcvo.content}<br>`;
+            li+=`<br>${qcvo.content}<br>`;
 
             li+= `<span class="cmzone-re">${qcvo.regAt}</span>`;
             //수정 삭제버튼

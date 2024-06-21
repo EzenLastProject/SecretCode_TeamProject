@@ -23,4 +23,6 @@ public interface PaymentService {
 
 
     List<ReservationVO> getMemberReservation();
+
+
 }

@@ -1,6 +1,7 @@
 package SecretCode.ezen.www.controller;
 
 
+import SecretCode.ezen.www.domain.ReservationVO;
 import SecretCode.ezen.www.domain.ThemeVO;
 import SecretCode.ezen.www.service.ThemeService;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,9 @@ public class ThemeController {
         List<ThemeVO> themeReservList = tsv.getThemeList();
 
         m.addAttribute("themeReservList", themeReservList);
+        List<ReservationVO> reservations = tsv.getAllReservations(); // 모든 예약 정보를 가져옴
+        log.info(">>>>>>>>>>>>>{}",reservations);
+        m.addAttribute("reservations",reservations);
         return "theme/themeReserv"; // 테마 목록을 보여주는 뷰
         }
 
