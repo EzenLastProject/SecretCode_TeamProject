@@ -23,7 +23,6 @@
                         </select>
                         <button type="submit" class="searchButton">검색</button>
                     </form>
-
                 </div>
 
                 <table class="responsive-table board-table">
@@ -71,20 +70,20 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li th:if="${ph.prev}" class="page-item">
-                            <a class="page-link" th:href="@{/adminRegister/adminBoard(page=${ph.startPage-1}, qty=${ph.pgvo.qty}, keyword=${keyword}, type=${type}, cmtStatus=${cmtStatus})}" aria-label="Previous">
-                                <span aria-hidden="true">≪</span>
+                            <a class="page-link" th:href="@{/adminRegister/adminBoard(page=${ph.startPage-1}, qty=${ph.pgvo.qty}, keyword=${keyword}, type=${type})}" aria-label="Previous">
+                                <span aria-hidden="true"></span>
                             </a>
                         </li>
 
                         <th:block th:each="page : ${#numbers.sequence(ph.startPage, ph.endPage)}">
                             <li class="page-item" th:classappend="${ph.pgvo.pageNo == page} ? 'active' : '' " aria-current="page">
-                                <a class="page-link" th:href="@{/adminRegister/adminBoard(page=${page}, qty=${ph.pgvo.qty}, keyword=${keyword}, type=${type}, cmtStatus=${cmtStatus})}">[[${page}]]</a>
+                                <a class="page-link" th:href="@{/adminRegister/adminBoard(page=${page}, qty=${ph.pgvo.qty}, keyword=${keyword}, type=${type})}">[[${page}]]</a>
                             </li>
                         </th:block>
 
                         <li th:if="${ph.next}" class="page-item">
-                            <a class="page-link" th:href="@{/adminRegister/adminBoard(page=${ph.endPage+1}, qty=${ph.pgvo.qty}, keyword=${keyword}, type=${type}, cmtStatus=${cmtStatus})}" aria-label="Next">
-                                <span aria-hidden="true">≫</span>
+                            <a class="page-link" th:href="@{/adminRegister/adminBoard(page=${ph.endPage+1}, qty=${ph.pgvo.qty}, keyword=${keyword}, type=${type})}" aria-label="Next">
+                                <span aria-hidden="true"></span>
                             </a>
                         </li>
                     </ul>

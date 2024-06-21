@@ -12,7 +12,7 @@ body, table {
 }
 
 .userList {
-    text-align : center;
+    text-align: center;
 }
 
 .container {
@@ -31,36 +31,44 @@ body, table {
     font-weight: 400;
 }
 
-.filterContainer .search-wrap {
-    margin: 0 auto;
-    padding: 15px 0;
-    width: 80%;
-    max-width: 564px;
-    position: relative;
-    background-color: #f9f7f9;
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.filterContainer input[type="text"] {
-    width: 100%;
+.filterContainer form {
+    display: flex;
+    align-items: center;
+}
+
+.filterContainer .searchInput {
+    width: 250px;
     height: 40px;
     padding: 7px 14px;
     font-size: 14px;
     border: 1px solid #ccc;
+    margin-right: 10px;
 }
 
-.filterContainer input[type="text"]:focus {
+.filterContainer .searchInput:focus {
     border-color: #333;
     outline: none;
 }
 
-.filterContainer .btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 108px;
-    padding: 0;
-    font-size: 16px;
+.filterContainer .qna-list-select {
+    width: 120px;
+    height: 40px;
+    padding: 7px 14px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.filterContainer .searchButton {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
     background: #555;
     color: #fff;
     border: none;
@@ -68,7 +76,7 @@ body, table {
     transition: background 0.3s;
 }
 
-.filterContainer .btn:hover, .filterContainer .btn:focus {
+.filterContainer .searchButton:hover, .filterContainer .searchButton:focus {
     background: #373737;
 }
 

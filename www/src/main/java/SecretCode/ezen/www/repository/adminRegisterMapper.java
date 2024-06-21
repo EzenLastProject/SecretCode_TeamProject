@@ -2,6 +2,7 @@ package SecretCode.ezen.www.repository;
 
 import SecretCode.ezen.www.domain.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -35,4 +36,10 @@ public interface adminRegisterMapper {
     int deleteTheme(int themeNum);
 
     int getTotalCountWithAuth(PagingVO pgvo);
+
+    int grantAdmin(@Param("email") String email);
+
+    int revokeAdmin(@Param("email") String email);
+
+    int hasAdminRole(@Param("email") String email);
 }
