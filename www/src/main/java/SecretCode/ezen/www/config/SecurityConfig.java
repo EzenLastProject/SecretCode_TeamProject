@@ -23,12 +23,8 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 @Configurable
 @RequiredArgsConstructor
 public class SecurityConfig {
-//    springSecurity6 => createDeligationPasswordEncoder
 
     private final DefaultOAuth2UserService oAuth2UserService;
-
-//    private AuthenticationFailureHandler authenticationFailureHandler;
-
 
     @Bean
     PasswordEncoder passwordEncoder() {

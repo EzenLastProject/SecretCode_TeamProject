@@ -42,18 +42,48 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/">홈</a>
                             </li>
+
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/myPage}">마이페이지</a>
+                            </li>
+
+                            <li class="nav-item dropdown" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                <a class="nav-link active dropdown-toggle" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    관리자 목록
+                                </a>
+                                <ul class="dropdown-menu bg-black" aria-labelledby="adminDropdown">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminBoard}">회원 Q&A 관리게시판(관리자)</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminUser}">회원 목록(관리자)</a>
+                                    </li>
+<!--                                    <li class="nav-item">-->
+<!--                                        <a class="nav-link active" th:href="@{/admin/adminReservation}">예약 목록(관리자)</a>-->
+<!--                                    </li>-->
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/portOnePay/adminPayList}">회원 예약/결제 목록(관리자)</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminRegister}">테마 등록(관리자)</a>
+                                    </li>
+                                    <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                        <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminThemeList}">테마 상세 리스트(관리자)</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" th:href="@{/member/login_register}" sec:authorize="isAnonymous()">로그인/회원가입</a>
                             </li>
 
+
+
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/reservationCheck}">결제 및 예약 확인</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/reservationCheck}">결제/예약 확인</a>
                             </li>
-                            <li class="nav-item" sec:authorize="isAuthenticated()">
-                                <a class="nav-link active" aria-current="page"  href="" id="logoutLink">로그아웃</a>
-                                <form action="/member/logout" method="post" id="logoutForm">
-                                </form>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" th:href="@{/theme/theme}">테마 보기</a>
                             </li>
@@ -62,57 +92,30 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/review/list}">REVIEW</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/qna/list}">Q&A</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/qna/list}">Q&A</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/member/myPage}">마이페이지</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/review/list}">REVIEW</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" th:href="@{/map/comePage}">오시는 길</a>
                             </li>
-                            <li class="nav-item dropdown" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                <a class="nav-link active dropdown-toggle" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    ADMIN
-                                </a>
-                                <ul class="dropdown-menu bg-black" aria-labelledby="adminDropdown">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/adminRegister/adminBoard}">게시판(관리자)</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/adminRegister/adminUser}">유저 목록(관리자)</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/admin/adminReservation}">예약 목록(관리자)</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/portOnePay/adminPayList}">결제 목록(관리자)</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/adminRegister/adminRegister}">테마 등록(관리자)</a>
-                                    </li>
-                                    <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                        <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminThemeList}">테마 리스트(관리자)</a>
-                                    </li>
 
-                                </ul>
+
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <a class="nav-link active" aria-current="page"  href="" id="logoutLink">로그아웃</a>
+                                <form action="/member/logout" method="post" id="logoutForm">
+                                </form>
                             </li>
 
 
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
+
 
                         </ul>
-                        <!--                                            <form class="d-flex">-->
-                        <!--                                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-                        <!--                                                <button class="btn btn-outline-success" type="submit">Search</button>-->
-                        <!--                                            </form>-->
+
                     </div>
                 </div >
 

@@ -160,11 +160,12 @@ th,td{display:block}
 }
 
 .refund-button {
-  background-color: red;
-  color: white;
+  background-color: #000000;
+  color: #EBFBFF;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  margin-bottom:20px;
 }

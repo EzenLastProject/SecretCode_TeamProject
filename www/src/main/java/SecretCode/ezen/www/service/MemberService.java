@@ -23,7 +23,7 @@ public interface MemberService {
     int checkEmail(String email);
 
 
-    String phoneCheck(String phone, String nickName);
+    List<MemberVO> phoneCheck(String phone, String nickName);
 
     String pwdReturnCheck(String phone, String nickName, String email);
 
