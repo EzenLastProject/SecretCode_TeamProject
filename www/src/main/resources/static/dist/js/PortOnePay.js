@@ -80,13 +80,6 @@ calculatePrice();
     }
   }
 
-
-
-
-
-
-
-
 function requestPay() {
     let date = document.getElementById('date').value; //예약일
     let time = document.getElementById('time').value; //시간
@@ -97,13 +90,11 @@ function requestPay() {
     let participants = document.getElementById('participants').value; //인원수
     let price = document.getElementById('price').value; //가격
 
-  
-    
     IMP.request_pay(
         {
             pg: "html5_inicis",		//KG이니시스 pg파라미터 값
             pay_method: "card",		//결제 방법
-            merchant_uid: date+time+email,//주문번호
+            merchant_uid: date+time+theme,//주문번호
             name: theme,		//상품 명
             amount: price,			//금액
               buyer_email: email,
@@ -115,7 +106,7 @@ function requestPay() {
             if (rsp.success) {
 
                     // 가맹점 서버 결제 API 성공시 로직
-                    let merchantUid = date+time+email;
+                    let merchantUid = date+time+theme;
 
                     console.log("결제했다!!!");
                     alert("결제가 완료되었습니다!");
@@ -127,8 +118,7 @@ function requestPay() {
 
                     alert("잠시만 기다려주세요! 예약확인 메일을 보내는 중 입니다!");
 
-                    
-               
+                     
                     reservationToServer(merchantUid, date, time, theme, name, phone, email, participants, price).then(result =>{
                         console.log(result);
 
@@ -145,21 +135,9 @@ function requestPay() {
 
                                 }
 
-                            })
-
-
-
-
-                            
-
+                            })        
                         }
-
                     })
-
-
-
-
-
             } else {
                 alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
             }

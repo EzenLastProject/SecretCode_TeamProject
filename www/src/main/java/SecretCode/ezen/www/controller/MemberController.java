@@ -53,12 +53,12 @@ public class MemberController {
     //아이디 찾기 휴대폰번호 체크
     @ResponseBody
     @GetMapping(value = "/phoneCheck/{phone}/{nickName}")
-    public String phoneCheck(@PathVariable("phone")String phone, @PathVariable("nickName")String nickName ) {
+    public List<MemberVO> phoneCheck(@PathVariable("phone")String phone, @PathVariable("nickName")String nickName ) {
 
         log.info(">>> phone >> {}",phone);
         log.info(">>> nickName >> {}",nickName);
 
-        String phoneCheck = msv.phoneCheck(phone, nickName);
+        List<MemberVO> phoneCheck = msv.phoneCheck(phone, nickName);
 
         log.info(">>> phoneCheck >> {}",phoneCheck);
 

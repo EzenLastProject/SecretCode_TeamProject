@@ -98,7 +98,7 @@ height:44px;
 
 
 /* 로딩 글자 나오게 하기 */
-h4 {
+.logdingCheck {
   height: 100px;
 }
 

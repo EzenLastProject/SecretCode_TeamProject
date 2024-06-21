@@ -159,11 +159,7 @@ public class EmailServiceImpl implements EmailService {
         System.out.println("보내는 대상 : "+ email);
         System.out.println("주문번호 : "+merchantUid);
         MimeMessage  message = emailSender.createMimeMessage();
-
         ReservationVO reser = psv.getImRes(email, merchantUid);
-
-
-
 
         message.addRecipients(MimeMessage.RecipientType.TO, email);//보내는 대상
         message.setSubject("SecretCode 결제 안내 메일입니다.");//제목
@@ -188,7 +184,6 @@ public class EmailServiceImpl implements EmailService {
         msgg+= "<br>";
         msgg+= "<p>결제일 :"+"<span style='color:blue;'> "+reser.getReservationPaydate() +"</span>" +"<p>";
         msgg+= "<br>";
-
         msgg+= "<div align='center' style='border:1px solid black; font-family:verdana';>";
         msgg+= "<h3 style='color:blue;'>주문번호 입니다.</h3>";
         msgg+= "<h3 style='color:blue;'>방문 하실 때 본 이메일을 보여주세요!</h3>";

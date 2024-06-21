@@ -26,10 +26,6 @@ public class MyPaymentService {
         this.api = new IamportClient(apiKey,apiSecret);
     }
 
-//    public CancelData cancelPayment(IamportResponse<Payment> response){
-//
-//    }
-
     public IamportResponse<Payment> cancelPayment(String merchantUid, int refundAmount) throws IOException, IamportResponseException {
         CancelData cancelData = new CancelData(merchantUid, false, BigDecimal.valueOf(refundAmount));
         return api.cancelPaymentByImpUid(cancelData);

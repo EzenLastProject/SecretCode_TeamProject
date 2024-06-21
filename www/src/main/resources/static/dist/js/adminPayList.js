@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
                             } else {
                                 alert('환불 처리 중 오류가 발생했습니다.');
-                                
+                                return;
                             }
                         })
                         .catch(error => {
                             console.error('환불 처리 중 에러 발생:', error);
                             console.log(error);
                             alert('환불 처리 중 에러가 발생했습니다.');
-                            
+                            return ;
                         });
 
 
