@@ -66,7 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         .then(response => {
                             if (response.ok) {
                                 alert('환불 처리가 성공적으로 완료되었습니다.');
-            
+                                
+                                hwanbool(reservationNum).then(result => {
+                                    console.log(result);
+                                        alert('예약 취소가 성공적으로 완료되었습니다');
+                                        window.location.reload();
+                                    });
         
                             } else {
                                 alert('환불 처리 중 오류가 발생했습니다.');
@@ -81,11 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
 
 
-            hwanbool(reservationNum).then(result => {
-                console.log(result);
-                    alert('예약 취소가 성공적으로 완료되었습니다');
-                    window.location.reload();
-                });
+
             }else{
                 alert('예약을 취소에 실패하였습니다.');
             }

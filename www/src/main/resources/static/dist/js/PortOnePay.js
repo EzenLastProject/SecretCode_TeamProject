@@ -37,9 +37,6 @@ function calculatePrice() {
         case "6":
             price = 90000;
             break;
-        case "7":
-            price = 100;
-            break;
         default:
             price = 25000;
     }
@@ -80,6 +77,18 @@ calculatePrice();
     }
   }
 
+  function generateMerchantUid(date, time, theme) {
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var length = 6;
+    var randomString = '';
+    for (var i = 0; i < length; i++) {
+        randomString += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    }
+    var timestamp = new Date().getTime();
+    var merchantUid = date + time + theme + randomString + timestamp; // 시간 정보 추가
+    return merchantUid;
+}
+
 function requestPay() {
     let date = document.getElementById('date').value; //예약일
     let time = document.getElementById('time').value; //시간
@@ -90,11 +99,31 @@ function requestPay() {
     let participants = document.getElementById('participants').value; //인원수
     let price = document.getElementById('price').value; //가격
 
+        // 필수 입력 필드 검증
+        if (!name || name.trim() === '') {
+            alert("예약자 이름을 입력해 주세요.");
+            return;
+        }
+    
+        if (!phone || phone.trim() === '') {
+            alert("휴대폰 번호를 입력해 주세요.");
+            return;
+        }
+    
+        if (!email || email.trim() === '') {
+            alert("이메일 주소를 입력해 주세요.");
+            return;
+        }
+
+
+
+    let merchantUid = generateMerchantUid(date, time, theme); // 고유한 주문번호 생성
+
     IMP.request_pay(
         {
             pg: "html5_inicis",		//KG이니시스 pg파라미터 값
             pay_method: "card",		//결제 방법
-            merchant_uid: date+time+theme,//주문번호
+            merchant_uid: merchantUid,//주문번호
             name: theme,		//상품 명
             amount: price,			//금액
               buyer_email: email,
@@ -106,7 +135,7 @@ function requestPay() {
             if (rsp.success) {
 
                     // 가맹점 서버 결제 API 성공시 로직
-                    let merchantUid = date+time+theme;
+                    // let merchantUid = date+time+theme;
 
                     console.log("결제했다!!!");
                     alert("결제가 완료되었습니다!");
