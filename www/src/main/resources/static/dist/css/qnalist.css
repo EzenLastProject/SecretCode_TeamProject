@@ -171,9 +171,12 @@ th{
 }
 
 
-@media screen and ( max-width : 600px){
+@media screen and ( max-width : 300px){
 .qna-list{
     width : 100%;
+}
+.writeBtn{
+    float:left;
 }
 }
 
