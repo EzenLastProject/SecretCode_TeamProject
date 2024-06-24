@@ -1,17 +1,15 @@
 package SecretCode.ezen.www.refundPortOne;
 
 import com.siot.IamportRestClient.IamportClient;
-import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.request.CancelData;
-import com.siot.IamportRestClient.response.IamportResponse;
-import com.siot.IamportRestClient.response.Payment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
+@CrossOrigin(origins = "https://jitpack.io")
 @PropertySource("classpath:iamport.properties")
 @Service
 public class MyPaymentService {
@@ -26,11 +24,15 @@ public class MyPaymentService {
         this.api = new IamportClient(apiKey,apiSecret);
     }
 
-    public IamportResponse<Payment> cancelPayment(String merchantUid, int refundAmount) throws IOException, IamportResponseException {
-        CancelData cancelData = new CancelData(merchantUid, false, BigDecimal.valueOf(refundAmount));
-        return api.cancelPaymentByImpUid(cancelData);
-    }
 
+    public void cancelPayment(String merchantUid, int refundAmount) {
+        try {
+            CancelData cancelData = new CancelData(merchantUid, false, BigDecimal.valueOf(refundAmount));
+            api.cancelPaymentByImpUid(cancelData);
+        } catch (Exception e) {
+            throw new RuntimeException("환불 처리 중 오류가 발생했습니다.", e);
+        }
+    }
 
 
 
