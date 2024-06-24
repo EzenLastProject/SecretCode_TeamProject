@@ -8,7 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface adminRegisterMapper {
-
     int insert(adRegisterVO advo);
 
     List<MemberVO> getList();
@@ -42,4 +41,8 @@ public interface adminRegisterMapper {
     int revokeAdmin(@Param("email") String email);
 
     int hasAdminRole(@Param("email") String email);
+
+    List<AuthVO> getAuthList(@Param("email") String email);
+
+    List<AuthVO> getAuthListByEmail(String email);
 }

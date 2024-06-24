@@ -39,18 +39,26 @@
     </delete>
 
     <select id="getListWithPaging" resultType="SecretCode.ezen.www.domain.MemberVO">
-        select distinct m.* from member m
-        join auth_member a on m.email = a.email
+        select m.email, m.nick_name, m.reg_at, m.last_login, m.phone, GROUP_CONCAT(a.auth) AS auths
+        from member m
+        left join auth_member a on m.email = a.email
         <where>
             <if test="auth != null and auth != ''">
                 and a.auth = #{auth}
             </if>
             <if test="keyword != null and keyword != ''">
-                and m.email like concat('%', #{keyword}, '%')
+                and (m.email like concat('%', #{keyword}, '%') or m.nick_name like concat('%', #{keyword}, '%'))
             </if>
         </where>
+        group by m.email
         limit #{pageStart}, #{qty}
     </select>
+
+    <select id="getAuthListByEmail" resultType="SecretCode.ezen.www.domain.AuthVO">
+        select * from auth_member where email = #{email}
+    </select>
+
+
 
 
     <select id="getBoardTotalCount" resultType="int">

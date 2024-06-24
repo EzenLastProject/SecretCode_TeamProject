@@ -3,7 +3,7 @@ console.log("hihihi");
 document.getElementById('deleteBtn').addEventListener('click', () => {
     const qnaId = document.getElementById('qnaId').value;
 
-    if (confirm("진짜 삭제?")) {
+    if (confirm("정말 게시글을 삭제하시겠습니까?")) {
         deleteQnaFromServer(qnaId).then(result => {
             console.log(result);
             if (result === '1') {

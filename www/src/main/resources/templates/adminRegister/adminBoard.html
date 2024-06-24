@@ -59,7 +59,10 @@
                             </td>
                             <td data-title="작성자" th:text="${qna.writer}">작성자</td>
                             <td data-title="작성일" th:text="${qna.regDate}">작성일</td>
-                            <td data-title="답변상태" th:text="${qna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"
+                            <td class='dis_none' th:if="${qna.isNotice == 'true'}"></td>
+                            <!-- isNotice가 false인 경우에만 cmtQty 열을 표시 -->
+                            <td class='dis_none' th:unless="${qna.isNotice == 'true'}"
+                                th:text="${qna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"
                                 th:classappend="${qna.cmtQty > 0 ? 'completed' : 'uncompleted'}"></td>
                             <td data-title="조회수" th:text="${qna.readCount}">조회수</td>
                         </tr>

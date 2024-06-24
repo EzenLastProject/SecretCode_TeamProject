@@ -23,7 +23,6 @@ public interface adminRegisterService {
 
     int insertFile(FileVO fileVO);
 
-    // 추가된 메서드
     int insertWithFiles(adRegisterVO advo, List<FileVO> fileVOList);
 
     List<adRegisterVO> getreservationList();
@@ -39,4 +38,6 @@ public interface adminRegisterService {
     int revokeAdmin(String email);
 
     int hasAdminRole(String email);
+
+    List<AuthVO> getAuthListByEmail(String email);
 }
