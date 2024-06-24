@@ -86,10 +86,7 @@ public class adminRegisterServiceImpl implements adminRegisterService {
 
     @Override
     public List<adRegisterVO> getreservationList() {
-
-        List<adRegisterVO> reservationList = arMapper.getreservationList();
-
-        return reservationList;
+        return arMapper.getreservationList();
     }
 
     @Override
@@ -120,5 +117,10 @@ public class adminRegisterServiceImpl implements adminRegisterService {
     @Override
     public int hasAdminRole(String email) {
         return arMapper.hasAdminRole(email);
+    }
+
+    @Override
+    public List<AuthVO> getAuthListByEmail(String email) {
+        return arMapper.getAuthListByEmail(email);
     }
 }

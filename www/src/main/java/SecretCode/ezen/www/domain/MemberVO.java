@@ -25,4 +25,17 @@ public class MemberVO {
         this.type = type;
     }
 
+    public boolean isAdmin() {
+        if (authList != null) {
+            for (AuthVO auth : authList) {
+                if ("ROLE_ADMIN".equals(auth.getAuth())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
 }

@@ -34,12 +34,13 @@
                         <th scope="col">권한 여부</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <th:block th:if="${#lists.isEmpty(list)}">
                         <tr>
-                            <td colspan="6" style="text-align:center;">검색 결과가 없습니다.</td>
+                            <td colspan="8" style="text-align:center;">검색 결과가 없습니다.</td>
                         </tr>
                     </th:block>
                     <th:block th:each="member : ${list}">
@@ -49,6 +50,14 @@
                             <td data-title="RegAt">[[${member.regAt}]]</td>
                             <td data-title="LastLogin">[[${member.lastLogin}]]</td>
                             <td data-title="Phone">[[${member.phone}]]</td>
+                            <td data-title="Role">
+                                <th:block th:if="${member.admin}">
+                                    관리자
+                                </th:block>
+                                <th:block th:unless="${member.admin}">
+                                    일반 사용자
+                                </th:block>
+                            </td>
                             <td>
                                 <select class="roleAction">
                                     <option value="grant">권한 부여</option>

@@ -109,6 +109,11 @@ public class adminRegisterController {
         log.info("totalCount: {}", totalCount);
         PagingHandler ph = new PagingHandler(pgvo, totalCount);
 
+        for (MemberVO member : memberList) {
+            List<AuthVO> authList = arsv.getAuthListByEmail(member.getEmail());
+            member.setAuthList(authList);
+        }
+
         m.addAttribute("list", memberList);
         m.addAttribute("ph", ph);
         m.addAttribute("auth", auth);
@@ -116,6 +121,9 @@ public class adminRegisterController {
 
         return "/member/adminUser";
     }
+
+
+
 
 
 
