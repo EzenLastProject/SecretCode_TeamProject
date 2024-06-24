@@ -10,19 +10,22 @@ html {
     padding: 0;
     display: flex;
     flex-direction: column;
-    font-family: 'S-CoreDream-3Light', sans-serif;
+    font-family: 'S-CoreDream-3Light';
     background-color: #f4f4f9;
 }
 
 .containerPay {
+
+font-family: 'S-CoreDream-3Light';
     flex: 1;
     background-color: #fff;
     padding: 20px;
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    width: calc(100% - 40px);
+
+    min-height: 800px;
+    width: 80%;
     box-sizing: border-box;
 }
 
@@ -30,17 +33,21 @@ h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+
 }
 
 .table {
+    margin-top:50px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    text-align:center;
+
 }
 
 .table th, .table td {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
 }
 
 .table th {

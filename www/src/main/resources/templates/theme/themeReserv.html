@@ -26,16 +26,16 @@
             <input type="date" id="startDay" name="startDay" class="startDay">
 
 
-<!--              <label for="themeSelect">테마 선택 > </label>-->
-<!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
+            <!--              <label for="themeSelect">테마 선택 > </label>-->
+            <!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
 
-<!--                <option value="themeR1">위로</option>-->
-<!--                <option value="themeR2"> 노웨이아웃</option>-->
-<!--                <option value="themeR6" >Rendering</option>-->
-<!--                <option value="themeR5">SCENE</option>-->
-<!--                <option value="themeR3">Trigger</option>-->
+            <!--                <option value="themeR1">위로</option>-->
+            <!--                <option value="themeR2"> 노웨이아웃</option>-->
+            <!--                <option value="themeR6" >Rendering</option>-->
+            <!--                <option value="themeR5">SCENE</option>-->
+            <!--                <option value="themeR3">Trigger</option>-->
 
-<!--              </select> </p>-->
+            <!--              </select> </p>-->
 
 
           </form>
@@ -340,57 +340,49 @@
               const selectedDate = startDateInput.value;
               console.log('선택된 날짜:', selectedDate);
 
+              // 모든 시간 요소들을 가져와서 예약 가능 상태로 초기화
+              const timeElements = document.querySelectorAll('.time');
+              timeElements.forEach(function(element) {
+                  element.classList.remove('disabled'); // CSS 클래스 제거
+                  element.setAttribute('href', '#'); // 링크 속성 복원
+                  element.style.pointerEvents = 'auto'; // 클릭 이벤트 활성화
+                  const n = element.querySelectorAll("span")[1]; // 예약 가능/불가능 텍스트 엘리먼트
+                  n.innerText = '예약 가능'; // 텍스트 원래대로 변경
+                  n.style.color = "white"; // 텍스트 색 원래대로 변경
+                  const r = element.querySelector("span"); // 시간 텍스트 엘리먼트
+                  r.style.color = "white"; // 시간 텍스트 색 원래대로 변경
+                  element.style.backgroundColor = ''; // 배경색 원래대로 변경
+              });
+
               // 선택된 날짜와 일치하는 예약 정보 찾기
-              for (let i = 0; i < reservations.length; i++) {
-                  if (reservations[i].reservationDate === selectedDate) {
-                      console.log("날짜 일치");
+              if (reservations) {
+                  for (let i = 0; i < reservations.length; i++) {
+                      if (reservations[i].reservationDate === selectedDate) {
+                          console.log("날짜 일치");
 
-                      // 시간 일치 확인
-                      const reservationTime = reservations[i].reservationTime;
-                      const timeElements = document.querySelectorAll('.time');
-                      timeElements.forEach(function(element) {
-                      const r= element.querySelector("span"); //시간
-                      const n = element.querySelectorAll("span");//예약가능
+                          // 시간 일치 확인
+                          const reservationTime = reservations[i].reservationTime;
+                          timeElements.forEach(function(element) {
+                              const r = element.querySelector("span"); // 시간
+                              const n = element.querySelectorAll("span"); // 예약 가능
 
-                      console.log(n[1].innerText);
+                              // 추가로 테마 이름 일치 여부 확인 가능
+                              const themeName = reservations[i].themeName;
+                              if (element.dataset.themename === themeName && r.innerText === reservationTime) {
+                                  console.log('테마 이름 일치:', themeName);
+                                  console.log('날짜, 시간, 테마 모두 일치');
 
-
-
-
-
-
-                      // 추가로 테마 이름 일치 여부 확인 가능
-                      const themeName = reservations[i].themeName;
-                      if (element.dataset.themename === themeName && r.innerText===reservationTime) {
-                          console.log('테마 이름 일치:', themeName);
-                          console.log('날짜, 시간, 테마 모두 일치');
-
-
-
-
-                             // 예약 불가능으로 설정
-                            element.classList.add('disabled'); // CSS 클래스 추가
-                            element.removeAttribute('href'); // 링크 제거
-                            element.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
-                            n[1].innerText = '예약 불가능'; // 텍스트 변경
-                            n[1].style.color="gray";
-                            r.style.color="gray";
-                            element.style.backgroundColor = '#505050';
-
-
-
-                             // 배경 이미지 설정
-
-                         <!--  element.style.backgroundImage = "url('/dist/image/blcoko.png')";
-                           element.style.backgroundSize = "cover"; // 배경 이미지 크기 조정
-                           element.style.backgroundRepeat = "no-repeat"; // 배경 이미지 반복 설정
-                           element.style.backgroundPosition = "center"; // 배경 이미지 위치 설정
-                           element.style.width = "100%"; // 너비 설정
-                           element.style.height = "60px"; // 높이 설정-->
-
+                                  // 예약 불가능으로 설정
+                                  element.classList.add('disabled'); // CSS 클래스 추가
+                                  element.removeAttribute('href'); // 링크 제거
+                                  element.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
+                                  n[1].innerText = '예약 불가능'; // 텍스트 변경
+                                  n[1].style.color = "gray";
+                                  r.style.color = "gray";
+                                  element.style.backgroundColor = '#505050';
+                              }
+                          });
                       }
-
-                      });
                   }
               }
           });
