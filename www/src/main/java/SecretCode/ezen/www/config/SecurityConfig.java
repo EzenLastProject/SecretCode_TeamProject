@@ -37,10 +37,10 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers
-                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register"
+                                ("/index", "/", "/js/**", "/dist/**", "/board/list", "/member/login", "/member/register","review/delete"
                                         ,"/member/login_register","/member/emailCheck","/member/findEmailPwd","/member/phoneCheck","/member/pwdReturnCheck","/member/**", "/upload/**", "/comment/**"
                                         ,"/theme/theme", "/theme/**", "/qna/list", "/qna/**", "/qna/checkSecret", "/oauth2/**","/portOnePay/**","/adminRegister/**" )
-                        .permitAll().requestMatchers("/member/list").hasAnyRole("ADMIN")
+                        .permitAll().requestMatchers("/member/list","/review/delete").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2

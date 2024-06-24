@@ -48,7 +48,10 @@ public class QnaCommentServiceImpl implements QnaCommentService{
         return qnacommentMapper.delete(cno);
     }
 
-
+    @Override
+    public String myNickName(String email) {
+        return qnacommentMapper.myNickName(email);
+    }
 
 
 }

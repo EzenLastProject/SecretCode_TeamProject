@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -52,10 +53,18 @@ public class QNAController {
         return "qna/list"; // 뷰 이름 반환
     }
     @GetMapping("/register")
-    public void register() {
+    public void register(Model model, Principal principal) {
+        String NickName = "비회원"; // 인증되지 않은 사용자를 위한 기본 닉네임 설정
 
+        if (principal != null) {
+            String email = principal.getName(); // 인증된 사용자의 ID (보통 username 또는 email)
+            NickName = qsv.myNickName(email); // 실제 인증된 사용자의 닉네임 가져오기
+            log.info(">>>>>   NickName   {}", NickName);
+        } else {
+            log.info(">>>>>   NickName   {}", NickName);
+        }
 
-
+        model.addAttribute("NickName", NickName);
     }
 
     @PostMapping("/register")
@@ -72,10 +81,20 @@ public class QNAController {
 
 
     @GetMapping("/detail")
-    public String detail(@RequestParam("bno") int bno, Model m) {
+    public String detail(@RequestParam("bno") int bno, Model m,Principal principal) {
         log.info(">>bno>>{}",bno);
         QnaVO qvo= qsv.getDetail(bno);
+        String NickName = "비회원"; // 인증되지 않은 사용자를 위한 기본 닉네임 설정
 
+        if (principal != null) {
+            String email = principal.getName(); // 인증된 사용자의 ID (보통 username 또는 email)
+            NickName = qsv.myNickName(email); // 실제 인증된 사용자의 닉네임 가져오기
+            log.info(">>>>>   NickName   {}", NickName);
+        } else {
+            log.info(">>>>>   NickName   {}", NickName);
+        }
+
+        m.addAttribute("NickName", NickName);
         int isOk = qsv.readCount(bno);
         log.info(">>qvo>>{}",qvo);
         m.addAttribute("qvo", qvo);

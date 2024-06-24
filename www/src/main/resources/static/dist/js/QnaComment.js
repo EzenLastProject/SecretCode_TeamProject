@@ -88,8 +88,7 @@ function spreadCommentList(bno,page=1){
 
             li+= `<span class="cmzone-re">${qcvo.regAt}</span>`;
             //수정 삭제버튼
-            li += `<button type="button"  class=" mod"  data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
-            li += `<button type="button" class="del" id="del">삭제</button>`;
+
             li+= `</li>`;
             ul.innerHTML += li;
 
