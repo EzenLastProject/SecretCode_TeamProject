@@ -26,16 +26,16 @@
             <input type="date" id="startDay" name="startDay" class="startDay">
 
 
-            <!--              <label for="themeSelect">테마 선택 > </label>-->
-            <!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
+<!--              <label for="themeSelect">테마 선택 > </label>-->
+<!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
 
-            <!--                <option value="themeR1">위로</option>-->
-            <!--                <option value="themeR2"> 노웨이아웃</option>-->
-            <!--                <option value="themeR6" >Rendering</option>-->
-            <!--                <option value="themeR5">SCENE</option>-->
-            <!--                <option value="themeR3">Trigger</option>-->
+<!--                <option value="themeR1">위로</option>-->
+<!--                <option value="themeR2"> 노웨이아웃</option>-->
+<!--                <option value="themeR6" >Rendering</option>-->
+<!--                <option value="themeR5">SCENE</option>-->
+<!--                <option value="themeR3">Trigger</option>-->
 
-            <!--              </select> </p>-->
+<!--              </select> </p>-->
 
 
           </form>
@@ -366,6 +366,13 @@
                               const r = element.querySelector("span"); // 시간
                               const n = element.querySelectorAll("span"); // 예약 가능
 
+
+
+
+
+
+
+
                               // 추가로 테마 이름 일치 여부 확인 가능
                               const themeName = reservations[i].themeName;
                               if (element.dataset.themename === themeName && r.innerText === reservationTime) {
@@ -388,7 +395,63 @@
           });
       });
     </script>
+<script>
+  function setDisabledTimes(selectedDate) {
+    const timeElements = document.querySelectorAll('.time');
+    const currentTime = new Date(); // 현재 시간
 
+    // 현재 시간의 시간값을 구합니다 (예: 10:00 -> 600)
+    const currentHour = currentTime.getHours();
+    const currentMinute = currentTime.getMinutes();
+    const currentTotalMinutes = currentHour * 60 + currentMinute;
+
+    // 선택된 날짜와 오늘 날짜가 일치하는지 확인하고 처리합니다.
+    if (selectedDate === getCurrentDate()) {
+        timeElements.forEach(function(element) {
+            const r = element.querySelector("span"); // 시간 엘리먼트
+            const timeText = r.innerText.trim();
+            const timeParts = timeText.split(':');
+            const hour = parseInt(timeParts[0], 10);
+            const minute = parseInt(timeParts[1], 10);
+
+            // 시간값을 분으로 변환합니다 (예: 10:30 -> 630)
+            const totalMinutes = hour * 60 + minute;
+
+            // 선택된 시간이 현재 시간보다 이른 경우 예약 불가능으로 설정합니다.
+            if (totalMinutes < currentTotalMinutes) {
+                const n = element.querySelectorAll("span")[1]; // 예약 가능/불가능 텍스트 엘리먼트
+                element.classList.add('disabled'); // CSS 클래스 추가
+                element.removeAttribute('href'); // 링크 제거
+                element.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
+                n.innerText = '예약 불가능'; // 텍스트 변경
+                n.style.color = "gray";
+                r.style.color = "gray";
+                element.style.backgroundColor = '#505050'; // 배경색 변경
+            }
+        });
+    }
+}
+
+// 현재 날짜를 yyyy-mm-dd 형식으로 반환하는 함수
+function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+// 예약 날짜 선택 input의 변경 이벤트를 처리합니다.
+document.addEventListener('DOMContentLoaded', function() {
+    const startDateInput = document.getElementById('startDay');
+
+    startDateInput.addEventListener('change', function() {
+        const selectedDate = startDateInput.value;
+        console.log('선택된 날짜:', selectedDate);
+        setDisabledTimes(selectedDate); // 예약 불가능 시간 설정 함수 호출
+    });
+});
+</script>
 
 
 

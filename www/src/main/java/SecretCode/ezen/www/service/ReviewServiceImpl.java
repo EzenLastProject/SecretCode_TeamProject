@@ -88,7 +88,10 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.getTotalCountByTheme(themeName, pgvo);
     }
 
-
+    @Override
+    public String myNickName(String email) {
+        return reviewMapper.myNickName(email);
+    }
 
 
 }

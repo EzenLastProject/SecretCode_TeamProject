@@ -84,22 +84,34 @@
         update qna set cmt_qty = 0 where bno = #{bno}
     </update>
 
+    <select id="myNickName" parameterType="String" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
 
 
 
     <sql id="search">
         <if test="type !=null">
-            <trim prefix="AND (" suffix=")" suffixOverrides="OR">
+            <trim prefix="and (" suffix=")" suffixOverrides="or">
                 <foreach collection="typeToArray" item="type">
-                    <trim suffix="OR">
+                    <trim suffix="or">
                         <choose>
-                            <when test="type=='t'">title like concat('%',#{keyword}, '%')</when>
-                            <when test="type=='w'">writer like concat('%',#{keyword}, '%')</when>
-                            <when test="type=='c'">content like concat('%',#{keyword}, '%')</when>
+                            <when test="type=='t'.toString()">
+                                title like concat('%',#{keyword}, '%')
+
+                            </when> <when test="type=='w'.toString()">
+                            writer like concat('%',#{keyword}, '%')
+
+                        </when> <when test="type=='c'.toString()">
+                            content like concat('%',#{keyword}, '%')
+
+                        </when>
                         </choose>
                     </trim>
                 </foreach>
+
             </trim>
+
         </if>
     </sql>
 </mapper>

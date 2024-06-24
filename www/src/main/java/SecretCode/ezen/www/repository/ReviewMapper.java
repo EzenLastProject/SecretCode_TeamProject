@@ -38,4 +38,5 @@ public interface ReviewMapper {
     int getTotalCountByTheme(String themeName, PagingVO pgvo);
 
 
+    String myNickName(String email);
 }

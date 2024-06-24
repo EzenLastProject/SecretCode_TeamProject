@@ -32,6 +32,10 @@
         delete from qnacomment where cno=#{cno}
     </delete>
 
+    <select id="myNickName" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
+
 
 
 

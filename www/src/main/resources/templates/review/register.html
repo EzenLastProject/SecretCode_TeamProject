@@ -52,6 +52,7 @@
                     <input type="hidden" id="themeUuid" name="themeUuid">
                     <input type="hidden" id="themeName" name="themeName"> <!-- 추가된 필드 -->
                     <div id="text-div">선택하신 테마명</div>
+
                     <div class="theme-div">
                         <!-- 선택된 테마를 input의 value로 설정 -->
                         <input type="hidden" id="theme" name="theme">
@@ -64,7 +65,7 @@
                     </div>
                     <div id="text-div">작성자</div>
                     <div class="writer-div" th:if="${#authorization.expression('isAuthenticated()')}">
-                        <input type="text" readonly id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}">
+                        <input type="text" readonly id="writer" name="writer" th:value="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : NickName}">
                     </div>
                     <div id="text-div">내용</div>
                     <div class="content-div">
@@ -82,84 +83,128 @@
                         <span class="star" data-value="5">&#9733;</span>
                     </div>
 
-                    <button type="submit" id="regBtn" style="margin-top:30px; width: 100px;">작성</button>
+                    <button type="submit" id="regBtn" style="margin-top:30px; width: 100px;" onclick="return validateBeforeSubmit()">작성</button>
                     <button type="button" id="listBtn" style=" width: 100px; position" onclick="goToList()">취소</button>
                 </div>
             </div>
         </form>
 
         <script>
+            function validateBeforeSubmit() {
+                var selectedTheme = document.getElementById("themeSelect").value;
+                var title = document.getElementById("title").value.trim(); // 제목 입력값 가져오기 (trim()으로 앞뒤 공백 제거)
 
-            // 취소 버튼 클릭 시 /review/list로 이동
-           function goToList() {
-               window.location.href = '/review/list';
-           }
-           function changeTheme() {
-               var selectBox = document.getElementById("themeSelect");
-               var selectedValue = selectBox.value;
+                // 테마가 선택되지 않은 경우
+                if (!selectedTheme) {
+                    alert("테마를 선택해주세요.");
+                    return false; // 폼 제출을 막음
+                }
 
-               // 이미지를 표시하는 부분 비우기
-               var themeImgDiv = document.querySelector(".review-theme-img-div");
-               themeImgDiv.innerHTML = '';
+                // 제목이 비어 있는 경우
+                if (title === "") {
+                    alert("제목을 입력해주세요.");
+                    return false; // 폼 제출을 막음
+                }
 
-               // 서버로부터 테마의 정보를 받아오는 비동기 요청
-               fetch('/review/getThemeDetails?themeNum=' + selectedValue)
-                   .then(response => {
-                       if (!response.ok) {
-                           throw new Error('Network response was not ok');
+                return true; // 폼 제출을 허용
+            }
+
+                        // 취소 버튼 클릭 시 /review/list로 이동
+                       function goToList() {
+                           window.location.href = '/review/list';
                        }
-                       return response.json();
-                   })
-                   .then(data => {
-                       // 받아온 데이터를 이용하여 테마의 정보를 동적으로 생성
-                       var themeDetailsDiv = document.getElementById("themeDetails");
-                       themeDetailsDiv.style.display = 'block'; // 선택된 테마 정보를 보이도록 설정
-                       selectedThemeUuid = data.uuid;
+                       function changeTheme() {
+                           var selectBox = document.getElementById("themeSelect");
+                           var selectedValue = selectBox.value;
 
-                       document.getElementById("themeUuid").value = selectedThemeUuid;
-                       document.getElementById("themeName").value = data.themeName; // 추가된 필드 설정
-                       // 이미지를 비동기로 받아와서 설정
-                       var imageUrl = data.saveDir && data.uuid && data.fileName ? "/upload/" + data.saveDir + "/" + data.uuid + "_" + data.fileName : "";
-                       var imgElement = document.createElement("img");
-                       imgElement.setAttribute("class", "review-theme-img");
-                       imgElement.setAttribute("src", imageUrl);
-                       themeImgDiv.appendChild(imgElement);
+                           // 테마를 선택하지 않은 경우 경고 메시지를 띄우고 함수를 종료합니다.
 
-                       // 테마의 정보 표시
-                       var themeText = `<div class="title"><span class="review-img-title">${data.themeName}</span></div>`;
-                       themeText += `<p>장르 : ${data.genre}</p>`;
-                       themeText += `<p>난이도: ${data.difficulty}</p>`;
-                       themeDetailsDiv.querySelector(".review-theme-text").innerHTML = themeText;
-                   })
-                   .catch(error => console.error('Error:', error));
+                            // 테마를 선택하지 않은 경우 초기화
+    // 테마를 선택하지 않은 경우 초기화
+    if (!selectedValue) {
+        var themeImgDiv = document.querySelector(".review-theme-img-div");
+        themeImgDiv.innerHTML = '';
+        document.getElementById("themeDetails").style.display = 'none';
 
-               // 선택된 테마 값을 hidden input의 value로 설정
-               document.getElementById("theme").value = selectedValue;
+        // 선택된 테마명 초기화
+        document.getElementById("themeText").innerText = "";
+        document.getElementById("themeName").value = "";
 
-               // 선택된 테마의 텍스트를 가져와서 span에 표시
-               var selectedIndex = selectBox.selectedIndex;
-               var themeText = selectBox.options[selectedIndex].text;
-               document.getElementById("themeText").innerText = themeText;
-               document.getElementById("themeName").value = themeText;
-           }
+        return;
+    }
 
-           // 별점 선택 기능
-           const stars = document.querySelectorAll('.star');
-           stars.forEach(star => {
-               star.addEventListener('click', function () {
-                   const value = parseInt(this.getAttribute('data-value'));
-                   document.getElementById('rating').value = value; // 선택한 별점 저장
-                   // 선택된 별을 강조하기 위해 클래스를 추가 및 제거
-                   stars.forEach(s => {
-                       if (parseInt(s.getAttribute('data-value')) <= value) {
-                           s.classList.add('selected');
-                       } else {
-                           s.classList.remove('selected');
+
+
+
+                           // 이미지를 표시하는 부분 비우기
+                           var themeImgDiv = document.querySelector(".review-theme-img-div");
+                           themeImgDiv.innerHTML = '';
+
+                           // 서버로부터 테마의 정보를 받아오는 비동기 요청
+                           fetch('/review/getThemeDetails?themeNum=' + selectedValue)
+                               .then(response => {
+                                   if (!response.ok) {
+                                       throw new Error('Network response was not ok');
+                                   }
+                                   return response.json();
+                               })
+                               .then(data => {
+                                   // 받아온 데이터를 이용하여 테마의 정보를 동적으로 생성
+                                   var themeDetailsDiv = document.getElementById("themeDetails");
+                                   themeDetailsDiv.style.display = 'block'; // 선택된 테마 정보를 보이도록 설정
+                                   selectedThemeUuid = data.uuid;
+
+                                   document.getElementById("themeUuid").value = selectedThemeUuid;
+                                   document.getElementById("themeName").value = data.themeName; // 추가된 필드 설정
+                                   // 이미지를 비동기로 받아와서 설정
+                                   var imageUrl = data.saveDir && data.uuid && data.fileName ? "/upload/" + data.saveDir + "/" + data.uuid + "_" + data.fileName : "";
+                                   var imgElement = document.createElement("img");
+                                   imgElement.setAttribute("class", "review-theme-img");
+                                   imgElement.setAttribute("src", imageUrl);
+                                   themeImgDiv.appendChild(imgElement);
+
+                                   // 테마의 정보 표시
+                                   var themeText = `<div class="title"><span class="review-img-title">${data.themeName}</span></div>`;
+                                   themeText += `<p>장르 : ${data.genre}</p>`;
+                                   themeText += `<p>난이도: ${data.difficulty}</p>`;
+                                   themeDetailsDiv.querySelector(".review-theme-text").innerHTML = themeText;
+                               })
+                               .catch(error => console.error('Error:', error));
+
+                           // 선택된 테마 값을 hidden input의 value로 설정
+                           document.getElementById("theme").value = selectedValue;
+
+                           // 선택된 테마의 텍스트를 가져와서 span에 표시
+                           var selectedIndex = selectBox.selectedIndex;
+                           var themeText = selectBox.options[selectedIndex].text;
+                           document.getElementById("themeText").innerText = themeText;
+                           document.getElementById("themeName").value = themeText;
                        }
-                   });
-               });
-           });
+
+                       // 별점 선택 기능
+                       const stars = document.querySelectorAll('.star');
+                       stars.forEach(star => {
+                           star.addEventListener('click', function () {
+                               const value = parseInt(this.getAttribute('data-value'));
+                               document.getElementById('rating').value = value; // 선택한 별점 저장
+                               // 선택된 별을 강조하기 위해 클래스를 추가 및 제거
+                               stars.forEach(s => {
+                                   if (parseInt(s.getAttribute('data-value')) <= value) {
+                                       s.classList.add('selected');
+                                   } else {
+                                       s.classList.remove('selected');
+                                   }
+                               });
+                           });
+                       });
+
+
         </script>
+        <!-- HTML 내의 <script> 태그에 JavaScript 추가 -->
+
+
+
+
     </th:block>
 </th:block>
 </body>

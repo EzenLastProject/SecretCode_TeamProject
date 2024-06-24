@@ -72,7 +72,7 @@
                 <div class="qna-detail-title">
                    제목  <input type="text" class="qna-detail-input"
                            id="title" name="title"
-                              th:readonly="${#authentication.name != qvo.writer}"
+                              th:readonly="${NickName != qvo.writer or NickName == '비회원'}"
                            th:value="${qvo.title}" >
                 </div>
 
@@ -80,7 +80,7 @@
                     <div class="qna-detail-writer">
                        작성자 <input type="text" class="qna-detail-input"
                                id="writer" name="writer"
-                                  th:readonly="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+                                  th:readonly="${NickName != qvo.writer or NickName == '비회원'}"
                                th:value="${qvo.writer}" disabled>
                     </div>
 
@@ -88,7 +88,7 @@
                   내용
                         <textarea type="text" class="qna-detail-inc"
                                   name="content" id="content"
-                                  th:readonly="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+                                  th:readonly="${NickName != qvo.writer or NickName == '비회원'}"
                                   th:text="${qvo.content}">
 </textarea>
 
@@ -96,10 +96,9 @@
                         <div id="modDiv"></div>
                           <div class="qna-detail-Btn-Div">
                         <button type="button" id="listBtn" class="qna-detail-listBtn">리스트</button>
-                              <button type="button" id="modBtn" class="qna-detail-ModBtn" th:hidden="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}">수정하기</button>
+                              <button type="button" id="modBtn" class="qna-detail-ModBtn" th:hidden="${NickName != qvo.writer or NickName == '비회원'}">수정하기</button>
 
-                              <button type="button" id="delBtn" class="qna-detail-DelBtn" th:hidden="${#authentication.name != qvo.writer and not #authorization.expression('hasRole(''ROLE_ADMIN'')')}">삭제하기</button>
-                          </div>
+                              <button type="button" id="delBtn" class="qna-detail-DelBtn" th:hidden="${NickName != qvo.writer  or NickName == '비회원'}">삭제하기</button>   </div>
 
 
                         <!--comment line-->
@@ -110,7 +109,7 @@
                             <span class="input-group-text" id="cmtWriter">
                         <!-- 작성자 이름 -->
                         <th:block th:if="${#authorization.expression('isAuthenticated()')}">
-                            <span th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : #authentication.name}"></span>
+                            <span th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : NickName}"></span>
                         </th:block>
                         <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
                             <span>비회원</span>
@@ -125,6 +124,18 @@
                                 등록</button>
                         </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
                         <ul class="list-group list-group-flush" id="cmtListArea">
                             <li class="list-group-item" style="height: 50px;">
                                 <div class="input-group mb-3">
@@ -138,6 +149,7 @@
 
 
         </form>
+
 
 
         <form action="/qna/remove" method="post" id="delForm" style="display:none">
