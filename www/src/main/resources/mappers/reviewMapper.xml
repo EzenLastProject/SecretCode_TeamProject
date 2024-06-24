@@ -94,6 +94,10 @@
         WHERE bno = #{bno}
     </delete>
 
+    <select id="myNickName" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
+
 
 
 

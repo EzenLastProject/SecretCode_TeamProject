@@ -24,4 +24,6 @@ public interface QnaCommentMapper {
 
 
     void count(QnaCommentVO qcvo);
+
+    String myNickName(String email);
 }

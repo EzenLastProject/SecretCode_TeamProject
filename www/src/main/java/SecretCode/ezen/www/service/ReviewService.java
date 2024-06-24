@@ -28,10 +28,14 @@ public interface ReviewService {
 
     ReviewVO findById(int bno);
 
-    void delete(int bno);
+   
 
 
     List<ReviewVO> getListByTheme(String themeName, PagingVO pgvo);
 
     int getTotalCountByTheme(String themeName, PagingVO pgvo);
+
+    String myNickName(String email);
+
+    void delete(int bno);
 }

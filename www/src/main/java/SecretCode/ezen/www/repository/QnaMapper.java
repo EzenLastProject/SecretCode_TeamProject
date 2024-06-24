@@ -52,6 +52,8 @@ public interface QnaMapper {
 
     List<QnaVO> memberQna();
 
+    String myNickName(String email);
+
 
 
 

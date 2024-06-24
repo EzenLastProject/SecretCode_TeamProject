@@ -17,7 +17,6 @@ public class QnaVO {
     private String title;
     private String writer;
     private  String content;
-    private String isDel;
     private String regDate;
     private int readCount;
     private int cmtQty;

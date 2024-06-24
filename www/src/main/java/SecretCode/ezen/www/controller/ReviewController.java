@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.context.Theme;
@@ -30,13 +31,23 @@ public class ReviewController {
     private final ThemeService themeService; // ThemeService 주입
 
 
-    // 리뷰 목록과 테마 목록을 함께 반환하는 메서드
     @GetMapping("/list")
-    public String list(@RequestParam(value = "themeName", required = false) String themeName, Model model, PagingVO pgvo) {
+    public String list(@RequestParam(value = "themeName", required = false) String themeName,
+                       Model model, PagingVO pgvo, Principal principal) {
         log.info(">>>pgvo>>{}", pgvo);
 
         List<ReviewVO> reviewList;
         int totalCount;
+
+        String NickName = "비회원"; // 기본값 설정
+
+        if (principal != null) {
+            String email = principal.getName(); //id
+            NickName = rsv.myNickName(email);
+            log.info(">>>>> NickName123>>>{}",NickName);
+        }
+
+        model.addAttribute("NickName", NickName);
 
         if (themeName != null && !themeName.isEmpty()) {
             // 선택된 테마의 리뷰 목록 가져오기
@@ -44,7 +55,6 @@ public class ReviewController {
             totalCount = rsv.getTotalCountByTheme(themeName, pgvo);
         } else {
             // 전체 리뷰 목록 가져오기
-
             reviewList = rsv.getList(pgvo);
             totalCount = rsv.getTotalCount(pgvo);
         }
@@ -60,6 +70,22 @@ public class ReviewController {
         return "review/list"; // 뷰 이름 반환
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 테마 이름 목록을 모델에 추가하는 메서드
     @ModelAttribute("themeList")
     public List<String> themeList() {
@@ -69,21 +95,30 @@ public class ReviewController {
 
 
     @GetMapping("/register")
-    public String registerForm(Model model) {
+    public String registerForm(Model model,Principal principal) {
         List<ThemeVO> themeList = themeService.getAllThemes();
         model.addAttribute("themeList", themeList);
         model.addAttribute("theme", "");
         model.addAttribute("themeText", "");
 
+        String email = principal.getName(); //id
+        String NickName = rsv.myNickName(email);
+        model.addAttribute("NickName", NickName);
+        log.info(">>>>>   NickName   {}",NickName);
+
         return "review/register";
     }
 
     @PostMapping("/register")
-    public String register(ReviewVO rvo, @RequestParam("themeUuid") String themeUuid) {
+    public String register(ReviewVO rvo, @RequestParam("themeUuid") String themeUuid, Model model) {
         log.info(">>>reviewVO>>{}", rvo);
 
         // 선택된 테마의 UUID로 테마 정보를 조회
         ThemeVO theme = themeService.getThemeDetailsByUuid(themeUuid);
+
+        // 테마가 null인 경우 처리
+
+
 
         rvo.setThemeName(theme.getThemeName());
 
@@ -108,27 +143,7 @@ public class ReviewController {
 
 
 
-    @PostMapping("/like/{bno}")
-    public ResponseEntity<?> likeReview(@PathVariable("bno") int bno) {
-        try {
-            rsv.incrementLikeCount(bno); // 좋아요를 증가시킴
-            int readCount = rsv.getReadCount(bno); // 업데이트된 좋아요 수 조회
-            return ResponseEntity.ok(Map.of("likes", readCount));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to like review");
-        }
-    }
 
-    @PostMapping("/dislike/{bno}")
-    public ResponseEntity<?> dislikeReview(@PathVariable("bno") int bno) {
-        try {
-            rsv.decrementLikeCount(bno); // 좋아요를 감소시킴
-            int readCount = rsv.getReadCount(bno); // 업데이트된 좋아요 수 조회
-            return ResponseEntity.ok(Map.of("likes", readCount));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to dislike review");
-        }
-    }
 
 
 
@@ -153,10 +168,10 @@ public class ReviewController {
         return "redirect:/review/list";
     }
 
-    // 리뷰 삭제 처리
     @PostMapping("/delete")
-    public String delete(@RequestParam("bno") int bno) {
-        rsv.delete(bno);
+    public String delete(ReviewVO rvo) {
+log.info(">>>>11111>{}",rvo);
+        rsv.delete(rvo.getBno());
         return "redirect:/review/list";
     }
 

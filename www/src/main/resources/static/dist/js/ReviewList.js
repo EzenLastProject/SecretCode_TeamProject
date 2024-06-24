@@ -64,7 +64,9 @@
     }
 function confirmDelete() {
     // 삭제 전에 확인 알림창을 띄웁니다.
-    if (confirm('정말로 삭제하시겠습니까?')) {
+    let a = confirm('정말로 삭제하시겠습니까?');
+    console.log(a);
+    if (a) {
         // 사용자가 확인을 선택한 경우에만 true를 반환합니다.
         // 여기에 삭제를 처리하는 코드를 작성합니다.
         console.log('사용자가 확인을 선택했습니다.');
@@ -123,6 +125,8 @@ function confirmUpdate() {
                 }
             }
         });
+
+
 
 
 

@@ -73,6 +73,11 @@ public class QnaServiceImpl implements QnaService {
         return qnaMapper.memberQna();
     }
 
+    @Override
+    public String myNickName(String email) {
+        return qnaMapper.myNickName(email);
+    }
+
 
     @Override
     public QnaVO getDetail(int bno) {

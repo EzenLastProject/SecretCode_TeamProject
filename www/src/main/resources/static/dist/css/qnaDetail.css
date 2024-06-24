@@ -15,7 +15,7 @@
        z-index:1;
 }
 .qna-detail-box{
-    background-image: url("/dist/image/sc1.png");
+    background-image: url("/dist/image/sc7.png");
     background-size : cover;
     background-repeat : no-repeat;
 
@@ -193,6 +193,8 @@
     color:white;
     padding-left:10px;
     height:30px;
+    margin-top:20px;
+    margin-bottom:20px;
     border:1px solid white;
     border-left:none;
     border-right: none;
