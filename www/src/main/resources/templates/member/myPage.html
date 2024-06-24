@@ -203,7 +203,7 @@
                   <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                     <th:block th:each="myqna : ${myqna}">
                       <tr>
-                        <td><a th:href="@{|/qna/detail?bno=${myqna.bno}|}" th:text="${myqna.title}"></a></td>
+                        <td><a class="goTomyLink" th:href="@{|/qna/detail?bno=${myqna.bno}|}" th:text="${myqna.title}"></a></td>
                         <td th:text="${myqna.writer}"></td>
                         <td th:text="${myqna.content}"></td>
                         <td th:text="${myqna.regDate}"></td>
@@ -225,7 +225,7 @@
 
                     <th:block th:each="memberQna : ${memberQna}">
                       <tr>
-                        <td><a th:href="@{/adminRegister/adminBoard}" th:text="${memberQna.title}"></a></td>
+                        <td><a class="goTomyLink" th:href="@{/adminRegister/adminBoard}" th:text="${memberQna.title}"></a></td>
                         <td th:text="${memberQna.writer}"></td>
                         <td th:text="${memberQna.content}"></td>
                         <td th:text="${memberQna.regDate}"></td>
@@ -276,7 +276,7 @@
 
                       <th:block th:each="myreview : ${myreview}">
                         <tr>
-                          <td><a th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
+                          <td><a class="goTomyLink" th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
                           <td th:text="${myreview.writer}"></td>
                           <td th:text="${myreview.content}" style="width:50%"></td>
                           <td th:text="${myreview.regDate}"></td>
