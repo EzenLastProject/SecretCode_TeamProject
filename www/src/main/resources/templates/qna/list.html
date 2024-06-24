@@ -8,7 +8,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 <link rel="stylesheet" th:href="@{/dist/css/qnalist.css}">
-<title>Q & A 목록</title>
+
 <th:block th:replace="~{layout::setFragment(~{this::content})}">
 
     <th:block th:fragment="content" >
@@ -40,7 +40,7 @@
                                 <input type="hidden" name="pageNo" th:value="1">
                                 <input type="hidden" name="qty" th:value="${ph.pgvo.qty}">
                                 <button type="submit" class="qna-search-btn">
-                                    검색
+                                    Search
                                     <span th:text="${ph.totalCount}" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
@@ -49,7 +49,7 @@
                         </form>
                         <div class="qna-register-Btn-Box">
                             <form action="/qna/register" >
-                                <button type="submit" id="qna-write"  class="writeBtn" style="float:right; margin-right:120px;">문의글 작성</button>
+                                <button class="writeBtn" style="float:right; margin-right:100px;" type="submit" id="qna-write">문의글 작성</button>
                             </form>
                         </div>
                         <table class='qna-list'>
@@ -103,7 +103,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" style="color:black;">비밀번호 입력</h5>
+                                        <h5 class="modal-title">비밀번호 입력</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
