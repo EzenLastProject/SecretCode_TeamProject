@@ -14,7 +14,7 @@
 body{
 margin:0;
 padding:0;
-font-family: 'S-CoreDream-3Light';
+
    background-image: url("/dist/image/reg4.jpg");
      font-family: 'S-CoreDream-3Light';
         background-repeat: no-repeat;
@@ -89,7 +89,7 @@ font-family: 'S-CoreDream-3Light';
 }
 
 .myReserv{
-    border:1px solid white;
+
 /*    height:100%;*/
     width:100%;
     display:block;
@@ -228,5 +228,10 @@ width:50%;
          color: red; /* 링크의 글자 색을 빨간색으로 설정 */
          text-decoration: none; /* 링크 밑줄 제거 (선택사항) */
 
+
+ }
+
+ .goTomyLink:hover{
+    color:yellow;
 
  }
