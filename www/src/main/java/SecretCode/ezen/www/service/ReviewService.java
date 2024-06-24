@@ -14,7 +14,7 @@ public interface ReviewService {
 
     List<ReviewVO> getList(PagingVO pgvo);
 
-    List<ReviewVO> myreview(String email);
+    List<ReviewVO> myreview(String nickName);
 
 
     void incrementLikeCount(int bno);

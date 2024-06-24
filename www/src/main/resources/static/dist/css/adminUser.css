@@ -125,7 +125,7 @@ text-align : center;
 
 
 .responsive-table thead th:first-of-type {
-  text-align: left;
+  text-align: center;
 }
 .responsive-table tbody,
 .responsive-table tr,

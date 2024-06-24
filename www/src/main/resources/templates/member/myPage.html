@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en" id="ht" >
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <link rel="stylesheet" th:href="@{/dist/css/theme.css}">
 <link rel="stylesheet" th:href="@{/dist/css/myPage.css}">
 <link rel="stylesheet" th:href="@{/dist/js/memberModify.js}">
@@ -54,12 +51,12 @@
 
                 <div class="myReserv">
 
-                  <table class="responsive-table board-table">
+                  <table class="responsive-table board-table" style="text-align:center;">
                     <thead>
 
                     <!--회원일때-->
                     <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
-                    <tr>
+                    <tr style="text-align:center;">
                       <th scope="col" >주문번호</th>
                       <th scope="col" >예약일</th>
                       <th scope="col" >예약시간</th>
@@ -74,7 +71,7 @@
                     <!--관리자일때-->
                     <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 
-                      <tr>
+                      <tr style="text-align:center;">
                         <th scope="col" >주문번호</th>
                         <th scope="col" >예약일</th>
                         <th scope="col" >예약시간</th>
@@ -96,7 +93,7 @@
                     <!--회원일때-->
                     <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                       <th:block th:each="myReservation : ${myReservation}">
-                        <tr>
+                        <tr style="text-align:center;">
                           <td th:text="${myReservation.merchantUid}"></td>
                           <td th:text="${myReservation.reservationDate}"></td>
                           <td th:text="${myReservation.reservationTime}"></td>
@@ -120,7 +117,7 @@
                     <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                       <!--수정필요-->
                       <th:block th:each="memberReservation : ${memberReservation}">
-                        <tr>
+                        <tr style="text-align:center;">
                           <td th:text="${memberReservation.merchantUid}"></td>
                           <td th:text="${memberReservation.reservationDate}"></td>
                           <td th:text="${memberReservation.reservationTime}"></td>
@@ -168,12 +165,12 @@
 
 
               <div class="myQNA">
-                <table class="responsive-table board-table">
+                <table class="responsive-table board-table" style="text-align:center;">
                   <thead>
 
                   <!--회원일때-->
                   <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
-                  <tr>
+                  <tr style="text-align:center;">
                     <th scope="col" >제목</th>
                     <th scope="col" >작성자</th>
                     <th scope="col" >내용</th>
@@ -185,13 +182,13 @@
 
                   <!--관리자일때-->
                   <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <tr>
+                    <tr style="text-align:center;">
                       <th scope="col" >제목</th>
                       <th scope="col" >작성자</th>
                       <th scope="col" >내용</th>
                       <th scope="col" >작성일</th>
                       <th scope="col" >조회수</th>
-                      <th scope="col" >답변 상태</th>
+<!--                      <th scope="col" >답변 상태</th>-->
                     </tr>
                   </th:block>
 
@@ -202,7 +199,7 @@
                   <!--회원일때-->
                   <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
                     <th:block th:each="myqna : ${myqna}">
-                      <tr>
+                      <tr style="text-align:center;">
                         <td><a class="goTomyLink" th:href="@{|/qna/detail?bno=${myqna.bno}|}" th:text="${myqna.title}"></a></td>
                         <td th:text="${myqna.writer}"></td>
                         <td th:text="${myqna.content}"></td>
@@ -224,13 +221,13 @@
                   <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 
                     <th:block th:each="memberQna : ${memberQna}">
-                      <tr>
-                        <td><a class="goTomyLink" th:href="@{/adminRegister/adminBoard}" th:text="${memberQna.title}"></a></td>
-                        <td th:text="${memberQna.writer}"></td>
-                        <td th:text="${memberQna.content}"></td>
-                        <td th:text="${memberQna.regDate}"></td>
-                        <td th:text="${memberQna.readCount}"></td>
-                        <td th:text="${memberQna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>
+                      <tr style="text-align:center;">
+                        <td><a class="goTomyLink" th:href="@{/adminRegister/adminBoard}" th:text="${memberQna.title}" style="width : 16%;"></a></td>
+                        <td th:text="${memberQna.writer}" style="width : 7%;"></td>
+                        <td th:text="${memberQna.content}" style="width : 60%;"></td>
+                        <td th:text="${memberQna.regDate}" style="width : 10%;"></td>
+                        <td th:text="${memberQna.readCount}" style="width : 7%;"></td>
+<!--                        <td th:text="${memberQna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>-->
                       </tr>
                     </th:block>
 
@@ -260,9 +257,9 @@
                 <div class="myReviewTitle">
                   <h3>나의 리뷰</h3>
                   <div class="myReview">
-                    <table class="responsive-table board-table">
+                    <table class="responsive-table board-table" style="text-align:center;">
                       <thead>
-                      <tr>
+                      <tr style="text-align:center;">
                         <th scope="col" >제목</th>
                         <th scope="col" >작성자</th>
                         <th scope="col" >내용</th>
@@ -275,12 +272,12 @@
                       <tbody>
 
                       <th:block th:each="myreview : ${myreview}">
-                        <tr>
+                        <tr style="text-align:center;">
                           <td><a class="goTomyLink" th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
                           <td th:text="${myreview.writer}"></td>
                           <td th:text="${myreview.content}" style="width:50%"></td>
                           <td th:text="${myreview.regDate}"></td>
-                          <td th:text="${myreview.theme}"></td>
+                          <td th:text="${myreview.themeName}"></td>
                           <td th:text="${myreview.readCount}"></td>
                         </tr>
                       </th:block>

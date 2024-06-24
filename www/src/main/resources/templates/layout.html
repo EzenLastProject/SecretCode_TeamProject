@@ -43,20 +43,20 @@
                                 </a>
                                 <ul class="dropdown-menu bg-black" aria-labelledby="adminDropdown">
                                     <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/adminRegister/adminBoard}">회원 Q&A 관리게시판(관리자)</a>
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminBoard}" style="color:#FFCC00;">회원 Q&A 관리게시판</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/adminRegister/adminUser}">회원 목록(관리자)</a>
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminUser}" style="color:#FFCC00;">회원 목록</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/portOnePay/adminPayList}">회원 예약/결제 목록(관리자)</a>
+                                        <a class="nav-link active" th:href="@{/portOnePay/adminPayList}" style="color:#FFCC00;">회원 예약/결제 목록</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/adminRegister/adminRegister}">테마 등록(관리자)</a>
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminRegister}" style="color:#FFCC00;">테마 등록</a>
                                     </li>
                                     <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                        <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminThemeList}">테마 상세 리스트(관리자)</a>
+                                        <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminThemeList}" style="color:#FFCC00;">테마 상세 리스트</a>
                                     </li>
                                 </ul>
                             </li>

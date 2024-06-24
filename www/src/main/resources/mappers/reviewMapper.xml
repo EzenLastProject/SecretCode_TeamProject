@@ -44,7 +44,7 @@
 
     <select id="myreview" resultType="SecretCode.ezen.www.domain.ReviewVO">
         SELECT * FROM review
-        WHERE writer = #{email}
+        WHERE writer = #{nickName}
     </select>
 
     <!-- 좋아요 수 증가 및 isLiked 업데이트 -->
