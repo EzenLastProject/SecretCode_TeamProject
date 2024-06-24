@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경2 2024/06/21">
+    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/24">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/refundPortOne/MyPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/refundPortOne/MyPaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/refundPortOne/MyPaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/refundPortOne/MyPaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/PortOnePay.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/PortOnePay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/adminPayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/adminPayList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/reservationCheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/js/reservationCheck.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/QnaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/java/SecretCode/ezen/www/service/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/mappers/qnaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/mappers/qnaMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/mappers/reviewMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/mappers/reviewMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/adminPayList.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/adminPayList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/adminUser.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/adminUser.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/myPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/static/dist/css/myPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/portOnePay/portOnePay.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/portOnePay/portOnePay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/member/adminUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/member/adminUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/main/resources/templates/member/myPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/main/resources/templates/member/myPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,11 +348,18 @@
       <option name="project" value="LOCAL" />
       <updated>1718941743789</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/24">
+      <option name="closed" value="true" />
+      <created>1719198506134</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1719198506134</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="이창규_회원가입수정2" />
     <MESSAGE value="이창규_회원가입 로그인 수정중 1" />
     <MESSAGE value="이창규_회원가입 디자인작업중1" />
     <MESSAGE value="이창규_회원가입 이메일인증번호 2024/05/28" />
@@ -371,6 +384,7 @@
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_에러확인중 2024/06/20" />
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/21" />
     <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경2 2024/06/21" />
-    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경2 2024/06/21" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/24" />
+    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/24" />
   </component>
 </project>

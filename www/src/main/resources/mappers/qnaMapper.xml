@@ -15,7 +15,7 @@
 
     <select id="myqna" resultType="SecretCode.ezen.www.domain.QnaVO">
         SELECT * FROM qna
-        WHERE writer = #{email}
+        WHERE writer = #{nickName}
     </select>
 
 

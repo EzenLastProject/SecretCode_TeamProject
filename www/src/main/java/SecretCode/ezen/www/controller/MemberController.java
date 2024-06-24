@@ -163,8 +163,14 @@ public class MemberController {
         log.info(">>>>>>>!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@ email {}", email);
 
 
+        //현재 로그인한 아이디의 닉네임 뽑아오기
+        String nickName = msv.myNickName(email);
+        log.info(">>>>>>>!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@ !!!!!!!!!!!!!!!!nickName {}", nickName);
+
+
         //회원일때
         List<ReservationVO> myReservation = psv.getmyReservation(email);
+
         m.addAttribute("myReservation", myReservation);
 
         //관리자일때
@@ -173,17 +179,18 @@ public class MemberController {
 
 
 
-        List<QnaVO> myqna = qsv.myqna(email);
+        List<QnaVO> myqna = qsv.myqna(nickName);
         m.addAttribute("myqna", myqna);
+        log.info(">>>>>>>!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@ myqna {}", myqna);
 
         List<QnaVO> memberQna = qsv.memberQna();
         m.addAttribute("memberQna", memberQna);
 
 
 
-        List<ReviewVO> myreview = rsv.myreview(email);
+        List<ReviewVO> myreview = rsv.myreview(nickName);
         m.addAttribute("myreview", myreview);
-
+        log.info(">>>>>>>!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@ myreview {}", myreview);
 
         String myNickName = msv.myNickName(email);
         m.addAttribute("myNickName", myNickName);

@@ -64,8 +64,8 @@ public class QnaServiceImpl implements QnaService {
     }
 
     @Override
-    public List<QnaVO> myqna(String email) {
-        return qnaMapper.myqna(email);
+    public List<QnaVO> myqna(String nickName) {
+        return qnaMapper.myqna(nickName);
     }
 
     @Override
