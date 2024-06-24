@@ -115,10 +115,10 @@
                                 <td class='dis_none'>[[${qvo.writer}]]</td>
                                 <td class='dis_none'>[[${qvo.regDate}]]</td>
                                 <!-- isNotice가 true인 경우 cmtQty를 빈 열로 출력 -->
-                                <td class='dis_none2' th:if="${qvo.isNotice == 'true'}"></td>
+                                <td class='dis_none' th:if="${qvo.isNotice == 'true'}"></td>
 
                                 <!-- isNotice가 false인 경우에만 cmtQty 열을 표시 -->
-                                <td class='dis_none2' th:unless="${qvo.isNotice == 'true'}"
+                                <td class='dis_none' th:unless="${qvo.isNotice == 'true'}"
                                     th:text="${qvo.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"
                                     th:classappend="${qvo.cmtQty > 0 ? 'completed' : 'uncompleted'}"></td>
 
