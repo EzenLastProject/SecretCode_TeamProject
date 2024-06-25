@@ -150,8 +150,12 @@ height:120px;
                                 </div>
 
 
-<!--                                <form action="/review/modify" method="post">-->
+<!--  <form action="/review/modify" method="post">-->
+                                <form action="/review/modify" method="post">
 
+
+
+                                    <th:blcok>
                                 <div class="card-title">
 
                                  <h5><span> <input type="text" name="title" id="titleInput"
@@ -180,9 +184,9 @@ height:120px;
                     </div>
 
                     <div class="btn-box" style="display:flex; justify-content:flex-start; margin-left:30px;">
-                        <form action="/review/modify" method="post" th:if="${NickName == rvo.writer}">
+
                             <input type="hidden" name="bno" th:value="${rvo.bno}">
-                            <button type="submit" class="ModBtn" style="width:50px; float:right; height:30px; margin:0 0 10px 0;"
+                            <button type="submit" class="ModBtn" style="width:50px; float:right; height:30px; margin:0 0 10px 0;" th:if="${NickName == rvo.writer}"
                                     onclick="confirmUpdate()">수정
                             </button>
                         </form>
